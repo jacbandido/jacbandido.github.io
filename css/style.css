@@ -1,6 +1,6 @@
 /********** Template CSS **********/
 :root {
-    --primary: #0066CC;
+    --primary: #0058A3;
     --light: #F5F5F5;
     --dark: #333333;
 }
@@ -44,7 +44,19 @@
     transition: .5s;
 }
 
-.btn.btn-primary,
+/* Botones principales en azul con hover verde */
+.btn.btn-primary {
+    background-color: var(--primary);
+    color: #FFFFFF;
+    border: none;
+    transition: .3s;
+}
+
+.btn.btn-primary:hover {
+    background-color: #007A3D;
+    color: #FFFFFF;
+}
+
 .btn.btn-secondary {
     color: #FFFFFF;
 }
