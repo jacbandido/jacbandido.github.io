@@ -1,7 +1,7 @@
 /********** Template CSS **********/
 :root {
-    --primary: #2E8B57;
-    --secondary: #2E8B57;
+    --primary: #02693B;
+    --secondary: #02693B;
     --light: #F4F7F5;
     --dark: #263238;
 }
@@ -58,8 +58,8 @@
 .btn.btn-primary:hover,
 .btn.btn-primary:focus,
 .btn.btn-primary:active {
-    background-color: #24704A;
-    border-color: #24704A;
+    background-color: #02693B;
+    border-color: #02693B;
     color: #FFFFFF;
 }
 
@@ -71,8 +71,8 @@
 .btn.btn-secondary:hover,
 .btn.btn-secondary:focus,
 .btn.btn-secondary:active {
-    background-color: #24704A;
-    border-color: #24704A;
+    background-color: #02693B;
+    border-color: #02693B;
     color: #FFFFFF;
 }
 
