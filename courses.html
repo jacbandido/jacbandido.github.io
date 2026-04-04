@@ -76,38 +76,54 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
 .section-title{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.6rem,4vw,2.5rem);line-height:1.2;letter-spacing:-.02em}
 
 /* COURSES SECTION */
-.courses-section{padding:88px 0;background:#fff}
+.courses-section{padding:88px 0;background:var(--forest);position:relative;overflow:hidden}
+.courses-section::before{content:'';position:absolute;top:-120px;left:-120px;width:500px;height:500px;border-radius:50%;background:rgba(0,176,96,.04);pointer-events:none}
+.courses-section .section-eyebrow-line{background:var(--lime)}
+.courses-section .section-eyebrow span{color:var(--lime)}
+.courses-section .section-title{color:#fff}
 
-/* COURSE CARD */
-.course-card{border:1px solid var(--border);border-radius:4px;overflow:hidden;height:100%;display:flex;flex-direction:column;transition:box-shadow .3s,transform .25s}
-.course-card:hover{box-shadow:0 16px 52px rgba(0,80,40,.12);transform:translateY(-5px)}
-.cc-img{position:relative;height:210px;overflow:hidden;flex-shrink:0}
-.cc-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
-.course-card:hover .cc-img img{transform:scale(1.06)}
-.cc-status{position:absolute;top:14px;left:14px;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 13px;border-radius:40px;backdrop-filter:blur(6px)}
-.cc-status.open{background:rgba(0,176,96,.9);color:#fff}
-.cc-status.soon{background:rgba(10,31,20,.75);color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.15)}
-.cc-num{position:absolute;bottom:14px;right:14px;font-family:'Fraunces',serif;font-size:2rem;font-weight:300;color:rgba(255,255,255,.25);line-height:1}
-.cc-body{padding:24px 22px;flex:1;display:flex;flex-direction:column;gap:12px}
-.cc-cat{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green)}
-.cc-body h4{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:600;line-height:1.4;margin:0}
-.cc-body p{font-size:.85rem;color:var(--muted);line-height:1.7;margin:0;flex:1}
-.cc-tags{display:flex;flex-wrap:wrap;gap:5px}
-.cctag{font-size:.65rem;font-weight:500;color:var(--muted);background:var(--offwhite);border:1px solid var(--border);padding:3px 9px;border-radius:3px}
-.cc-meta{display:flex;gap:16px;flex-wrap:wrap;padding-top:12px;border-top:1px solid var(--border)}
-.cc-meta span{font-size:.77rem;color:var(--muted);display:flex;align-items:center;gap:5px}
-.cc-meta i{color:var(--lime);font-size:.72rem}
-.cc-footer{padding:16px 22px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.cc-price{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:600;color:var(--text)}
-.cc-price span{font-size:.75rem;font-weight:400;color:var(--muted);font-family:'Outfit',sans-serif}
-.btn-curso{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#fff;font-weight:600;font-size:.78rem;letter-spacing:.07em;text-transform:uppercase;padding:11px 20px;border-radius:3px;text-decoration:none;transition:background .2s,transform .15s}
-.btn-curso:hover{background:var(--forest);color:#fff;transform:translateY(-1px)}
-.btn-curso-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--muted);font-weight:600;font-size:.78rem;letter-spacing:.07em;text-transform:uppercase;padding:9px 18px;border-radius:3px;border:1px solid var(--border);text-decoration:none;transition:color .2s,border-color .2s;cursor:not-allowed}
+/* COURSE CARD — full image with overlay, impactful */
+.course-card{position:relative;border-radius:6px;overflow:hidden;height:480px;display:flex;flex-direction:column;justify-content:flex-end;text-decoration:none;cursor:pointer;transition:transform .4s cubic-bezier(.25,.46,.45,.94),box-shadow .4s}
+.course-card:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 28px 70px rgba(0,0,0,.45)}
+.cc-bg{position:absolute;inset:0;z-index:0}
+.cc-bg img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.25,.46,.45,.94)}
+.course-card:hover .cc-bg img{transform:scale(1.08)}
+.cc-gradient{position:absolute;inset:0;background:linear-gradient(175deg,rgba(0,0,0,.05) 0%,rgba(8,24,14,.92) 100%);transition:background .4s;z-index:1}
+.course-card:hover .cc-gradient{background:linear-gradient(175deg,rgba(0,80,40,.15) 0%,rgba(8,24,14,.96) 100%)}
 
-/* COMING SOON card overlay */
-.course-card.soon-card{opacity:.85}
-.soon-overlay{position:absolute;inset:0;background:rgba(10,31,20,.45);display:flex;align-items:center;justify-content:center}
-.soon-overlay span{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:600;color:#fff;letter-spacing:.04em;text-shadow:0 2px 8px rgba(0,0,0,.4)}
+/* status badge top-left */
+.cc-status{position:absolute;top:18px;left:18px;z-index:3;font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:6px 14px;border-radius:40px;backdrop-filter:blur(8px)}
+.cc-status.open{background:rgba(0,176,96,.85);color:#fff;border:1px solid rgba(0,255,120,.2)}
+.cc-status.soon{background:rgba(10,31,20,.7);color:rgba(255,255,255,.75);border:1px solid rgba(255,255,255,.15)}
+
+/* big number watermark */
+.cc-watermark{position:absolute;top:14px;right:18px;z-index:2;font-family:'Fraunces',serif;font-size:5rem;font-weight:700;color:rgba(255,255,255,.06);line-height:1;pointer-events:none;transition:color .4s}
+.course-card:hover .cc-watermark{color:rgba(0,176,96,.12)}
+
+/* content at bottom */
+.cc-content{position:relative;z-index:3;padding:28px 26px 26px}
+.cc-cat{font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--lime);margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.cc-cat::before{content:'';width:20px;height:1px;background:var(--lime);flex-shrink:0}
+.cc-content h3{font-family:'Fraunces',serif;font-size:1.25rem;font-weight:600;color:#fff;line-height:1.3;margin-bottom:10px}
+.cc-content p{font-size:.83rem;color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:18px;max-height:0;overflow:hidden;opacity:0;transition:max-height .45s ease,opacity .4s}
+.course-card:hover .cc-content p{max-height:100px;opacity:1}
+
+.cc-meta-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:18px}
+.cc-meta-row span{font-size:.74rem;color:rgba(255,255,255,.5);display:flex;align-items:center;gap:5px}
+.cc-meta-row i{color:var(--lime);font-size:.68rem}
+
+.cc-footer-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:16px;border-top:1px solid rgba(255,255,255,.1)}
+.cc-price-badge{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:600;color:#fff;line-height:1}
+.cc-price-badge small{font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:400;color:rgba(255,255,255,.4);display:block;margin-top:2px}
+.cc-price-badge.tbd{font-size:.88rem;color:rgba(255,255,255,.45)}
+
+.btn-curso{display:inline-flex;align-items:center;gap:8px;background:var(--lime);color:#fff;font-weight:700;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;padding:12px 20px;border-radius:3px;text-decoration:none;transition:background .2s,transform .15s,gap .2s}
+.btn-curso:hover{background:#009950;color:#fff;gap:12px}
+.btn-curso i{font-size:.68rem;transition:transform .2s}
+.btn-curso:hover i{transform:translateX(3px)}
+
+.btn-curso-soon{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.6);font-weight:600;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;padding:11px 18px;border-radius:3px;border:1px solid rgba(255,255,255,.15);text-decoration:none;transition:background .2s,color .2s,border-color .2s}
+.btn-curso-soon:hover{background:rgba(255,255,255,.14);color:#fff;border-color:rgba(255,255,255,.3)}
 
 /* COUNTDOWN */
 .countdown-wrap{background:var(--forest);padding:56px 0;position:relative;overflow:hidden}
@@ -267,98 +283,72 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
 
       <!-- CURSO 1 — ArcGIS ABIERTO -->
       <div class="col-lg-4 col-md-6 fade-up d1">
-        <div class="course-card">
-          <div class="cc-img">
-            <img src="img/course-2.jpg" alt="ArcGIS Básico">
-            <div class="cc-status open">✦ Inscripciones Abiertas</div>
-            <div class="cc-num">01</div>
-          </div>
-          <div class="cc-body">
+        <a class="course-card" href="curso-arcgis.html">
+          <div class="cc-bg"><img src="img/course-2.jpg" alt="ArcGIS Básico"></div>
+          <div class="cc-gradient"></div>
+          <div class="cc-status open">✦ Inscripciones Abiertas</div>
+          <div class="cc-watermark">01</div>
+          <div class="cc-content">
             <div class="cc-cat">SIG · Teledetección</div>
-            <h4>ArcGIS Básico para Ciencias Ambientales</h4>
+            <h3>ArcGIS Básico para Ciencias Ambientales</h3>
             <p>Aprende a manejar ArcGIS desde cero: carga de datos, edición de capas, simbología, layouts y análisis espacial básico aplicado a proyectos ambientales.</p>
-            <div class="cc-tags">
-              <span class="cctag">ArcGIS</span>
-              <span class="cctag">SIG</span>
-              <span class="cctag">Mapas</span>
-              <span class="cctag">100% Online</span>
-              <span class="cctag">Certificado</span>
-            </div>
-            <div class="cc-meta">
-              <span><i class="fas fa-calendar-alt"></i> 20 – 25 Abril 2025</span>
+            <div class="cc-meta-row">
+              <span><i class="fas fa-calendar-alt"></i> 20–25 Abril 2025</span>
               <span><i class="fas fa-clock"></i> 20 horas</span>
               <span><i class="fas fa-user-tie"></i> Jack Malon</span>
             </div>
+            <div class="cc-footer-row">
+              <div class="cc-price-badge">S/ 120<small>por persona · con certificado</small></div>
+              <div class="btn-curso">Ver Curso <i class="fas fa-arrow-right"></i></div>
+            </div>
           </div>
-          <div class="cc-footer">
-            <div class="cc-price">S/ 120 <span>/ persona</span></div>
-            <a href="curso-arcgis.html" class="btn-curso">Ver Curso <i class="fas fa-arrow-right" style="font-size:.7rem"></i></a>
-          </div>
-        </div>
+        </a>
       </div>
 
       <!-- CURSO 2 — LCPD PRÓXIMO -->
       <div class="col-lg-4 col-md-6 fade-up d2">
-        <div class="course-card soon-card">
-          <div class="cc-img">
-            <img src="img/course-1.jpg" alt="Taller LCPD Plantas">
-            <div class="cc-status soon">Próximamente · Mayo</div>
-            <div class="soon-overlay"><span>Próximamente</span></div>
-            <div class="cc-num">02</div>
-          </div>
-          <div class="cc-body">
+        <a class="course-card" href="curso-lcpd.html">
+          <div class="cc-bg"><img src="img/course-1.jpg" alt="Taller LCPD Plantas"></div>
+          <div class="cc-gradient"></div>
+          <div class="cc-status soon">Próximamente · Mayo 2025</div>
+          <div class="cc-watermark">02</div>
+          <div class="cc-content">
             <div class="cc-cat">Botánica · Flora</div>
-            <h4>Taller de Línea de Base para Plantas (LCPD)</h4>
-            <p>Metodologías para el levantamiento de líneas de base de comunidades vegetales: parcelas, transectos, índices de diversidad y elaboración de informes técnicos.</p>
-            <div class="cc-tags">
-              <span class="cctag">Botánica</span>
-              <span class="cctag">LCPD</span>
-              <span class="cctag">Flora</span>
-              <span class="cctag">100% Online</span>
-              <span class="cctag">Certificado</span>
-            </div>
-            <div class="cc-meta">
+            <h3>Taller de Línea de Base para Plantas (LCPD)</h3>
+            <p>Metodologías para el levantamiento de líneas de base de comunidades vegetales: parcelas, transectos, índices de diversidad e informes técnicos.</p>
+            <div class="cc-meta-row">
               <span><i class="fas fa-calendar-alt"></i> Mayo 2025</span>
               <span><i class="fas fa-clock"></i> Por confirmar</span>
             </div>
+            <div class="cc-footer-row">
+              <div class="cc-price-badge tbd">Precio por confirmar</div>
+              <div class="btn-curso-soon">Ver Detalles <i class="fas fa-arrow-right" style="font-size:.65rem"></i></div>
+            </div>
           </div>
-          <div class="cc-footer">
-            <div class="cc-price" style="color:var(--muted);font-size:1rem">Precio por confirmar</div>
-            <a href="curso-lcpd.html" class="btn-curso-outline">Próximamente</a>
-          </div>
-        </div>
+        </a>
       </div>
 
       <!-- CURSO 3 — ANIMALES PRÓXIMO -->
       <div class="col-lg-4 col-md-6 fade-up d3">
-        <div class="course-card soon-card">
-          <div class="cc-img">
-            <img src="img/course-3.jpg" alt="Animales Silvestres en Cautiverio">
-            <div class="cc-status soon">Próximamente · Junio</div>
-            <div class="soon-overlay"><span>Próximamente</span></div>
-            <div class="cc-num">03</div>
-          </div>
-          <div class="cc-body">
+        <a class="course-card" href="curso-animales.html">
+          <div class="cc-bg"><img src="img/course-3.jpg" alt="Animales Silvestres en Cautiverio"></div>
+          <div class="cc-gradient"></div>
+          <div class="cc-status soon">Próximamente · Junio 2025</div>
+          <div class="cc-watermark">03</div>
+          <div class="cc-content">
             <div class="cc-cat">Fauna · Manejo</div>
-            <h4>Introducción al Manejo de Animales Silvestres en Cautiverio</h4>
+            <h3>Introducción al Manejo de Animales Silvestres en Cautiverio</h3>
             <p>Fundamentos del manejo, bienestar animal, enriquecimiento ambiental, alimentación y manejo sanitario de fauna silvestre bajo custodia humana.</p>
-            <div class="cc-tags">
-              <span class="cctag">Fauna</span>
-              <span class="cctag">Cautiverio</span>
-              <span class="cctag">Bienestar Animal</span>
-              <span class="cctag">100% Online</span>
-              <span class="cctag">Certificado</span>
-            </div>
-            <div class="cc-meta">
+            <div class="cc-meta-row">
               <span><i class="fas fa-calendar-alt"></i> Junio 2025</span>
               <span><i class="fas fa-clock"></i> Por confirmar</span>
             </div>
+            <div class="cc-footer-row">
+              <div class="cc-price-badge tbd">Precio por confirmar</div>
+              <div class="btn-curso-soon">Ver Detalles <i class="fas fa-arrow-right" style="font-size:.65rem"></i></div>
+            </div>
           </div>
-          <div class="cc-footer">
-            <div class="cc-price" style="color:var(--muted);font-size:1rem">Precio por confirmar</div>
-            <a href="curso-animales.html" class="btn-curso-outline">Próximamente</a>
-          </div>
-        </div>
+        </a>
       </div>
 
     </div>
