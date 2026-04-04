@@ -1,389 +1,446 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
-    <meta charset="utf-8">
-    <title>eLEARNING - eLearning HTML Template</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
+<meta charset="utf-8">
+<title>Cursos – Andean Consulting & Environmental Solutions S.A.C.</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="cursos virtuales, ecología, ArcGIS, SIG, biología, Perú" name="keywords">
+<meta content="Formación especializada en ciencias ambientales, SIG y biología. Cursos online con certificado." name="description">
 
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+<link rel="icon" type="image/x-icon" href="img/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+<link rel="apple-touch-icon" href="img/favicon.ico">
 
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+<style>
+:root{
+  --forest:#0a1f14;--green:#006a39;--lime:#00b060;
+  --offwhite:#f6f8f4;--border:#d8e4dd;--text:#1c2b22;--muted:#5a6e62;
+  --light-green:#e4f2eb;--wa:#25D366;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;font-weight:400;color:var(--text);background:#fff;overflow-x:hidden}
+h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
 
-    <!-- Libraries Stylesheet -->
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+#spinner{position:fixed;inset:0;background:#fff;display:flex;align-items:center;justify-content:center;z-index:9999;transition:opacity .5s}
+#spinner.hide{opacity:0;pointer-events:none}
+.spin-ring{width:44px;height:44px;border:2px solid var(--light-green);border-top-color:var(--green);border-radius:50%;animation:spin .9s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
 
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+.topbar{background:var(--forest);color:rgba(255,255,255,.6);font-size:.75rem;letter-spacing:.06em;padding:8px 0}
+.topbar a{color:rgba(255,255,255,.55);text-decoration:none;transition:color .2s}
+.topbar a:hover{color:#fff}
+.topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.topbar-left{display:flex;gap:20px;align-items:center}
+.topbar-right{display:flex;gap:16px;align-items:center}
+.tb-div{width:1px;height:12px;background:rgba(255,255,255,.15)}
 
-    <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+.navbar{background:#fff;border-bottom:1px solid var(--border);padding:0;position:sticky;top:0;z-index:1000;transition:box-shadow .3s}
+.navbar.scrolled{box-shadow:0 2px 24px rgba(10,31,20,.1)}
+.navbar-brand{padding:14px 24px}
+.navbar-brand img{height:44px;object-fit:contain}
+.navbar-toggler{border:1px solid #ccc!important;padding:6px 10px;margin-right:16px;border-radius:3px;background:transparent}
+.navbar-toggler-icon{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%230a1f14' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")}
+.nav-link{font-family:'Outfit',sans-serif;font-weight:500;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text)!important;padding:1.5rem 1.1rem!important;transition:color .2s;position:relative}
+.nav-link::after{content:'';position:absolute;bottom:0;left:1.1rem;right:1.1rem;height:2px;background:var(--green);transform:scaleX(0);transition:transform .25s}
+.nav-link:hover,.nav-link.active{color:var(--green)!important}
+.nav-link:hover::after,.nav-link.active::after{transform:scaleX(1)}
+.dropdown-menu{border:1px solid var(--border);border-radius:8px;box-shadow:0 12px 40px rgba(0,0,0,.1);padding:8px 0;margin-top:-1px}
+.dropdown-item{font-family:'Outfit',sans-serif;font-size:.82rem;letter-spacing:.04em;padding:10px 20px;color:var(--text);font-weight:500;text-transform:uppercase;transition:background .15s,color .15s}
+.dropdown-item:hover{background:var(--light-green);color:var(--green)}
+.btn-nav-cta{background:var(--green);color:#fff!important;font-weight:700;font-size:.88rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none!important;padding:18px 40px!important;margin:8px 20px;border-radius:3px;display:inline-flex;align-items:center;gap:10px;transition:background .2s,transform .15s;white-space:nowrap;line-height:1}
+.btn-nav-cta:hover{background:var(--forest)!important;color:#fff!important;transform:translateY(-1px)}
+
+/* PAGE HEADER */
+.page-header{background:var(--forest);position:relative;overflow:hidden;padding:80px 0 72px}
+.page-header::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,106,57,.25) 0%,transparent 60%)}
+.page-header::after{content:'';position:absolute;top:-100px;right:-100px;width:420px;height:420px;border-radius:50%;background:rgba(0,176,96,.05);pointer-events:none}
+.ph-eyebrow{display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:16px}
+.ph-eyebrow-line{width:28px;height:1px;background:var(--lime)}
+.ph-eyebrow span{font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--lime)}
+.page-header h1{font-family:'Fraunces',serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:600;color:#fff;line-height:1.15;letter-spacing:-.02em;margin-bottom:20px}
+.breadcrumb-item a{color:rgba(255,255,255,.55);text-decoration:none;font-size:.82rem;font-weight:500}
+.breadcrumb-item.active{color:rgba(255,255,255,.85);font-size:.82rem}
+.breadcrumb-item+.breadcrumb-item::before{color:rgba(255,255,255,.25)}
+
+.section-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.section-eyebrow-line{width:28px;height:1px;background:var(--green);flex-shrink:0}
+.section-eyebrow span{font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--green)}
+.section-title{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.6rem,4vw,2.5rem);line-height:1.2;letter-spacing:-.02em}
+
+/* COURSES SECTION */
+.courses-section{padding:88px 0;background:#fff}
+
+/* COURSE CARD */
+.course-card{border:1px solid var(--border);border-radius:4px;overflow:hidden;height:100%;display:flex;flex-direction:column;transition:box-shadow .3s,transform .25s}
+.course-card:hover{box-shadow:0 16px 52px rgba(0,80,40,.12);transform:translateY(-5px)}
+.cc-img{position:relative;height:210px;overflow:hidden;flex-shrink:0}
+.cc-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.course-card:hover .cc-img img{transform:scale(1.06)}
+.cc-status{position:absolute;top:14px;left:14px;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 13px;border-radius:40px;backdrop-filter:blur(6px)}
+.cc-status.open{background:rgba(0,176,96,.9);color:#fff}
+.cc-status.soon{background:rgba(10,31,20,.75);color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.15)}
+.cc-num{position:absolute;bottom:14px;right:14px;font-family:'Fraunces',serif;font-size:2rem;font-weight:300;color:rgba(255,255,255,.25);line-height:1}
+.cc-body{padding:24px 22px;flex:1;display:flex;flex-direction:column;gap:12px}
+.cc-cat{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--green)}
+.cc-body h4{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:600;line-height:1.4;margin:0}
+.cc-body p{font-size:.85rem;color:var(--muted);line-height:1.7;margin:0;flex:1}
+.cc-tags{display:flex;flex-wrap:wrap;gap:5px}
+.cctag{font-size:.65rem;font-weight:500;color:var(--muted);background:var(--offwhite);border:1px solid var(--border);padding:3px 9px;border-radius:3px}
+.cc-meta{display:flex;gap:16px;flex-wrap:wrap;padding-top:12px;border-top:1px solid var(--border)}
+.cc-meta span{font-size:.77rem;color:var(--muted);display:flex;align-items:center;gap:5px}
+.cc-meta i{color:var(--lime);font-size:.72rem}
+.cc-footer{padding:16px 22px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.cc-price{font-family:'Fraunces',serif;font-size:1.4rem;font-weight:600;color:var(--text)}
+.cc-price span{font-size:.75rem;font-weight:400;color:var(--muted);font-family:'Outfit',sans-serif}
+.btn-curso{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#fff;font-weight:600;font-size:.78rem;letter-spacing:.07em;text-transform:uppercase;padding:11px 20px;border-radius:3px;text-decoration:none;transition:background .2s,transform .15s}
+.btn-curso:hover{background:var(--forest);color:#fff;transform:translateY(-1px)}
+.btn-curso-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;color:var(--muted);font-weight:600;font-size:.78rem;letter-spacing:.07em;text-transform:uppercase;padding:9px 18px;border-radius:3px;border:1px solid var(--border);text-decoration:none;transition:color .2s,border-color .2s;cursor:not-allowed}
+
+/* COMING SOON card overlay */
+.course-card.soon-card{opacity:.85}
+.soon-overlay{position:absolute;inset:0;background:rgba(10,31,20,.45);display:flex;align-items:center;justify-content:center}
+.soon-overlay span{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:600;color:#fff;letter-spacing:.04em;text-shadow:0 2px 8px rgba(0,0,0,.4)}
+
+/* COUNTDOWN */
+.countdown-wrap{background:var(--forest);padding:56px 0;position:relative;overflow:hidden}
+.countdown-wrap::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,106,57,.2) 0%,transparent 60%)}
+.cd-label{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--lime);margin-bottom:12px}
+.cd-title{font-family:'Fraunces',serif;font-size:clamp(1.4rem,3vw,2rem);font-weight:600;color:#fff;margin-bottom:28px;line-height:1.25}
+.cd-boxes{display:flex;gap:12px;flex-wrap:wrap}
+.cd-box{text-align:center;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:16px 20px;min-width:72px}
+.cd-num{font-family:'Fraunces',serif;font-size:2rem;font-weight:600;color:#fff;line-height:1;display:block}
+.cd-unit{font-size:.62rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);display:block;margin-top:4px}
+.btn-countdown{display:inline-flex;align-items:center;gap:10px;background:var(--lime);color:#fff;font-weight:700;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;padding:14px 28px;border-radius:3px;text-decoration:none;transition:background .2s,transform .15s}
+.btn-countdown:hover{background:#009950;color:#fff;transform:translateY(-2px)}
+
+/* FOOTER */
+.footer{background:var(--forest);padding:72px 0 0}
+.footer-brand img{height:42px;filter:brightness(0) invert(1);opacity:.85;margin-bottom:20px}
+.footer-desc{font-size:.87rem;color:rgba(255,255,255,.5);line-height:1.75;max-width:300px}
+.footer-heading{font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:22px}
+.footer-link{display:block;font-size:.87rem;color:rgba(255,255,255,.6);text-decoration:none;margin-bottom:10px;transition:color .2s}
+.footer-link:hover{color:#fff}
+.footer-cr{display:flex;align-items:flex-start;gap:12px;margin-bottom:12px}
+.footer-cr i{color:var(--lime);margin-top:2px;flex-shrink:0;font-size:.85rem}
+.footer-cr span{font-size:.87rem;color:rgba(255,255,255,.6);line-height:1.5}
+.social-link{width:36px;height:36px;border-radius:3px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.6);display:inline-flex;align-items:center;justify-content:center;font-size:.82rem;text-decoration:none;transition:background .2s,color .2s,border-color .2s;margin-right:6px}
+.social-link:hover{background:var(--lime);border-color:var(--lime);color:#fff}
+.newsletter-row{display:flex;margin-top:6px}
+.newsletter-row input{flex:1;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-right:none;color:#fff;padding:12px 16px;font-size:.85rem;border-radius:3px 0 0 3px;outline:none;font-family:'Outfit',sans-serif}
+.newsletter-row input::placeholder{color:rgba(255,255,255,.3)}
+.newsletter-row button{background:var(--lime);border:none;color:#fff;padding:12px 18px;font-size:.78rem;font-weight:600;font-family:'Outfit',sans-serif;letter-spacing:.06em;text-transform:uppercase;border-radius:0 3px 3px 0;cursor:pointer;transition:background .2s}
+.newsletter-row button:hover{background:#009950}
+.footer-divider{border-color:rgba(255,255,255,.08);margin:48px 0 0}
+.footer-bottom{padding:20px 0;font-size:.78rem;color:rgba(255,255,255,.3);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.footer-bottom a{color:rgba(255,255,255,.3);text-decoration:none;transition:color .2s}
+.footer-bottom a:hover{color:rgba(255,255,255,.7)}
+.footer-bottom-links{display:flex;gap:20px;flex-wrap:wrap}
+
+.back-top{position:fixed;bottom:28px;right:28px;width:44px;height:44px;background:var(--green);color:#fff;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:1rem;text-decoration:none;opacity:0;pointer-events:none;transition:opacity .3s,transform .2s;z-index:999}
+.back-top.show{opacity:1;pointer-events:all}
+.back-top:hover{transform:translateY(-3px);color:#fff}
+.wa-float{position:fixed;bottom:84px;right:28px;z-index:998;width:52px;height:52px;background:var(--wa);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.4rem;text-decoration:none;box-shadow:0 4px 18px rgba(37,211,102,.45);transition:transform .2s}
+.wa-float:hover{transform:scale(1.1);color:#fff}
+
+.fade-up{opacity:0;transform:translateY(36px);transition:opacity .6s ease,transform .6s ease}
+.fade-up.visible{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+@media(max-width:992px){
+  .navbar-collapse{background:#fff;border-top:1px solid var(--border);padding:8px 16px 20px}
+  .nav-link{padding:.75rem .5rem!important;font-size:.9rem}
+  .btn-nav-cta{display:none!important}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .footer-bottom-links{justify-content:center}
+  .courses-section{padding:64px 0}
+  .cd-boxes{justify-content:center}
+}
+</style>
 </head>
-
 <body>
-    <!-- Spinner Start -->
-    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-            <span class="sr-only">Loading...</span>
-        </div>
+
+<div id="spinner"><div class="spin-ring"></div></div>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-inner">
+      <div class="topbar-left">
+        <span><i class="fas fa-map-marker-alt" style="color:var(--lime);margin-right:6px"></i>Perú</span>
+        <div class="tb-div"></div>
+        <a href="mailto:capacitacion@andeanbioconsulting.com"><i class="fas fa-envelope" style="margin-right:5px"></i>capacitacion@andeanbioconsulting.com</a>
+      </div>
+      <div class="topbar-right">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <div class="tb-div"></div>
+        <a href="contact.html" style="color:var(--lime);font-weight:600">Contáctanos →</a>
+      </div>
     </div>
-    <!-- Spinner End -->
+  </div>
+</div>
 
-
-    <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-        <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-            <h2 class="m-0 text-primary"><i class="fa fa-book me-3"></i>eLEARNING</h2>
-        </a>
-        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="index.html" class="nav-item nav-link">Home</a>
-                <a href="about.html" class="nav-item nav-link">About</a>
-                <a href="courses.html" class="nav-item nav-link active">Courses</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                    <div class="dropdown-menu fade-down m-0">
-                        <a href="team.html" class="dropdown-item">Our Team</a>
-                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                        <a href="404.html" class="dropdown-item">404 Page</a>
-                    </div>
-                </div>
-                <a href="contact.html" class="nav-item nav-link">Contact</a>
-            </div>
-            <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Join Now<i class="fa fa-arrow-right ms-3"></i></a>
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg" id="mainNav">
+  <a href="index.html" class="navbar-brand">
+    <img src="img/Andeanlogo.png" alt="Andean Consulting">
+  </a>
+  <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navCollapse" aria-label="Menú">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navCollapse">
+    <div class="navbar-nav ms-auto p-3 p-lg-0">
+      <a href="index.html" class="nav-item nav-link">Inicio</a>
+      <a href="about.html" class="nav-item nav-link">Nosotros</a>
+      <a href="courses.html" class="nav-item nav-link active">Cursos</a>
+      <div class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Servicios</a>
+        <div class="dropdown-menu">
+          <a href="consultoria.html" class="dropdown-item">Consultoría &amp; Equipos</a>
+          <a href="alumnos.html" class="dropdown-item">Portal Alumnos</a>
         </div>
-    </nav>
-    <!-- Navbar End -->
-
-
-    <!-- Header Start -->
-    <div class="container-fluid bg-primary py-5 mb-5 page-header">
-        <div class="container py-5">
-            <div class="row justify-content-center">
-                <div class="col-lg-10 text-center">
-                    <h1 class="display-3 text-white animated slideInDown">Courses</h1>
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb justify-content-center">
-                            <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
-                            <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
-                            <li class="breadcrumb-item text-white active" aria-current="page">Courses</li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </div>
+      </div>
+      <a href="contact.html" class="nav-item nav-link">Contacto</a>
     </div>
-    <!-- Header End -->
+    <a href="curso-arcgis.html" class="btn-nav-cta d-none d-lg-flex">
+      Inscribirme Ahora <i class="fas fa-arrow-right" style="font-size:.72rem"></i>
+    </a>
+  </div>
+</nav>
 
-
-    <!-- Categories Start -->
-    <div class="container-xxl py-5 category">
-        <div class="container">
-            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="section-title bg-white text-center text-primary px-3">Categories</h6>
-                <h1 class="mb-5">Courses Categories</h1>
-            </div>
-            <div class="row g-3">
-                <div class="col-lg-7 col-md-6">
-                    <div class="row g-3">
-                        <div class="col-lg-12 col-md-12 wow zoomIn" data-wow-delay="0.1s">
-                            <a class="position-relative d-block overflow-hidden" href="">
-                                <img class="img-fluid" src="img/cat-1.jpg" alt="">
-                                <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
-                                    <h5 class="m-0">Web Design</h5>
-                                    <small class="text-primary">49 Courses</small>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.3s">
-                            <a class="position-relative d-block overflow-hidden" href="">
-                                <img class="img-fluid" src="img/cat-2.jpg" alt="">
-                                <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
-                                    <h5 class="m-0">Graphic Design</h5>
-                                    <small class="text-primary">49 Courses</small>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.5s">
-                            <a class="position-relative d-block overflow-hidden" href="">
-                                <img class="img-fluid" src="img/cat-3.jpg" alt="">
-                                <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
-                                    <h5 class="m-0">Video Editing</h5>
-                                    <small class="text-primary">49 Courses</small>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-5 col-md-6 wow zoomIn" data-wow-delay="0.7s" style="min-height: 350px;">
-                    <a class="position-relative d-block h-100 overflow-hidden" href="">
-                        <img class="img-fluid position-absolute w-100 h-100" src="img/cat-4.jpg" alt="" style="object-fit: cover;">
-                        <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin:  1px;">
-                            <h5 class="m-0">Online Marketing</h5>
-                            <small class="text-primary">49 Courses</small>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="container">
+    <div class="text-center">
+      <div class="ph-eyebrow">
+        <div class="ph-eyebrow-line"></div>
+        <span>Formación Especializada</span>
+        <div class="ph-eyebrow-line"></div>
+      </div>
+      <h1>Nuestros Cursos</h1>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb justify-content-center mb-0">
+          <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Cursos</li>
+        </ol>
+      </nav>
     </div>
-    <!-- Categories Start -->
+  </div>
+</div>
 
-
-    <!-- Courses Start -->
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="section-title bg-white text-center text-primary px-3">Courses</h6>
-                <h1 class="mb-5">Popular Courses</h1>
-            </div>
-            <div class="row g-4 justify-content-center">
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="course-item bg-light">
-                        <div class="position-relative overflow-hidden">
-                            <img class="img-fluid" src="img/course-1.jpg" alt="">
-                            <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
-                                <a href="#" class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Read More</a>
-                                <a href="#" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Join Now</a>
-                            </div>
-                        </div>
-                        <div class="text-center p-4 pb-0">
-                            <h3 class="mb-0">$149.00</h3>
-                            <div class="mb-3">
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small>(123)</small>
-                            </div>
-                            <h5 class="mb-4">Web Design & Development Course for Beginners</h5>
-                        </div>
-                        <div class="d-flex border-top">
-                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-user-tie text-primary me-2"></i>John Doe</small>
-                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-clock text-primary me-2"></i>1.49 Hrs</small>
-                            <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>30 Students</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="course-item bg-light">
-                        <div class="position-relative overflow-hidden">
-                            <img class="img-fluid" src="img/course-2.jpg" alt="">
-                            <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
-                                <a href="#" class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Read More</a>
-                                <a href="#" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Join Now</a>
-                            </div>
-                        </div>
-                        <div class="text-center p-4 pb-0">
-                            <h3 class="mb-0">$149.00</h3>
-                            <div class="mb-3">
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small>(123)</small>
-                            </div>
-                            <h5 class="mb-4">Web Design & Development Course for Beginners</h5>
-                        </div>
-                        <div class="d-flex border-top">
-                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-user-tie text-primary me-2"></i>John Doe</small>
-                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-clock text-primary me-2"></i>1.49 Hrs</small>
-                            <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>30 Students</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="course-item bg-light">
-                        <div class="position-relative overflow-hidden">
-                            <img class="img-fluid" src="img/course-3.jpg" alt="">
-                            <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
-                                <a href="#" class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Read More</a>
-                                <a href="#" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Join Now</a>
-                            </div>
-                        </div>
-                        <div class="text-center p-4 pb-0">
-                            <h3 class="mb-0">$149.00</h3>
-                            <div class="mb-3">
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small>(123)</small>
-                            </div>
-                            <h5 class="mb-4">Web Design & Development Course for Beginners</h5>
-                        </div>
-                        <div class="d-flex border-top">
-                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-user-tie text-primary me-2"></i>John Doe</small>
-                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-clock text-primary me-2"></i>1.49 Hrs</small>
-                            <small class="flex-fill text-center py-2"><i class="fa fa-user text-primary me-2"></i>30 Students</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!-- COUNTDOWN BANNER -->
+<div class="countdown-wrap">
+  <div class="container">
+    <div class="row align-items-center g-4">
+      <div class="col-lg-6">
+        <div class="cd-label">⚡ Curso activo — Inscripciones abiertas</div>
+        <div class="cd-title">ArcGIS Básico inicia el<br><em style="font-style:italic;font-weight:300">20 de abril de 2025</em></div>
+        <div class="cd-boxes" id="countdown"></div>
+      </div>
+      <div class="col-lg-6 text-lg-end">
+        <p style="font-size:.9rem;color:rgba(255,255,255,.55);margin-bottom:20px;line-height:1.7">Plazas limitadas. Asegura tu lugar ahora y aprende ArcGIS desde cero con un especialista en SIG y Biología.</p>
+        <a href="curso-arcgis.html" class="btn-countdown">Ver Curso e Inscribirme <i class="fas fa-arrow-right" style="font-size:.75rem"></i></a>
+      </div>
     </div>
-    <!-- Courses End -->
+  </div>
+</div>
 
-
-    <!-- Testimonial Start -->
-    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container">
-            <div class="text-center">
-                <h6 class="section-title bg-white text-center text-primary px-3">Testimonial</h6>
-                <h1 class="mb-5">Our Students Say!</h1>
-            </div>
-            <div class="owl-carousel testimonial-carousel position-relative">
-                <div class="testimonial-item text-center">
-                    <img class="border rounded-circle p-2 mx-auto mb-3" src="img/testimonial-1.jpg" style="width: 80px; height: 80px;">
-                    <h5 class="mb-0">Client Name</h5>
-                    <p>Profession</p>
-                    <div class="testimonial-text bg-light text-center p-4">
-                    <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-                    </div>
-                </div>
-                <div class="testimonial-item text-center">
-                    <img class="border rounded-circle p-2 mx-auto mb-3" src="img/testimonial-2.jpg" style="width: 80px; height: 80px;">
-                    <h5 class="mb-0">Client Name</h5>
-                    <p>Profession</p>
-                    <div class="testimonial-text bg-light text-center p-4">
-                    <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-                    </div>
-                </div>
-                <div class="testimonial-item text-center">
-                    <img class="border rounded-circle p-2 mx-auto mb-3" src="img/testimonial-3.jpg" style="width: 80px; height: 80px;">
-                    <h5 class="mb-0">Client Name</h5>
-                    <p>Profession</p>
-                    <div class="testimonial-text bg-light text-center p-4">
-                    <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-                    </div>
-                </div>
-                <div class="testimonial-item text-center">
-                    <img class="border rounded-circle p-2 mx-auto mb-3" src="img/testimonial-4.jpg" style="width: 80px; height: 80px;">
-                    <h5 class="mb-0">Client Name</h5>
-                    <p>Profession</p>
-                    <div class="testimonial-text bg-light text-center p-4">
-                    <p class="mb-0">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!-- CURSOS -->
+<div class="courses-section">
+  <div class="container">
+    <div class="text-center mb-5 fade-up">
+      <div class="section-eyebrow justify-content-center"><div class="section-eyebrow-line"></div><span>Todos los Cursos</span></div>
+      <h2 class="section-title">Programación 2025</h2>
+      <p style="font-size:.92rem;color:var(--muted);max-width:520px;margin:12px auto 0">Cursos virtuales con certificado, dictados por especialistas con experiencia real en campo e investigación.</p>
     </div>
-    <!-- Testimonial End -->
-        
 
-    <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-3">Quick Link</h4>
-                    <a class="btn btn-link" href="">About Us</a>
-                    <a class="btn btn-link" href="">Contact Us</a>
-                    <a class="btn btn-link" href="">Privacy Policy</a>
-                    <a class="btn btn-link" href="">Terms & Condition</a>
-                    <a class="btn btn-link" href="">FAQs & Help</a>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-3">Contact</h4>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
-                    <div class="d-flex pt-2">
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-3">Gallery</h4>
-                    <div class="row g-2 pt-2">
-                        <div class="col-4">
-                            <img class="img-fluid bg-light p-1" src="img/course-1.jpg" alt="">
-                        </div>
-                        <div class="col-4">
-                            <img class="img-fluid bg-light p-1" src="img/course-2.jpg" alt="">
-                        </div>
-                        <div class="col-4">
-                            <img class="img-fluid bg-light p-1" src="img/course-3.jpg" alt="">
-                        </div>
-                        <div class="col-4">
-                            <img class="img-fluid bg-light p-1" src="img/course-2.jpg" alt="">
-                        </div>
-                        <div class="col-4">
-                            <img class="img-fluid bg-light p-1" src="img/course-3.jpg" alt="">
-                        </div>
-                        <div class="col-4">
-                            <img class="img-fluid bg-light p-1" src="img/course-1.jpg" alt="">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-3">Newsletter</h4>
-                    <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
-                    <div class="position-relative mx-auto" style="max-width: 400px;">
-                        <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
-                        <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="copyright">
-                <div class="row">
-                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved.
+    <div class="row g-4">
 
-                        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                        Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a><br><br>
-                        Distributed By <a class="border-bottom" href="https://themewagon.com">ThemeWagon</a>
-                    </div>
-                    <div class="col-md-6 text-center text-md-end">
-                        <div class="footer-menu">
-                            <a href="">Home</a>
-                            <a href="">Cookies</a>
-                            <a href="">Help</a>
-                            <a href="">FQAs</a>
-                        </div>
-                    </div>
-                </div>
+      <!-- CURSO 1 — ArcGIS ABIERTO -->
+      <div class="col-lg-4 col-md-6 fade-up d1">
+        <div class="course-card">
+          <div class="cc-img">
+            <img src="img/course-2.jpg" alt="ArcGIS Básico">
+            <div class="cc-status open">✦ Inscripciones Abiertas</div>
+            <div class="cc-num">01</div>
+          </div>
+          <div class="cc-body">
+            <div class="cc-cat">SIG · Teledetección</div>
+            <h4>ArcGIS Básico para Ciencias Ambientales</h4>
+            <p>Aprende a manejar ArcGIS desde cero: carga de datos, edición de capas, simbología, layouts y análisis espacial básico aplicado a proyectos ambientales.</p>
+            <div class="cc-tags">
+              <span class="cctag">ArcGIS</span>
+              <span class="cctag">SIG</span>
+              <span class="cctag">Mapas</span>
+              <span class="cctag">100% Online</span>
+              <span class="cctag">Certificado</span>
             </div>
+            <div class="cc-meta">
+              <span><i class="fas fa-calendar-alt"></i> 20 – 25 Abril 2025</span>
+              <span><i class="fas fa-clock"></i> 20 horas</span>
+              <span><i class="fas fa-user-tie"></i> Jack Malon</span>
+            </div>
+          </div>
+          <div class="cc-footer">
+            <div class="cc-price">S/ 120 <span>/ persona</span></div>
+            <a href="curso-arcgis.html" class="btn-curso">Ver Curso <i class="fas fa-arrow-right" style="font-size:.7rem"></i></a>
+          </div>
         </div>
+      </div>
+
+      <!-- CURSO 2 — LCPD PRÓXIMO -->
+      <div class="col-lg-4 col-md-6 fade-up d2">
+        <div class="course-card soon-card">
+          <div class="cc-img">
+            <img src="img/course-1.jpg" alt="Taller LCPD Plantas">
+            <div class="cc-status soon">Próximamente · Mayo</div>
+            <div class="soon-overlay"><span>Próximamente</span></div>
+            <div class="cc-num">02</div>
+          </div>
+          <div class="cc-body">
+            <div class="cc-cat">Botánica · Flora</div>
+            <h4>Taller de Línea de Base para Plantas (LCPD)</h4>
+            <p>Metodologías para el levantamiento de líneas de base de comunidades vegetales: parcelas, transectos, índices de diversidad y elaboración de informes técnicos.</p>
+            <div class="cc-tags">
+              <span class="cctag">Botánica</span>
+              <span class="cctag">LCPD</span>
+              <span class="cctag">Flora</span>
+              <span class="cctag">100% Online</span>
+              <span class="cctag">Certificado</span>
+            </div>
+            <div class="cc-meta">
+              <span><i class="fas fa-calendar-alt"></i> Mayo 2025</span>
+              <span><i class="fas fa-clock"></i> Por confirmar</span>
+            </div>
+          </div>
+          <div class="cc-footer">
+            <div class="cc-price" style="color:var(--muted);font-size:1rem">Precio por confirmar</div>
+            <a href="curso-lcpd.html" class="btn-curso-outline">Próximamente</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- CURSO 3 — ANIMALES PRÓXIMO -->
+      <div class="col-lg-4 col-md-6 fade-up d3">
+        <div class="course-card soon-card">
+          <div class="cc-img">
+            <img src="img/course-3.jpg" alt="Animales Silvestres en Cautiverio">
+            <div class="cc-status soon">Próximamente · Junio</div>
+            <div class="soon-overlay"><span>Próximamente</span></div>
+            <div class="cc-num">03</div>
+          </div>
+          <div class="cc-body">
+            <div class="cc-cat">Fauna · Manejo</div>
+            <h4>Introducción al Manejo de Animales Silvestres en Cautiverio</h4>
+            <p>Fundamentos del manejo, bienestar animal, enriquecimiento ambiental, alimentación y manejo sanitario de fauna silvestre bajo custodia humana.</p>
+            <div class="cc-tags">
+              <span class="cctag">Fauna</span>
+              <span class="cctag">Cautiverio</span>
+              <span class="cctag">Bienestar Animal</span>
+              <span class="cctag">100% Online</span>
+              <span class="cctag">Certificado</span>
+            </div>
+            <div class="cc-meta">
+              <span><i class="fas fa-calendar-alt"></i> Junio 2025</span>
+              <span><i class="fas fa-clock"></i> Por confirmar</span>
+            </div>
+          </div>
+          <div class="cc-footer">
+            <div class="cc-price" style="color:var(--muted);font-size:1rem">Precio por confirmar</div>
+            <a href="curso-animales.html" class="btn-curso-outline">Próximamente</a>
+          </div>
+        </div>
+      </div>
+
     </div>
-    <!-- Footer End -->
+  </div>
+</div>
 
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-3 col-md-6">
+        <div class="footer-brand"><img src="img/Andeanlogo.png" alt="Andean Consulting"></div>
+        <p class="footer-desc">Empresa peruana especializada en consultoría ambiental y formación especializada para la gestión sostenible del ambiente y la biodiversidad.</p>
+        <div style="margin-top:24px">
+          <a class="social-link" href="#"><i class="fab fa-facebook-f"></i></a>
+          <a class="social-link" href="#"><i class="fab fa-instagram"></i></a>
+          <a class="social-link" href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-6">
+        <div class="footer-heading">Navegación</div>
+        <a class="footer-link" href="index.html">Inicio</a>
+        <a class="footer-link" href="about.html">Nosotros</a>
+        <a class="footer-link" href="courses.html">Cursos</a>
+        <a class="footer-link" href="consultoria.html">Consultoría</a>
+        <a class="footer-link" href="contact.html">Contacto</a>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="footer-heading">Contacto</div>
+        <div class="footer-cr"><i class="fas fa-map-marker-alt"></i><span>Perú</span></div>
+        <div class="footer-cr"><i class="fas fa-phone-alt"></i><span>+51 969 392 189</span></div>
+        <div class="footer-cr"><i class="fas fa-envelope"></i><span>capacitacion@andeanbioconsulting.com</span></div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="footer-heading">Boletín Informativo</div>
+        <p style="font-size:.85rem;color:rgba(255,255,255,.45);margin-bottom:18px;line-height:1.7">Suscríbete para recibir noticias sobre nuevos cursos y novedades ambientales.</p>
+        <div class="newsletter-row">
+          <input type="email" placeholder="Tu correo electrónico">
+          <button type="button">Suscribir</button>
+        </div>
+      </div>
+    </div>
+    <hr class="footer-divider">
+    <div class="footer-bottom">
+      <span>&copy; 2025 Andean Consulting &amp; Environmental Solutions S.A.C.</span>
+      <div class="footer-bottom-links"><a href="#">Política de Privacidad</a><a href="#">Cookies</a><a href="#">FAQ</a></div>
+    </div>
+  </div>
+</footer>
 
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+<a href="https://wa.me/51969392189?text=Hola%2C%20me%20interesa%20inscribirme%20en%20un%20curso." target="_blank" rel="noopener" class="wa-float"><i class="fab fa-whatsapp"></i></a>
+<a href="#" class="back-top" id="backTop"><i class="bi bi-arrow-up"></i></a>
 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+window.addEventListener('load',()=>{const s=document.getElementById('spinner');s.classList.add('hide');setTimeout(()=>s.remove(),600)});
+const mNav=document.getElementById('mainNav');
+window.addEventListener('scroll',()=>mNav.classList.toggle('scrolled',scrollY>20),{passive:true});
+const fo=new IntersectionObserver(ee=>{ee.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');fo.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -36px 0px'});
+document.querySelectorAll('.fade-up').forEach(el=>fo.observe(el));
+const bt=document.getElementById('backTop');
+window.addEventListener('scroll',()=>bt.classList.toggle('show',scrollY>300),{passive:true});
+bt.addEventListener('click',e=>{e.preventDefault();scrollTo({top:0,behavior:'smooth'})});
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+// COUNTDOWN
+function updateCountdown(){
+  const target=new Date('2025-04-20T00:00:00');
+  const now=new Date();
+  const diff=target-now;
+  if(diff<=0){document.getElementById('countdown').innerHTML='<span style="color:var(--lime);font-size:.9rem;font-weight:600">¡El curso ya comenzó!</span>';return;}
+  const d=Math.floor(diff/86400000);
+  const h=Math.floor((diff%86400000)/3600000);
+  const m=Math.floor((diff%3600000)/60000);
+  const s=Math.floor((diff%60000)/1000);
+  document.getElementById('countdown').innerHTML=`
+    <div class="cd-box"><span class="cd-num">${String(d).padStart(2,'0')}</span><span class="cd-unit">Días</span></div>
+    <div class="cd-box"><span class="cd-num">${String(h).padStart(2,'0')}</span><span class="cd-unit">Horas</span></div>
+    <div class="cd-box"><span class="cd-num">${String(m).padStart(2,'0')}</span><span class="cd-unit">Min</span></div>
+    <div class="cd-box"><span class="cd-num">${String(s).padStart(2,'0')}</span><span class="cd-unit">Seg</span></div>`;
+}
+updateCountdown();
+setInterval(updateCountdown,1000);
+</script>
 </body>
-
 </html>
