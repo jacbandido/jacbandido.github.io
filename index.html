@@ -1,1373 +1,940 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="utf-8">
-    <title>Andean Consulting & Environmental Solutions S.A.C.</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="consultoría ambiental, cursos virtuales, monitoreo biológico, Perú, Cusco" name="keywords">
-    <meta content="Empresa peruana especializada en consultoría ambiental, cursos virtuales de ecología y medio ambiente, y alquiler de equipos para monitoreo biológico." name="description">
+<meta charset="utf-8">
+<title>Andean Consulting & Environmental Solutions S.A.C.</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="consultoría ambiental, cursos virtuales, monitoreo biológico, Perú, Cusco" name="keywords">
+<meta content="Empresa peruana especializada en consultoría ambiental, cursos virtuales de ecología y medio ambiente." name="description">
+<link href="img/favicon.ico" rel="icon">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+:root {
+  --forest:  #0a1f14;
+  --green:   #006a39;
+  --lime:    #00b060;
+  --blue:    #00658c;
+  --offwhite:#f6f8f4;
+  --warm:    #fffef9;
+  --border:  #d8e4dd;
+  --text:    #1c2b22;
+  --muted:   #5a6e62;
+  --light-green: #e4f2eb;
+  --light-blue:  #e3f2f8;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;font-weight:400;color:var(--text);background:#fff;overflow-x:hidden}
+h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
 
-    <link href="img/favicon.ico" rel="icon">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+/* ── SPINNER ── */
+#spinner{position:fixed;inset:0;background:#fff;display:flex;align-items:center;justify-content:center;z-index:9999;transition:opacity .5s}
+#spinner.hide{opacity:0;pointer-events:none}
+.spin-ring{width:44px;height:44px;border:2px solid var(--light-green);border-top-color:var(--green);border-radius:50%;animation:spin .9s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
 
-    <style>
-        :root {
-            --green: #006a39;
-            --blue: #00658c;
-            --dark-text: #464646;
-            --green-light: #e8f5ee;
-            --blue-light: #e6f3f8;
-            --off-white: #f8f9f6;
-            --border: #dde8e2;
-        }
+/* ── TOPBAR ── */
+.topbar{background:var(--forest);color:rgba(255,255,255,.6);font-size:.75rem;letter-spacing:.06em;padding:8px 0;font-family:'Outfit',sans-serif}
+.topbar a{color:rgba(255,255,255,.55);text-decoration:none;transition:color .2s}
+.topbar a:hover{color:#fff}
+.topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.topbar-left{display:flex;gap:20px;align-items:center}
+.topbar-right{display:flex;gap:16px;align-items:center}
+.topbar-divider{width:1px;height:12px;background:rgba(255,255,255,.15)}
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+/* ── NAVBAR ── */
+.navbar{background:#fff;border-bottom:1px solid var(--border);padding:0;position:sticky;top:0;z-index:1000;transition:box-shadow .3s}
+.navbar.scrolled{box-shadow:0 2px 24px rgba(10,31,20,.1)}
+.navbar-brand{padding:14px 24px}
+.navbar-brand img{height:44px;object-fit:contain}
+.nav-link{font-family:'Outfit',sans-serif;font-weight:500;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text)!important;padding:1.5rem 1.1rem!important;transition:color .2s;position:relative}
+.nav-link::after{content:'';position:absolute;bottom:0;left:1.1rem;right:1.1rem;height:2px;background:var(--green);transform:scaleX(0);transition:transform .25s}
+.nav-link:hover,.nav-link.active{color:var(--green)!important}
+.nav-link:hover::after,.nav-link.active::after{transform:scaleX(1)}
+.dropdown-menu{border:1px solid var(--border);border-radius:8px;box-shadow:0 12px 40px rgba(0,0,0,.1);padding:8px 0;margin-top:-1px}
+.dropdown-item{font-family:'Outfit',sans-serif;font-size:.82rem;letter-spacing:.04em;padding:10px 20px;color:var(--text);font-weight:500;text-transform:uppercase;transition:background .15s,color .15s}
+.dropdown-item:hover{background:var(--light-green);color:var(--green)}
+.btn-nav-cta{background:var(--green);color:#fff!important;font-weight:600;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;padding:12px 26px!important;margin:10px 20px;border-radius:3px;position:relative;overflow:hidden;transition:background .2s,transform .15s;white-space:nowrap}
+.btn-nav-cta:hover{background:var(--forest)!important;color:#fff!important;transform:translateY(-1px)}
+.btn-nav-cta::after{content:'';position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.15) 50%,transparent 70%);transform:translateX(-100%);transition:transform .5s}
+.btn-nav-cta:hover::after{transform:translateX(100%)}
 
-        body {
-            font-family: 'Inter', sans-serif;
-            font-weight: 400;
-            color: var(--dark-text);
-            background: #fff;
-            overflow-x: hidden;
-        }
+/* ── HERO ── */
+.hero{position:relative;width:100%;overflow:hidden}
+.hero-slide{display:none;position:relative;width:100%;height:92vh;min-height:540px;max-height:900px}
+.hero-slide.active{display:flex}
+.hero-slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transform-origin:center}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(105deg,rgba(8,24,14,.85) 0%,rgba(0,80,50,.3) 55%,rgba(0,101,140,.2) 100%)}
+.hero-content-wrap{position:relative;z-index:2;display:flex;align-items:center;width:100%;height:100%}
+.hero-content{max-width:720px;padding:0 5%;animation:heroIn .8s cubic-bezier(.22,1,.36,1) both}
+@keyframes heroIn{from{opacity:0;transform:translateY(36px)}to{opacity:1;transform:none}}
+.hero-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:22px}
+.hero-eyebrow-line{width:36px;height:1px;background:var(--lime);flex-shrink:0}
+.hero-eyebrow span{font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--lime)}
+.hero-content h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(2rem,5.5vw,3.8rem);color:#fff;line-height:1.12;margin-bottom:22px;letter-spacing:-.02em}
+.hero-content h1 em{font-style:italic;font-weight:300;color:rgba(255,255,255,.85)}
+.hero-content p{font-size:clamp(.9rem,1.8vw,1.05rem);color:rgba(255,255,255,.78);line-height:1.75;margin-bottom:36px;font-weight:300;max-width:560px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.btn-hero-primary{background:var(--lime);color:#fff;font-weight:600;font-size:.85rem;letter-spacing:.06em;padding:15px 32px;border-radius:3px;border:none;text-decoration:none;transition:background .2s,transform .15s;text-transform:uppercase}
+.btn-hero-primary:hover{background:#009950;color:#fff;transform:translateY(-2px)}
+.btn-hero-link{color:rgba(255,255,255,.82);font-size:.85rem;letter-spacing:.04em;font-weight:500;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s}
+.btn-hero-link i{font-size:.75rem;transition:transform .2s}
+.btn-hero-link:hover{color:#fff}
+.btn-hero-link:hover i{transform:translateX(4px)}
+/* hero side panel */
+.hero-side{position:absolute;right:0;top:0;bottom:0;width:280px;display:flex;flex-direction:column;justify-content:flex-end;padding:48px 32px;z-index:2;gap:0}
+.hero-stat{padding:20px 0;border-top:1px solid rgba(255,255,255,.12)}
+.hero-stat:last-child{border-bottom:1px solid rgba(255,255,255,.12)}
+.hero-stat-num{font-family:'Fraunces',serif;font-size:2.2rem;font-weight:600;color:#fff;line-height:1;margin-bottom:6px}
+.hero-stat-label{font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+/* dots */
+.hero-dots{position:absolute;bottom:32px;left:5%;display:flex;gap:6px;z-index:10}
+.hero-dot{width:24px;height:2px;border-radius:2px;background:rgba(255,255,255,.3);cursor:pointer;border:none;transition:background .25s,width .35s}
+.hero-dot.active{background:#fff;width:44px}
+/* arrows */
+.hero-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#fff;width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10;transition:background .2s;font-size:1rem}
+.hero-arrow:hover{background:rgba(255,255,255,.2)}
+.hero-arrow.prev{left:24px}
+.hero-arrow.next{right:24px}
+@media(max-width:768px){.hero-side{display:none}.hero-arrow{display:none}.hero-slide{height:78vh}}
 
-        h1, h2, h3, h4, h5 {
-            font-family: 'Inter', sans-serif;
-            font-weight: 700;
-            color: var(--dark-text);
-        }
+/* ── SECTION COMMON ── */
+.section-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.section-eyebrow-line{width:28px;height:1px;background:var(--green);flex-shrink:0}
+.section-eyebrow span{font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--green)}
+.section-title{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.6rem,4vw,2.5rem);line-height:1.2;letter-spacing:-.02em}
 
-        /* ── SPINNER ── */
-        #spinner {
-            position: fixed; inset: 0; background: #fff;
-            display: flex; align-items: center; justify-content: center;
-            z-index: 9999; transition: opacity .4s;
-        }
-        #spinner.hide { opacity: 0; pointer-events: none; }
-        .spin-ring {
-            width: 48px; height: 48px;
-            border: 3px solid var(--green-light);
-            border-top-color: var(--green);
-            border-radius: 50%;
-            animation: spin .8s linear infinite;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
+/* ── SERVICES ── */
+.services-section{padding:96px 0;background:var(--offwhite)}
+.service-card{background:#fff;border:1px solid var(--border);border-radius:4px;padding:40px 32px;height:100%;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s}
+.service-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--green);transform:scaleX(0);transform-origin:left;transition:transform .35s}
+.service-card:hover{transform:translateY(-6px);box-shadow:0 20px 56px rgba(0,106,57,.12);border-color:transparent}
+.service-card:hover::before{transform:scaleX(1)}
+.service-num{font-family:'Fraunces',serif;font-size:2.8rem;font-weight:300;color:var(--border);line-height:1;margin-bottom:20px;transition:color .3s}
+.service-card:hover .service-num{color:var(--light-green)}
+.service-icon{width:48px;height:48px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:18px}
+.si-g{background:var(--light-green);color:var(--green)}
+.si-b{background:var(--light-blue);color:var(--blue)}
+.service-card h5{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:600;margin-bottom:12px;color:var(--text)}
+.service-card p{font-size:.88rem;color:var(--muted);line-height:1.7;margin:0}
+.service-card-link{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--green);text-decoration:none;margin-top:20px;opacity:0;transform:translateY(6px);transition:opacity .3s,transform .3s}
+.service-card:hover .service-card-link{opacity:1;transform:none}
+.service-card-link i{font-size:.7rem;transition:transform .2s}
+.service-card-link:hover i{transform:translateX(4px)}
 
-        /* ── NAVBAR ── */
-        .navbar {
-            background: #fff;
-            box-shadow: 0 1px 24px rgba(0,106,57,.08);
-            padding: 0;
-            position: sticky; top: 0; z-index: 1000;
-        }
-        .navbar-brand { padding: 12px 24px; }
-        .navbar-brand img { height: 46px; object-fit: contain; }
-        .nav-link {
-            font-family: 'Inter', sans-serif;
-            font-weight: 600;
-            font-size: .72rem;
-            letter-spacing: .1em;
-            text-transform: uppercase;
-            color: var(--dark-text) !important;
-            padding: 1.5rem 1rem !important;
-            transition: color .2s;
-        }
-        .nav-link:hover, .nav-link.active { color: var(--green) !important; }
-        .dropdown-menu { border: none; box-shadow: 0 8px 32px rgba(0,0,0,.1); border-radius: 8px; padding: 8px 0; }
-        .dropdown-item { font-family: 'Inter', sans-serif; font-size: .82rem; padding: 10px 20px; color: var(--dark-text); font-weight: 500; letter-spacing: .04em; text-transform: uppercase; }
-        .dropdown-item:hover { background: var(--green-light); color: var(--green); }
-        .btn-nav-cta {
-            background: var(--green);
-            color: #fff !important;
-            font-weight: 700;
-            font-size: .82rem;
-            letter-spacing: .06em;
-            text-transform: uppercase;
-            padding: 14px 28px !important;
-            border-radius: 6px;
-            border: none;
-            margin: 10px 20px;
-            box-shadow: 0 4px 20px rgba(0,106,57,.35), 0 0 0 0 rgba(0,106,57,.4);
-            animation: pulse-cta 2.8s ease infinite;
-            transition: background .2s, transform .15s, box-shadow .2s;
-            position: relative;
-            overflow: hidden;
-        }
-        .btn-nav-cta::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,.18) 50%, transparent 70%);
-            transform: translateX(-100%);
-            transition: transform .5s;
-        }
-        .btn-nav-cta:hover::after { transform: translateX(100%); }
-        .btn-nav-cta:hover {
-            background: #005530 !important;
-            color: #fff !important;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 28px rgba(0,106,57,.45) !important;
-            animation: none;
-        }
-        @keyframes pulse-cta {
-            0%   { box-shadow: 0 4px 20px rgba(0,106,57,.35), 0 0 0 0 rgba(0,106,57,.35); }
-            60%  { box-shadow: 0 4px 20px rgba(0,106,57,.35), 0 0 0 10px rgba(0,106,57,0); }
-            100% { box-shadow: 0 4px 20px rgba(0,106,57,.35), 0 0 0 0 rgba(0,106,57,0); }
-        }
+/* ── ABOUT ── */
+.about-section{padding:96px 0}
+.about-img-outer{position:relative}
+.about-img-wrap{border-radius:2px;overflow:hidden;height:520px}
+.about-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.about-img-wrap:hover img{transform:scale(1.03)}
+.about-accent{position:absolute;bottom:-28px;right:-28px;width:180px;height:180px;border:2px solid var(--green);border-radius:2px;z-index:-1}
+.about-badge{position:absolute;bottom:32px;left:32px;background:var(--forest);color:#fff;padding:20px 28px;border-radius:2px}
+.about-badge-num{font-family:'Fraunces',serif;font-size:2.4rem;font-weight:600;line-height:1;color:#fff;display:block;margin-bottom:4px}
+.about-badge-text{font-size:.78rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.6);display:block}
+.about-tag{display:inline-flex;align-items:center;gap:7px;background:var(--light-green);border-radius:3px;padding:7px 14px;font-size:.8rem;font-weight:500;color:var(--green);margin:4px 4px 4px 0}
+.about-tag i{font-size:.65rem}
+.btn-primary-custom{display:inline-flex;align-items:center;gap:10px;background:var(--green);color:#fff;font-weight:600;font-size:.82rem;letter-spacing:.08em;padding:15px 32px;border-radius:3px;border:none;text-decoration:none;transition:background .2s,transform .15s;text-transform:uppercase}
+.btn-primary-custom:hover{background:var(--forest);color:#fff;transform:translateY(-2px)}
+.btn-outline-custom{display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--green);font-weight:600;font-size:.82rem;letter-spacing:.08em;padding:13px 28px;border-radius:3px;border:1px solid var(--green);text-decoration:none;transition:background .2s,color .2s,transform .15s;text-transform:uppercase;margin-left:12px}
+.btn-outline-custom:hover{background:var(--green);color:#fff;transform:translateY(-2px)}
 
-        /* ── HERO CAROUSEL ── */
-        .hero {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-        }
-        .hero-slide {
-            display: none;
-            position: relative;
-            width: 100%;
-            height: 92vh;
-            min-height: 520px;
-            max-height: 820px;
-        }
-        .hero-slide.active { display: block; }
-        .hero-slide img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            object-position: center;
-        }
-        .hero-overlay {
-            position: absolute; inset: 0;
-            background: linear-gradient(120deg, rgba(0,26,15,.78) 0%, rgba(0,101,140,.45) 100%);
-            display: flex; align-items: center;
-        }
-        .hero-content {
-            padding: 0 5%;
-            max-width: 680px;
-            animation: heroIn .7s ease both;
-        }
-        @keyframes heroIn {
-            from { opacity: 0; transform: translateY(28px); }
-            to   { opacity: 1; transform: none; }
-        }
-        .hero-tag {
-            display: inline-block;
-            background: rgba(255,255,255,.15);
-            border: 1px solid rgba(255,255,255,.3);
-            color: #fff;
-            font-size: .75rem;
-            font-weight: 600;
-            letter-spacing: .1em;
-            text-transform: uppercase;
-            padding: 6px 16px;
-            border-radius: 40px;
-            margin-bottom: 20px;
-            backdrop-filter: blur(4px);
-        }
-        .hero-content h1 {
-            font-family: 'Inter', sans-serif;
-            font-weight: 800;
-            font-size: clamp(1.8rem, 5vw, 3.2rem);
-            color: #fff;
-            line-height: 1.15;
-            margin-bottom: 20px;
-            letter-spacing: -.02em;
-        }
-        .hero-content p {
-            font-size: clamp(.9rem, 2vw, 1.05rem);
-            color: rgba(255,255,255,.88);
-            line-height: 1.7;
-            margin-bottom: 32px;
-            font-weight: 300;
-        }
-        .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
-        .btn-hero-primary {
-            background: var(--green);
-            color: #fff;
-            font-weight: 600;
-            font-size: .88rem;
-            letter-spacing: .04em;
-            padding: 14px 28px;
-            border-radius: 6px;
-            border: none;
-            text-decoration: none;
-            transition: background .2s, transform .15s;
-        }
-        .btn-hero-primary:hover { background: #005530; color: #fff; transform: translateY(-2px); }
-        .btn-hero-secondary {
-            background: transparent;
-            color: #fff;
-            font-weight: 600;
-            font-size: .88rem;
-            letter-spacing: .04em;
-            padding: 14px 28px;
-            border-radius: 6px;
-            border: 2px solid rgba(255,255,255,.6);
-            text-decoration: none;
-            transition: border-color .2s, background .2s, transform .15s;
-        }
-        .btn-hero-secondary:hover { background: rgba(255,255,255,.12); border-color: #fff; color: #fff; transform: translateY(-2px); }
+/* ── AREAS (desktop grid) ── */
+.areas-section{padding:96px 0;background:var(--forest)}
+.areas-section .section-eyebrow-line{background:var(--lime)}
+.areas-section .section-eyebrow span{color:var(--lime)}
+.areas-section .section-title{color:#fff}
 
-        /* carousel dots */
-        .hero-dots {
-            position: absolute; bottom: 24px; left: 50%;
-            transform: translateX(-50%);
-            display: flex; gap: 8px; z-index: 10;
-        }
-        .hero-dot {
-            width: 8px; height: 8px;
-            border-radius: 50%;
-            background: rgba(255,255,255,.4);
-            cursor: pointer; border: none;
-            transition: background .2s, transform .2s;
-        }
-        .hero-dot.active { background: #fff; transform: scale(1.3); }
+.areas-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;grid-template-rows:280px 280px;gap:10px}
+.area-tile{position:relative;overflow:hidden;border-radius:2px;cursor:pointer;text-decoration:none;display:block}
+.area-tile:nth-child(1){grid-row:1/3;grid-column:1}
+.area-tile:nth-child(2){grid-row:1;grid-column:2}
+.area-tile:nth-child(3){grid-row:1;grid-column:3}
+.area-tile:nth-child(4){grid-row:2;grid-column:2}
+.area-tile:nth-child(5){grid-row:2;grid-column:3}
+.area-tile img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.25,.46,.45,.94)}
+.area-tile:hover img{transform:scale(1.08)}
+.area-overlay{position:absolute;inset:0;background:linear-gradient(175deg,rgba(0,0,0,.04) 0%,rgba(8,24,14,.86) 100%);transition:background .4s}
+.area-tile:hover .area-overlay{background:linear-gradient(175deg,rgba(0,80,40,.12) 0%,rgba(8,24,14,.92) 100%)}
+.area-body{position:absolute;bottom:0;left:0;right:0;padding:28px 26px;transform:translateY(6px);transition:transform .4s ease}
+.area-tile:hover .area-body{transform:none}
+.area-tag{display:inline-flex;align-items:center;gap:6px;font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--lime);background:rgba(0,80,40,.45);border:1px solid rgba(0,176,96,.2);padding:4px 11px;border-radius:40px;margin-bottom:12px;backdrop-filter:blur(4px)}
+.area-body h4{color:#fff;font-family:'Fraunces',serif;font-size:1.1rem;font-weight:600;line-height:1.25;margin-bottom:8px}
+.area-tile:nth-child(1) .area-body h4{font-size:1.5rem}
+.area-body p{font-size:.8rem;color:rgba(255,255,255,.6);line-height:1.65;max-height:0;overflow:hidden;opacity:0;transition:max-height .45s ease,opacity .45s;margin:0}
+.area-tile:hover .area-body p{max-height:80px;opacity:1}
+.area-arrow{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--lime);color:#fff;font-size:.7rem;margin-top:14px;opacity:0;transform:translateX(-10px);transition:opacity .3s,transform .3s}
+.area-tile:hover .area-arrow{opacity:1;transform:none}
 
-        /* carousel arrows */
-        .hero-arrow {
-            position: absolute; top: 50%; transform: translateY(-50%);
-            background: rgba(255,255,255,.15);
-            border: 1px solid rgba(255,255,255,.3);
-            color: #fff;
-            width: 44px; height: 44px;
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            cursor: pointer; z-index: 10;
-            backdrop-filter: blur(4px);
-            transition: background .2s;
-            font-size: 1.1rem;
-        }
-        .hero-arrow:hover { background: rgba(255,255,255,.28); }
-        .hero-arrow.prev { left: 20px; }
-        .hero-arrow.next { right: 20px; }
+/* ── AREAS MOBILE SLIDER (AUTO) ── */
+@media(max-width:767px){.areas-grid{display:none}}
+@media(min-width:768px){.areas-mobile-wrap{display:none}}
+.areas-mobile-wrap{position:relative;overflow:hidden}
+.areas-track-m{display:flex;gap:14px;transition:transform .5s cubic-bezier(.25,.46,.45,.94);will-change:transform;cursor:grab;user-select:none}
+.areas-track-m.dragging{cursor:grabbing;transition:none}
+.areas-slide-m{flex:0 0 80vw;max-width:320px;height:420px;border-radius:12px;overflow:hidden;position:relative;text-decoration:none;display:block;flex-shrink:0;opacity:.65;transform:scale(.93);transition:opacity .4s,transform .4s}
+.areas-slide-m.active-slide{opacity:1;transform:scale(1)}
+.areas-slide-m img{width:100%;height:100%;object-fit:cover}
+.slide-overlay-m{position:absolute;inset:0;background:linear-gradient(170deg,rgba(0,0,0,.05) 0%,rgba(8,24,14,.9) 100%)}
+.slide-body-m{position:absolute;bottom:0;left:0;right:0;padding:28px 24px}
+.slide-tag-m{display:inline-block;font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--lime);background:rgba(0,80,40,.5);border:1px solid rgba(0,176,96,.2);padding:4px 11px;border-radius:40px;margin-bottom:10px}
+.slide-body-m h4{color:#fff;font-family:'Fraunces',serif;font-size:1.2rem;font-weight:600;line-height:1.25;margin-bottom:8px}
+.slide-body-m p{font-size:.82rem;color:rgba(255,255,255,.68);line-height:1.6;margin:0 0 14px}
+.slide-arr-m{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:var(--lime);color:#fff;font-size:.78rem}
+.areas-dots-m{display:flex;justify-content:center;gap:8px;margin-top:28px}
+.areas-dot-m{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.25);border:none;cursor:pointer;transition:background .25s,width .3s;padding:0}
+.areas-dot-m.active{background:var(--lime);width:22px;border-radius:4px}
+/* peek gradient */
+.areas-mobile-wrap::after{content:'';position:absolute;top:0;right:0;width:44px;height:100%;background:linear-gradient(to right,transparent,var(--forest));pointer-events:none;z-index:2}
 
-        .row { perspective: 1200px; }
-        .section-label {
-            display: inline-block;
-            font-size: .7rem;
-            font-weight: 700;
-            letter-spacing: .14em;
-            text-transform: uppercase;
-            color: var(--green);
-            background: var(--green-light);
-            padding: 5px 14px;
-            border-radius: 40px;
-            margin-bottom: 14px;
-        }
-        .section-title {
-            font-family: 'Inter', sans-serif;
-            font-weight: 800;
-            font-size: clamp(1.5rem, 4vw, 2.2rem);
-            color: var(--dark-text);
-            line-height: 1.2;
-            letter-spacing: -.02em;
-        }
+/* ── COURSES ── */
+.courses-section{padding:96px 0;background:var(--offwhite)}
+.course-card{background:#fff;border:1px solid var(--border);border-radius:4px;overflow:hidden;height:100%;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s,border-color .3s}
+.course-card:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(0,106,57,.12);border-color:transparent}
+.course-img{height:220px;overflow:hidden;position:relative;flex-shrink:0}
+.course-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
+.course-card:hover .course-img img{transform:scale(1.06)}
+.course-cat{position:absolute;top:16px;left:16px;font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:rgba(0,0,0,.48);padding:5px 12px;border-radius:40px;backdrop-filter:blur(6px)}
+.course-body{padding:26px 24px 18px;flex:1}
+.course-status{display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);background:var(--light-blue);padding:4px 12px;border-radius:40px;margin-bottom:14px}
+.course-body h5{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:600;line-height:1.45;margin:0 0 16px;color:var(--text)}
+.course-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:0}
+.ctag{font-size:.68rem;font-weight:500;color:var(--muted);background:var(--offwhite);border:1px solid var(--border);padding:4px 10px;border-radius:3px}
+.course-footer{border-top:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;margin-top:auto}
+.course-meta-row{display:flex;gap:14px}
+.cmeta{font-size:.75rem;color:#aaa;display:flex;align-items:center;gap:5px}
+.cmeta i{color:var(--green);font-size:.8rem}
+.btn-circle{width:36px;height:36px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.78rem;text-decoration:none;transition:background .2s,transform .2s;flex-shrink:0}
+.btn-circle:hover{background:var(--forest);color:#fff;transform:scale(1.1)}
 
-        /* ── SERVICES ── */
-        .services-section { padding: 80px 0; background: var(--off-white); }
-        .service-card {
-            background: #fff;
-            border-radius: 12px;
-            padding: 36px 28px;
-            border: 1px solid var(--border);
-            transition: transform .25s, box-shadow .25s;
-            height: 100%;
-            transform-style: preserve-3d;
-            will-change: transform;
-        }
-        .service-card:hover { box-shadow: 0 16px 48px rgba(0,106,57,.12); }
-        .service-icon {
-            width: 56px; height: 56px;
-            border-radius: 12px;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.4rem;
-            margin-bottom: 20px;
-        }
-        .service-icon.green { background: var(--green-light); color: var(--green); }
-        .service-icon.blue  { background: var(--blue-light);  color: var(--blue);  }
-        .service-card h5 { font-size: 1rem; font-weight: 600; margin-bottom: 10px; font-family: 'DM Sans', sans-serif; }
-        .service-card p  { font-size: .88rem; color: #777; line-height: 1.65; margin: 0; }
+/* ── STATS BAND ── */
+.stats-band{background:var(--green);padding:56px 0}
+.stat-item{text-align:center;padding:0 16px}
+.stat-item+.stat-item{border-left:1px solid rgba(255,255,255,.15)}
+.stat-num{font-family:'Fraunces',serif;font-size:3rem;font-weight:600;color:#fff;line-height:1;display:block;margin-bottom:6px}
+.stat-label{font-size:.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6)}
 
-        /* ── ABOUT ── */
-        .about-section { padding: 80px 0; }
-        .about-img-wrap {
-            border-radius: 16px; overflow: hidden;
-            height: 460px;
-            position: relative;
-        }
-        .about-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
-        .about-badge {
-            position: absolute; bottom: 28px; left: 28px;
-            background: var(--green);
-            color: #fff;
-            padding: 16px 24px;
-            border-radius: 10px;
-            font-size: .85rem;
-            font-weight: 600;
-            line-height: 1.4;
-        }
-        .about-badge span { font-size: 1.8rem; font-family: 'Playfair Display', serif; display: block; }
-        .feature-pill {
-            display: inline-flex; align-items: center; gap: 8px;
-            background: var(--green-light);
-            border-radius: 6px;
-            padding: 8px 14px;
-            font-size: .82rem;
-            font-weight: 500;
-            color: var(--green);
-            margin: 4px;
-        }
-        .feature-pill i { font-size: .7rem; }
-        .btn-primary-custom {
-            background: var(--green);
-            color: #fff;
-            font-weight: 600;
-            font-size: .88rem;
-            letter-spacing: .04em;
-            padding: 14px 32px;
-            border-radius: 6px;
-            border: none;
-            text-decoration: none;
-            transition: background .2s, transform .15s;
-            display: inline-block;
-        }
-        .btn-primary-custom:hover { background: #005530; color: #fff; transform: translateY(-2px); }
+/* ── FOOTER ── */
+.footer{background:var(--forest);padding:72px 0 0}
+.footer-brand img{height:42px;filter:brightness(0) invert(1);opacity:.85;margin-bottom:20px}
+.footer-desc{font-size:.87rem;color:rgba(255,255,255,.5);line-height:1.75;max-width:300px}
+.footer-heading{font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:22px}
+.footer-link{display:block;font-size:.87rem;color:rgba(255,255,255,.6);text-decoration:none;margin-bottom:10px;transition:color .2s;padding-left:0;position:relative}
+.footer-link:hover{color:#fff}
+.footer-contact-row{display:flex;align-items:flex-start;gap:12px;margin-bottom:12px}
+.footer-contact-row i{color:var(--lime);margin-top:2px;flex-shrink:0;font-size:.85rem}
+.footer-contact-row span{font-size:.87rem;color:rgba(255,255,255,.6);line-height:1.5}
+.social-link{width:36px;height:36px;border-radius:3px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.6);display:inline-flex;align-items:center;justify-content:center;font-size:.82rem;text-decoration:none;transition:background .2s,color .2s,border-color .2s;margin-right:6px}
+.social-link:hover{background:var(--lime);border-color:var(--lime);color:#fff}
+.newsletter-row{display:flex;gap:0;margin-top:6px}
+.newsletter-row input{flex:1;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-right:none;color:#fff;padding:12px 16px;font-size:.85rem;border-radius:3px 0 0 3px;outline:none;font-family:'Outfit',sans-serif}
+.newsletter-row input::placeholder{color:rgba(255,255,255,.3)}
+.newsletter-row button{background:var(--lime);border:none;color:#fff;padding:12px 18px;font-size:.78rem;font-weight:600;font-family:'Outfit',sans-serif;letter-spacing:.06em;text-transform:uppercase;border-radius:0 3px 3px 0;cursor:pointer;transition:background .2s}
+.newsletter-row button:hover{background:#009950}
+.footer-divider{border-color:rgba(255,255,255,.08);margin:48px 0 0}
+.footer-bottom{padding:20px 0;font-size:.78rem;color:rgba(255,255,255,.3);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.footer-bottom a{color:rgba(255,255,255,.3);text-decoration:none;transition:color .2s}
+.footer-bottom a:hover{color:rgba(255,255,255,.7)}
+.footer-bottom-links{display:flex;gap:20px;flex-wrap:wrap}
 
-        /* ── ESPECIALIDADES — nuevo layout ── */
-        .areas-section { padding: 80px 0; background: #0d1a12; }
-        .areas-section .section-label { background: rgba(0,106,57,.35); color: #6fcf97; }
-        .areas-section .section-title { color: #fff; }
+/* ── BACK-TOP ── */
+.back-top{position:fixed;bottom:28px;right:28px;width:44px;height:44px;background:var(--green);color:#fff;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:1rem;text-decoration:none;opacity:0;pointer-events:none;transition:opacity .3s,transform .2s;z-index:999;box-shadow:0 4px 20px rgba(0,0,0,.2)}
+.back-top.show{opacity:1;pointer-events:all}
+.back-top:hover{transform:translateY(-3px);color:#fff}
 
-        .areas-grid {
-            display: grid;
-            grid-template-columns: 1.6fr 1fr 1fr;
-            grid-template-rows: 300px 300px;
-            gap: 12px;
-        }
-        .area-tile {
-            position: relative;
-            overflow: hidden;
-            border-radius: 16px;
-            cursor: pointer;
-            text-decoration: none;
-            display: block;
-        }
-        .area-tile:nth-child(1) { grid-row: 1 / 3; grid-column: 1; }
-        .area-tile:nth-child(2) { grid-row: 1; grid-column: 2; }
-        .area-tile:nth-child(3) { grid-row: 1; grid-column: 3; }
-        .area-tile:nth-child(4) { grid-row: 2; grid-column: 2; }
-        .area-tile:nth-child(5) { grid-row: 2; grid-column: 3; }
-        .area-tile img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            transition: transform .6s cubic-bezier(.25,.46,.45,.94);
-        }
-        .area-tile:hover img { transform: scale(1.07); }
-        .area-tile-overlay {
-            position: absolute; inset: 0;
-            background: linear-gradient(170deg, rgba(0,0,0,.08) 0%, rgba(0,20,10,.82) 100%);
-            transition: background .4s;
-        }
-        .area-tile:hover .area-tile-overlay {
-            background: linear-gradient(170deg, rgba(0,106,57,.15) 0%, rgba(0,20,10,.9) 100%);
-        }
-        .area-tile-body {
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            padding: 28px 24px;
-            transform: translateY(8px);
-            transition: transform .35s ease;
-        }
-        .area-tile:hover .area-tile-body { transform: none; }
-        .area-tile-tag {
-            display: inline-block;
-            font-size: .62rem;
-            font-weight: 700;
-            letter-spacing: .12em;
-            text-transform: uppercase;
-            color: #6fcf97;
-            background: rgba(0,106,57,.4);
-            border: 1px solid rgba(111,207,151,.25);
-            padding: 4px 10px;
-            border-radius: 40px;
-            margin-bottom: 10px;
-            backdrop-filter: blur(4px);
-        }
-        .area-tile-body h4 {
-            color: #fff;
-            font-size: 1.05rem;
-            font-weight: 700;
-            line-height: 1.3;
-            margin-bottom: 8px;
-        }
-        .area-tile:nth-child(1) .area-tile-body h4 { font-size: 1.4rem; }
-        .area-tile-body p {
-            font-size: .8rem;
-            color: rgba(255,255,255,.65);
-            line-height: 1.6;
-            margin: 0;
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height .4s ease, opacity .4s;
-            opacity: 0;
-        }
-        .area-tile:hover .area-tile-body p { max-height: 80px; opacity: 1; }
-        .area-tile-arrow {
-            display: inline-flex; align-items: center; justify-content: center;
-            width: 32px; height: 32px;
-            border-radius: 50%;
-            background: var(--green);
-            color: #fff;
-            font-size: .75rem;
-            margin-top: 12px;
-            opacity: 0;
-            transform: translateX(-8px);
-            transition: opacity .3s, transform .3s;
-        }
-        .area-tile:hover .area-tile-arrow { opacity: 1; transform: none; }
+/* ── FADE IN ── */
+.fade-up{opacity:0;transform:translateY(36px);transition:opacity .6s ease,transform .6s ease}
+.fade-up.visible{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
 
-        /* mobile stack */
-        /* (slider handles mobile — grid only for desktop) */
-        @media (max-width: 767px) {
-            .areas-grid-desktop { display: none !important; }
-        }
-        @media (min-width: 768px) {
-            .areas-slider-mobile { display: none !important; }
-        }
-
-        /* ── AREAS SLIDER (mobile) ── */
-        .areas-slider-mobile {
-            position: relative;
-            overflow: hidden;
-            margin: 0 -16px; /* bleed to edges */
-            padding: 0 16px;
-        }
-        .areas-track {
-            display: flex;
-            gap: 14px;
-            transition: transform .45s cubic-bezier(.25,.46,.45,.94);
-            will-change: transform;
-            cursor: grab;
-            user-select: none;
-        }
-        .areas-track.grabbing { cursor: grabbing; transition: none; }
-        .areas-slide {
-            flex: 0 0 78vw;
-            max-width: 320px;
-            height: 420px;
-            border-radius: 20px;
-            overflow: hidden;
-            position: relative;
-            text-decoration: none;
-            display: block;
-            flex-shrink: 0;
-        }
-        .areas-slide img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            transition: transform .5s ease;
-        }
-        .areas-slide-overlay {
-            position: absolute; inset: 0;
-            background: linear-gradient(170deg, rgba(0,0,0,.05) 0%, rgba(0,18,9,.88) 100%);
-        }
-        .areas-slide-body {
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            padding: 28px 24px;
-        }
-        .areas-slide-tag {
-            display: inline-block;
-            font-size: .62rem;
-            font-weight: 700;
-            letter-spacing: .12em;
-            text-transform: uppercase;
-            color: #6fcf97;
-            background: rgba(0,106,57,.45);
-            border: 1px solid rgba(111,207,151,.2);
-            padding: 4px 11px;
-            border-radius: 40px;
-            margin-bottom: 10px;
-            backdrop-filter: blur(6px);
-        }
-        .areas-slide-body h4 {
-            color: #fff;
-            font-size: 1.15rem;
-            font-weight: 700;
-            line-height: 1.25;
-            margin-bottom: 8px;
-        }
-        .areas-slide-body p {
-            font-size: .82rem;
-            color: rgba(255,255,255,.68);
-            line-height: 1.6;
-            margin: 0 0 16px;
-        }
-        .areas-slide-arrow {
-            display: inline-flex; align-items: center; justify-content: center;
-            width: 36px; height: 36px;
-            border-radius: 50%;
-            background: var(--green);
-            color: #fff;
-            font-size: .8rem;
-        }
-        /* pagination dots */
-        .areas-dots {
-            display: flex; justify-content: center; gap: 8px;
-            margin-top: 24px;
-        }
-        .areas-dot {
-            width: 6px; height: 6px;
-            border-radius: 50%;
-            background: rgba(255,255,255,.25);
-            border: none; cursor: pointer;
-            transition: background .25s, transform .25s, width .3s;
-            padding: 0;
-        }
-        .areas-dot.active {
-            background: var(--green);
-            width: 22px;
-            border-radius: 4px;
-        }
-        /* peek next card */
-        .areas-slider-mobile::after {
-            content: '';
-            position: absolute;
-            top: 0; right: 0;
-            width: 40px; height: 100%;
-            background: linear-gradient(to right, transparent, #0d1a12);
-            pointer-events: none;
-            z-index: 2;
-        }
-
-        /* ── COURSES — nuevo layout ── */
-        .courses-section { padding: 80px 0; background: var(--off-white); }
-        .course-card {
-            background: #fff;
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid var(--border);
-            transition: box-shadow .3s;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-        .course-card:hover { box-shadow: 0 24px 64px rgba(0,106,57,.13); }
-        .course-card-img {
-            height: 210px;
-            overflow: hidden;
-            position: relative;
-            flex-shrink: 0;
-        }
-        .course-card-img img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            transition: transform .5s cubic-bezier(.25,.46,.45,.94);
-        }
-        .course-card:hover .course-card-img img { transform: scale(1.06); }
-        .course-num {
-            position: absolute; top: 16px; left: 16px;
-            font-size: .65rem; font-weight: 800;
-            letter-spacing: .16em;
-            color: #fff;
-            background: rgba(0,0,0,.45);
-            padding: 4px 10px; border-radius: 40px;
-            backdrop-filter: blur(6px);
-        }
-        .course-card-body { padding: 22px 22px 16px; flex: 1; }
-        .course-status {
-            font-size: .65rem; font-weight: 700; letter-spacing: .1em;
-            text-transform: uppercase;
-            color: var(--blue);
-            background: var(--blue-light);
-            padding: 4px 12px; border-radius: 40px;
-            display: inline-block; margin-bottom: 12px;
-        }
-        .course-card-body h5 {
-            font-size: 1rem; font-weight: 700;
-            line-height: 1.4; margin: 0 0 16px;
-            color: var(--dark-text);
-        }
-        .course-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
-        .course-tag {
-            font-size: .68rem; font-weight: 600;
-            color: #888; background: #f2f4f3;
-            padding: 4px 10px; border-radius: 4px;
-        }
-        .course-card-footer {
-            border-top: 1px solid var(--border);
-            padding: 14px 22px;
-            display: flex; align-items: center; justify-content: space-between;
-        }
-        .course-meta-row { display: flex; gap: 14px; }
-        .course-meta {
-            font-size: .75rem; color: #999;
-            display: flex; align-items: center; gap: 5px;
-        }
-        .course-meta i { color: var(--green); font-size: .8rem; }
-        .btn-course-icon {
-            width: 36px; height: 36px;
-            border-radius: 50%;
-            background: var(--green);
-            color: #fff;
-            display: flex; align-items: center; justify-content: center;
-            font-size: .8rem;
-            text-decoration: none;
-            transition: background .2s, transform .2s;
-            flex-shrink: 0;
-        }
-        .btn-course-icon:hover { background: #005530; color: #fff; transform: scale(1.1); }
-
-
-        /* ── FOOTER ── */
-        .footer { background: #0f1f16; padding: 64px 0 0; }
-        .footer h5 {
-            font-family: 'DM Sans', sans-serif;
-            font-size: .8rem; font-weight: 700;
-            letter-spacing: .1em; text-transform: uppercase;
-            color: rgba(255,255,255,.4); margin-bottom: 20px;
-        }
-        .footer-link {
-            display: block;
-            font-size: .88rem;
-            color: rgba(255,255,255,.7);
-            text-decoration: none;
-            margin-bottom: 8px;
-            transition: color .2s;
-        }
-        .footer-link:hover { color: #fff; }
-        .footer-contact {
-            font-size: .88rem;
-            color: rgba(255,255,255,.7);
-            display: flex; align-items: flex-start; gap: 10px;
-            margin-bottom: 10px;
-        }
-        .footer-contact i { color: var(--green); margin-top: 2px; flex-shrink: 0; }
-        .social-btn {
-            width: 36px; height: 36px;
-            border-radius: 8px;
-            background: rgba(255,255,255,.08);
-            color: rgba(255,255,255,.7);
-            display: inline-flex; align-items: center; justify-content: center;
-            font-size: .85rem;
-            text-decoration: none;
-            transition: background .2s, color .2s;
-            margin-right: 6px;
-        }
-        .social-btn:hover { background: var(--green); color: #fff; }
-        .newsletter-form { display: flex; gap: 0; margin-top: 4px; }
-        .newsletter-form input {
-            flex: 1;
-            background: rgba(255,255,255,.07);
-            border: 1px solid rgba(255,255,255,.12);
-            border-right: none;
-            color: #fff;
-            padding: 12px 16px;
-            font-size: .85rem;
-            border-radius: 6px 0 0 6px;
-            outline: none;
-        }
-        .newsletter-form input::placeholder { color: rgba(255,255,255,.35); }
-        .newsletter-form button {
-            background: var(--green);
-            border: none;
-            color: #fff;
-            padding: 12px 18px;
-            font-size: .82rem;
-            font-weight: 600;
-            border-radius: 0 6px 6px 0;
-            cursor: pointer;
-            transition: background .2s;
-        }
-        .newsletter-form button:hover { background: #005530; }
-        .footer-divider { border-color: rgba(255,255,255,.08); margin: 40px 0 0; }
-        .footer-bottom {
-            padding: 20px 0;
-            font-size: .8rem;
-            color: rgba(255,255,255,.35);
-            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;
-        }
-        .footer-bottom a { color: rgba(255,255,255,.35); text-decoration: none; }
-        .footer-bottom a:hover { color: rgba(255,255,255,.7); }
-        .footer-bottom-links { display: flex; gap: 20px; }
-
-        /* ── BACK TO TOP ── */
-        .back-top {
-            position: fixed; bottom: 24px; right: 24px;
-            width: 44px; height: 44px;
-            background: var(--green);
-            color: #fff;
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.1rem;
-            text-decoration: none;
-            opacity: 0; pointer-events: none;
-            transition: opacity .3s, transform .2s;
-            z-index: 999;
-            box-shadow: 0 4px 16px rgba(0,106,57,.3);
-        }
-        .back-top.show { opacity: 1; pointer-events: all; }
-        .back-top:hover { transform: translateY(-3px); color: #fff; }
-
-        /* ── MOBILE ── */
-        @media (max-width: 768px) {
-            .hero-slide { height: 75vh; min-height: 480px; }
-            .hero-content { padding: 0 6%; }
-            .hero-arrow { display: none; }
-            .services-section, .about-section, .areas-section, .courses-section { padding: 56px 0; }
-            .about-img-wrap { height: 280px; margin-bottom: 32px; }
-            .about-badge span { font-size: 1.3rem; }
-            .navbar-collapse { background: #fff; padding: 8px 16px 16px; border-top: 1px solid var(--border); }
-            .nav-link { padding: .75rem .5rem !important; font-size: .95rem; }
-            .btn-nav-cta { display: none; }
-            .footer-bottom { flex-direction: column; text-align: center; }
-            .footer-bottom-links { flex-wrap: wrap; justify-content: center; gap: 12px; }
-        }
-
-        /* ── FADE-IN ON SCROLL ── */
-        .fade-up {
-            opacity: 0; transform: translateY(32px);
-            transition: opacity .55s ease, transform .55s ease;
-        }
-        .fade-up.visible { opacity: 1; transform: none; }
-        .fade-up-delay-1 { transition-delay: .1s; }
-        .fade-up-delay-2 { transition-delay: .2s; }
-        .fade-up-delay-3 { transition-delay: .3s; }
-        .fade-up-delay-4 { transition-delay: .4s; }
-    </style>
+/* ── MOBILE TWEAKS ── */
+@media(max-width:992px){
+  .hero-content{max-width:600px}
+  .services-section,.about-section,.areas-section,.courses-section{padding:64px 0}
+  .about-img-wrap{height:320px;margin-bottom:56px}
+  .about-accent{display:none}
+  .navbar-collapse{background:#fff;border-top:1px solid var(--border);padding:8px 16px 20px}
+  .nav-link{padding:.75rem .5rem!important;font-size:.9rem}
+  .btn-nav-cta{display:none!important}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .footer-bottom-links{justify-content:center}
+  .stat-item+.stat-item{border-left:none;border-top:1px solid rgba(255,255,255,.12)}
+}
+</style>
 </head>
 <body>
 
-<!-- Spinner -->
-<div id="spinner">
-    <div class="spin-ring"></div>
+<div id="spinner"><div class="spin-ring"></div></div>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-inner">
+      <div class="topbar-left">
+        <span><i class="fas fa-map-marker-alt" style="color:var(--lime);margin-right:6px"></i>Cusco, Perú</span>
+        <div class="topbar-divider"></div>
+        <a href="mailto:info@andean.pe"><i class="fas fa-envelope" style="margin-right:5px"></i>info@andean.pe</a>
+      </div>
+      <div class="topbar-right">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <div class="topbar-divider"></div>
+        <a href="contact.html" style="color:var(--lime);font-weight:600">Contáctanos →</a>
+      </div>
+    </div>
+  </div>
 </div>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg">
-    <a href="index.html" class="navbar-brand">
-        <img src="img/Andeanlogo.png" alt="Andean Consulting Logo">
-    </a>
-    <button type="button" class="navbar-toggler border-0 me-3" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-        <div class="navbar-nav ms-auto p-3 p-lg-0">
-            <a href="index.html" class="nav-item nav-link active">Inicio</a>
-            <a href="about.html" class="nav-item nav-link">Nosotros</a>
-            <a href="courses.html" class="nav-item nav-link">Cursos</a>
-            <div class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Servicios</a>
-                <div class="dropdown-menu fade-down m-0">
-                    <a href="team.html" class="dropdown-item">Nuestro Equipo</a>
-                    <a href="testimonial.html" class="dropdown-item">Testimonios</a>
-                </div>
-            </div>
-            <a href="contact.html" class="nav-item nav-link">Contacto</a>
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg" id="mainNav">
+  <a href="index.html" class="navbar-brand">
+    <img src="img/Andeanlogo.png" alt="Andean Consulting">
+  </a>
+  <button class="navbar-toggler border-0 me-3" data-bs-toggle="collapse" data-bs-target="#navCollapse">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navCollapse">
+    <div class="navbar-nav ms-auto p-3 p-lg-0">
+      <a href="index.html" class="nav-item nav-link active">Inicio</a>
+      <a href="about.html" class="nav-item nav-link">Nosotros</a>
+      <a href="courses.html" class="nav-item nav-link">Cursos</a>
+      <div class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Servicios</a>
+        <div class="dropdown-menu">
+          <a href="team.html" class="dropdown-item">Nuestro Equipo</a>
+          <a href="testimonial.html" class="dropdown-item">Testimonios</a>
         </div>
-        <a href="#servicios" class="btn-nav-cta d-none d-lg-flex align-items-center gap-2">
-            Ver Nuestros Servicios <i class="fas fa-arrow-right" style="font-size:.75rem"></i>
-        </a>
+      </div>
+      <a href="contact.html" class="nav-item nav-link">Contacto</a>
     </div>
+    <a href="#servicios" class="btn-nav-cta d-none d-lg-flex align-items-center gap-2">
+      Ver Servicios <i class="fas fa-arrow-right" style="font-size:.7rem"></i>
+    </a>
+  </div>
 </nav>
 
-<!-- Hero Carousel -->
+<!-- HERO -->
 <div class="hero" id="hero">
-    <!-- Slide 1: Consultoría (primero) -->
-    <div class="hero-slide active">
-        <img src="img/carousel-2.jpg" alt="Consultoría Ambiental">
-        <div class="hero-overlay">
-            <div class="container">
-                <div class="hero-content">
-                    <span class="hero-tag">Consultoría y Servicios Ambientales</span>
-                    <h1>Soluciones Técnicas para el Ambiente y la Biodiversidad</h1>
-                    <p>Levantamientos biológicos, monitoreo ambiental, alquiler de equipos especializados y asesoría técnica para entidades públicas, privadas y comunidades.</p>
-                    <div class="hero-btns">
-                        <a href="about.html" class="btn-hero-primary">Más Información</a>
-                        <a href="contact.html" class="btn-hero-secondary">Contáctanos</a>
-                    </div>
-                </div>
-            </div>
+  <!-- Slide 1 -->
+  <div class="hero-slide active">
+    <img src="img/carousel-2.jpg" alt="Consultoría Ambiental">
+    <div class="hero-overlay"></div>
+    <div class="hero-content-wrap">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-eyebrow">
+            <div class="hero-eyebrow-line"></div>
+            <span>Consultoría &amp; Servicios Ambientales</span>
+          </div>
+          <h1>Soluciones Técnicas para el <em>Ambiente</em> y la Biodiversidad</h1>
+          <p>Levantamientos biológicos, monitoreo ambiental, alquiler de equipos especializados y asesoría técnica para entidades públicas, privadas y comunidades.</p>
+          <div class="hero-btns">
+            <a href="about.html" class="btn-hero-primary">Conocer Más</a>
+            <a href="contact.html" class="btn-hero-link">Hablar con un Experto <i class="fas fa-arrow-right"></i></a>
+          </div>
         </div>
+      </div>
     </div>
-    <!-- Slide 2: Cursos (segundo) -->
-    <div class="hero-slide">
-        <img src="img/carousel-1.jpg" alt="Cursos Virtuales Especializados">
-        <div class="hero-overlay">
-            <div class="container">
-                <div class="hero-content">
-                    <span class="hero-tag">Cursos Virtuales Especializados</span>
-                    <h1>Aprende Ciencias Ambientales desde Cualquier Lugar</h1>
-                    <p>Formación profesional en ecología, monitoreo ambiental, SIG, bioinformática y gestión de recursos naturales con expertos de campo.</p>
-                    <div class="hero-btns">
-                        <a href="about.html" class="btn-hero-primary">Conócenos</a>
-                        <a href="courses.html" class="btn-hero-secondary">Ver Cursos</a>
-                    </div>
-                </div>
-            </div>
+    <div class="hero-side">
+      <div class="hero-stat">
+        <div class="hero-stat-num counter-val" data-target="5">0</div>
+        <div class="hero-stat-label">Años de Experiencia</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num counter-val" data-target="200">0</div>
+        <div class="hero-stat-label">Estudiantes Formados</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num counter-val" data-target="12">0</div>
+        <div class="hero-stat-label">Proyectos Ejecutados</div>
+      </div>
+    </div>
+  </div>
+  <!-- Slide 2 -->
+  <div class="hero-slide">
+    <img src="img/carousel-1.jpg" alt="Cursos Virtuales">
+    <div class="hero-overlay"></div>
+    <div class="hero-content-wrap">
+      <div class="container">
+        <div class="hero-content">
+          <div class="hero-eyebrow">
+            <div class="hero-eyebrow-line"></div>
+            <span>Cursos Virtuales Especializados</span>
+          </div>
+          <h1>Aprende Ciencias Ambientales <em>desde Cualquier Lugar</em></h1>
+          <p>Formación profesional en ecología, monitoreo ambiental, SIG, bioinformática y gestión de recursos naturales con expertos de campo.</p>
+          <div class="hero-btns">
+            <a href="courses.html" class="btn-hero-primary">Ver Cursos</a>
+            <a href="about.html" class="btn-hero-link">Conócenos <i class="fas fa-arrow-right"></i></a>
+          </div>
         </div>
+      </div>
     </div>
+    <div class="hero-side">
+      <div class="hero-stat">
+        <div class="hero-stat-num">3</div>
+        <div class="hero-stat-label">Cursos Disponibles</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">100%</div>
+        <div class="hero-stat-label">En Línea</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">✓</div>
+        <div class="hero-stat-label">Certificados</div>
+      </div>
+    </div>
+  </div>
 
-    <button class="hero-arrow prev" onclick="moveSlide(-1)"><i class="fas fa-chevron-left"></i></button>
-    <button class="hero-arrow next" onclick="moveSlide(1)"><i class="fas fa-chevron-right"></i></button>
-    <div class="hero-dots">
-        <button class="hero-dot active" onclick="goSlide(0)"></button>
-        <button class="hero-dot"        onclick="goSlide(1)"></button>
-    </div>
+  <button class="hero-arrow prev" onclick="moveSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+  <button class="hero-arrow next" onclick="moveSlide(1)"><i class="fas fa-chevron-right"></i></button>
+  <div class="hero-dots">
+    <button class="hero-dot active" onclick="goSlide(0)"></button>
+    <button class="hero-dot" onclick="goSlide(1)"></button>
+  </div>
 </div>
 
-<!-- Services Strip -->
+<!-- SERVICES -->
 <div class="services-section" id="servicios">
-    <div class="container">
-        <div class="text-center mb-5 fade-up">
-            <span class="section-label">Lo que hacemos</span>
-            <h2 class="section-title">Nuestros Servicios</h2>
-        </div>
-        <div class="row g-4">
-            <div class="col-lg-3 col-sm-6 fade-up fade-up-delay-1">
-                <div class="service-card">
-                    <div class="service-icon green"><i class="fas fa-graduation-cap"></i></div>
-                    <h5>Cursos Virtuales</h5>
-                    <p>Talleres especializados en ecología, SIG, modelamiento ambiental y bioinformática dictados por expertos con experiencia de campo.</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6 fade-up fade-up-delay-2">
-                <div class="service-card">
-                    <div class="service-icon blue"><i class="fas fa-leaf"></i></div>
-                    <h5>Levantamientos Biológicos</h5>
-                    <p>Líneas base físicas y biológicas, inventarios de biodiversidad y monitoreo de ecosistemas a nivel nacional.</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6 fade-up fade-up-delay-3">
-                <div class="service-card">
-                    <div class="service-icon green"><i class="fas fa-microscope"></i></div>
-                    <h5>Alquiler de Equipos</h5>
-                    <p>Equipos especializados para monitoreo biológico, muestreo científico y trabajo de campo ambiental.</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-sm-6 fade-up fade-up-delay-4">
-                <div class="service-card">
-                    <div class="service-icon blue"><i class="fas fa-laptop-code"></i></div>
-                    <h5>Soluciones Tecnológicas</h5>
-                    <p>Sistemas de información geográfica, teledetección, modelamiento ambiental y análisis de datos geoespaciales.</p>
-                </div>
-            </div>
-        </div>
+  <div class="container">
+    <div class="row align-items-end mb-5 fade-up">
+      <div class="col-lg-6">
+        <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span>Lo que hacemos</span></div>
+        <h2 class="section-title">Nuestros Servicios</h2>
+      </div>
+      <div class="col-lg-6 text-lg-end mt-3 mt-lg-0">
+        <a href="about.html" class="btn-outline-custom" style="margin-left:0">Ver Todo <i class="fas fa-arrow-right" style="font-size:.7rem"></i></a>
+      </div>
     </div>
+    <div class="row g-4">
+      <div class="col-lg-3 col-sm-6 fade-up d1">
+        <div class="service-card">
+          <div class="service-num">01</div>
+          <div class="service-icon si-g"><i class="fas fa-graduation-cap"></i></div>
+          <h5>Cursos Virtuales</h5>
+          <p>Talleres especializados en ecología, SIG, modelamiento ambiental y bioinformática dictados por expertos con experiencia de campo.</p>
+          <a href="courses.html" class="service-card-link">Ver Cursos <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-sm-6 fade-up d2">
+        <div class="service-card">
+          <div class="service-num">02</div>
+          <div class="service-icon si-b"><i class="fas fa-leaf"></i></div>
+          <h5>Levantamientos Biológicos</h5>
+          <p>Líneas base físicas y biológicas, inventarios de biodiversidad y monitoreo de ecosistemas a nivel nacional.</p>
+          <a href="about.html" class="service-card-link">Saber Más <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-sm-6 fade-up d3">
+        <div class="service-card">
+          <div class="service-num">03</div>
+          <div class="service-icon si-g"><i class="fas fa-microscope"></i></div>
+          <h5>Alquiler de Equipos</h5>
+          <p>Equipos especializados para monitoreo biológico, muestreo científico y trabajo de campo ambiental.</p>
+          <a href="contact.html" class="service-card-link">Consultar <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-3 col-sm-6 fade-up d4">
+        <div class="service-card">
+          <div class="service-num">04</div>
+          <div class="service-icon si-b"><i class="fas fa-laptop-code"></i></div>
+          <h5>Soluciones Tecnológicas</h5>
+          <p>Sistemas de información geográfica, teledetección, modelamiento ambiental y análisis de datos geoespaciales.</p>
+          <a href="about.html" class="service-card-link">Explorar <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<!-- About -->
+<!-- ABOUT -->
 <div class="about-section">
-    <div class="container">
-        <div class="row g-5 align-items-center">
-            <div class="col-lg-6 fade-up">
-                <div class="about-img-wrap">
-                    <img src="img/about.jpg" alt="Andean Consulting – Trabajo de campo">
-                    <div class="about-badge">
-                        <span>+5</span>años de experiencia ambiental
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-6 fade-up fade-up-delay-2">
-                <span class="section-label">Sobre Nosotros</span>
-                <h2 class="section-title mb-4">Bienvenidos a Andean Consulting & Environmental Solutions</h2>
-                <p style="font-size:.95rem;line-height:1.75;margin-bottom:16px;color:#555;">
-                    Somos una empresa peruana especializada en consultoría ambiental, formación especializada y soluciones tecnológicas para la gestión sostenible del ambiente y la biodiversidad. Trabajamos con entidades públicas, privadas, ONGs y comunidades a nivel nacional.
-                </p>
-                <p style="font-size:.95rem;line-height:1.75;margin-bottom:28px;color:#555;">
-                    Nuestra propuesta educativa virtual te permite acceder a conocimientos especializados en ecología, ciencias ambientales, SIG y bioinformática desde cualquier lugar del mundo.
-                </p>
-                <div style="margin-bottom:32px;">
-                    <span class="feature-pill"><i class="fas fa-check"></i> Cursos Virtuales Especializados</span>
-                    <span class="feature-pill"><i class="fas fa-check"></i> Levantamientos Biológicos</span>
-                    <span class="feature-pill"><i class="fas fa-check"></i> Alquiler de Equipos</span>
-                    <span class="feature-pill"><i class="fas fa-check"></i> Asesoría Ambiental</span>
-                    <span class="feature-pill"><i class="fas fa-check"></i> Análisis de Datos y SIG</span>
-                    <span class="feature-pill"><i class="fas fa-check"></i> Certificados Reconocidos</span>
-                </div>
-                <a class="btn-primary-custom" href="about.html">Leer Más</a>
-            </div>
+  <div class="container">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-6 fade-up">
+        <div class="about-img-outer">
+          <div class="about-img-wrap">
+            <img src="img/about.jpg" alt="Andean Consulting – Trabajo de campo">
+          </div>
+          <div class="about-accent"></div>
+          <div class="about-badge">
+            <span class="about-badge-num">+5</span>
+            <span class="about-badge-text">Años de Experiencia Ambiental</span>
+          </div>
         </div>
+      </div>
+      <div class="col-lg-6 fade-up d2">
+        <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span>Sobre Nosotros</span></div>
+        <h2 class="section-title mb-4">Bienvenidos a Andean Consulting &amp; Environmental Solutions</h2>
+        <p style="font-size:.95rem;line-height:1.8;margin-bottom:16px;color:var(--muted)">
+          Somos una empresa peruana especializada en consultoría ambiental, formación especializada y soluciones tecnológicas para la gestión sostenible del ambiente y la biodiversidad. Trabajamos con entidades públicas, privadas, ONGs y comunidades a nivel nacional.
+        </p>
+        <p style="font-size:.95rem;line-height:1.8;margin-bottom:30px;color:var(--muted)">
+          Nuestra propuesta educativa virtual te permite acceder a conocimientos especializados en ecología, ciencias ambientales, SIG y bioinformática desde cualquier lugar del mundo.
+        </p>
+        <div style="margin-bottom:36px">
+          <span class="about-tag"><i class="fas fa-check"></i> Cursos Virtuales</span>
+          <span class="about-tag"><i class="fas fa-check"></i> Levantamientos Biológicos</span>
+          <span class="about-tag"><i class="fas fa-check"></i> Alquiler de Equipos</span>
+          <span class="about-tag"><i class="fas fa-check"></i> Asesoría Ambiental</span>
+          <span class="about-tag"><i class="fas fa-check"></i> Análisis SIG</span>
+          <span class="about-tag"><i class="fas fa-check"></i> Certificados</span>
+        </div>
+        <a href="about.html" class="btn-primary-custom">Leer Más <i class="fas fa-arrow-right" style="font-size:.7rem"></i></a>
+        <a href="contact.html" class="btn-outline-custom">Contáctanos</a>
+      </div>
     </div>
+  </div>
 </div>
 
-<!-- Áreas Temáticas / Servicios -->
+<!-- AREAS -->
 <div class="areas-section">
-    <div class="container">
-        <div class="text-center mb-5 fade-up">
-            <span class="section-label">Áreas de Trabajo</span>
-            <h2 class="section-title">Nuestras Especialidades</h2>
-        </div>
-
-        <!-- DESKTOP: grid asimétrico -->
-        <div class="areas-grid areas-grid-desktop fade-up fade-up-delay-1">
-            <a class="area-tile" href="courses.html">
-                <img src="img/cat-1.jpg" alt="Ecología y Biodiversidad">
-                <div class="area-tile-overlay"></div>
-                <div class="area-tile-body">
-                    <div class="area-tile-tag">Cursos disponibles</div>
-                    <h4>Ecología y Biodiversidad</h4>
-                    <p>Inventarios de fauna y flora, monitoreo de ecosistemas y análisis de biodiversidad a escala local y regional.</p>
-                    <div class="area-tile-arrow"><i class="fas fa-arrow-right"></i></div>
-                </div>
-            </a>
-            <a class="area-tile" href="courses.html">
-                <img src="img/cat-2.jpg" alt="SIG y Teledetección">
-                <div class="area-tile-overlay"></div>
-                <div class="area-tile-body">
-                    <div class="area-tile-tag">Cursos disponibles</div>
-                    <h4>SIG y Teledetección</h4>
-                    <p>Análisis espacial, cartografía y procesamiento de imágenes satelitales aplicados al ambiente.</p>
-                    <div class="area-tile-arrow"><i class="fas fa-arrow-right"></i></div>
-                </div>
-            </a>
-            <a class="area-tile" href="courses.html">
-                <img src="img/cat-3.jpg" alt="Monitoreo Ambiental">
-                <div class="area-tile-overlay"></div>
-                <div class="area-tile-body">
-                    <div class="area-tile-tag">Servicio disponible</div>
-                    <h4>Monitoreo Ambiental</h4>
-                    <p>Agua, suelo, aire y biodiversidad con equipos especializados de campo.</p>
-                    <div class="area-tile-arrow"><i class="fas fa-arrow-right"></i></div>
-                </div>
-            </a>
-            <a class="area-tile" href="courses.html">
-                <img src="img/cat-4.jpg" alt="Alquiler de Equipos">
-                <div class="area-tile-overlay"></div>
-                <div class="area-tile-body">
-                    <div class="area-tile-tag">Servicio disponible</div>
-                    <h4>Alquiler de Equipos</h4>
-                    <p>Equipos especializados para muestreo biológico y trabajo de campo científico.</p>
-                    <div class="area-tile-arrow"><i class="fas fa-arrow-right"></i></div>
-                </div>
-            </a>
-            <a class="area-tile" href="contact.html">
-                <img src="img/about.jpg" alt="Consultoría Ambiental">
-                <div class="area-tile-overlay"></div>
-                <div class="area-tile-body">
-                    <div class="area-tile-tag">Servicio disponible</div>
-                    <h4>Consultoría &amp; Asesoría</h4>
-                    <p>Asesoría técnica para entidades públicas, privadas, ONGs y comunidades.</p>
-                    <div class="area-tile-arrow"><i class="fas fa-arrow-right"></i></div>
-                </div>
-            </a>
-        </div>
-
-        <!-- MOBILE: slider táctil -->
-        <div class="areas-slider-mobile">
-            <div class="areas-track" id="areasTrack">
-                <a class="areas-slide" href="courses.html">
-                    <img src="img/cat-1.jpg" alt="Ecología y Biodiversidad">
-                    <div class="areas-slide-overlay"></div>
-                    <div class="areas-slide-body">
-                        <div class="areas-slide-tag">Cursos disponibles</div>
-                        <h4>Ecología y Biodiversidad</h4>
-                        <p>Inventarios de fauna y flora, monitoreo y análisis de ecosistemas.</p>
-                        <div class="areas-slide-arrow"><i class="fas fa-arrow-right"></i></div>
-                    </div>
-                </a>
-                <a class="areas-slide" href="courses.html">
-                    <img src="img/cat-2.jpg" alt="SIG y Teledetección">
-                    <div class="areas-slide-overlay"></div>
-                    <div class="areas-slide-body">
-                        <div class="areas-slide-tag">Cursos disponibles</div>
-                        <h4>SIG y Teledetección</h4>
-                        <p>Análisis espacial, cartografía y procesamiento de imágenes satelitales.</p>
-                        <div class="areas-slide-arrow"><i class="fas fa-arrow-right"></i></div>
-                    </div>
-                </a>
-                <a class="areas-slide" href="courses.html">
-                    <img src="img/cat-3.jpg" alt="Monitoreo Ambiental">
-                    <div class="areas-slide-overlay"></div>
-                    <div class="areas-slide-body">
-                        <div class="areas-slide-tag">Servicio disponible</div>
-                        <h4>Monitoreo Ambiental</h4>
-                        <p>Agua, suelo, aire y biodiversidad con equipos de campo.</p>
-                        <div class="areas-slide-arrow"><i class="fas fa-arrow-right"></i></div>
-                    </div>
-                </a>
-                <a class="areas-slide" href="courses.html">
-                    <img src="img/cat-4.jpg" alt="Alquiler de Equipos">
-                    <div class="areas-slide-overlay"></div>
-                    <div class="areas-slide-body">
-                        <div class="areas-slide-tag">Servicio disponible</div>
-                        <h4>Alquiler de Equipos</h4>
-                        <p>Equipos para muestreo biológico y trabajo de campo científico.</p>
-                        <div class="areas-slide-arrow"><i class="fas fa-arrow-right"></i></div>
-                    </div>
-                </a>
-                <a class="areas-slide" href="contact.html">
-                    <img src="img/about.jpg" alt="Consultoría Ambiental">
-                    <div class="areas-slide-overlay"></div>
-                    <div class="areas-slide-body">
-                        <div class="areas-slide-tag">Servicio disponible</div>
-                        <h4>Consultoría &amp; Asesoría</h4>
-                        <p>Asesoría técnica para entidades públicas, privadas y comunidades.</p>
-                        <div class="areas-slide-arrow"><i class="fas fa-arrow-right"></i></div>
-                    </div>
-                </a>
-            </div>
-            <div class="areas-dots" id="areasDots">
-                <button class="areas-dot active" data-idx="0"></button>
-                <button class="areas-dot" data-idx="1"></button>
-                <button class="areas-dot" data-idx="2"></button>
-                <button class="areas-dot" data-idx="3"></button>
-                <button class="areas-dot" data-idx="4"></button>
-            </div>
-        </div>
-
+  <div class="container">
+    <div class="text-center mb-5 fade-up">
+      <div class="section-eyebrow justify-content-center"><div class="section-eyebrow-line"></div><span>Áreas de Trabajo</span></div>
+      <h2 class="section-title">Nuestras Especialidades</h2>
     </div>
+
+    <!-- DESKTOP GRID -->
+    <div class="areas-grid fade-up d1">
+      <a class="area-tile" href="courses.html">
+        <img src="img/cat-1.jpg" alt="Ecología y Biodiversidad">
+        <div class="area-overlay"></div>
+        <div class="area-body">
+          <div class="area-tag"><i class="fas fa-circle" style="font-size:.4rem"></i> Cursos disponibles</div>
+          <h4>Ecología y Biodiversidad</h4>
+          <p>Inventarios de fauna y flora, monitoreo de ecosistemas y análisis de biodiversidad a escala local y regional.</p>
+          <div class="area-arrow"><i class="fas fa-arrow-right"></i></div>
+        </div>
+      </a>
+      <a class="area-tile" href="courses.html">
+        <img src="img/cat-2.jpg" alt="SIG y Teledetección">
+        <div class="area-overlay"></div>
+        <div class="area-body">
+          <div class="area-tag"><i class="fas fa-circle" style="font-size:.4rem"></i> Cursos disponibles</div>
+          <h4>SIG y Teledetección</h4>
+          <p>Análisis espacial, cartografía y procesamiento de imágenes satelitales aplicados al ambiente.</p>
+          <div class="area-arrow"><i class="fas fa-arrow-right"></i></div>
+        </div>
+      </a>
+      <a class="area-tile" href="courses.html">
+        <img src="img/cat-3.jpg" alt="Monitoreo Ambiental">
+        <div class="area-overlay"></div>
+        <div class="area-body">
+          <div class="area-tag"><i class="fas fa-circle" style="font-size:.4rem"></i> Servicio disponible</div>
+          <h4>Monitoreo Ambiental</h4>
+          <p>Agua, suelo, aire y biodiversidad con equipos especializados de campo.</p>
+          <div class="area-arrow"><i class="fas fa-arrow-right"></i></div>
+        </div>
+      </a>
+      <a class="area-tile" href="courses.html">
+        <img src="img/cat-4.jpg" alt="Alquiler de Equipos">
+        <div class="area-overlay"></div>
+        <div class="area-body">
+          <div class="area-tag"><i class="fas fa-circle" style="font-size:.4rem"></i> Servicio disponible</div>
+          <h4>Alquiler de Equipos</h4>
+          <p>Equipos especializados para muestreo biológico y trabajo de campo científico.</p>
+          <div class="area-arrow"><i class="fas fa-arrow-right"></i></div>
+        </div>
+      </a>
+      <a class="area-tile" href="contact.html">
+        <img src="img/about.jpg" alt="Consultoría Ambiental">
+        <div class="area-overlay"></div>
+        <div class="area-body">
+          <div class="area-tag"><i class="fas fa-circle" style="font-size:.4rem"></i> Servicio disponible</div>
+          <h4>Consultoría &amp; Asesoría</h4>
+          <p>Asesoría técnica para entidades públicas, privadas, ONGs y comunidades.</p>
+          <div class="area-arrow"><i class="fas fa-arrow-right"></i></div>
+        </div>
+      </a>
+    </div>
+
+    <!-- MOBILE AUTO-SLIDER -->
+    <div class="areas-mobile-wrap">
+      <div class="areas-track-m" id="areaTrack">
+        <a class="areas-slide-m active-slide" href="courses.html">
+          <img src="img/cat-1.jpg" alt="Ecología">
+          <div class="slide-overlay-m"></div>
+          <div class="slide-body-m">
+            <div class="slide-tag-m">Cursos disponibles</div>
+            <h4>Ecología y Biodiversidad</h4>
+            <p>Inventarios de fauna y flora, monitoreo y análisis de ecosistemas.</p>
+            <div class="slide-arr-m"><i class="fas fa-arrow-right"></i></div>
+          </div>
+        </a>
+        <a class="areas-slide-m" href="courses.html">
+          <img src="img/cat-2.jpg" alt="SIG">
+          <div class="slide-overlay-m"></div>
+          <div class="slide-body-m">
+            <div class="slide-tag-m">Cursos disponibles</div>
+            <h4>SIG y Teledetección</h4>
+            <p>Análisis espacial, cartografía y procesamiento de imágenes satelitales.</p>
+            <div class="slide-arr-m"><i class="fas fa-arrow-right"></i></div>
+          </div>
+        </a>
+        <a class="areas-slide-m" href="courses.html">
+          <img src="img/cat-3.jpg" alt="Monitoreo">
+          <div class="slide-overlay-m"></div>
+          <div class="slide-body-m">
+            <div class="slide-tag-m">Servicio disponible</div>
+            <h4>Monitoreo Ambiental</h4>
+            <p>Agua, suelo, aire y biodiversidad con equipos de campo especializados.</p>
+            <div class="slide-arr-m"><i class="fas fa-arrow-right"></i></div>
+          </div>
+        </a>
+        <a class="areas-slide-m" href="courses.html">
+          <img src="img/cat-4.jpg" alt="Equipos">
+          <div class="slide-overlay-m"></div>
+          <div class="slide-body-m">
+            <div class="slide-tag-m">Servicio disponible</div>
+            <h4>Alquiler de Equipos</h4>
+            <p>Equipos para muestreo biológico y trabajo de campo científico.</p>
+            <div class="slide-arr-m"><i class="fas fa-arrow-right"></i></div>
+          </div>
+        </a>
+        <a class="areas-slide-m" href="contact.html">
+          <img src="img/about.jpg" alt="Consultoría">
+          <div class="slide-overlay-m"></div>
+          <div class="slide-body-m">
+            <div class="slide-tag-m">Servicio disponible</div>
+            <h4>Consultoría &amp; Asesoría</h4>
+            <p>Asesoría técnica para entidades públicas, privadas y comunidades.</p>
+            <div class="slide-arr-m"><i class="fas fa-arrow-right"></i></div>
+          </div>
+        </a>
+      </div>
+      <div class="areas-dots-m" id="areaDotsM">
+        <button class="areas-dot-m active" data-i="0"></button>
+        <button class="areas-dot-m" data-i="1"></button>
+        <button class="areas-dot-m" data-i="2"></button>
+        <button class="areas-dot-m" data-i="3"></button>
+        <button class="areas-dot-m" data-i="4"></button>
+      </div>
+    </div>
+  </div>
 </div>
 
-<!-- Courses -->
+<!-- STATS BAND -->
+<div class="stats-band">
+  <div class="container">
+    <div class="row g-0">
+      <div class="col-6 col-md-3 stat-item fade-up">
+        <span class="stat-num counter-val" data-target="5">0</span>
+        <span class="stat-label">Años de experiencia</span>
+      </div>
+      <div class="col-6 col-md-3 stat-item fade-up d1">
+        <span class="stat-num counter-val" data-target="200">0</span>
+        <span class="stat-label">Estudiantes formados</span>
+      </div>
+      <div class="col-6 col-md-3 stat-item fade-up d2">
+        <span class="stat-num counter-val" data-target="12">0</span>
+        <span class="stat-label">Proyectos ejecutados</span>
+      </div>
+      <div class="col-6 col-md-3 stat-item fade-up d3">
+        <span class="stat-num counter-val" data-target="3">0</span>
+        <span class="stat-label">Cursos disponibles</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- COURSES -->
 <div class="courses-section">
-    <div class="container">
-        <div class="text-center mb-5 fade-up">
-            <span class="section-label">Formación</span>
-            <h2 class="section-title">Cursos Destacados</h2>
-        </div>
-        <div class="row g-4 justify-content-center">
-            <div class="col-lg-4 col-md-6 fade-up fade-up-delay-1">
-                <div class="course-card">
-                    <div class="course-card-img">
-                        <img src="img/course-1.jpg" alt="Ecología">
-                        <div class="course-num">01 — ECOLOGÍA</div>
-                    </div>
-                    <div class="course-card-body">
-                        <div class="course-status">Próximamente</div>
-                        <h5>Introducción a la Ecología y Monitoreo de Biodiversidad</h5>
-                        <div class="course-tags">
-                            <span class="course-tag">Ecología</span>
-                            <span class="course-tag">Biodiversidad</span>
-                            <span class="course-tag">Campo</span>
-                        </div>
-                    </div>
-                    <div class="course-card-footer">
-                        <div class="course-meta-row">
-                            <div class="course-meta"><i class="fas fa-globe"></i> En línea</div>
-                            <div class="course-meta"><i class="fas fa-certificate"></i> Certificado</div>
-                        </div>
-                        <a href="courses.html" class="btn-course-icon"><i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 fade-up fade-up-delay-2">
-                <div class="course-card">
-                    <div class="course-card-img">
-                        <img src="img/course-2.jpg" alt="SIG">
-                        <div class="course-num">02 — SIG</div>
-                    </div>
-                    <div class="course-card-body">
-                        <div class="course-status">Próximamente</div>
-                        <h5>SIG y Teledetección Aplicados al Análisis Ambiental</h5>
-                        <div class="course-tags">
-                            <span class="course-tag">QGIS</span>
-                            <span class="course-tag">Teledetección</span>
-                            <span class="course-tag">Geoespacial</span>
-                        </div>
-                    </div>
-                    <div class="course-card-footer">
-                        <div class="course-meta-row">
-                            <div class="course-meta"><i class="fas fa-globe"></i> En línea</div>
-                            <div class="course-meta"><i class="fas fa-certificate"></i> Certificado</div>
-                        </div>
-                        <a href="courses.html" class="btn-course-icon"><i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 fade-up fade-up-delay-3">
-                <div class="course-card">
-                    <div class="course-card-img">
-                        <img src="img/course-3.jpg" alt="Bioinformática">
-                        <div class="course-num">03 — BIOINFORMÁTICA</div>
-                    </div>
-                    <div class="course-card-body">
-                        <div class="course-status">Próximamente</div>
-                        <h5>Bioinformática y Análisis Estadístico para Ecólogos</h5>
-                        <div class="course-tags">
-                            <span class="course-tag">R / Python</span>
-                            <span class="course-tag">Estadística</span>
-                            <span class="course-tag">Datos</span>
-                        </div>
-                    </div>
-                    <div class="course-card-footer">
-                        <div class="course-meta-row">
-                            <div class="course-meta"><i class="fas fa-globe"></i> En línea</div>
-                            <div class="course-meta"><i class="fas fa-certificate"></i> Certificado</div>
-                        </div>
-                        <a href="courses.html" class="btn-course-icon"><i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
+  <div class="container">
+    <div class="row align-items-end mb-5 fade-up">
+      <div class="col-lg-6">
+        <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span>Formación</span></div>
+        <h2 class="section-title">Cursos Destacados</h2>
+      </div>
+      <div class="col-lg-6 text-lg-end mt-3 mt-lg-0">
+        <a href="courses.html" class="btn-outline-custom" style="margin-left:0">Ver Todos los Cursos <i class="fas fa-arrow-right" style="font-size:.7rem"></i></a>
+      </div>
     </div>
+    <div class="row g-4 justify-content-center">
+      <div class="col-lg-4 col-md-6 fade-up d1">
+        <div class="course-card">
+          <div class="course-img">
+            <img src="img/course-1.jpg" alt="Ecología">
+            <div class="course-cat">01 — Ecología</div>
+          </div>
+          <div class="course-body">
+            <div class="course-status">Próximamente</div>
+            <h5>Introducción a la Ecología y Monitoreo de Biodiversidad</h5>
+            <div class="course-tags">
+              <span class="ctag">Ecología</span>
+              <span class="ctag">Biodiversidad</span>
+              <span class="ctag">Campo</span>
+            </div>
+          </div>
+          <div class="course-footer">
+            <div class="course-meta-row">
+              <div class="cmeta"><i class="fas fa-globe"></i> En línea</div>
+              <div class="cmeta"><i class="fas fa-certificate"></i> Certificado</div>
+            </div>
+            <a href="courses.html" class="btn-circle"><i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 fade-up d2">
+        <div class="course-card">
+          <div class="course-img">
+            <img src="img/course-2.jpg" alt="SIG">
+            <div class="course-cat">02 — SIG</div>
+          </div>
+          <div class="course-body">
+            <div class="course-status">Próximamente</div>
+            <h5>SIG y Teledetección Aplicados al Análisis Ambiental</h5>
+            <div class="course-tags">
+              <span class="ctag">QGIS</span>
+              <span class="ctag">Teledetección</span>
+              <span class="ctag">Geoespacial</span>
+            </div>
+          </div>
+          <div class="course-footer">
+            <div class="course-meta-row">
+              <div class="cmeta"><i class="fas fa-globe"></i> En línea</div>
+              <div class="cmeta"><i class="fas fa-certificate"></i> Certificado</div>
+            </div>
+            <a href="courses.html" class="btn-circle"><i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 fade-up d3">
+        <div class="course-card">
+          <div class="course-img">
+            <img src="img/course-3.jpg" alt="Bioinformática">
+            <div class="course-cat">03 — Bioinformática</div>
+          </div>
+          <div class="course-body">
+            <div class="course-status">Próximamente</div>
+            <h5>Bioinformática y Análisis Estadístico para Ecólogos</h5>
+            <div class="course-tags">
+              <span class="ctag">R / Python</span>
+              <span class="ctag">Estadística</span>
+              <span class="ctag">Datos</span>
+            </div>
+          </div>
+          <div class="course-footer">
+            <div class="course-meta-row">
+              <div class="cmeta"><i class="fas fa-globe"></i> En línea</div>
+              <div class="cmeta"><i class="fas fa-certificate"></i> Certificado</div>
+            </div>
+            <a href="courses.html" class="btn-circle"><i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<!-- Footer -->
+<!-- FOOTER -->
 <footer class="footer">
-    <div class="container">
-        <div class="row g-5">
-            <div class="col-lg-3 col-md-6">
-                <h5>Enlaces Rápidos</h5>
-                <a class="footer-link" href="about.html">Sobre Nosotros</a>
-                <a class="footer-link" href="contact.html">Contáctanos</a>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <h5>Contacto</h5>
-                <div class="footer-contact"><i class="fas fa-map-marker-alt"></i><span>Cusco, Perú</span></div>
-                <div class="footer-contact"><i class="fas fa-phone-alt"></i><span>+51 XXX XXX XXX</span></div>
-                <div class="footer-contact"><i class="fas fa-envelope"></i><span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a3cacdc5cce3c2cdc7c6c2cdc0cccdd0d6cfd7cacdc48dc0ccce">[email&#160;protected]</a></span></div>
-                <div style="margin-top:20px;">
-                    <a class="social-btn" href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a class="social-btn" href="#"><i class="fab fa-instagram"></i></a>
-                    <a class="social-btn" href="#"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <h5>Sobre Andean</h5>
-                <p style="font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.7;margin-bottom:20px;">Empresa peruana especializada en consultoría ambiental y formación especializada para la gestión sostenible del ambiente y la biodiversidad.</p>
-                <div style="display:flex;gap:16px;align-items:center;">
-                    <div style="text-align:center;">
-                        <div style="font-size:1.6rem;font-weight:800;color:#fff;letter-spacing:-.02em;" class="counter-val" data-target="5">0</div>
-                        <div style="font-size:.7rem;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.08em;">Años</div>
-                    </div>
-                    <div style="width:1px;height:36px;background:rgba(255,255,255,.1);"></div>
-                    <div style="text-align:center;">
-                        <div style="font-size:1.6rem;font-weight:800;color:#fff;letter-spacing:-.02em;" class="counter-val" data-target="200">0</div>
-                        <div style="font-size:.7rem;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.08em;">Estudiantes</div>
-                    </div>
-                    <div style="width:1px;height:36px;background:rgba(255,255,255,.1);"></div>
-                    <div style="text-align:center;">
-                        <div style="font-size:1.6rem;font-weight:800;color:#fff;letter-spacing:-.02em;" class="counter-val" data-target="12">0</div>
-                        <div style="font-size:.7rem;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.08em;">Proyectos</div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <h5>Boletín Informativo</h5>
-                <p style="font-size:.85rem;color:rgba(255,255,255,.5);margin-bottom:16px;">Suscríbete para recibir noticias sobre nuevos cursos y novedades ambientales.</p>
-                <div class="newsletter-form">
-                    <input type="email" placeholder="Tu correo electrónico">
-                    <button type="button">Suscribir</button>
-                </div>
-            </div>
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-3 col-md-6">
+        <div class="footer-brand">
+          <img src="img/Andeanlogo.png" alt="Andean Consulting">
         </div>
-        <hr class="footer-divider">
-        <div class="footer-bottom">
-            <span>&copy; 2025 Andean Consulting & Environmental Solutions S.A.C.</span>
-            <div class="footer-bottom-links">
-                <a href="index.html">Inicio</a>
-                <a href="#">Cookies</a>
-                <a href="#">Ayuda</a>
-                <a href="#">FAQ</a>
-            </div>
+        <p class="footer-desc">Empresa peruana especializada en consultoría ambiental y formación especializada para la gestión sostenible del ambiente y la biodiversidad.</p>
+        <div style="margin-top:24px">
+          <a class="social-link" href="#"><i class="fab fa-facebook-f"></i></a>
+          <a class="social-link" href="#"><i class="fab fa-instagram"></i></a>
+          <a class="social-link" href="#"><i class="fab fa-linkedin-in"></i></a>
         </div>
+      </div>
+      <div class="col-lg-2 col-md-6">
+        <div class="footer-heading">Navegación</div>
+        <a class="footer-link" href="index.html">Inicio</a>
+        <a class="footer-link" href="about.html">Nosotros</a>
+        <a class="footer-link" href="courses.html">Cursos</a>
+        <a class="footer-link" href="contact.html">Contacto</a>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="footer-heading">Contacto</div>
+        <div class="footer-contact-row"><i class="fas fa-map-marker-alt"></i><span>Cusco, Perú</span></div>
+        <div class="footer-contact-row"><i class="fas fa-phone-alt"></i><span>+51 XXX XXX XXX</span></div>
+        <div class="footer-contact-row"><i class="fas fa-envelope"></i><span>info@andean.pe</span></div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="footer-heading">Boletín Informativo</div>
+        <p style="font-size:.85rem;color:rgba(255,255,255,.45);margin-bottom:18px;line-height:1.7">Suscríbete para recibir noticias sobre nuevos cursos y novedades ambientales.</p>
+        <div class="newsletter-row">
+          <input type="email" placeholder="Tu correo electrónico">
+          <button type="button">Suscribir</button>
+        </div>
+      </div>
     </div>
+    <hr class="footer-divider">
+    <div class="footer-bottom">
+      <span>&copy; 2025 Andean Consulting &amp; Environmental Solutions S.A.C.</span>
+      <div class="footer-bottom-links">
+        <a href="#">Política de Privacidad</a>
+        <a href="#">Cookies</a>
+        <a href="#">FAQ</a>
+      </div>
+    </div>
+  </div>
 </footer>
 
 <a href="#" class="back-top" id="backTop"><i class="bi bi-arrow-up"></i></a>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-/* ── SPINNER ── */
-window.addEventListener('load', () => {
-    const s = document.getElementById('spinner');
-    s.classList.add('hide');
-    setTimeout(() => s.remove(), 500);
+/* SPINNER */
+window.addEventListener('load',()=>{
+  const s=document.getElementById('spinner');
+  s.classList.add('hide');
+  setTimeout(()=>s.remove(),600);
 });
 
-/* ── HERO CAROUSEL ── */
-let currentSlide = 0;
-const slides = document.querySelectorAll('.hero-slide');
-const dots   = document.querySelectorAll('.hero-dot');
-let autoTimer;
-
-function showSlide(n) {
-    slides[currentSlide].classList.remove('active');
-    dots[currentSlide].classList.remove('active');
-    currentSlide = (n + slides.length) % slides.length;
-    slides[currentSlide].classList.add('active');
-    dots[currentSlide].classList.add('active');
-    const c = slides[currentSlide].querySelector('.hero-content');
-    c.style.animation = 'none';
-    void c.offsetHeight;
-    c.style.animation = '';
+/* HERO CAROUSEL */
+let cur=0,autoT;
+const slides=document.querySelectorAll('.hero-slide');
+const hdots=document.querySelectorAll('.hero-dot');
+function showSlide(n){
+  slides[cur].classList.remove('active');
+  hdots[cur].classList.remove('active');
+  cur=(n+slides.length)%slides.length;
+  slides[cur].classList.add('active');
+  hdots[cur].classList.add('active');
+  const c=slides[cur].querySelector('.hero-content');
+  c.style.animation='none';void c.offsetHeight;c.style.animation='';
 }
-function moveSlide(dir) { clearInterval(autoTimer); showSlide(currentSlide + dir); startAuto(); }
-function goSlide(n)     { clearInterval(autoTimer); showSlide(n); startAuto(); }
-function startAuto()    { autoTimer = setInterval(() => showSlide(currentSlide + 1), 6000); }
-startAuto();
+function moveSlide(d){clearInterval(autoT);showSlide(cur+d);startHeroAuto()}
+function goSlide(n){clearInterval(autoT);showSlide(n);startHeroAuto()}
+function startHeroAuto(){autoT=setInterval(()=>showSlide(cur+1),6500)}
+startHeroAuto();
+let tx=0;
+document.getElementById('hero').addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});
+document.getElementById('hero').addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>44)moveSlide(dx<0?1:-1)},{passive:true});
 
-/* Touch swipe on hero */
-let touchX = 0;
-document.getElementById('hero').addEventListener('touchstart', e => touchX = e.touches[0].clientX, {passive:true});
-document.getElementById('hero').addEventListener('touchend', e => {
-    const dx = e.changedTouches[0].clientX - touchX;
-    if (Math.abs(dx) > 40) moveSlide(dx < 0 ? 1 : -1);
-}, {passive:true});
+/* NAVBAR SCROLL */
+const nav=document.getElementById('mainNav');
+window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>20),{passive:true});
 
-/* ── NAVBAR SCROLL SHADOW ── */
-const navbar = document.querySelector('.navbar');
-window.addEventListener('scroll', () => {
-    navbar.style.boxShadow = window.scrollY > 10
-        ? '0 2px 32px rgba(0,0,0,.12)'
-        : '0 1px 24px rgba(0,106,57,.08)';
-}, {passive:true});
-
-/* ── HERO PARALLAX (desktop only) ── */
-if (window.innerWidth > 768) {
-    window.addEventListener('scroll', () => {
-        const y = window.scrollY;
-        document.querySelectorAll('.hero-slide img').forEach(img => {
-            img.style.transform = `translateY(${y * 0.28}px)`;
-        });
-    }, {passive:true});
+/* PARALLAX HERO */
+if(innerWidth>768){
+  window.addEventListener('scroll',()=>{
+    document.querySelectorAll('.hero-slide img').forEach(img=>img.style.transform=`translateY(${scrollY*.22}px)`);
+  },{passive:true});
 }
 
-/* ── SCROLL FADE-IN ── */
-const fadeObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-        if (e.isIntersecting) {
-            e.target.classList.add('visible');
-            fadeObs.unobserve(e.target);
-        }
-    });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-document.querySelectorAll('.fade-up').forEach(el => fadeObs.observe(el));
+/* FADE-UP */
+const fo=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');fo.unobserve(e.target)}});
+},{threshold:.1,rootMargin:'0px 0px -36px 0px'});
+document.querySelectorAll('.fade-up').forEach(el=>fo.observe(el));
 
-/* ── ANIMATED COUNTERS ── */
-function animateCounter(el) {
-    const target = +el.dataset.target;
-    const dur = 1600;
-    const step = 16;
-    const inc  = target / (dur / step);
-    let cur = 0;
-    const t = setInterval(() => {
-        cur = Math.min(cur + inc, target);
-        el.textContent = Math.floor(cur) + (target >= 100 ? '+' : '+');
-        if (cur >= target) clearInterval(t);
-    }, step);
+/* COUNTERS */
+function runCounter(el){
+  const t=+el.dataset.target,dur=1800,step=16;
+  const inc=t/(dur/step);let c=0;
+  const ti=setInterval(()=>{c=Math.min(c+inc,t);el.textContent=Math.floor(c)+(t>=10?'+':'');if(c>=t)clearInterval(ti)},step);
 }
-const counterObs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-        if (e.isIntersecting) {
-            animateCounter(e.target);
-            counterObs.unobserve(e.target);
-        }
-    });
-}, { threshold: 0.5 });
-document.querySelectorAll('.counter-val').forEach(el => counterObs.observe(el));
+const co=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){runCounter(e.target);co.unobserve(e.target)}})},{threshold:.5});
+document.querySelectorAll('.counter-val').forEach(el=>co.observe(el));
 
-/* ── MAGNETIC HOVER on service & area cards (desktop) ── */
-if (window.innerWidth > 768) {
-    document.querySelectorAll('.service-card, .area-card, .course-card').forEach(card => {
-        card.addEventListener('mousemove', e => {
-            const r = card.getBoundingClientRect();
-            const x = e.clientX - r.left - r.width  / 2;
-            const y = e.clientY - r.top  - r.height / 2;
-            card.style.transform = `translateY(-6px) rotateX(${-y * 0.04}deg) rotateY(${x * 0.04}deg)`;
-        });
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = '';
-            card.style.transition = 'transform .4s ease, box-shadow .25s';
-        });
-        card.addEventListener('mouseenter', () => {
-            card.style.transition = 'box-shadow .25s';
-        });
+/* SERVICE CARD 3D TILT */
+if(innerWidth>768){
+  document.querySelectorAll('.service-card,.course-card').forEach(card=>{
+    card.addEventListener('mousemove',e=>{
+      const r=card.getBoundingClientRect();
+      const x=e.clientX-r.left-r.width/2,y=e.clientY-r.top-r.height/2;
+      card.style.transform=`translateY(-6px) rotateX(${-y*.035}deg) rotateY(${x*.035}deg)`;
     });
+    card.addEventListener('mouseleave',()=>{card.style.transform='';card.style.transition='transform .4s ease,box-shadow .3s'});
+    card.addEventListener('mouseenter',()=>{card.style.transition='box-shadow .3s'});
+  });
 }
 
-/* ── BACK TO TOP ── */
-const bt = document.getElementById('backTop');
-window.addEventListener('scroll', () => {
-    bt.classList.toggle('show', window.scrollY > 320);
-}, {passive:true});
-bt.addEventListener('click', e => { e.preventDefault(); window.scrollTo({top:0, behavior:'smooth'}); });
+/* BACK TO TOP */
+const bt=document.getElementById('backTop');
+window.addEventListener('scroll',()=>bt.classList.toggle('show',scrollY>300),{passive:true});
+bt.addEventListener('click',e=>{e.preventDefault();scrollTo({top:0,behavior:'smooth'})});
 
-/* ── AREAS SLIDER (mobile) ── */
-(function() {
-    const track  = document.getElementById('areasTrack');
-    const dots   = document.querySelectorAll('.areas-dot');
-    if (!track) return;
+/* SMOOTH ANCHOR */
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t&&a.getAttribute('href')!=='#'){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}
+  });
+});
 
-    const slides = track.querySelectorAll('.areas-slide');
-    let current = 0;
-    let startX = 0, startOffset = 0, dragging = false, didDrag = false;
+/* =========================================
+   MOBILE AUTO-SLIDER — AREAS (with drag + auto-advance)
+   ========================================= */
+(function(){
+  const track=document.getElementById('areaTrack');
+  const dotsEl=document.querySelectorAll('.areas-dot-m');
+  if(!track)return;
+  const slides=track.querySelectorAll('.areas-slide-m');
+  const total=slides.length;
+  let current=0,autoTimer,isDragging=false,didDrag=false,startX=0,startOff=0;
 
-    function getOffset(idx) {
-        // center the active slide with a small peek on the right
-        const slide = slides[idx];
-        const containerW = track.parentElement.offsetWidth;
-        const slideW = slide.offsetWidth;
-        const gap = 14;
-        let offset = idx * (slideW + gap) - (containerW - slideW) / 2;
-        return Math.max(0, offset);
-    }
+  function getOffset(idx){
+    const containerW=track.parentElement.offsetWidth;
+    const slideW=slides[idx].offsetWidth;
+    const gap=14;
+    const offset=idx*(slideW+gap)-Math.max(0,(containerW-slideW)/2);
+    return Math.max(0,offset);
+  }
 
-    function goTo(idx, animate = true) {
-        idx = Math.max(0, Math.min(slides.length - 1, idx));
-        current = idx;
-        track.style.transition = animate ? 'transform .45s cubic-bezier(.25,.46,.45,.94)' : 'none';
-        track.style.transform = `translateX(-${getOffset(idx)}px)`;
-        dots.forEach((d, i) => d.classList.toggle('active', i === idx));
-        // scale active slide
-        slides.forEach((s, i) => {
-            s.style.transition = 'transform .35s ease, opacity .35s ease';
-            s.style.transform  = i === idx ? 'scale(1)'    : 'scale(.93)';
-            s.style.opacity    = i === idx ? '1'           : '.65';
-        });
-    }
-
-    // pointer/touch events
-    track.addEventListener('pointerdown', e => {
-        dragging = true; didDrag = false;
-        startX = e.clientX;
-        startOffset = getOffset(current);
-        track.classList.add('grabbing');
-        track.setPointerCapture(e.pointerId);
+  function goTo(idx,animate){
+    idx=Math.max(0,Math.min(total-1,idx));
+    current=idx;
+    track.style.transition=animate===false?'none':'transform .5s cubic-bezier(.25,.46,.45,.94)';
+    track.style.transform=`translateX(-${getOffset(idx)}px)`;
+    slides.forEach((s,i)=>{
+      s.classList.toggle('active-slide',i===idx);
+      s.style.transition='opacity .4s,transform .4s';
+      s.style.opacity=i===idx?'1':'.65';
+      s.style.transform=i===idx?'scale(1)':'scale(.93)';
     });
-    track.addEventListener('pointermove', e => {
-        if (!dragging) return;
-        const dx = e.clientX - startX;
-        if (Math.abs(dx) > 4) didDrag = true;
-        track.style.transition = 'none';
-        track.style.transform  = `translateX(-${startOffset - dx}px)`;
-    });
-    track.addEventListener('pointerup', e => {
-        if (!dragging) return;
-        dragging = false;
-        track.classList.remove('grabbing');
-        const dx = e.clientX - startX;
-        if (Math.abs(dx) > 48) {
-            goTo(dx < 0 ? current + 1 : current - 1);
-        } else {
-            goTo(current);
-        }
-    });
-    // prevent link navigation when dragging
-    track.querySelectorAll('a').forEach(a => {
-        a.addEventListener('click', e => { if (didDrag) { e.preventDefault(); didDrag = false; } });
-    });
-    // dot clicks
-    dots.forEach(d => d.addEventListener('click', () => goTo(+d.dataset.idx)));
+    dotsEl.forEach((d,i)=>d.classList.toggle('active',i===idx));
+  }
 
-    // init
-    goTo(0, false);
-    window.addEventListener('resize', () => goTo(current, false));
+  function startAuto(){
+    clearInterval(autoTimer);
+    autoTimer=setInterval(()=>goTo((current+1)%total,true),3200); /* ← auto every 3.2s */
+  }
+  function stopAuto(){clearInterval(autoTimer)}
+
+  /* touch / pointer drag */
+  track.addEventListener('pointerdown',e=>{
+    stopAuto();isDragging=true;didDrag=false;
+    startX=e.clientX;startOff=getOffset(current);
+    track.classList.add('dragging');track.setPointerCapture(e.pointerId);
+  });
+  track.addEventListener('pointermove',e=>{
+    if(!isDragging)return;
+    if(Math.abs(e.clientX-startX)>5)didDrag=true;
+    track.style.transition='none';
+    track.style.transform=`translateX(-${startOff-(e.clientX-startX)}px)`;
+  });
+  track.addEventListener('pointerup',e=>{
+    if(!isDragging)return;
+    isDragging=false;track.classList.remove('dragging');
+    const dx=e.clientX-startX;
+    if(Math.abs(dx)>50){goTo(dx<0?current+1:current-1,true)}else{goTo(current,true)}
+    startAuto();
+  });
+  track.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>{if(didDrag){e.preventDefault();didDrag=false}}));
+  dotsEl.forEach(d=>d.addEventListener('click',()=>{stopAuto();goTo(+d.dataset.i,true);startAuto()}));
+
+  /* pause on hover/touch */
+  track.parentElement.addEventListener('mouseenter',stopAuto);
+  track.parentElement.addEventListener('mouseleave',startAuto);
+
+  goTo(0,false);
+  window.addEventListener('resize',()=>goTo(current,false));
+  startAuto(); /* kick off auto-slide */
 })();
-
-/* ── SMOOTH ANCHOR SCROLL ── */
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-        const target = document.querySelector(a.getAttribute('href'));
-        if (target && a.getAttribute('href') !== '#') {
-            e.preventDefault();
-            target.scrollIntoView({behavior:'smooth', block:'start'});
-        }
-    });
-});
 </script>
+</body>
+</html>
