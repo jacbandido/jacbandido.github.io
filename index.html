@@ -311,104 +311,194 @@
         }
         .btn-primary-custom:hover { background: #005530; color: #fff; transform: translateY(-2px); }
 
-        /* ── SERVICES CARDS (areas temáticas) ── */
-        .areas-section { padding: 80px 0; background: var(--off-white); }
-        .area-card {
-            background: #fff;
-            border-radius: 14px;
+        /* ── ESPECIALIDADES — nuevo layout ── */
+        .areas-section { padding: 80px 0; background: #0d1a12; }
+        .areas-section .section-label { background: rgba(0,106,57,.35); color: #6fcf97; }
+        .areas-section .section-title { color: #fff; }
+
+        .areas-grid {
+            display: grid;
+            grid-template-columns: 1.6fr 1fr 1fr;
+            grid-template-rows: 300px 300px;
+            gap: 12px;
+        }
+        .area-tile {
+            position: relative;
             overflow: hidden;
-            border: 1px solid var(--border);
-            transition: transform .25s, box-shadow .25s;
+            border-radius: 16px;
             cursor: pointer;
             text-decoration: none;
             display: block;
-            height: 100%;
         }
-        .area-card:hover { transform: translateY(-8px); box-shadow: 0 20px 60px rgba(0,0,0,.1); }
-        .area-card-img {
-            height: 200px;
-            overflow: hidden;
-            position: relative;
+        .area-tile:nth-child(1) { grid-row: 1 / 3; grid-column: 1; }
+        .area-tile:nth-child(2) { grid-row: 1; grid-column: 2; }
+        .area-tile:nth-child(3) { grid-row: 1; grid-column: 3; }
+        .area-tile:nth-child(4) { grid-row: 2; grid-column: 2; }
+        .area-tile:nth-child(5) { grid-row: 2; grid-column: 3; }
+        .area-tile img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform .6s cubic-bezier(.25,.46,.45,.94);
         }
-        .area-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
-        .area-card:hover .area-card-img img { transform: scale(1.06); }
-        .area-card-img-overlay {
+        .area-tile:hover img { transform: scale(1.07); }
+        .area-tile-overlay {
             position: absolute; inset: 0;
-            background: linear-gradient(180deg, transparent 40%, rgba(0,26,15,.55));
+            background: linear-gradient(170deg, rgba(0,0,0,.08) 0%, rgba(0,20,10,.82) 100%);
+            transition: background .4s;
         }
-        .area-card-body { padding: 22px; }
-        .area-card-body h5 { font-family: 'DM Sans', sans-serif; font-size: .95rem; font-weight: 700; margin-bottom: 6px; }
-        .area-card-body p  { font-size: .82rem; color: #777; margin: 0; line-height: 1.6; }
-        .area-badge {
+        .area-tile:hover .area-tile-overlay {
+            background: linear-gradient(170deg, rgba(0,106,57,.15) 0%, rgba(0,20,10,.9) 100%);
+        }
+        .area-tile-body {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 28px 24px;
+            transform: translateY(8px);
+            transition: transform .35s ease;
+        }
+        .area-tile:hover .area-tile-body { transform: none; }
+        .area-tile-tag {
             display: inline-block;
-            font-size: .68rem;
+            font-size: .62rem;
             font-weight: 700;
-            letter-spacing: .08em;
+            letter-spacing: .12em;
             text-transform: uppercase;
-            color: var(--green);
-            background: var(--green-light);
-            padding: 3px 10px;
+            color: #6fcf97;
+            background: rgba(0,106,57,.4);
+            border: 1px solid rgba(111,207,151,.25);
+            padding: 4px 10px;
             border-radius: 40px;
+            margin-bottom: 10px;
+            backdrop-filter: blur(4px);
+        }
+        .area-tile-body h4 {
+            color: #fff;
+            font-size: 1.05rem;
+            font-weight: 700;
+            line-height: 1.3;
             margin-bottom: 8px;
         }
+        .area-tile:nth-child(1) .area-tile-body h4 { font-size: 1.4rem; }
+        .area-tile-body p {
+            font-size: .8rem;
+            color: rgba(255,255,255,.65);
+            line-height: 1.6;
+            margin: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .4s ease, opacity .4s;
+            opacity: 0;
+        }
+        .area-tile:hover .area-tile-body p { max-height: 80px; opacity: 1; }
+        .area-tile-arrow {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 32px; height: 32px;
+            border-radius: 50%;
+            background: var(--green);
+            color: #fff;
+            font-size: .75rem;
+            margin-top: 12px;
+            opacity: 0;
+            transform: translateX(-8px);
+            transition: opacity .3s, transform .3s;
+        }
+        .area-tile:hover .area-tile-arrow { opacity: 1; transform: none; }
 
-        /* ── COURSES ── */
-        .courses-section { padding: 80px 0; }
+        /* mobile stack */
+        @media (max-width: 767px) {
+            .areas-grid {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 220px 220px;
+            }
+            .area-tile:nth-child(1) { grid-row: auto; }
+            .area-tile-body p { max-height: none; opacity: 1; }
+            .area-tile-arrow { opacity: 1; transform: none; }
+        }
+        @media (max-width: 480px) {
+            .areas-grid {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(4, 240px);
+            }
+        }
+
+        /* ── COURSES — nuevo layout ── */
+        .courses-section { padding: 80px 0; background: var(--off-white); }
         .course-card {
             background: #fff;
-            border-radius: 14px;
+            border-radius: 16px;
             overflow: hidden;
             border: 1px solid var(--border);
-            transition: transform .25s, box-shadow .25s;
+            transition: box-shadow .3s;
             height: 100%;
+            display: flex;
+            flex-direction: column;
         }
-        .course-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0,0,0,.08); }
-        .course-card-img { height: 200px; overflow: hidden; }
-        .course-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
-        .course-card:hover .course-card-img img { transform: scale(1.05); }
-        .course-card-body { padding: 22px 22px 16px; }
+        .course-card:hover { box-shadow: 0 24px 64px rgba(0,106,57,.13); }
+        .course-card-img {
+            height: 210px;
+            overflow: hidden;
+            position: relative;
+            flex-shrink: 0;
+        }
+        .course-card-img img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform .5s cubic-bezier(.25,.46,.45,.94);
+        }
+        .course-card:hover .course-card-img img { transform: scale(1.06); }
+        .course-num {
+            position: absolute; top: 16px; left: 16px;
+            font-size: .65rem; font-weight: 800;
+            letter-spacing: .16em;
+            color: #fff;
+            background: rgba(0,0,0,.45);
+            padding: 4px 10px; border-radius: 40px;
+            backdrop-filter: blur(6px);
+        }
+        .course-card-body { padding: 22px 22px 16px; flex: 1; }
         .course-status {
-            font-size: .7rem; font-weight: 700; letter-spacing: .1em;
-            text-transform: uppercase; color: var(--blue);
+            font-size: .65rem; font-weight: 700; letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--blue);
             background: var(--blue-light);
-            padding: 3px 10px; border-radius: 40px;
-            display: inline-block; margin-bottom: 10px;
+            padding: 4px 12px; border-radius: 40px;
+            display: inline-block; margin-bottom: 12px;
         }
-        .course-card-body h5 { font-family: 'DM Sans', sans-serif; font-size: .95rem; font-weight: 600; line-height: 1.4; margin: 0; }
+        .course-card-body h5 {
+            font-size: 1rem; font-weight: 700;
+            line-height: 1.4; margin: 0 0 16px;
+            color: var(--dark-text);
+        }
+        .course-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+        .course-tag {
+            font-size: .68rem; font-weight: 600;
+            color: #888; background: #f2f4f3;
+            padding: 4px 10px; border-radius: 4px;
+        }
         .course-card-footer {
             border-top: 1px solid var(--border);
-            padding: 12px 22px;
-            display: flex; gap: 0;
+            padding: 14px 22px;
+            display: flex; align-items: center; justify-content: space-between;
         }
+        .course-meta-row { display: flex; gap: 14px; }
         .course-meta {
-            flex: 1; text-align: center;
-            font-size: .75rem; color: #888;
-            padding: 6px 0;
+            font-size: .75rem; color: #999;
+            display: flex; align-items: center; gap: 5px;
         }
-        .course-meta:not(:last-child) { border-right: 1px solid var(--border); }
-        .course-meta i { color: var(--green); margin-right: 4px; }
-        .course-btns { display: flex; gap: 8px; padding: 0 22px 22px; }
-        .btn-course {
-            flex: 1; text-align: center;
+        .course-meta i { color: var(--green); font-size: .8rem; }
+        .btn-course-icon {
+            width: 36px; height: 36px;
+            border-radius: 50%;
             background: var(--green);
-            color: #fff; border: none;
-            padding: 10px; border-radius: 6px;
-            font-size: .82rem; font-weight: 600;
+            color: #fff;
+            display: flex; align-items: center; justify-content: center;
+            font-size: .8rem;
             text-decoration: none;
-            transition: background .2s;
+            transition: background .2s, transform .2s;
+            flex-shrink: 0;
         }
-        .btn-course:hover { background: #005530; color: #fff; }
-        .btn-course-outline {
-            flex: 1; text-align: center;
-            background: transparent;
-            color: var(--green);
-            border: 1.5px solid var(--green);
-            padding: 10px; border-radius: 6px;
-            font-size: .82rem; font-weight: 600;
-            text-decoration: none;
-            transition: background .2s, color .2s;
-        }
-        .btn-course-outline:hover { background: var(--green); color: #fff; }
+        .btn-course-icon:hover { background: #005530; color: #fff; transform: scale(1.1); }
+
 
         /* ── FOOTER ── */
         .footer { background: #0f1f16; padding: 64px 0 0; }
@@ -689,59 +779,68 @@
             <span class="section-label">Áreas de Trabajo</span>
             <h2 class="section-title">Nuestras Especialidades</h2>
         </div>
-        <div class="row g-4">
-            <div class="col-lg-3 col-sm-6 fade-up fade-up-delay-1">
-                <a class="area-card" href="courses.html">
-                    <div class="area-card-img">
-                        <img src="img/cat-1.jpg" alt="Ecología y Biodiversidad">
-                        <div class="area-card-img-overlay"></div>
-                    </div>
-                    <div class="area-card-body">
-                        <div class="area-badge">Cursos disponibles</div>
-                        <h5>Ecología y Biodiversidad</h5>
-                        <p>Inventarios, monitoreo y análisis de ecosistemas y especies.</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 col-sm-6 fade-up fade-up-delay-2">
-                <a class="area-card" href="courses.html">
-                    <div class="area-card-img">
-                        <img src="img/cat-2.jpg" alt="SIG y Teledetección">
-                        <div class="area-card-img-overlay"></div>
-                    </div>
-                    <div class="area-card-body">
-                        <div class="area-badge">Cursos disponibles</div>
-                        <h5>SIG y Teledetección</h5>
-                        <p>Análisis espacial, cartografía y procesamiento de imágenes satelitales.</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 col-sm-6 fade-up fade-up-delay-3">
-                <a class="area-card" href="courses.html">
-                    <div class="area-card-img">
-                        <img src="img/cat-3.jpg" alt="Monitoreo Ambiental">
-                        <div class="area-card-img-overlay"></div>
-                    </div>
-                    <div class="area-card-body">
-                        <div class="area-badge">Servicio disponible</div>
-                        <h5>Monitoreo Ambiental</h5>
-                        <p>Monitoreo de agua, suelo, aire y biodiversidad con equipos de campo.</p>
-                    </div>
-                </a>
-            </div>
-            <div class="col-lg-3 col-sm-6 fade-up fade-up-delay-4">
-                <a class="area-card" href="courses.html">
-                    <div class="area-card-img">
-                        <img src="img/cat-4.jpg" alt="Alquiler de Equipos">
-                        <div class="area-card-img-overlay"></div>
-                    </div>
-                    <div class="area-card-body">
-                        <div class="area-badge">Servicio disponible</div>
-                        <h5>Alquiler de Equipos</h5>
-                        <p>Equipos especializados para muestreo biológico y trabajo de campo científico.</p>
-                    </div>
-                </a>
-            </div>
+        <div class="areas-grid fade-up fade-up-delay-1">
+
+            <!-- Tile grande -->
+            <a class="area-tile" href="courses.html">
+                <img src="img/cat-1.jpg" alt="Ecología y Biodiversidad">
+                <div class="area-tile-overlay"></div>
+                <div class="area-tile-body">
+                    <div class="area-tile-tag">Cursos disponibles</div>
+                    <h4>Ecología y Biodiversidad</h4>
+                    <p>Inventarios de fauna y flora, monitoreo de ecosistemas y análisis de biodiversidad a escala local y regional.</p>
+                    <div class="area-tile-arrow"><i class="fas fa-arrow-right"></i></div>
+                </div>
+            </a>
+
+            <!-- Tile mediano top -->
+            <a class="area-tile" href="courses.html">
+                <img src="img/cat-2.jpg" alt="SIG y Teledetección">
+                <div class="area-tile-overlay"></div>
+                <div class="area-tile-body">
+                    <div class="area-tile-tag">Cursos disponibles</div>
+                    <h4>SIG y Teledetección</h4>
+                    <p>Análisis espacial, cartografía y procesamiento de imágenes satelitales aplicados al ambiente.</p>
+                    <div class="area-tile-arrow"><i class="fas fa-arrow-right"></i></div>
+                </div>
+            </a>
+
+            <!-- Tile mediano top -->
+            <a class="area-tile" href="courses.html">
+                <img src="img/cat-3.jpg" alt="Monitoreo Ambiental">
+                <div class="area-tile-overlay"></div>
+                <div class="area-tile-body">
+                    <div class="area-tile-tag">Servicio disponible</div>
+                    <h4>Monitoreo Ambiental</h4>
+                    <p>Agua, suelo, aire y biodiversidad con equipos especializados de campo.</p>
+                    <div class="area-tile-arrow"><i class="fas fa-arrow-right"></i></div>
+                </div>
+            </a>
+
+            <!-- Tile mediano bottom -->
+            <a class="area-tile" href="courses.html">
+                <img src="img/cat-4.jpg" alt="Alquiler de Equipos">
+                <div class="area-tile-overlay"></div>
+                <div class="area-tile-body">
+                    <div class="area-tile-tag">Servicio disponible</div>
+                    <h4>Alquiler de Equipos</h4>
+                    <p>Equipos especializados para muestreo biológico y trabajo de campo científico.</p>
+                    <div class="area-tile-arrow"><i class="fas fa-arrow-right"></i></div>
+                </div>
+            </a>
+
+            <!-- Tile mediano bottom -->
+            <a class="area-tile" href="contact.html">
+                <img src="img/about.jpg" alt="Consultoría Ambiental">
+                <div class="area-tile-overlay"></div>
+                <div class="area-tile-body">
+                    <div class="area-tile-tag">Servicio disponible</div>
+                    <h4>Consultoría &amp; Asesoría</h4>
+                    <p>Asesoría técnica para entidades públicas, privadas, ONGs y comunidades.</p>
+                    <div class="area-tile-arrow"><i class="fas fa-arrow-right"></i></div>
+                </div>
+            </a>
+
         </div>
     </div>
 </div>
@@ -756,55 +855,73 @@
         <div class="row g-4 justify-content-center">
             <div class="col-lg-4 col-md-6 fade-up fade-up-delay-1">
                 <div class="course-card">
-                    <div class="course-card-img"><img src="img/course-1.jpg" alt="Ecología"></div>
+                    <div class="course-card-img">
+                        <img src="img/course-1.jpg" alt="Ecología">
+                        <div class="course-num">01 — ECOLOGÍA</div>
+                    </div>
                     <div class="course-card-body">
                         <div class="course-status">Próximamente</div>
                         <h5>Introducción a la Ecología y Monitoreo de Biodiversidad</h5>
+                        <div class="course-tags">
+                            <span class="course-tag">Ecología</span>
+                            <span class="course-tag">Biodiversidad</span>
+                            <span class="course-tag">Campo</span>
+                        </div>
                     </div>
                     <div class="course-card-footer">
-                        <div class="course-meta"><i class="fas fa-user-tie"></i>Especialistas Andean</div>
-                        <div class="course-meta"><i class="fas fa-globe"></i>En línea</div>
-                        <div class="course-meta"><i class="fas fa-certificate"></i>Certificado</div>
-                    </div>
-                    <div class="course-btns">
-                        <a href="courses.html" class="btn-course-outline">Ver Más</a>
-                        <a href="courses.html" class="btn-course">Inscribirse</a>
+                        <div class="course-meta-row">
+                            <div class="course-meta"><i class="fas fa-globe"></i> En línea</div>
+                            <div class="course-meta"><i class="fas fa-certificate"></i> Certificado</div>
+                        </div>
+                        <a href="courses.html" class="btn-course-icon"><i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 fade-up fade-up-delay-2">
                 <div class="course-card">
-                    <div class="course-card-img"><img src="img/course-2.jpg" alt="SIG"></div>
+                    <div class="course-card-img">
+                        <img src="img/course-2.jpg" alt="SIG">
+                        <div class="course-num">02 — SIG</div>
+                    </div>
                     <div class="course-card-body">
                         <div class="course-status">Próximamente</div>
                         <h5>SIG y Teledetección Aplicados al Análisis Ambiental</h5>
+                        <div class="course-tags">
+                            <span class="course-tag">QGIS</span>
+                            <span class="course-tag">Teledetección</span>
+                            <span class="course-tag">Geoespacial</span>
+                        </div>
                     </div>
                     <div class="course-card-footer">
-                        <div class="course-meta"><i class="fas fa-user-tie"></i>Especialistas Andean</div>
-                        <div class="course-meta"><i class="fas fa-globe"></i>En línea</div>
-                        <div class="course-meta"><i class="fas fa-certificate"></i>Certificado</div>
-                    </div>
-                    <div class="course-btns">
-                        <a href="courses.html" class="btn-course-outline">Ver Más</a>
-                        <a href="courses.html" class="btn-course">Inscribirse</a>
+                        <div class="course-meta-row">
+                            <div class="course-meta"><i class="fas fa-globe"></i> En línea</div>
+                            <div class="course-meta"><i class="fas fa-certificate"></i> Certificado</div>
+                        </div>
+                        <a href="courses.html" class="btn-course-icon"><i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6 fade-up fade-up-delay-3">
                 <div class="course-card">
-                    <div class="course-card-img"><img src="img/course-3.jpg" alt="Bioinformática"></div>
+                    <div class="course-card-img">
+                        <img src="img/course-3.jpg" alt="Bioinformática">
+                        <div class="course-num">03 — BIOINFORMÁTICA</div>
+                    </div>
                     <div class="course-card-body">
                         <div class="course-status">Próximamente</div>
                         <h5>Bioinformática y Análisis Estadístico para Ecólogos</h5>
+                        <div class="course-tags">
+                            <span class="course-tag">R / Python</span>
+                            <span class="course-tag">Estadística</span>
+                            <span class="course-tag">Datos</span>
+                        </div>
                     </div>
                     <div class="course-card-footer">
-                        <div class="course-meta"><i class="fas fa-user-tie"></i>Especialistas Andean</div>
-                        <div class="course-meta"><i class="fas fa-globe"></i>En línea</div>
-                        <div class="course-meta"><i class="fas fa-certificate"></i>Certificado</div>
-                    </div>
-                    <div class="course-btns">
-                        <a href="courses.html" class="btn-course-outline">Ver Más</a>
-                        <a href="courses.html" class="btn-course">Inscribirse</a>
+                        <div class="course-meta-row">
+                            <div class="course-meta"><i class="fas fa-globe"></i> En línea</div>
+                            <div class="course-meta"><i class="fas fa-certificate"></i> Certificado</div>
+                        </div>
+                        <a href="courses.html" class="btn-course-icon"><i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
