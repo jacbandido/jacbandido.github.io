@@ -14,44 +14,37 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <style>
-:root {
-  --forest:  #0a1f14;
-  --green:   #006a39;
-  --lime:    #00b060;
-  --blue:    #00658c;
-  --offwhite:#f6f8f4;
-  --warm:    #fffef9;
-  --border:  #d8e4dd;
-  --text:    #1c2b22;
-  --muted:   #5a6e62;
-  --light-green: #e4f2eb;
-  --light-blue:  #e3f2f8;
+:root{
+  --forest:#0a1f14;--green:#006a39;--lime:#00b060;--blue:#00658c;
+  --offwhite:#f6f8f4;--border:#d8e4dd;--text:#1c2b22;--muted:#5a6e62;
+  --light-green:#e4f2eb;--light-blue:#e3f2f8;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Outfit',sans-serif;font-weight:400;color:var(--text);background:#fff;overflow-x:hidden}
 h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
 
-/* ── SPINNER ── */
 #spinner{position:fixed;inset:0;background:#fff;display:flex;align-items:center;justify-content:center;z-index:9999;transition:opacity .5s}
 #spinner.hide{opacity:0;pointer-events:none}
 .spin-ring{width:44px;height:44px;border:2px solid var(--light-green);border-top-color:var(--green);border-radius:50%;animation:spin .9s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* ── TOPBAR ── */
-.topbar{background:var(--forest);color:rgba(255,255,255,.6);font-size:.75rem;letter-spacing:.06em;padding:8px 0;font-family:'Outfit',sans-serif}
+/* TOPBAR */
+.topbar{background:var(--forest);color:rgba(255,255,255,.6);font-size:.75rem;letter-spacing:.06em;padding:8px 0}
 .topbar a{color:rgba(255,255,255,.55);text-decoration:none;transition:color .2s}
 .topbar a:hover{color:#fff}
 .topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .topbar-left{display:flex;gap:20px;align-items:center}
 .topbar-right{display:flex;gap:16px;align-items:center}
-.topbar-divider{width:1px;height:12px;background:rgba(255,255,255,.15)}
+.tb-div{width:1px;height:12px;background:rgba(255,255,255,.15)}
 
-/* ── NAVBAR ── */
+/* NAVBAR */
 .navbar{background:#fff;border-bottom:1px solid var(--border);padding:0;position:sticky;top:0;z-index:1000;transition:box-shadow .3s}
 .navbar.scrolled{box-shadow:0 2px 24px rgba(10,31,20,.1)}
 .navbar-brand{padding:14px 24px}
 .navbar-brand img{height:44px;object-fit:contain}
+.navbar-toggler{border:1px solid #ccc!important;padding:6px 10px;margin-right:16px;border-radius:3px;background:transparent}
+.navbar-toggler-icon{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%230a1f14' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")}
 .nav-link{font-family:'Outfit',sans-serif;font-weight:500;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text)!important;padding:1.5rem 1.1rem!important;transition:color .2s;position:relative}
 .nav-link::after{content:'';position:absolute;bottom:0;left:1.1rem;right:1.1rem;height:2px;background:var(--green);transform:scaleX(0);transition:transform .25s}
 .nav-link:hover,.nav-link.active{color:var(--green)!important}
@@ -59,16 +52,24 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
 .dropdown-menu{border:1px solid var(--border);border-radius:8px;box-shadow:0 12px 40px rgba(0,0,0,.1);padding:8px 0;margin-top:-1px}
 .dropdown-item{font-family:'Outfit',sans-serif;font-size:.82rem;letter-spacing:.04em;padding:10px 20px;color:var(--text);font-weight:500;text-transform:uppercase;transition:background .15s,color .15s}
 .dropdown-item:hover{background:var(--light-green);color:var(--green)}
-.btn-nav-cta{background:var(--green);color:#fff!important;font-weight:600;font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;padding:12px 26px!important;margin:10px 20px;border-radius:3px;position:relative;overflow:hidden;transition:background .2s,transform .15s;white-space:nowrap}
-.btn-nav-cta:hover{background:var(--forest)!important;color:#fff!important;transform:translateY(-1px)}
+/* CTA — bigger, no underline */
+.btn-nav-cta{
+  background:var(--green);color:#fff!important;font-weight:700;font-size:.88rem;
+  letter-spacing:.1em;text-transform:uppercase;text-decoration:none!important;
+  padding:18px 40px!important;margin:8px 20px;border-radius:3px;
+  display:inline-flex;align-items:center;gap:10px;
+  position:relative;overflow:hidden;transition:background .2s,transform .15s;
+  white-space:nowrap;line-height:1
+}
+.btn-nav-cta:hover,.btn-nav-cta:focus{background:var(--forest)!important;color:#fff!important;transform:translateY(-1px);text-decoration:none!important}
 .btn-nav-cta::after{content:'';position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.15) 50%,transparent 70%);transform:translateX(-100%);transition:transform .5s}
 .btn-nav-cta:hover::after{transform:translateX(100%)}
 
-/* ── HERO ── */
+/* HERO */
 .hero{position:relative;width:100%;overflow:hidden}
 .hero-slide{display:none;position:relative;width:100%;height:92vh;min-height:540px;max-height:900px}
 .hero-slide.active{display:flex}
-.hero-slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transform-origin:center}
+.hero-slide img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(105deg,rgba(8,24,14,.85) 0%,rgba(0,80,50,.3) 55%,rgba(0,101,140,.2) 100%)}
 .hero-content-wrap{position:relative;z-index:2;display:flex;align-items:center;width:100%;height:100%}
 .hero-content{max-width:720px;padding:0 5%;animation:heroIn .8s cubic-bezier(.22,1,.36,1) both}
@@ -82,52 +83,30 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
 .hero-btns{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
 .btn-hero-primary{background:var(--lime);color:#fff;font-weight:600;font-size:.85rem;letter-spacing:.06em;padding:15px 32px;border-radius:3px;border:none;text-decoration:none;transition:background .2s,transform .15s;text-transform:uppercase}
 .btn-hero-primary:hover{background:#009950;color:#fff;transform:translateY(-2px)}
-.btn-hero-link{color:rgba(255,255,255,.82);font-size:.85rem;letter-spacing:.04em;font-weight:500;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s}
+.btn-hero-link{color:rgba(255,255,255,.82);font-size:.85rem;font-weight:500;text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s}
 .btn-hero-link i{font-size:.75rem;transition:transform .2s}
 .btn-hero-link:hover{color:#fff}
 .btn-hero-link:hover i{transform:translateX(4px)}
-/* hero side panel */
-.hero-side{position:absolute;right:0;top:0;bottom:0;width:280px;display:flex;flex-direction:column;justify-content:flex-end;padding:48px 32px;z-index:2;gap:0}
+.hero-side{position:absolute;right:0;top:0;bottom:0;width:260px;display:flex;flex-direction:column;justify-content:flex-end;padding:48px 32px;z-index:2}
 .hero-stat{padding:20px 0;border-top:1px solid rgba(255,255,255,.12)}
 .hero-stat:last-child{border-bottom:1px solid rgba(255,255,255,.12)}
 .hero-stat-num{font-family:'Fraunces',serif;font-size:2.2rem;font-weight:600;color:#fff;line-height:1;margin-bottom:6px}
-.hero-stat-label{font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5)}
-/* dots */
+.hero-stat-label{font-size:.7rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.5)}
 .hero-dots{position:absolute;bottom:32px;left:5%;display:flex;gap:6px;z-index:10}
 .hero-dot{width:24px;height:2px;border-radius:2px;background:rgba(255,255,255,.3);cursor:pointer;border:none;transition:background .25s,width .35s}
 .hero-dot.active{background:#fff;width:44px}
-/* arrows */
-.hero-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#fff;width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10;transition:background .2s;font-size:1rem}
+.hero-arrow{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);color:#fff;width:46px;height:46px;border-radius:50%;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:10;transition:background .2s}
 .hero-arrow:hover{background:rgba(255,255,255,.2)}
 .hero-arrow.prev{left:24px}
 .hero-arrow.next{right:24px}
-@media(max-width:768px){.hero-side{display:none}.hero-arrow{display:none}.hero-slide{height:78vh}}
 
-/* ── SECTION COMMON ── */
+/* SECTION LABELS */
 .section-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:14px}
 .section-eyebrow-line{width:28px;height:1px;background:var(--green);flex-shrink:0}
 .section-eyebrow span{font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--green)}
 .section-title{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.6rem,4vw,2.5rem);line-height:1.2;letter-spacing:-.02em}
 
-/* ── SERVICES ── */
-.services-section{padding:96px 0;background:var(--offwhite)}
-.service-card{background:#fff;border:1px solid var(--border);border-radius:4px;padding:40px 32px;height:100%;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s}
-.service-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:3px;background:var(--green);transform:scaleX(0);transform-origin:left;transition:transform .35s}
-.service-card:hover{transform:translateY(-6px);box-shadow:0 20px 56px rgba(0,106,57,.12);border-color:transparent}
-.service-card:hover::before{transform:scaleX(1)}
-.service-num{font-family:'Fraunces',serif;font-size:2.8rem;font-weight:300;color:var(--border);line-height:1;margin-bottom:20px;transition:color .3s}
-.service-card:hover .service-num{color:var(--light-green)}
-.service-icon{width:48px;height:48px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;margin-bottom:18px}
-.si-g{background:var(--light-green);color:var(--green)}
-.si-b{background:var(--light-blue);color:var(--blue)}
-.service-card h5{font-family:'Fraunces',serif;font-size:1.1rem;font-weight:600;margin-bottom:12px;color:var(--text)}
-.service-card p{font-size:.88rem;color:var(--muted);line-height:1.7;margin:0}
-.service-card-link{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--green);text-decoration:none;margin-top:20px;opacity:0;transform:translateY(6px);transition:opacity .3s,transform .3s}
-.service-card:hover .service-card-link{opacity:1;transform:none}
-.service-card-link i{font-size:.7rem;transition:transform .2s}
-.service-card-link:hover i{transform:translateX(4px)}
-
-/* ── ABOUT ── */
+/* ABOUT */
 .about-section{padding:96px 0}
 .about-img-outer{position:relative}
 .about-img-wrap{border-radius:2px;overflow:hidden;height:520px}
@@ -135,7 +114,7 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
 .about-img-wrap:hover img{transform:scale(1.03)}
 .about-accent{position:absolute;bottom:-28px;right:-28px;width:180px;height:180px;border:2px solid var(--green);border-radius:2px;z-index:-1}
 .about-badge{position:absolute;bottom:32px;left:32px;background:var(--forest);color:#fff;padding:20px 28px;border-radius:2px}
-.about-badge-num{font-family:'Fraunces',serif;font-size:2.4rem;font-weight:600;line-height:1;color:#fff;display:block;margin-bottom:4px}
+.about-badge-num{font-family:'Fraunces',serif;font-size:2.4rem;font-weight:600;color:#fff;display:block;margin-bottom:4px}
 .about-badge-text{font-size:.78rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.6);display:block}
 .about-tag{display:inline-flex;align-items:center;gap:7px;background:var(--light-green);border-radius:3px;padding:7px 14px;font-size:.8rem;font-weight:500;color:var(--green);margin:4px 4px 4px 0}
 .about-tag i{font-size:.65rem}
@@ -144,12 +123,11 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
 .btn-outline-custom{display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--green);font-weight:600;font-size:.82rem;letter-spacing:.08em;padding:13px 28px;border-radius:3px;border:1px solid var(--green);text-decoration:none;transition:background .2s,color .2s,transform .15s;text-transform:uppercase;margin-left:12px}
 .btn-outline-custom:hover{background:var(--green);color:#fff;transform:translateY(-2px)}
 
-/* ── AREAS (desktop grid) ── */
+/* AREAS (desktop) */
 .areas-section{padding:96px 0;background:var(--forest)}
 .areas-section .section-eyebrow-line{background:var(--lime)}
 .areas-section .section-eyebrow span{color:var(--lime)}
 .areas-section .section-title{color:#fff}
-
 .areas-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;grid-template-rows:280px 280px;gap:10px}
 .area-tile{position:relative;overflow:hidden;border-radius:2px;cursor:pointer;text-decoration:none;display:block}
 .area-tile:nth-child(1){grid-row:1/3;grid-column:1}
@@ -159,7 +137,7 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
 .area-tile:nth-child(5){grid-row:2;grid-column:3}
 .area-tile img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.25,.46,.45,.94)}
 .area-tile:hover img{transform:scale(1.08)}
-.area-overlay{position:absolute;inset:0;background:linear-gradient(175deg,rgba(0,0,0,.04) 0%,rgba(8,24,14,.86) 100%);transition:background .4s}
+.area-overlay{position:absolute;inset:0;background:linear-gradient(175deg,rgba(0,0,0,.04) 0%,rgba(8,24,14,.86) 100%)}
 .area-tile:hover .area-overlay{background:linear-gradient(175deg,rgba(0,80,40,.12) 0%,rgba(8,24,14,.92) 100%)}
 .area-body{position:absolute;bottom:0;left:0;right:0;padding:28px 26px;transform:translateY(6px);transition:transform .4s ease}
 .area-tile:hover .area-body{transform:none}
@@ -171,64 +149,103 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
 .area-arrow{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--lime);color:#fff;font-size:.7rem;margin-top:14px;opacity:0;transform:translateX(-10px);transition:opacity .3s,transform .3s}
 .area-tile:hover .area-arrow{opacity:1;transform:none}
 
-/* ── AREAS MOBILE SLIDER (AUTO) ── */
-@media(max-width:767px){.areas-grid{display:none}}
-@media(min-width:768px){.areas-mobile-wrap{display:none}}
-.areas-mobile-wrap{position:relative;overflow:hidden}
-.areas-track-m{display:flex;gap:14px;transition:transform .5s cubic-bezier(.25,.46,.45,.94);will-change:transform;cursor:grab;user-select:none}
-.areas-track-m.dragging{cursor:grabbing;transition:none}
-.areas-slide-m{flex:0 0 80vw;max-width:320px;height:420px;border-radius:12px;overflow:hidden;position:relative;text-decoration:none;display:block;flex-shrink:0;opacity:.65;transform:scale(.93);transition:opacity .4s,transform .4s}
-.areas-slide-m.active-slide{opacity:1;transform:scale(1)}
-.areas-slide-m img{width:100%;height:100%;object-fit:cover}
-.slide-overlay-m{position:absolute;inset:0;background:linear-gradient(170deg,rgba(0,0,0,.05) 0%,rgba(8,24,14,.9) 100%)}
-.slide-body-m{position:absolute;bottom:0;left:0;right:0;padding:28px 24px}
+/* AREAS MOBILE — hide/show */
+@media(max-width:767px){.areas-grid{display:none!important}}
+@media(min-width:768px){.areas-mobile-wrap{display:none!important}}
+
+/* AREAS MOBILE SLIDER */
+.areas-mobile-wrap{position:relative;overflow:hidden;padding-bottom:4px;touch-action:pan-y}
+.areas-track-m{
+  display:flex;gap:14px;
+  will-change:transform;
+  transition:transform .5s cubic-bezier(.25,.46,.45,.94);
+  -webkit-user-select:none;user-select:none;
+}
+.areas-track-m.notransition{transition:none!important}
+.areas-slide-m{
+  flex:0 0 80vw;max-width:320px;height:420px;
+  border-radius:14px;overflow:hidden;position:relative;
+  text-decoration:none;display:block;flex-shrink:0;
+  opacity:.6;transform:scale(.92);
+  transition:opacity .4s,transform .4s;
+  -webkit-tap-highlight-color:transparent;
+}
+.areas-slide-m.act{opacity:1;transform:scale(1)}
+.areas-slide-m img{width:100%;height:100%;object-fit:cover;pointer-events:none;-webkit-user-drag:none}
+.slide-ov-m{position:absolute;inset:0;background:linear-gradient(170deg,rgba(0,0,0,.04) 0%,rgba(8,24,14,.9) 100%)}
+.slide-bd-m{position:absolute;bottom:0;left:0;right:0;padding:28px 24px}
 .slide-tag-m{display:inline-block;font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--lime);background:rgba(0,80,40,.5);border:1px solid rgba(0,176,96,.2);padding:4px 11px;border-radius:40px;margin-bottom:10px}
-.slide-body-m h4{color:#fff;font-family:'Fraunces',serif;font-size:1.2rem;font-weight:600;line-height:1.25;margin-bottom:8px}
-.slide-body-m p{font-size:.82rem;color:rgba(255,255,255,.68);line-height:1.6;margin:0 0 14px}
+.slide-bd-m h4{color:#fff;font-family:'Fraunces',serif;font-size:1.2rem;font-weight:600;line-height:1.25;margin-bottom:8px}
+.slide-bd-m p{font-size:.82rem;color:rgba(255,255,255,.68);line-height:1.6;margin:0 0 14px}
 .slide-arr-m{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:var(--lime);color:#fff;font-size:.78rem}
 .areas-dots-m{display:flex;justify-content:center;gap:8px;margin-top:28px}
-.areas-dot-m{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.25);border:none;cursor:pointer;transition:background .25s,width .3s;padding:0}
-.areas-dot-m.active{background:var(--lime);width:22px;border-radius:4px}
-/* peek gradient */
-.areas-mobile-wrap::after{content:'';position:absolute;top:0;right:0;width:44px;height:100%;background:linear-gradient(to right,transparent,var(--forest));pointer-events:none;z-index:2}
+.areas-dot-m{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.3);border:none;cursor:pointer;transition:background .25s,width .3s;padding:0}
+.areas-dot-m.act{background:var(--lime);width:24px;border-radius:4px}
+.areas-mobile-wrap::after{content:'';position:absolute;top:0;right:0;width:48px;height:calc(100% - 56px);background:linear-gradient(to right,transparent,var(--forest));pointer-events:none;z-index:2}
 
-/* ── COURSES ── */
-.courses-section{padding:96px 0;background:var(--offwhite)}
-.course-card{background:#fff;border:1px solid var(--border);border-radius:4px;overflow:hidden;height:100%;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s,border-color .3s}
-.course-card:hover{transform:translateY(-6px);box-shadow:0 24px 60px rgba(0,106,57,.12);border-color:transparent}
-.course-img{height:220px;overflow:hidden;position:relative;flex-shrink:0}
-.course-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s ease}
-.course-card:hover .course-img img{transform:scale(1.06)}
-.course-cat{position:absolute;top:16px;left:16px;font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:rgba(0,0,0,.48);padding:5px 12px;border-radius:40px;backdrop-filter:blur(6px)}
-.course-body{padding:26px 24px 18px;flex:1}
-.course-status{display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);background:var(--light-blue);padding:4px 12px;border-radius:40px;margin-bottom:14px}
-.course-body h5{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:600;line-height:1.45;margin:0 0 16px;color:var(--text)}
-.course-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:0}
-.ctag{font-size:.68rem;font-weight:500;color:var(--muted);background:var(--offwhite);border:1px solid var(--border);padding:4px 10px;border-radius:3px}
-.course-footer{border-top:1px solid var(--border);padding:14px 24px;display:flex;align-items:center;justify-content:space-between;margin-top:auto}
-.course-meta-row{display:flex;gap:14px}
-.cmeta{font-size:.75rem;color:#aaa;display:flex;align-items:center;gap:5px}
-.cmeta i{color:var(--green);font-size:.8rem}
-.btn-circle{width:36px;height:36px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.78rem;text-decoration:none;transition:background .2s,transform .2s;flex-shrink:0}
-.btn-circle:hover{background:var(--forest);color:#fff;transform:scale(1.1)}
-
-/* ── STATS BAND ── */
+/* STATS */
 .stats-band{background:var(--green);padding:56px 0}
-.stat-item{text-align:center;padding:0 16px}
+.stat-item{text-align:center;padding:20px 16px}
 .stat-item+.stat-item{border-left:1px solid rgba(255,255,255,.15)}
 .stat-num{font-family:'Fraunces',serif;font-size:3rem;font-weight:600;color:#fff;line-height:1;display:block;margin-bottom:6px}
 .stat-label{font-size:.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6)}
 
-/* ── FOOTER ── */
+/* COURSES — dark impactful */
+.courses-section{padding:100px 0;background:var(--forest);position:relative;overflow:hidden}
+.courses-section::before{content:'';position:absolute;top:-120px;right:-120px;width:500px;height:500px;border-radius:50%;background:rgba(0,176,96,.04);pointer-events:none}
+.courses-section .section-eyebrow-line{background:var(--lime)}
+.courses-section .section-eyebrow span{color:var(--lime)}
+.courses-section .section-title{color:#fff}
+/* featured */
+.course-featured{position:relative;border-radius:6px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;min-height:420px;margin-bottom:16px;text-decoration:none;transition:transform .3s}
+.course-featured:hover{transform:translateY(-4px)}
+.cf-img{position:relative;overflow:hidden}
+.cf-img img{width:100%;height:100%;object-fit:cover;transition:transform .6s}
+.course-featured:hover .cf-img img{transform:scale(1.05)}
+.cf-img::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent 60%,var(--forest) 100%)}
+.cf-body{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-left:none;padding:44px 40px;display:flex;flex-direction:column;justify-content:center;backdrop-filter:blur(8px)}
+.cf-num{font-family:'Fraunces',serif;font-size:4rem;font-weight:300;color:rgba(255,255,255,.07);line-height:1;margin-bottom:12px}
+.cf-badge{display:inline-block;font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--lime);background:rgba(0,176,96,.15);border:1px solid rgba(0,176,96,.3);padding:5px 14px;border-radius:40px;margin-bottom:16px}
+.cf-body h3{font-family:'Fraunces',serif;font-size:1.6rem;font-weight:600;color:#fff;line-height:1.3;margin-bottom:14px}
+.cf-body p{font-size:.9rem;color:rgba(255,255,255,.6);line-height:1.75;margin-bottom:28px}
+.cf-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:28px}
+.cftag{font-size:.68rem;font-weight:600;color:rgba(255,255,255,.5);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);padding:5px 12px;border-radius:3px}
+.btn-course-cta{display:inline-flex;align-items:center;gap:10px;background:var(--lime);color:#fff;font-weight:600;font-size:.82rem;letter-spacing:.08em;text-transform:uppercase;padding:14px 28px;border-radius:3px;text-decoration:none;transition:background .2s,transform .15s}
+.btn-course-cta:hover{background:#009950;color:#fff;transform:translateY(-2px)}
+.btn-course-cta i{font-size:.72rem;transition:transform .2s}
+.btn-course-cta:hover i{transform:translateX(4px)}
+/* small cards */
+.course-sm{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:6px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;transition:background .25s,transform .25s,border-color .25s;height:100%}
+.course-sm:hover{background:rgba(255,255,255,.07);border-color:rgba(0,176,96,.3);transform:translateY(-4px)}
+.cs-img{height:160px;overflow:hidden;position:relative;flex-shrink:0}
+.cs-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.course-sm:hover .cs-img img{transform:scale(1.06)}
+.cs-cat{position:absolute;top:12px;left:12px;font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#fff;background:rgba(0,0,0,.45);padding:4px 10px;border-radius:40px;backdrop-filter:blur(4px)}
+.cs-body{padding:22px 20px;flex:1}
+.cs-status{display:inline-block;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--lime);background:rgba(0,176,96,.12);padding:3px 10px;border-radius:40px;margin-bottom:10px}
+.cs-body h5{font-family:'Fraunces',serif;font-size:.98rem;font-weight:600;color:#fff;line-height:1.45;margin:0 0 12px}
+.cs-tags{display:flex;flex-wrap:wrap;gap:5px}
+.cstag{font-size:.65rem;font-weight:500;color:rgba(255,255,255,.4);background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);padding:3px 9px;border-radius:3px}
+.cs-footer{border-top:1px solid rgba(255,255,255,.07);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;margin-top:auto}
+.cs-meta{font-size:.74rem;color:rgba(255,255,255,.4);display:flex;align-items:center;gap:5px}
+.cs-meta i{color:var(--lime);font-size:.76rem}
+.btn-sm-c{width:32px;height:32px;border-radius:50%;background:var(--lime);color:#fff;display:flex;align-items:center;justify-content:center;font-size:.72rem;text-decoration:none;transition:background .2s,transform .2s;flex-shrink:0}
+.btn-sm-c:hover{background:#009950;color:#fff;transform:scale(1.1)}
+.all-courses-link{display:inline-flex;align-items:center;gap:8px;color:rgba(255,255,255,.6);font-size:.82rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(255,255,255,.15);padding:12px 24px;border-radius:3px;transition:color .2s,border-color .2s}
+.all-courses-link:hover{color:#fff;border-color:rgba(255,255,255,.4)}
+.all-courses-link i{font-size:.7rem;transition:transform .2s}
+.all-courses-link:hover i{transform:translateX(4px)}
+
+/* FOOTER */
 .footer{background:var(--forest);padding:72px 0 0}
 .footer-brand img{height:42px;filter:brightness(0) invert(1);opacity:.85;margin-bottom:20px}
 .footer-desc{font-size:.87rem;color:rgba(255,255,255,.5);line-height:1.75;max-width:300px}
 .footer-heading{font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:22px}
-.footer-link{display:block;font-size:.87rem;color:rgba(255,255,255,.6);text-decoration:none;margin-bottom:10px;transition:color .2s;padding-left:0;position:relative}
+.footer-link{display:block;font-size:.87rem;color:rgba(255,255,255,.6);text-decoration:none;margin-bottom:10px;transition:color .2s}
 .footer-link:hover{color:#fff}
-.footer-contact-row{display:flex;align-items:flex-start;gap:12px;margin-bottom:12px}
-.footer-contact-row i{color:var(--lime);margin-top:2px;flex-shrink:0;font-size:.85rem}
-.footer-contact-row span{font-size:.87rem;color:rgba(255,255,255,.6);line-height:1.5}
+.footer-cr{display:flex;align-items:flex-start;gap:12px;margin-bottom:12px}
+.footer-cr i{color:var(--lime);margin-top:2px;flex-shrink:0;font-size:.85rem}
+.footer-cr span{font-size:.87rem;color:rgba(255,255,255,.6);line-height:1.5}
 .social-link{width:36px;height:36px;border-radius:3px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.6);display:inline-flex;align-items:center;justify-content:center;font-size:.82rem;text-decoration:none;transition:background .2s,color .2s,border-color .2s;margin-right:6px}
 .social-link:hover{background:var(--lime);border-color:var(--lime);color:#fff}
 .newsletter-row{display:flex;gap:0;margin-top:6px}
@@ -242,20 +259,18 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
 .footer-bottom a:hover{color:rgba(255,255,255,.7)}
 .footer-bottom-links{display:flex;gap:20px;flex-wrap:wrap}
 
-/* ── BACK-TOP ── */
 .back-top{position:fixed;bottom:28px;right:28px;width:44px;height:44px;background:var(--green);color:#fff;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:1rem;text-decoration:none;opacity:0;pointer-events:none;transition:opacity .3s,transform .2s;z-index:999;box-shadow:0 4px 20px rgba(0,0,0,.2)}
 .back-top.show{opacity:1;pointer-events:all}
 .back-top:hover{transform:translateY(-3px);color:#fff}
 
-/* ── FADE IN ── */
 .fade-up{opacity:0;transform:translateY(36px);transition:opacity .6s ease,transform .6s ease}
 .fade-up.visible{opacity:1;transform:none}
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
 
-/* ── MOBILE TWEAKS ── */
 @media(max-width:992px){
-  .hero-content{max-width:600px}
-  .services-section,.about-section,.areas-section,.courses-section{padding:64px 0}
+  .hero-side,.hero-arrow{display:none}
+  .hero-slide{height:78vh}
+  .about-section,.areas-section,.stats-band,.courses-section{padding:64px 0}
   .about-img-wrap{height:320px;margin-bottom:56px}
   .about-accent{display:none}
   .navbar-collapse{background:#fff;border-top:1px solid var(--border);padding:8px 16px 20px}
@@ -264,6 +279,16 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
   .footer-bottom{flex-direction:column;text-align:center}
   .footer-bottom-links{justify-content:center}
   .stat-item+.stat-item{border-left:none;border-top:1px solid rgba(255,255,255,.12)}
+  .course-featured{grid-template-columns:1fr;min-height:auto}
+  .cf-img{height:240px}
+  .cf-img::after{background:linear-gradient(180deg,transparent 40%,var(--forest) 100%)}
+  .cf-body{padding:28px 24px;border:none;border-top:1px solid rgba(255,255,255,.08)}
+  .cf-num{font-size:2.5rem}
+  .cf-body h3{font-size:1.3rem}
+}
+@media(max-width:576px){
+  .hero-content h1{font-size:1.9rem}
+  .about-img-wrap{height:260px}
 }
 </style>
 </head>
@@ -277,14 +302,14 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
     <div class="topbar-inner">
       <div class="topbar-left">
         <span><i class="fas fa-map-marker-alt" style="color:var(--lime);margin-right:6px"></i>Cusco, Perú</span>
-        <div class="topbar-divider"></div>
+        <div class="tb-div"></div>
         <a href="mailto:info@andean.pe"><i class="fas fa-envelope" style="margin-right:5px"></i>info@andean.pe</a>
       </div>
       <div class="topbar-right">
         <a href="#"><i class="fab fa-facebook-f"></i></a>
         <a href="#"><i class="fab fa-instagram"></i></a>
         <a href="#"><i class="fab fa-linkedin-in"></i></a>
-        <div class="topbar-divider"></div>
+        <div class="tb-div"></div>
         <a href="contact.html" style="color:var(--lime);font-weight:600">Contáctanos →</a>
       </div>
     </div>
@@ -296,7 +321,7 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
   <a href="index.html" class="navbar-brand">
     <img src="img/Andeanlogo.png" alt="Andean Consulting">
   </a>
-  <button class="navbar-toggler border-0 me-3" data-bs-toggle="collapse" data-bs-target="#navCollapse">
+  <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navCollapse" aria-label="Menú">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navCollapse">
@@ -313,25 +338,22 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
       </div>
       <a href="contact.html" class="nav-item nav-link">Contacto</a>
     </div>
-    <a href="#servicios" class="btn-nav-cta d-none d-lg-flex align-items-center gap-2">
-      Ver Servicios <i class="fas fa-arrow-right" style="font-size:.7rem"></i>
+    <a href="#especialidades" class="btn-nav-cta d-none d-lg-flex">
+      Ver Servicios <i class="fas fa-arrow-right" style="font-size:.72rem"></i>
     </a>
   </div>
 </nav>
 
-<!-- HERO -->
+<!-- HERO — slide 1: SOLUCIONES TÉCNICAS / slide 2: CURSOS -->
 <div class="hero" id="hero">
-  <!-- Slide 1 -->
+
   <div class="hero-slide active">
     <img src="img/carousel-2.jpg" alt="Consultoría Ambiental">
     <div class="hero-overlay"></div>
     <div class="hero-content-wrap">
       <div class="container">
         <div class="hero-content">
-          <div class="hero-eyebrow">
-            <div class="hero-eyebrow-line"></div>
-            <span>Consultoría &amp; Servicios Ambientales</span>
-          </div>
+          <div class="hero-eyebrow"><div class="hero-eyebrow-line"></div><span>Consultoría &amp; Servicios Ambientales</span></div>
           <h1>Soluciones Técnicas para el <em>Ambiente</em> y la Biodiversidad</h1>
           <p>Levantamientos biológicos, monitoreo ambiental, alquiler de equipos especializados y asesoría técnica para entidades públicas, privadas y comunidades.</p>
           <div class="hero-btns">
@@ -342,31 +364,19 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
       </div>
     </div>
     <div class="hero-side">
-      <div class="hero-stat">
-        <div class="hero-stat-num counter-val" data-target="5">0</div>
-        <div class="hero-stat-label">Años de Experiencia</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num counter-val" data-target="200">0</div>
-        <div class="hero-stat-label">Estudiantes Formados</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num counter-val" data-target="12">0</div>
-        <div class="hero-stat-label">Proyectos Ejecutados</div>
-      </div>
+      <div class="hero-stat"><div class="hero-stat-num counter-val" data-target="5">0</div><div class="hero-stat-label">Años de Experiencia</div></div>
+      <div class="hero-stat"><div class="hero-stat-num counter-val" data-target="200">0</div><div class="hero-stat-label">Estudiantes Formados</div></div>
+      <div class="hero-stat"><div class="hero-stat-num counter-val" data-target="12">0</div><div class="hero-stat-label">Proyectos Ejecutados</div></div>
     </div>
   </div>
-  <!-- Slide 2 -->
+
   <div class="hero-slide">
     <img src="img/carousel-1.jpg" alt="Cursos Virtuales">
     <div class="hero-overlay"></div>
     <div class="hero-content-wrap">
       <div class="container">
         <div class="hero-content">
-          <div class="hero-eyebrow">
-            <div class="hero-eyebrow-line"></div>
-            <span>Cursos Virtuales Especializados</span>
-          </div>
+          <div class="hero-eyebrow"><div class="hero-eyebrow-line"></div><span>Cursos Virtuales Especializados</span></div>
           <h1>Aprende Ciencias Ambientales <em>desde Cualquier Lugar</em></h1>
           <p>Formación profesional en ecología, monitoreo ambiental, SIG, bioinformática y gestión de recursos naturales con expertos de campo.</p>
           <div class="hero-btns">
@@ -377,18 +387,9 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
       </div>
     </div>
     <div class="hero-side">
-      <div class="hero-stat">
-        <div class="hero-stat-num">3</div>
-        <div class="hero-stat-label">Cursos Disponibles</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">100%</div>
-        <div class="hero-stat-label">En Línea</div>
-      </div>
-      <div class="hero-stat">
-        <div class="hero-stat-num">✓</div>
-        <div class="hero-stat-label">Certificados</div>
-      </div>
+      <div class="hero-stat"><div class="hero-stat-num">3</div><div class="hero-stat-label">Cursos Disponibles</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">100%</div><div class="hero-stat-label">En Línea</div></div>
+      <div class="hero-stat"><div class="hero-stat-num">✓</div><div class="hero-stat-label">Con Certificado</div></div>
     </div>
   </div>
 
@@ -400,68 +401,13 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
   </div>
 </div>
 
-<!-- SERVICES -->
-<div class="services-section" id="servicios">
-  <div class="container">
-    <div class="row align-items-end mb-5 fade-up">
-      <div class="col-lg-6">
-        <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span>Lo que hacemos</span></div>
-        <h2 class="section-title">Nuestros Servicios</h2>
-      </div>
-      <div class="col-lg-6 text-lg-end mt-3 mt-lg-0">
-        <a href="about.html" class="btn-outline-custom" style="margin-left:0">Ver Todo <i class="fas fa-arrow-right" style="font-size:.7rem"></i></a>
-      </div>
-    </div>
-    <div class="row g-4">
-      <div class="col-lg-3 col-sm-6 fade-up d1">
-        <div class="service-card">
-          <div class="service-num">01</div>
-          <div class="service-icon si-g"><i class="fas fa-graduation-cap"></i></div>
-          <h5>Cursos Virtuales</h5>
-          <p>Talleres especializados en ecología, SIG, modelamiento ambiental y bioinformática dictados por expertos con experiencia de campo.</p>
-          <a href="courses.html" class="service-card-link">Ver Cursos <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6 fade-up d2">
-        <div class="service-card">
-          <div class="service-num">02</div>
-          <div class="service-icon si-b"><i class="fas fa-leaf"></i></div>
-          <h5>Levantamientos Biológicos</h5>
-          <p>Líneas base físicas y biológicas, inventarios de biodiversidad y monitoreo de ecosistemas a nivel nacional.</p>
-          <a href="about.html" class="service-card-link">Saber Más <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6 fade-up d3">
-        <div class="service-card">
-          <div class="service-num">03</div>
-          <div class="service-icon si-g"><i class="fas fa-microscope"></i></div>
-          <h5>Alquiler de Equipos</h5>
-          <p>Equipos especializados para monitoreo biológico, muestreo científico y trabajo de campo ambiental.</p>
-          <a href="contact.html" class="service-card-link">Consultar <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6 fade-up d4">
-        <div class="service-card">
-          <div class="service-num">04</div>
-          <div class="service-icon si-b"><i class="fas fa-laptop-code"></i></div>
-          <h5>Soluciones Tecnológicas</h5>
-          <p>Sistemas de información geográfica, teledetección, modelamiento ambiental y análisis de datos geoespaciales.</p>
-          <a href="about.html" class="service-card-link">Explorar <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ABOUT -->
+<!-- SOBRE NOSOTROS -->
 <div class="about-section">
   <div class="container">
     <div class="row g-5 align-items-center">
       <div class="col-lg-6 fade-up">
         <div class="about-img-outer">
-          <div class="about-img-wrap">
-            <img src="img/about.jpg" alt="Andean Consulting – Trabajo de campo">
-          </div>
+          <div class="about-img-wrap"><img src="img/about.jpg" alt="Andean Consulting – Trabajo de campo"></div>
           <div class="about-accent"></div>
           <div class="about-badge">
             <span class="about-badge-num">+5</span>
@@ -472,12 +418,8 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
       <div class="col-lg-6 fade-up d2">
         <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span>Sobre Nosotros</span></div>
         <h2 class="section-title mb-4">Bienvenidos a Andean Consulting &amp; Environmental Solutions</h2>
-        <p style="font-size:.95rem;line-height:1.8;margin-bottom:16px;color:var(--muted)">
-          Somos una empresa peruana especializada en consultoría ambiental, formación especializada y soluciones tecnológicas para la gestión sostenible del ambiente y la biodiversidad. Trabajamos con entidades públicas, privadas, ONGs y comunidades a nivel nacional.
-        </p>
-        <p style="font-size:.95rem;line-height:1.8;margin-bottom:30px;color:var(--muted)">
-          Nuestra propuesta educativa virtual te permite acceder a conocimientos especializados en ecología, ciencias ambientales, SIG y bioinformática desde cualquier lugar del mundo.
-        </p>
+        <p style="font-size:.95rem;line-height:1.8;margin-bottom:16px;color:var(--muted)">Somos una empresa peruana especializada en consultoría ambiental, formación especializada y soluciones tecnológicas para la gestión sostenible del ambiente y la biodiversidad. Trabajamos con entidades públicas, privadas, ONGs y comunidades a nivel nacional.</p>
+        <p style="font-size:.95rem;line-height:1.8;margin-bottom:30px;color:var(--muted)">Nuestra propuesta educativa virtual te permite acceder a conocimientos especializados en ecología, ciencias ambientales, SIG y bioinformática desde cualquier lugar del mundo.</p>
         <div style="margin-bottom:36px">
           <span class="about-tag"><i class="fas fa-check"></i> Cursos Virtuales</span>
           <span class="about-tag"><i class="fas fa-check"></i> Levantamientos Biológicos</span>
@@ -493,124 +435,34 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
   </div>
 </div>
 
-<!-- AREAS -->
-<div class="areas-section">
+<!-- NUESTRAS ESPECIALIDADES -->
+<div class="areas-section" id="especialidades">
   <div class="container">
     <div class="text-center mb-5 fade-up">
       <div class="section-eyebrow justify-content-center"><div class="section-eyebrow-line"></div><span>Áreas de Trabajo</span></div>
       <h2 class="section-title">Nuestras Especialidades</h2>
     </div>
 
-    <!-- DESKTOP GRID -->
+    <!-- desktop -->
     <div class="areas-grid fade-up d1">
-      <a class="area-tile" href="courses.html">
-        <img src="img/cat-1.jpg" alt="Ecología y Biodiversidad">
-        <div class="area-overlay"></div>
-        <div class="area-body">
-          <div class="area-tag"><i class="fas fa-circle" style="font-size:.4rem"></i> Cursos disponibles</div>
-          <h4>Ecología y Biodiversidad</h4>
-          <p>Inventarios de fauna y flora, monitoreo de ecosistemas y análisis de biodiversidad a escala local y regional.</p>
-          <div class="area-arrow"><i class="fas fa-arrow-right"></i></div>
-        </div>
-      </a>
-      <a class="area-tile" href="courses.html">
-        <img src="img/cat-2.jpg" alt="SIG y Teledetección">
-        <div class="area-overlay"></div>
-        <div class="area-body">
-          <div class="area-tag"><i class="fas fa-circle" style="font-size:.4rem"></i> Cursos disponibles</div>
-          <h4>SIG y Teledetección</h4>
-          <p>Análisis espacial, cartografía y procesamiento de imágenes satelitales aplicados al ambiente.</p>
-          <div class="area-arrow"><i class="fas fa-arrow-right"></i></div>
-        </div>
-      </a>
-      <a class="area-tile" href="courses.html">
-        <img src="img/cat-3.jpg" alt="Monitoreo Ambiental">
-        <div class="area-overlay"></div>
-        <div class="area-body">
-          <div class="area-tag"><i class="fas fa-circle" style="font-size:.4rem"></i> Servicio disponible</div>
-          <h4>Monitoreo Ambiental</h4>
-          <p>Agua, suelo, aire y biodiversidad con equipos especializados de campo.</p>
-          <div class="area-arrow"><i class="fas fa-arrow-right"></i></div>
-        </div>
-      </a>
-      <a class="area-tile" href="courses.html">
-        <img src="img/cat-4.jpg" alt="Alquiler de Equipos">
-        <div class="area-overlay"></div>
-        <div class="area-body">
-          <div class="area-tag"><i class="fas fa-circle" style="font-size:.4rem"></i> Servicio disponible</div>
-          <h4>Alquiler de Equipos</h4>
-          <p>Equipos especializados para muestreo biológico y trabajo de campo científico.</p>
-          <div class="area-arrow"><i class="fas fa-arrow-right"></i></div>
-        </div>
-      </a>
-      <a class="area-tile" href="contact.html">
-        <img src="img/about.jpg" alt="Consultoría Ambiental">
-        <div class="area-overlay"></div>
-        <div class="area-body">
-          <div class="area-tag"><i class="fas fa-circle" style="font-size:.4rem"></i> Servicio disponible</div>
-          <h4>Consultoría &amp; Asesoría</h4>
-          <p>Asesoría técnica para entidades públicas, privadas, ONGs y comunidades.</p>
-          <div class="area-arrow"><i class="fas fa-arrow-right"></i></div>
-        </div>
-      </a>
+      <a class="area-tile" href="courses.html"><img src="img/cat-1.jpg" alt="Ecología"><div class="area-overlay"></div><div class="area-body"><div class="area-tag"><i class="fas fa-circle" style="font-size:.4rem"></i> Cursos disponibles</div><h4>Ecología y Biodiversidad</h4><p>Inventarios de fauna y flora, monitoreo de ecosistemas y análisis de biodiversidad.</p><div class="area-arrow"><i class="fas fa-arrow-right"></i></div></div></a>
+      <a class="area-tile" href="courses.html"><img src="img/cat-2.jpg" alt="SIG"><div class="area-overlay"></div><div class="area-body"><div class="area-tag"><i class="fas fa-circle" style="font-size:.4rem"></i> Cursos disponibles</div><h4>SIG y Teledetección</h4><p>Análisis espacial, cartografía y procesamiento de imágenes satelitales.</p><div class="area-arrow"><i class="fas fa-arrow-right"></i></div></div></a>
+      <a class="area-tile" href="courses.html"><img src="img/cat-3.jpg" alt="Monitoreo"><div class="area-overlay"></div><div class="area-body"><div class="area-tag"><i class="fas fa-circle" style="font-size:.4rem"></i> Servicio disponible</div><h4>Monitoreo Ambiental</h4><p>Agua, suelo, aire y biodiversidad con equipos especializados de campo.</p><div class="area-arrow"><i class="fas fa-arrow-right"></i></div></div></a>
+      <a class="area-tile" href="courses.html"><img src="img/cat-4.jpg" alt="Equipos"><div class="area-overlay"></div><div class="area-body"><div class="area-tag"><i class="fas fa-circle" style="font-size:.4rem"></i> Servicio disponible</div><h4>Alquiler de Equipos</h4><p>Equipos para muestreo biológico y trabajo de campo científico.</p><div class="area-arrow"><i class="fas fa-arrow-right"></i></div></div></a>
+      <a class="area-tile" href="contact.html"><img src="img/about.jpg" alt="Consultoría"><div class="area-overlay"></div><div class="area-body"><div class="area-tag"><i class="fas fa-circle" style="font-size:.4rem"></i> Servicio disponible</div><h4>Consultoría &amp; Asesoría</h4><p>Asesoría técnica para entidades públicas, privadas, ONGs y comunidades.</p><div class="area-arrow"><i class="fas fa-arrow-right"></i></div></div></a>
     </div>
 
-    <!-- MOBILE AUTO-SLIDER -->
-    <div class="areas-mobile-wrap">
-      <div class="areas-track-m" id="areaTrack">
-        <a class="areas-slide-m active-slide" href="courses.html">
-          <img src="img/cat-1.jpg" alt="Ecología">
-          <div class="slide-overlay-m"></div>
-          <div class="slide-body-m">
-            <div class="slide-tag-m">Cursos disponibles</div>
-            <h4>Ecología y Biodiversidad</h4>
-            <p>Inventarios de fauna y flora, monitoreo y análisis de ecosistemas.</p>
-            <div class="slide-arr-m"><i class="fas fa-arrow-right"></i></div>
-          </div>
-        </a>
-        <a class="areas-slide-m" href="courses.html">
-          <img src="img/cat-2.jpg" alt="SIG">
-          <div class="slide-overlay-m"></div>
-          <div class="slide-body-m">
-            <div class="slide-tag-m">Cursos disponibles</div>
-            <h4>SIG y Teledetección</h4>
-            <p>Análisis espacial, cartografía y procesamiento de imágenes satelitales.</p>
-            <div class="slide-arr-m"><i class="fas fa-arrow-right"></i></div>
-          </div>
-        </a>
-        <a class="areas-slide-m" href="courses.html">
-          <img src="img/cat-3.jpg" alt="Monitoreo">
-          <div class="slide-overlay-m"></div>
-          <div class="slide-body-m">
-            <div class="slide-tag-m">Servicio disponible</div>
-            <h4>Monitoreo Ambiental</h4>
-            <p>Agua, suelo, aire y biodiversidad con equipos de campo especializados.</p>
-            <div class="slide-arr-m"><i class="fas fa-arrow-right"></i></div>
-          </div>
-        </a>
-        <a class="areas-slide-m" href="courses.html">
-          <img src="img/cat-4.jpg" alt="Equipos">
-          <div class="slide-overlay-m"></div>
-          <div class="slide-body-m">
-            <div class="slide-tag-m">Servicio disponible</div>
-            <h4>Alquiler de Equipos</h4>
-            <p>Equipos para muestreo biológico y trabajo de campo científico.</p>
-            <div class="slide-arr-m"><i class="fas fa-arrow-right"></i></div>
-          </div>
-        </a>
-        <a class="areas-slide-m" href="contact.html">
-          <img src="img/about.jpg" alt="Consultoría">
-          <div class="slide-overlay-m"></div>
-          <div class="slide-body-m">
-            <div class="slide-tag-m">Servicio disponible</div>
-            <h4>Consultoría &amp; Asesoría</h4>
-            <p>Asesoría técnica para entidades públicas, privadas y comunidades.</p>
-            <div class="slide-arr-m"><i class="fas fa-arrow-right"></i></div>
-          </div>
-        </a>
+    <!-- mobile slider -->
+    <div class="areas-mobile-wrap" id="areasMobileWrap">
+      <div class="areas-track-m" id="areaTrackM">
+        <a class="areas-slide-m act" href="courses.html"><img src="img/cat-1.jpg" alt="Ecología"><div class="slide-ov-m"></div><div class="slide-bd-m"><div class="slide-tag-m">Cursos disponibles</div><h4>Ecología y Biodiversidad</h4><p>Inventarios de fauna y flora, monitoreo y análisis de ecosistemas.</p><div class="slide-arr-m"><i class="fas fa-arrow-right"></i></div></div></a>
+        <a class="areas-slide-m" href="courses.html"><img src="img/cat-2.jpg" alt="SIG"><div class="slide-ov-m"></div><div class="slide-bd-m"><div class="slide-tag-m">Cursos disponibles</div><h4>SIG y Teledetección</h4><p>Análisis espacial, cartografía y procesamiento de imágenes satelitales.</p><div class="slide-arr-m"><i class="fas fa-arrow-right"></i></div></div></a>
+        <a class="areas-slide-m" href="courses.html"><img src="img/cat-3.jpg" alt="Monitoreo"><div class="slide-ov-m"></div><div class="slide-bd-m"><div class="slide-tag-m">Servicio disponible</div><h4>Monitoreo Ambiental</h4><p>Agua, suelo, aire y biodiversidad con equipos de campo especializados.</p><div class="slide-arr-m"><i class="fas fa-arrow-right"></i></div></div></a>
+        <a class="areas-slide-m" href="courses.html"><img src="img/cat-4.jpg" alt="Equipos"><div class="slide-ov-m"></div><div class="slide-bd-m"><div class="slide-tag-m">Servicio disponible</div><h4>Alquiler de Equipos</h4><p>Equipos para muestreo biológico y trabajo de campo científico.</p><div class="slide-arr-m"><i class="fas fa-arrow-right"></i></div></div></a>
+        <a class="areas-slide-m" href="contact.html"><img src="img/about.jpg" alt="Consultoría"><div class="slide-ov-m"></div><div class="slide-bd-m"><div class="slide-tag-m">Servicio disponible</div><h4>Consultoría &amp; Asesoría</h4><p>Asesoría técnica para entidades públicas, privadas y comunidades.</p><div class="slide-arr-m"><i class="fas fa-arrow-right"></i></div></div></a>
       </div>
       <div class="areas-dots-m" id="areaDotsM">
-        <button class="areas-dot-m active" data-i="0"></button>
+        <button class="areas-dot-m act" data-i="0"></button>
         <button class="areas-dot-m" data-i="1"></button>
         <button class="areas-dot-m" data-i="2"></button>
         <button class="areas-dot-m" data-i="3"></button>
@@ -620,114 +472,58 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
   </div>
 </div>
 
-<!-- STATS BAND -->
+<!-- STATS -->
 <div class="stats-band">
   <div class="container">
     <div class="row g-0">
-      <div class="col-6 col-md-3 stat-item fade-up">
-        <span class="stat-num counter-val" data-target="5">0</span>
-        <span class="stat-label">Años de experiencia</span>
-      </div>
-      <div class="col-6 col-md-3 stat-item fade-up d1">
-        <span class="stat-num counter-val" data-target="200">0</span>
-        <span class="stat-label">Estudiantes formados</span>
-      </div>
-      <div class="col-6 col-md-3 stat-item fade-up d2">
-        <span class="stat-num counter-val" data-target="12">0</span>
-        <span class="stat-label">Proyectos ejecutados</span>
-      </div>
-      <div class="col-6 col-md-3 stat-item fade-up d3">
-        <span class="stat-num counter-val" data-target="3">0</span>
-        <span class="stat-label">Cursos disponibles</span>
-      </div>
+      <div class="col-6 col-md-3 stat-item fade-up"><span class="stat-num counter-val" data-target="5">0</span><span class="stat-label">Años de experiencia</span></div>
+      <div class="col-6 col-md-3 stat-item fade-up d1"><span class="stat-num counter-val" data-target="200">0</span><span class="stat-label">Estudiantes formados</span></div>
+      <div class="col-6 col-md-3 stat-item fade-up d2"><span class="stat-num counter-val" data-target="12">0</span><span class="stat-label">Proyectos ejecutados</span></div>
+      <div class="col-6 col-md-3 stat-item fade-up d3"><span class="stat-num counter-val" data-target="3">0</span><span class="stat-label">Cursos disponibles</span></div>
     </div>
   </div>
 </div>
 
-<!-- COURSES -->
-<div class="courses-section">
+<!-- CURSOS DESTACADOS -->
+<div class="courses-section" id="cursos">
   <div class="container">
-    <div class="row align-items-end mb-5 fade-up">
-      <div class="col-lg-6">
-        <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span>Formación</span></div>
+    <div class="d-flex align-items-end justify-content-between mb-5 flex-wrap gap-3 fade-up">
+      <div>
+        <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span>Formación Especializada</span></div>
         <h2 class="section-title">Cursos Destacados</h2>
       </div>
-      <div class="col-lg-6 text-lg-end mt-3 mt-lg-0">
-        <a href="courses.html" class="btn-outline-custom" style="margin-left:0">Ver Todos los Cursos <i class="fas fa-arrow-right" style="font-size:.7rem"></i></a>
-      </div>
+      <a href="courses.html" class="all-courses-link">Ver Todos <i class="fas fa-arrow-right"></i></a>
     </div>
-    <div class="row g-4 justify-content-center">
-      <div class="col-lg-4 col-md-6 fade-up d1">
-        <div class="course-card">
-          <div class="course-img">
-            <img src="img/course-1.jpg" alt="Ecología">
-            <div class="course-cat">01 — Ecología</div>
-          </div>
-          <div class="course-body">
-            <div class="course-status">Próximamente</div>
-            <h5>Introducción a la Ecología y Monitoreo de Biodiversidad</h5>
-            <div class="course-tags">
-              <span class="ctag">Ecología</span>
-              <span class="ctag">Biodiversidad</span>
-              <span class="ctag">Campo</span>
-            </div>
-          </div>
-          <div class="course-footer">
-            <div class="course-meta-row">
-              <div class="cmeta"><i class="fas fa-globe"></i> En línea</div>
-              <div class="cmeta"><i class="fas fa-certificate"></i> Certificado</div>
-            </div>
-            <a href="courses.html" class="btn-circle"><i class="fas fa-arrow-right"></i></a>
-          </div>
+
+    <a class="course-featured fade-up d1" href="courses.html">
+      <div class="cf-img"><img src="img/course-1.jpg" alt="Ecología"></div>
+      <div class="cf-body">
+        <div class="cf-num">01</div>
+        <div class="cf-badge">⚡ Próximamente · Ecología</div>
+        <h3>Introducción a la Ecología y Monitoreo de Biodiversidad</h3>
+        <p>Aprende los fundamentos del monitoreo de ecosistemas, inventarios de fauna y flora, y análisis de biodiversidad directamente de expertos con trabajo de campo real.</p>
+        <div class="cf-tags">
+          <span class="cftag">Ecología</span><span class="cftag">Biodiversidad</span>
+          <span class="cftag">Campo</span><span class="cftag">100% Online</span><span class="cftag">Certificado</span>
         </div>
+        <div class="btn-course-cta">Más Información <i class="fas fa-arrow-right"></i></div>
       </div>
-      <div class="col-lg-4 col-md-6 fade-up d2">
-        <div class="course-card">
-          <div class="course-img">
-            <img src="img/course-2.jpg" alt="SIG">
-            <div class="course-cat">02 — SIG</div>
-          </div>
-          <div class="course-body">
-            <div class="course-status">Próximamente</div>
-            <h5>SIG y Teledetección Aplicados al Análisis Ambiental</h5>
-            <div class="course-tags">
-              <span class="ctag">QGIS</span>
-              <span class="ctag">Teledetección</span>
-              <span class="ctag">Geoespacial</span>
-            </div>
-          </div>
-          <div class="course-footer">
-            <div class="course-meta-row">
-              <div class="cmeta"><i class="fas fa-globe"></i> En línea</div>
-              <div class="cmeta"><i class="fas fa-certificate"></i> Certificado</div>
-            </div>
-            <a href="courses.html" class="btn-circle"><i class="fas fa-arrow-right"></i></a>
-          </div>
-        </div>
+    </a>
+
+    <div class="row g-3 mt-0">
+      <div class="col-md-6 fade-up d2">
+        <a class="course-sm" href="courses.html">
+          <div class="cs-img"><img src="img/course-2.jpg" alt="SIG"><div class="cs-cat">02 — SIG</div></div>
+          <div class="cs-body"><div class="cs-status">Próximamente</div><h5>SIG y Teledetección Aplicados al Análisis Ambiental</h5><div class="cs-tags"><span class="cstag">QGIS</span><span class="cstag">Teledetección</span><span class="cstag">Geoespacial</span></div></div>
+          <div class="cs-footer"><div class="cs-meta"><i class="fas fa-globe"></i> Online &nbsp;·&nbsp; <i class="fas fa-certificate"></i> Certificado</div><div class="btn-sm-c"><i class="fas fa-arrow-right"></i></div></div>
+        </a>
       </div>
-      <div class="col-lg-4 col-md-6 fade-up d3">
-        <div class="course-card">
-          <div class="course-img">
-            <img src="img/course-3.jpg" alt="Bioinformática">
-            <div class="course-cat">03 — Bioinformática</div>
-          </div>
-          <div class="course-body">
-            <div class="course-status">Próximamente</div>
-            <h5>Bioinformática y Análisis Estadístico para Ecólogos</h5>
-            <div class="course-tags">
-              <span class="ctag">R / Python</span>
-              <span class="ctag">Estadística</span>
-              <span class="ctag">Datos</span>
-            </div>
-          </div>
-          <div class="course-footer">
-            <div class="course-meta-row">
-              <div class="cmeta"><i class="fas fa-globe"></i> En línea</div>
-              <div class="cmeta"><i class="fas fa-certificate"></i> Certificado</div>
-            </div>
-            <a href="courses.html" class="btn-circle"><i class="fas fa-arrow-right"></i></a>
-          </div>
-        </div>
+      <div class="col-md-6 fade-up d3">
+        <a class="course-sm" href="courses.html">
+          <div class="cs-img"><img src="img/course-3.jpg" alt="Bioinformática"><div class="cs-cat">03 — Bioinformática</div></div>
+          <div class="cs-body"><div class="cs-status">Próximamente</div><h5>Bioinformática y Análisis Estadístico para Ecólogos</h5><div class="cs-tags"><span class="cstag">R / Python</span><span class="cstag">Estadística</span><span class="cstag">Datos</span></div></div>
+          <div class="cs-footer"><div class="cs-meta"><i class="fas fa-globe"></i> Online &nbsp;·&nbsp; <i class="fas fa-certificate"></i> Certificado</div><div class="btn-sm-c"><i class="fas fa-arrow-right"></i></div></div>
+        </a>
       </div>
     </div>
   </div>
@@ -738,9 +534,7 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
   <div class="container">
     <div class="row g-5">
       <div class="col-lg-3 col-md-6">
-        <div class="footer-brand">
-          <img src="img/Andeanlogo.png" alt="Andean Consulting">
-        </div>
+        <div class="footer-brand"><img src="img/Andeanlogo.png" alt="Andean Consulting"></div>
         <p class="footer-desc">Empresa peruana especializada en consultoría ambiental y formación especializada para la gestión sostenible del ambiente y la biodiversidad.</p>
         <div style="margin-top:24px">
           <a class="social-link" href="#"><i class="fab fa-facebook-f"></i></a>
@@ -757,9 +551,9 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
       </div>
       <div class="col-lg-3 col-md-6">
         <div class="footer-heading">Contacto</div>
-        <div class="footer-contact-row"><i class="fas fa-map-marker-alt"></i><span>Cusco, Perú</span></div>
-        <div class="footer-contact-row"><i class="fas fa-phone-alt"></i><span>+51 XXX XXX XXX</span></div>
-        <div class="footer-contact-row"><i class="fas fa-envelope"></i><span>info@andean.pe</span></div>
+        <div class="footer-cr"><i class="fas fa-map-marker-alt"></i><span>Cusco, Perú</span></div>
+        <div class="footer-cr"><i class="fas fa-phone-alt"></i><span>+51 XXX XXX XXX</span></div>
+        <div class="footer-cr"><i class="fas fa-envelope"></i><span>info@andean.pe</span></div>
       </div>
       <div class="col-lg-4 col-md-6">
         <div class="footer-heading">Boletín Informativo</div>
@@ -773,11 +567,7 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
     <hr class="footer-divider">
     <div class="footer-bottom">
       <span>&copy; 2025 Andean Consulting &amp; Environmental Solutions S.A.C.</span>
-      <div class="footer-bottom-links">
-        <a href="#">Política de Privacidad</a>
-        <a href="#">Cookies</a>
-        <a href="#">FAQ</a>
-      </div>
+      <div class="footer-bottom-links"><a href="#">Política de Privacidad</a><a href="#">Cookies</a><a href="#">FAQ</a></div>
     </div>
   </div>
 </footer>
@@ -787,153 +577,141 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
 /* SPINNER */
-window.addEventListener('load',()=>{
-  const s=document.getElementById('spinner');
-  s.classList.add('hide');
-  setTimeout(()=>s.remove(),600);
-});
+window.addEventListener('load',()=>{const s=document.getElementById('spinner');s.classList.add('hide');setTimeout(()=>s.remove(),600)});
 
-/* HERO CAROUSEL */
-let cur=0,autoT;
-const slides=document.querySelectorAll('.hero-slide');
-const hdots=document.querySelectorAll('.hero-dot');
-function showSlide(n){
-  slides[cur].classList.remove('active');
-  hdots[cur].classList.remove('active');
-  cur=(n+slides.length)%slides.length;
-  slides[cur].classList.add('active');
-  hdots[cur].classList.add('active');
-  const c=slides[cur].querySelector('.hero-content');
-  c.style.animation='none';void c.offsetHeight;c.style.animation='';
-}
-function moveSlide(d){clearInterval(autoT);showSlide(cur+d);startHeroAuto()}
-function goSlide(n){clearInterval(autoT);showSlide(n);startHeroAuto()}
-function startHeroAuto(){autoT=setInterval(()=>showSlide(cur+1),6500)}
-startHeroAuto();
-let tx=0;
-document.getElementById('hero').addEventListener('touchstart',e=>tx=e.touches[0].clientX,{passive:true});
-document.getElementById('hero').addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-tx;if(Math.abs(dx)>44)moveSlide(dx<0?1:-1)},{passive:true});
+/* HERO */
+let hcur=0,hAuto;
+const hSlides=document.querySelectorAll('.hero-slide'),hDots=document.querySelectorAll('.hero-dot');
+function showSlide(n){hSlides[hcur].classList.remove('active');hDots[hcur].classList.remove('active');hcur=(n+hSlides.length)%hSlides.length;hSlides[hcur].classList.add('active');hDots[hcur].classList.add('active');const c=hSlides[hcur].querySelector('.hero-content');c.style.animation='none';void c.offsetHeight;c.style.animation=''}
+function moveSlide(d){clearInterval(hAuto);showSlide(hcur+d);startHero()}
+function goSlide(n){clearInterval(hAuto);showSlide(n);startHero()}
+function startHero(){hAuto=setInterval(()=>showSlide(hcur+1),6500)}
+startHero();
+let htx=0;
+document.getElementById('hero').addEventListener('touchstart',e=>{htx=e.touches[0].clientX},{passive:true});
+document.getElementById('hero').addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-htx;if(Math.abs(dx)>44)moveSlide(dx<0?1:-1)},{passive:true});
 
-/* NAVBAR SCROLL */
-const nav=document.getElementById('mainNav');
-window.addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>20),{passive:true});
+/* NAVBAR */
+const mNav=document.getElementById('mainNav');
+window.addEventListener('scroll',()=>mNav.classList.toggle('scrolled',scrollY>20),{passive:true});
 
-/* PARALLAX HERO */
-if(innerWidth>768){
-  window.addEventListener('scroll',()=>{
-    document.querySelectorAll('.hero-slide img').forEach(img=>img.style.transform=`translateY(${scrollY*.22}px)`);
-  },{passive:true});
-}
+/* PARALLAX */
+if(innerWidth>768)window.addEventListener('scroll',()=>{document.querySelectorAll('.hero-slide img').forEach(img=>img.style.transform=`translateY(${scrollY*.22}px)`)},{passive:true});
 
-/* FADE-UP */
-const fo=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');fo.unobserve(e.target)}});
-},{threshold:.1,rootMargin:'0px 0px -36px 0px'});
+/* FADE UP */
+const fo=new IntersectionObserver(ee=>{ee.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');fo.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -36px 0px'});
 document.querySelectorAll('.fade-up').forEach(el=>fo.observe(el));
 
 /* COUNTERS */
-function runCounter(el){
-  const t=+el.dataset.target,dur=1800,step=16;
-  const inc=t/(dur/step);let c=0;
-  const ti=setInterval(()=>{c=Math.min(c+inc,t);el.textContent=Math.floor(c)+(t>=10?'+':'');if(c>=t)clearInterval(ti)},step);
-}
-const co=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){runCounter(e.target);co.unobserve(e.target)}})},{threshold:.5});
+function runC(el){const t=+el.dataset.target,inc=t/112;let c=0;const ti=setInterval(()=>{c=Math.min(c+inc,t);el.textContent=Math.floor(c)+'+';if(c>=t)clearInterval(ti)},16)}
+const co=new IntersectionObserver(ee=>{ee.forEach(e=>{if(e.isIntersecting){runC(e.target);co.unobserve(e.target)}})},{threshold:.5});
 document.querySelectorAll('.counter-val').forEach(el=>co.observe(el));
 
-/* SERVICE CARD 3D TILT */
-if(innerWidth>768){
-  document.querySelectorAll('.service-card,.course-card').forEach(card=>{
-    card.addEventListener('mousemove',e=>{
-      const r=card.getBoundingClientRect();
-      const x=e.clientX-r.left-r.width/2,y=e.clientY-r.top-r.height/2;
-      card.style.transform=`translateY(-6px) rotateX(${-y*.035}deg) rotateY(${x*.035}deg)`;
-    });
-    card.addEventListener('mouseleave',()=>{card.style.transform='';card.style.transition='transform .4s ease,box-shadow .3s'});
-    card.addEventListener('mouseenter',()=>{card.style.transition='box-shadow .3s'});
-  });
-}
-
-/* BACK TO TOP */
+/* BACK TOP */
 const bt=document.getElementById('backTop');
 window.addEventListener('scroll',()=>bt.classList.toggle('show',scrollY>300),{passive:true});
 bt.addEventListener('click',e=>{e.preventDefault();scrollTo({top:0,behavior:'smooth'})});
 
 /* SMOOTH ANCHOR */
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click',e=>{
-    const t=document.querySelector(a.getAttribute('href'));
-    if(t&&a.getAttribute('href')!=='#'){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}
-  });
-});
+document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t&&a.getAttribute('href')!=='#'){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}})});
 
-/* =========================================
-   MOBILE AUTO-SLIDER — AREAS (with drag + auto-advance)
-   ========================================= */
+/* ======================================================
+   MOBILE AREAS SLIDER — touch-native, auto-advance
+   ====================================================== */
 (function(){
-  const track=document.getElementById('areaTrack');
-  const dotsEl=document.querySelectorAll('.areas-dot-m');
-  if(!track)return;
-  const slides=track.querySelectorAll('.areas-slide-m');
-  const total=slides.length;
-  let current=0,autoTimer,isDragging=false,didDrag=false,startX=0,startOff=0;
+  var wrap  = document.getElementById('areasMobileWrap');
+  var track = document.getElementById('areaTrackM');
+  var dotsEl= document.querySelectorAll('.areas-dot-m');
+  if(!track) return;
 
-  function getOffset(idx){
-    const containerW=track.parentElement.offsetWidth;
-    const slideW=slides[idx].offsetWidth;
-    const gap=14;
-    const offset=idx*(slideW+gap)-Math.max(0,(containerW-slideW)/2);
-    return Math.max(0,offset);
+  var slides = Array.from(track.querySelectorAll('.areas-slide-m'));
+  var N      = slides.length;
+  var cur    = 0;
+  var autoT  = null;
+
+  /* gap between slides in px */
+  var GAP = 14;
+
+  /* pixel offset to center slide[i] */
+  function getOffset(i){
+    var wrapW = wrap.offsetWidth;
+    var slideW= slides[i] ? slides[i].offsetWidth : wrapW * 0.8;
+    return Math.max(0, i*(slideW+GAP) - (wrapW-slideW)/2);
   }
 
-  function goTo(idx,animate){
-    idx=Math.max(0,Math.min(total-1,idx));
-    current=idx;
-    track.style.transition=animate===false?'none':'transform .5s cubic-bezier(.25,.46,.45,.94)';
-    track.style.transform=`translateX(-${getOffset(idx)}px)`;
-    slides.forEach((s,i)=>{
-      s.classList.toggle('active-slide',i===idx);
-      s.style.transition='opacity .4s,transform .4s';
-      s.style.opacity=i===idx?'1':'.65';
-      s.style.transform=i===idx?'scale(1)':'scale(.93)';
+  function activate(i, anim){
+    i = ((i % N) + N) % N;
+    cur = i;
+    track.style.transition = anim ? 'transform .5s cubic-bezier(.25,.46,.45,.94)' : 'none';
+    track.style.transform  = 'translateX(-' + getOffset(i) + 'px)';
+    slides.forEach(function(s,j){
+      s.classList.toggle('act', j===i);
+      s.style.transition = 'opacity .4s,transform .4s';
+      s.style.opacity    = j===i ? '1' : '.6';
+      s.style.transform  = j===i ? 'scale(1)' : 'scale(.92)';
     });
-    dotsEl.forEach((d,i)=>d.classList.toggle('active',i===idx));
+    dotsEl.forEach(function(d,j){ d.classList.toggle('act', j===i); });
   }
 
-  function startAuto(){
-    clearInterval(autoTimer);
-    autoTimer=setInterval(()=>goTo((current+1)%total,true),3200); /* ← auto every 3.2s */
-  }
-  function stopAuto(){clearInterval(autoTimer)}
+  function startAuto(){ autoT = setInterval(function(){ activate(cur+1, true); }, 3400); }
+  function stopAuto(){  clearInterval(autoT); }
 
-  /* touch / pointer drag */
-  track.addEventListener('pointerdown',e=>{
-    stopAuto();isDragging=true;didDrag=false;
-    startX=e.clientX;startOff=getOffset(current);
-    track.classList.add('dragging');track.setPointerCapture(e.pointerId);
-  });
-  track.addEventListener('pointermove',e=>{
-    if(!isDragging)return;
-    if(Math.abs(e.clientX-startX)>5)didDrag=true;
-    track.style.transition='none';
-    track.style.transform=`translateX(-${startOff-(e.clientX-startX)}px)`;
-  });
-  track.addEventListener('pointerup',e=>{
-    if(!isDragging)return;
-    isDragging=false;track.classList.remove('dragging');
-    const dx=e.clientX-startX;
-    if(Math.abs(dx)>50){goTo(dx<0?current+1:current-1,true)}else{goTo(current,true)}
+  /* ── touch handling ── */
+  var tx0=0, baseOff=0, isSwiping=false, hasMoved=false;
+
+  track.addEventListener('touchstart', function(e){
+    stopAuto();
+    tx0 = e.touches[0].clientX;
+    baseOff = getOffset(cur);
+    isSwiping = true;
+    hasMoved  = false;
+  }, {passive:true});
+
+  track.addEventListener('touchmove', function(e){
+    if(!isSwiping) return;
+    var dx = e.touches[0].clientX - tx0;
+    if(Math.abs(dx) > 5){ hasMoved = true; }
+    if(hasMoved){
+      track.style.transition = 'none';
+      track.style.transform  = 'translateX(-' + (baseOff - dx) + 'px)';
+    }
+  }, {passive:true});
+
+  track.addEventListener('touchend', function(e){
+    if(!isSwiping) return;
+    isSwiping = false;
+    var dx = e.changedTouches[0].clientX - tx0;
+    if(hasMoved && Math.abs(dx) > 50){
+      activate(dx < 0 ? cur+1 : cur-1, true);
+    } else {
+      activate(cur, true);   /* snap back if no significant swipe */
+    }
+    hasMoved = false;
     startAuto();
+  }, {passive:true});
+
+  /* block link tap when swiped */
+  slides.forEach(function(s){
+    s.addEventListener('click', function(e){ if(hasMoved){ e.preventDefault(); } });
   });
-  track.querySelectorAll('a').forEach(a=>a.addEventListener('click',e=>{if(didDrag){e.preventDefault();didDrag=false}}));
-  dotsEl.forEach(d=>d.addEventListener('click',()=>{stopAuto();goTo(+d.dataset.i,true);startAuto()}));
 
-  /* pause on hover/touch */
-  track.parentElement.addEventListener('mouseenter',stopAuto);
-  track.parentElement.addEventListener('mouseleave',startAuto);
+  /* dot buttons */
+  dotsEl.forEach(function(d){
+    d.addEventListener('click', function(){
+      stopAuto();
+      activate(+d.dataset.i, true);
+      startAuto();
+    });
+  });
 
-  goTo(0,false);
-  window.addEventListener('resize',()=>goTo(current,false));
-  startAuto(); /* kick off auto-slide */
+  /* hover pause (desktop) */
+  wrap.addEventListener('mouseenter', stopAuto);
+  wrap.addEventListener('mouseleave', startAuto);
+
+  /* init */
+  activate(0, false);
+  window.addEventListener('resize', function(){ activate(cur, false); });
+  startAuto();
 })();
 </script>
 </body>
