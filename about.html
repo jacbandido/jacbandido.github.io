@@ -1,365 +1,507 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="es">
 <head>
-    <meta charset="utf-8">
-    <title>eLEARNING - eLearning HTML Template</title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="" name="keywords">
-    <meta content="" name="description">
+<meta charset="utf-8">
+<title>Nosotros – Andean Consulting & Environmental Solutions S.A.C.</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="consultoría ambiental, sobre nosotros, equipo, Perú, Cusco" name="keywords">
+<meta content="Conoce a Andean Consulting & Environmental Solutions, empresa peruana especializada en consultoría ambiental y formación especializada." name="description">
 
-    <!-- Favicon -->
-    <link href="img/favicon.ico" rel="icon">
+<!-- Favicon — both browsers and mobile -->
+<link rel="icon" type="image/x-icon" href="img/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+<link rel="apple-touch-icon" href="img/favicon.ico">
 
-    <!-- Google Web Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Icon Font Stylesheet -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+<style>
+:root{
+  --forest:#0a1f14;--green:#006a39;--lime:#00b060;--blue:#00658c;
+  --offwhite:#f6f8f4;--border:#d8e4dd;--text:#1c2b22;--muted:#5a6e62;
+  --light-green:#e4f2eb;--light-blue:#e3f2f8;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;font-weight:400;color:var(--text);background:#fff;overflow-x:hidden}
+h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
 
-    <!-- Libraries Stylesheet -->
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+/* SPINNER */
+#spinner{position:fixed;inset:0;background:#fff;display:flex;align-items:center;justify-content:center;z-index:9999;transition:opacity .5s}
+#spinner.hide{opacity:0;pointer-events:none}
+.spin-ring{width:44px;height:44px;border:2px solid var(--light-green);border-top-color:var(--green);border-radius:50%;animation:spin .9s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
 
-    <!-- Customized Bootstrap Stylesheet -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+/* TOPBAR */
+.topbar{background:var(--forest);color:rgba(255,255,255,.6);font-size:.75rem;letter-spacing:.06em;padding:8px 0}
+.topbar a{color:rgba(255,255,255,.55);text-decoration:none;transition:color .2s}
+.topbar a:hover{color:#fff}
+.topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.topbar-left{display:flex;gap:20px;align-items:center}
+.topbar-right{display:flex;gap:16px;align-items:center}
+.tb-div{width:1px;height:12px;background:rgba(255,255,255,.15)}
 
-    <!-- Template Stylesheet -->
-    <link href="css/style.css" rel="stylesheet">
+/* NAVBAR */
+.navbar{background:#fff;border-bottom:1px solid var(--border);padding:0;position:sticky;top:0;z-index:1000;transition:box-shadow .3s}
+.navbar.scrolled{box-shadow:0 2px 24px rgba(10,31,20,.1)}
+.navbar-brand{padding:14px 24px}
+.navbar-brand img{height:44px;object-fit:contain}
+.navbar-toggler{border:1px solid #ccc!important;padding:6px 10px;margin-right:16px;border-radius:3px;background:transparent}
+.navbar-toggler-icon{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%230a1f14' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")}
+.nav-link{font-family:'Outfit',sans-serif;font-weight:500;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text)!important;padding:1.5rem 1.1rem!important;transition:color .2s;position:relative}
+.nav-link::after{content:'';position:absolute;bottom:0;left:1.1rem;right:1.1rem;height:2px;background:var(--green);transform:scaleX(0);transition:transform .25s}
+.nav-link:hover,.nav-link.active{color:var(--green)!important}
+.nav-link:hover::after,.nav-link.active::after{transform:scaleX(1)}
+.dropdown-menu{border:1px solid var(--border);border-radius:8px;box-shadow:0 12px 40px rgba(0,0,0,.1);padding:8px 0;margin-top:-1px}
+.dropdown-item{font-family:'Outfit',sans-serif;font-size:.82rem;letter-spacing:.04em;padding:10px 20px;color:var(--text);font-weight:500;text-transform:uppercase;transition:background .15s,color .15s}
+.dropdown-item:hover{background:var(--light-green);color:var(--green)}
+.btn-nav-cta{
+  background:var(--green);color:#fff!important;font-weight:700;font-size:.88rem;
+  letter-spacing:.1em;text-transform:uppercase;text-decoration:none!important;
+  padding:18px 40px!important;margin:8px 20px;border-radius:3px;
+  display:inline-flex;align-items:center;gap:10px;
+  position:relative;overflow:hidden;transition:background .2s,transform .15s;
+  white-space:nowrap;line-height:1
+}
+.btn-nav-cta:hover,.btn-nav-cta:focus{background:var(--forest)!important;color:#fff!important;transform:translateY(-1px);text-decoration:none!important}
+
+/* PAGE HEADER */
+.page-header{background:var(--forest);position:relative;overflow:hidden;padding:80px 0 72px}
+.page-header::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,106,57,.25) 0%,transparent 60%)}
+.page-header::after{content:'';position:absolute;top:-100px;right:-100px;width:420px;height:420px;border-radius:50%;background:rgba(0,176,96,.05);pointer-events:none}
+.ph-eyebrow{display:flex;align-items:center;gap:10px;justify-content:center;margin-bottom:16px}
+.ph-eyebrow-line{width:28px;height:1px;background:var(--lime)}
+.ph-eyebrow span{font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--lime)}
+.page-header h1{font-family:'Fraunces',serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:600;color:#fff;line-height:1.15;letter-spacing:-.02em;margin-bottom:20px}
+.breadcrumb-item a{color:rgba(255,255,255,.55);text-decoration:none;font-size:.82rem;font-weight:500;transition:color .2s}
+.breadcrumb-item a:hover{color:#fff}
+.breadcrumb-item.active{color:rgba(255,255,255,.85);font-size:.82rem}
+.breadcrumb-item+.breadcrumb-item::before{color:rgba(255,255,255,.25)}
+
+/* SECTION LABELS */
+.section-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.section-eyebrow-line{width:28px;height:1px;background:var(--green);flex-shrink:0}
+.section-eyebrow span{font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--green)}
+.section-title{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.6rem,4vw,2.5rem);line-height:1.2;letter-spacing:-.02em}
+
+/* FEATURE CARDS */
+.feat-section{padding:80px 0 64px;background:var(--offwhite)}
+.feat-card{background:#fff;border:1px solid var(--border);border-radius:4px;padding:36px 28px;transition:box-shadow .3s,transform .3s;height:100%}
+.feat-card:hover{box-shadow:0 12px 40px rgba(0,80,40,.1);transform:translateY(-4px)}
+.feat-icon{width:56px;height:56px;border-radius:4px;background:var(--light-green);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.feat-icon i{font-size:1.3rem;color:var(--green)}
+.feat-card h5{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:600;margin-bottom:10px;color:var(--text)}
+.feat-card p{font-size:.87rem;line-height:1.75;color:var(--muted);margin:0}
+
+/* ABOUT SECTION */
+.about-section{padding:96px 0}
+.about-img-outer{position:relative}
+.about-img-wrap{border-radius:2px;overflow:hidden;height:520px}
+.about-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.about-img-wrap:hover img{transform:scale(1.03)}
+.about-accent{position:absolute;bottom:-28px;right:-28px;width:180px;height:180px;border:2px solid var(--green);border-radius:2px;z-index:-1}
+.about-badge{position:absolute;bottom:32px;left:32px;background:var(--forest);color:#fff;padding:20px 28px;border-radius:2px}
+.about-badge-num{font-family:'Fraunces',serif;font-size:2.4rem;font-weight:600;color:#fff;display:block;margin-bottom:4px}
+.about-badge-text{font-size:.78rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.6);display:block}
+.about-tag{display:inline-flex;align-items:center;gap:7px;background:var(--light-green);border-radius:3px;padding:7px 14px;font-size:.8rem;font-weight:500;color:var(--green);margin:4px 4px 4px 0}
+.about-tag i{font-size:.65rem}
+.btn-primary-custom{display:inline-flex;align-items:center;gap:10px;background:var(--green);color:#fff;font-weight:600;font-size:.82rem;letter-spacing:.08em;padding:15px 32px;border-radius:3px;border:none;text-decoration:none;transition:background .2s,transform .15s;text-transform:uppercase}
+.btn-primary-custom:hover{background:var(--forest);color:#fff;transform:translateY(-2px)}
+.btn-outline-custom{display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--green);font-weight:600;font-size:.82rem;letter-spacing:.08em;padding:13px 28px;border-radius:3px;border:1px solid var(--green);text-decoration:none;transition:background .2s,color .2s,transform .15s;text-transform:uppercase;margin-left:12px}
+.btn-outline-custom:hover{background:var(--green);color:#fff;transform:translateY(-2px)}
+
+/* MISSION / VISION */
+.mv-section{padding:88px 0;background:var(--forest);position:relative;overflow:hidden}
+.mv-section::before{content:'';position:absolute;bottom:-80px;left:-80px;width:360px;height:360px;border-radius:50%;background:rgba(0,176,96,.04);pointer-events:none}
+.mv-section .section-eyebrow-line{background:var(--lime)}
+.mv-section .section-eyebrow span{color:var(--lime)}
+.mv-section .section-title{color:#fff}
+.mv-card{border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:40px 36px;background:rgba(255,255,255,.04);backdrop-filter:blur(6px);height:100%;transition:border-color .3s,background .3s}
+.mv-card:hover{border-color:rgba(0,176,96,.35);background:rgba(255,255,255,.07)}
+.mv-num{font-family:'Fraunces',serif;font-size:3rem;font-weight:300;color:rgba(255,255,255,.06);line-height:1;margin-bottom:16px}
+.mv-icon{width:48px;height:48px;border-radius:4px;background:rgba(0,176,96,.15);border:1px solid rgba(0,176,96,.25);display:flex;align-items:center;justify-content:center;margin-bottom:20px}
+.mv-icon i{font-size:1.1rem;color:var(--lime)}
+.mv-card h4{font-family:'Fraunces',serif;font-size:1.2rem;font-weight:600;color:#fff;margin-bottom:14px}
+.mv-card p{font-size:.88rem;color:rgba(255,255,255,.58);line-height:1.8;margin:0}
+
+/* VALUES */
+.values-section{padding:88px 0;background:#fff}
+.value-row{border-bottom:1px solid var(--border);padding:32px 0;display:flex;gap:32px;align-items:flex-start;transition:background .2s;border-radius:4px}
+.value-row:last-child{border-bottom:none}
+.value-row:hover{background:var(--offwhite)}
+.val-num{font-family:'Fraunces',serif;font-size:2.2rem;font-weight:300;color:var(--border);line-height:1;flex-shrink:0;width:56px;padding-left:8px}
+.val-icon{width:44px;height:44px;border-radius:4px;background:var(--light-green);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.val-icon i{color:var(--green);font-size:1rem}
+.val-body h5{font-family:'Fraunces',serif;font-size:1.05rem;font-weight:600;color:var(--text);margin-bottom:8px}
+.val-body p{font-size:.88rem;color:var(--muted);line-height:1.75;margin:0}
+
+/* STATS */
+.stats-band{background:var(--green);padding:56px 0}
+.stat-item{text-align:center;padding:20px 16px}
+.stat-item+.stat-item{border-left:1px solid rgba(255,255,255,.15)}
+.stat-num{font-family:'Fraunces',serif;font-size:3rem;font-weight:600;color:#fff;line-height:1;display:block;margin-bottom:6px}
+.stat-label{font-size:.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+
+/* FOOTER */
+.footer{background:var(--forest);padding:72px 0 0}
+.footer-brand img{height:42px;filter:brightness(0) invert(1);opacity:.85;margin-bottom:20px}
+.footer-desc{font-size:.87rem;color:rgba(255,255,255,.5);line-height:1.75;max-width:300px}
+.footer-heading{font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:22px}
+.footer-link{display:block;font-size:.87rem;color:rgba(255,255,255,.6);text-decoration:none;margin-bottom:10px;transition:color .2s}
+.footer-link:hover{color:#fff}
+.footer-cr{display:flex;align-items:flex-start;gap:12px;margin-bottom:12px}
+.footer-cr i{color:var(--lime);margin-top:2px;flex-shrink:0;font-size:.85rem}
+.footer-cr span{font-size:.87rem;color:rgba(255,255,255,.6);line-height:1.5}
+.social-link{width:36px;height:36px;border-radius:3px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.6);display:inline-flex;align-items:center;justify-content:center;font-size:.82rem;text-decoration:none;transition:background .2s,color .2s,border-color .2s;margin-right:6px}
+.social-link:hover{background:var(--lime);border-color:var(--lime);color:#fff}
+.newsletter-row{display:flex;gap:0;margin-top:6px}
+.newsletter-row input{flex:1;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-right:none;color:#fff;padding:12px 16px;font-size:.85rem;border-radius:3px 0 0 3px;outline:none;font-family:'Outfit',sans-serif}
+.newsletter-row input::placeholder{color:rgba(255,255,255,.3)}
+.newsletter-row button{background:var(--lime);border:none;color:#fff;padding:12px 18px;font-size:.78rem;font-weight:600;font-family:'Outfit',sans-serif;letter-spacing:.06em;text-transform:uppercase;border-radius:0 3px 3px 0;cursor:pointer;transition:background .2s}
+.newsletter-row button:hover{background:#009950}
+.footer-divider{border-color:rgba(255,255,255,.08);margin:48px 0 0}
+.footer-bottom{padding:20px 0;font-size:.78rem;color:rgba(255,255,255,.3);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.footer-bottom a{color:rgba(255,255,255,.3);text-decoration:none;transition:color .2s}
+.footer-bottom a:hover{color:rgba(255,255,255,.7)}
+.footer-bottom-links{display:flex;gap:20px;flex-wrap:wrap}
+
+.back-top{position:fixed;bottom:28px;right:28px;width:44px;height:44px;background:var(--green);color:#fff;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:1rem;text-decoration:none;opacity:0;pointer-events:none;transition:opacity .3s,transform .2s;z-index:999;box-shadow:0 4px 20px rgba(0,0,0,.2)}
+.back-top.show{opacity:1;pointer-events:all}
+.back-top:hover{transform:translateY(-3px);color:#fff}
+
+.fade-up{opacity:0;transform:translateY(36px);transition:opacity .6s ease,transform .6s ease}
+.fade-up.visible{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+@media(max-width:992px){
+  .about-section{padding:64px 0}
+  .about-img-wrap{height:320px;margin-bottom:56px}
+  .about-accent{display:none}
+  .navbar-collapse{background:#fff;border-top:1px solid var(--border);padding:8px 16px 20px}
+  .nav-link{padding:.75rem .5rem!important;font-size:.9rem}
+  .btn-nav-cta{display:none!important}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .footer-bottom-links{justify-content:center}
+  .stat-item+.stat-item{border-left:none;border-top:1px solid rgba(255,255,255,.12)}
+  .mv-section{padding:64px 0}
+  .values-section{padding:64px 0}
+  .feat-section{padding:56px 0 48px}
+  .value-row{flex-direction:column;gap:16px}
+  .val-num{font-size:1.6rem}
+}
+@media(max-width:576px){
+  .btn-outline-custom{margin-left:0;margin-top:10px}
+}
+</style>
 </head>
-
 <body>
-    <!-- Spinner Start -->
-    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-            <span class="sr-only">Loading...</span>
-        </div>
+
+<div id="spinner"><div class="spin-ring"></div></div>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-inner">
+      <div class="topbar-left">
+        <span><i class="fas fa-map-marker-alt" style="color:var(--lime);margin-right:6px"></i>Perú</span>
+        <div class="tb-div"></div>
+        <a href="mailto:info@andean.pe"><i class="fas fa-envelope" style="margin-right:5px"></i>info@andean.pe</a>
+      </div>
+      <div class="topbar-right">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <div class="tb-div"></div>
+        <a href="contact.html" style="color:var(--lime);font-weight:600">Contáctanos →</a>
+      </div>
     </div>
-    <!-- Spinner End -->
+  </div>
+</div>
 
-
-    <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-        <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-            <h2 class="m-0 text-primary"><i class="fa fa-book me-3"></i>eLEARNING</h2>
-        </a>
-        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="index.html" class="nav-item nav-link">Home</a>
-                <a href="about.html" class="nav-item nav-link active">About</a>
-                <a href="courses.html" class="nav-item nav-link">Courses</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
-                    <div class="dropdown-menu fade-down m-0">
-                        <a href="team.html" class="dropdown-item">Our Team</a>
-                        <a href="testimonial.html" class="dropdown-item">Testimonial</a>
-                        <a href="404.html" class="dropdown-item">404 Page</a>
-                    </div>
-                </div>
-                <a href="contact.html" class="nav-item nav-link">Contact</a>
-            </div>
-            <a href="" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Join Now<i class="fa fa-arrow-right ms-3"></i></a>
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg" id="mainNav">
+  <a href="index.html" class="navbar-brand">
+    <img src="img/Andeanlogo.png" alt="Andean Consulting">
+  </a>
+  <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navCollapse" aria-label="Menú">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navCollapse">
+    <div class="navbar-nav ms-auto p-3 p-lg-0">
+      <a href="index.html" class="nav-item nav-link">Inicio</a>
+      <a href="about.html" class="nav-item nav-link active">Nosotros</a>
+      <a href="courses.html" class="nav-item nav-link">Cursos</a>
+      <div class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Servicios</a>
+        <div class="dropdown-menu">
+          <a href="team.html" class="dropdown-item">Nuestro Equipo</a>
+          <a href="testimonial.html" class="dropdown-item">Testimonios</a>
         </div>
-    </nav>
-    <!-- Navbar End -->
-
-
-    <!-- Header Start -->
-    <div class="container-fluid bg-primary py-5 mb-5 page-header">
-        <div class="container py-5">
-            <div class="row justify-content-center">
-                <div class="col-lg-10 text-center">
-                    <h1 class="display-3 text-white animated slideInDown">About Us</h1>
-                    <nav aria-label="breadcrumb">
-                        <ol class="breadcrumb justify-content-center">
-                            <li class="breadcrumb-item"><a class="text-white" href="#">Home</a></li>
-                            <li class="breadcrumb-item"><a class="text-white" href="#">Pages</a></li>
-                            <li class="breadcrumb-item text-white active" aria-current="page">About</li>
-                        </ol>
-                    </nav>
-                </div>
-            </div>
-        </div>
+      </div>
+      <a href="contact.html" class="nav-item nav-link">Contacto</a>
     </div>
-    <!-- Header End -->
+    <a href="index.html#especialidades" class="btn-nav-cta d-none d-lg-flex">
+      Ver Servicios <i class="fas fa-arrow-right" style="font-size:.72rem"></i>
+    </a>
+  </div>
+</nav>
 
-
-    <!-- Service Start -->
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="service-item text-center pt-3">
-                        <div class="p-4">
-                            <i class="fa fa-3x fa-graduation-cap text-primary mb-4"></i>
-                            <h5 class="mb-3">Skilled Instructors</h5>
-                            <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item text-center pt-3">
-                        <div class="p-4">
-                            <i class="fa fa-3x fa-globe text-primary mb-4"></i>
-                            <h5 class="mb-3">Online Classes</h5>
-                            <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item text-center pt-3">
-                        <div class="p-4">
-                            <i class="fa fa-3x fa-home text-primary mb-4"></i>
-                            <h5 class="mb-3">Home Projects</h5>
-                            <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="service-item text-center pt-3">
-                        <div class="p-4">
-                            <i class="fa fa-3x fa-book-open text-primary mb-4"></i>
-                            <h5 class="mb-3">Book Library</h5>
-                            <p>Diam elitr kasd sed at elitr sed ipsum justo dolor sed clita amet diam</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="container">
+    <div class="text-center">
+      <div class="ph-eyebrow">
+        <div class="ph-eyebrow-line"></div>
+        <span>Quiénes Somos</span>
+        <div class="ph-eyebrow-line"></div>
+      </div>
+      <h1>Sobre Nosotros</h1>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb justify-content-center mb-0">
+          <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Nosotros</li>
+        </ol>
+      </nav>
     </div>
-    <!-- Service End -->
+  </div>
+</div>
 
-
-    <!-- About Start -->
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="row g-5">
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
-                    <div class="position-relative h-100">
-                        <img class="img-fluid position-absolute w-100 h-100" src="img/about.jpg" alt="" style="object-fit: cover;">
-                    </div>
-                </div>
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <h6 class="section-title bg-white text-start text-primary pe-3">About Us</h6>
-                    <h1 class="mb-4">Welcome to eLEARNING</h1>
-                    <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit.</p>
-                    <p class="mb-4">Tempor erat elitr rebum at clita. Diam dolor diam ipsum sit. Aliqu diam amet diam et eos. Clita erat ipsum et lorem et sit, sed stet lorem sit clita duo justo magna dolore erat amet</p>
-                    <div class="row gy-2 gx-4 mb-4">
-                        <div class="col-sm-6">
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Skilled Instructors</p>
-                        </div>
-                        <div class="col-sm-6">
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Online Classes</p>
-                        </div>
-                        <div class="col-sm-6">
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>International Certificate</p>
-                        </div>
-                        <div class="col-sm-6">
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Skilled Instructors</p>
-                        </div>
-                        <div class="col-sm-6">
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Online Classes</p>
-                        </div>
-                        <div class="col-sm-6">
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>International Certificate</p>
-                        </div>
-                    </div>
-                    <a class="btn btn-primary py-3 px-5 mt-2" href="">Read More</a>
-                </div>
-            </div>
+<!-- FEATURE CARDS -->
+<div class="feat-section">
+  <div class="container">
+    <div class="row g-4">
+      <div class="col-lg-3 col-sm-6 fade-up">
+        <div class="feat-card">
+          <div class="feat-icon"><i class="fas fa-leaf"></i></div>
+          <h5>Consultoría Ambiental</h5>
+          <p>Asesoría técnica especializada para proyectos ambientales en entidades públicas, privadas y comunidades a nivel nacional.</p>
         </div>
+      </div>
+      <div class="col-lg-3 col-sm-6 fade-up d1">
+        <div class="feat-card">
+          <div class="feat-icon"><i class="fas fa-globe"></i></div>
+          <h5>Cursos 100% Online</h5>
+          <p>Formación especializada en ecología, SIG, bioinformática y gestión ambiental, accesible desde cualquier parte del mundo.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-sm-6 fade-up d2">
+        <div class="feat-card">
+          <div class="feat-icon"><i class="fas fa-microscope"></i></div>
+          <h5>Monitoreo Biológico</h5>
+          <p>Levantamientos de fauna, flora y ecosistemas con metodologías científicas rigurosas y equipos de campo especializados.</p>
+        </div>
+      </div>
+      <div class="col-lg-3 col-sm-6 fade-up d3">
+        <div class="feat-card">
+          <div class="feat-icon"><i class="fas fa-certificate"></i></div>
+          <h5>Certificación Avalada</h5>
+          <p>Todos nuestros cursos y servicios cuentan con certificados que respaldan tu formación y experiencia profesional.</p>
+        </div>
+      </div>
     </div>
-    <!-- About End -->
+  </div>
+</div>
 
-
-    <!-- Team Start -->
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="section-title bg-white text-center text-primary px-3">Instructors</h6>
-                <h1 class="mb-5">Expert Instructors</h1>
-            </div>
-            <div class="row g-4">
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="team-item bg-light">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/team-1.jpg" alt="">
-                        </div>
-                        <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
-                            <div class="bg-light d-flex justify-content-center pt-2 px-1">
-                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                        <div class="text-center p-4">
-                            <h5 class="mb-0">Instructor Name</h5>
-                            <small>Designation</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="team-item bg-light">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/team-2.jpg" alt="">
-                        </div>
-                        <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
-                            <div class="bg-light d-flex justify-content-center pt-2 px-1">
-                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                        <div class="text-center p-4">
-                            <h5 class="mb-0">Instructor Name</h5>
-                            <small>Designation</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="team-item bg-light">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/team-3.jpg" alt="">
-                        </div>
-                        <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
-                            <div class="bg-light d-flex justify-content-center pt-2 px-1">
-                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                        <div class="text-center p-4">
-                            <h5 class="mb-0">Instructor Name</h5>
-                            <small>Designation</small>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="team-item bg-light">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/team-4.jpg" alt="">
-                        </div>
-                        <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
-                            <div class="bg-light d-flex justify-content-center pt-2 px-1">
-                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                        <div class="text-center p-4">
-                            <h5 class="mb-0">Instructor Name</h5>
-                            <small>Designation</small>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!-- ABOUT SECTION -->
+<div class="about-section">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-6 fade-up">
+        <div class="about-img-outer">
+          <div class="about-img-wrap"><img src="img/about.jpg" alt="Andean Consulting – Trabajo de campo"></div>
+          <div class="about-accent"></div>
+          <div class="about-badge">
+            <span class="about-badge-num">+5</span>
+            <span class="about-badge-text">Años de Experiencia Ambiental</span>
+          </div>
         </div>
+      </div>
+      <div class="col-lg-6 fade-up d2">
+        <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span>Nuestra Historia</span></div>
+        <h2 class="section-title mb-4">Bienvenidos a Andean Consulting &amp; Environmental Solutions</h2>
+        <p style="font-size:.95rem;line-height:1.8;margin-bottom:16px;color:var(--muted)">Somos una empresa peruana con sede en el Cusco, especializada en consultoría ambiental, formación especializada y soluciones tecnológicas para la gestión sostenible del ambiente y la biodiversidad. Desde nuestra fundación trabajamos con entidades públicas, privadas, ONGs y comunidades a nivel nacional.</p>
+        <p style="font-size:.95rem;line-height:1.8;margin-bottom:30px;color:var(--muted)">Nuestra propuesta educativa virtual te permite acceder a conocimientos especializados en ecología, ciencias ambientales, SIG y bioinformática desde cualquier lugar del mundo, con instructores que combinan rigor académico y amplia experiencia en campo.</p>
+        <div style="margin-bottom:36px">
+          <span class="about-tag"><i class="fas fa-check"></i> Cursos Virtuales</span>
+          <span class="about-tag"><i class="fas fa-check"></i> Levantamientos Biológicos</span>
+          <span class="about-tag"><i class="fas fa-check"></i> Alquiler de Equipos</span>
+          <span class="about-tag"><i class="fas fa-check"></i> Asesoría Ambiental</span>
+          <span class="about-tag"><i class="fas fa-check"></i> Análisis SIG</span>
+          <span class="about-tag"><i class="fas fa-check"></i> Certificados</span>
+        </div>
+        <a href="contact.html" class="btn-primary-custom">Contáctanos <i class="fas fa-arrow-right" style="font-size:.7rem"></i></a>
+        <a href="courses.html" class="btn-outline-custom">Ver Cursos</a>
+      </div>
     </div>
-    <!-- Team End -->
-        
+  </div>
+</div>
 
-    <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-3">Quick Link</h4>
-                    <a class="btn btn-link" href="">About Us</a>
-                    <a class="btn btn-link" href="">Contact Us</a>
-                    <a class="btn btn-link" href="">Privacy Policy</a>
-                    <a class="btn btn-link" href="">Terms & Condition</a>
-                    <a class="btn btn-link" href="">FAQs & Help</a>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-3">Contact</h4>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>123 Street, New York, USA</p>
-                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+012 345 67890</p>
-                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@example.com</p>
-                    <div class="d-flex pt-2">
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-3">Gallery</h4>
-                    <div class="row g-2 pt-2">
-                        <div class="col-4">
-                            <img class="img-fluid bg-light p-1" src="img/course-1.jpg" alt="">
-                        </div>
-                        <div class="col-4">
-                            <img class="img-fluid bg-light p-1" src="img/course-2.jpg" alt="">
-                        </div>
-                        <div class="col-4">
-                            <img class="img-fluid bg-light p-1" src="img/course-3.jpg" alt="">
-                        </div>
-                        <div class="col-4">
-                            <img class="img-fluid bg-light p-1" src="img/course-2.jpg" alt="">
-                        </div>
-                        <div class="col-4">
-                            <img class="img-fluid bg-light p-1" src="img/course-3.jpg" alt="">
-                        </div>
-                        <div class="col-4">
-                            <img class="img-fluid bg-light p-1" src="img/course-1.jpg" alt="">
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-3">Newsletter</h4>
-                    <p>Dolor amet sit justo amet elitr clita ipsum elitr est.</p>
-                    <div class="position-relative mx-auto" style="max-width: 400px;">
-                        <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Your email">
-                        <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">SignUp</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="copyright">
-                <div class="row">
-                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved.
-
-                        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                        Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a><br><br>
-                        Distributed By <a class="border-bottom" href="https://themewagon.com">ThemeWagon</a>
-                    </div>
-                    <div class="col-md-6 text-center text-md-end">
-                        <div class="footer-menu">
-                            <a href="">Home</a>
-                            <a href="">Cookies</a>
-                            <a href="">Help</a>
-                            <a href="">FQAs</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<!-- STATS -->
+<div class="stats-band">
+  <div class="container">
+    <div class="row g-0">
+      <div class="col-6 col-md-3 stat-item fade-up"><span class="stat-num counter-val" data-target="5">0</span><span class="stat-label">Años de experiencia</span></div>
+      <div class="col-6 col-md-3 stat-item fade-up d1"><span class="stat-num counter-val" data-target="200">0</span><span class="stat-label">Estudiantes formados</span></div>
+      <div class="col-6 col-md-3 stat-item fade-up d2"><span class="stat-num counter-val" data-target="12">0</span><span class="stat-label">Proyectos ejecutados</span></div>
+      <div class="col-6 col-md-3 stat-item fade-up d3"><span class="stat-num counter-val" data-target="3">0</span><span class="stat-label">Cursos disponibles</span></div>
     </div>
-    <!-- Footer End -->
+  </div>
+</div>
 
+<!-- MISIÓN / VISIÓN / OBJETIVO -->
+<div class="mv-section">
+  <div class="container">
+    <div class="text-center mb-5 fade-up">
+      <div class="section-eyebrow justify-content-center"><div class="section-eyebrow-line" style="background:var(--lime)"></div><span style="color:var(--lime)">Nuestra Esencia</span></div>
+      <h2 class="section-title" style="color:#fff">Misión, Visión y Objetivo</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-4 fade-up d1">
+        <div class="mv-card">
+          <div class="mv-num">01</div>
+          <div class="mv-icon"><i class="fas fa-bullseye"></i></div>
+          <h4>Misión</h4>
+          <p>Brindar soluciones técnicas y educativas de alta calidad en el ámbito ambiental, contribuyendo a la gestión sostenible de la biodiversidad y los recursos naturales del Perú y la región andina, a través de consultoría rigurosa y formación especializada accesible.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 fade-up d2">
+        <div class="mv-card">
+          <div class="mv-num">02</div>
+          <div class="mv-icon"><i class="fas fa-eye"></i></div>
+          <h4>Visión</h4>
+          <p>Ser la empresa líder en consultoría ambiental y formación especializada en la región andina, reconocida por la excelencia técnica de nuestros profesionales, la innovación en nuestras metodologías y el impacto positivo en la conservación de los ecosistemas peruanos.</p>
+        </div>
+      </div>
+      <div class="col-lg-4 fade-up d3">
+        <div class="mv-card">
+          <div class="mv-num">03</div>
+          <div class="mv-icon"><i class="fas fa-rocket"></i></div>
+          <h4>Objetivo</h4>
+          <p>Desarrollar capacidades humanas e institucionales en ciencias ambientales, integrando tecnología, trabajo de campo y formación virtual para generar conocimiento aplicado que responda a los desafíos ambientales locales y globales del siglo XXI.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+<!-- VALORES -->
+<div class="values-section">
+  <div class="container">
+    <div class="row g-5 align-items-start">
+      <div class="col-lg-4 fade-up">
+        <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span>Lo Que Nos Define</span></div>
+        <h2 class="section-title mb-4">Nuestros Valores</h2>
+        <p style="font-size:.95rem;line-height:1.8;color:var(--muted)">Cada proyecto que ejecutamos y cada curso que ofrecemos está guiado por principios que garantizan calidad, ética y compromiso con el medio ambiente y con las personas que confían en nosotros.</p>
+      </div>
+      <div class="col-lg-8 fade-up d2">
+        <div class="value-row">
+          <div class="val-num">01</div>
+          <div class="val-icon"><i class="fas fa-shield-alt"></i></div>
+          <div class="val-body">
+            <h5>Rigor Científico</h5>
+            <p>Aplicamos metodologías validadas y actualizadas en todos nuestros proyectos y programas de formación, asegurando que los resultados sean confiables, reproducibles y de alto valor técnico.</p>
+          </div>
+        </div>
+        <div class="value-row">
+          <div class="val-num">02</div>
+          <div class="val-icon"><i class="fas fa-handshake"></i></div>
+          <div class="val-body">
+            <h5>Compromiso Ambiental</h5>
+            <p>Nuestra labor está orientada a la conservación y el uso sostenible de los recursos naturales. Cada acción que emprendemos considera el impacto sobre los ecosistemas y las comunidades locales.</p>
+          </div>
+        </div>
+        <div class="value-row">
+          <div class="val-num">03</div>
+          <div class="val-icon"><i class="fas fa-users"></i></div>
+          <div class="val-body">
+            <h5>Trabajo Colaborativo</h5>
+            <p>Creemos en el poder de los equipos multidisciplinarios. Colaboramos con investigadores, instituciones, comunidades y organismos internacionales para potenciar el impacto de nuestro trabajo.</p>
+          </div>
+        </div>
+        <div class="value-row">
+          <div class="val-num">04</div>
+          <div class="val-icon"><i class="fas fa-lightbulb"></i></div>
+          <div class="val-body">
+            <h5>Innovación Continua</h5>
+            <p>Incorporamos constantemente nuevas tecnologías, herramientas de análisis y enfoques pedagógicos para mantenernos a la vanguardia en consultoría ambiental y educación especializada.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-3 col-md-6">
+        <div class="footer-brand"><img src="img/Andeanlogo.png" alt="Andean Consulting"></div>
+        <p class="footer-desc">Empresa peruana especializada en consultoría ambiental y formación especializada para la gestión sostenible del ambiente y la biodiversidad.</p>
+        <div style="margin-top:24px">
+          <a class="social-link" href="#"><i class="fab fa-facebook-f"></i></a>
+          <a class="social-link" href="#"><i class="fab fa-instagram"></i></a>
+          <a class="social-link" href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-6">
+        <div class="footer-heading">Navegación</div>
+        <a class="footer-link" href="index.html">Inicio</a>
+        <a class="footer-link" href="about.html">Nosotros</a>
+        <a class="footer-link" href="courses.html">Cursos</a>
+        <a class="footer-link" href="contact.html">Contacto</a>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="footer-heading">Contacto</div>
+        <div class="footer-cr"><i class="fas fa-map-marker-alt"></i><span>Perú</span></div>
+        <div class="footer-cr"><i class="fas fa-phone-alt"></i><span>+51 969 392 189</span></div>
+        <div class="footer-cr"><i class="fas fa-envelope"></i><span>capacitacion@andeanbioconsulting</span></div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="footer-heading">Boletín Informativo</div>
+        <p style="font-size:.85rem;color:rgba(255,255,255,.45);margin-bottom:18px;line-height:1.7">Suscríbete para recibir noticias sobre nuevos cursos y novedades ambientales.</p>
+        <div class="newsletter-row">
+          <input type="email" placeholder="Tu correo electrónico">
+          <button type="button">Suscribir</button>
+        </div>
+      </div>
+    </div>
+    <hr class="footer-divider">
+    <div class="footer-bottom">
+      <span>&copy; 2026 Andean Consulting &amp; Environmental Solutions S.A.C.</span>
+      <div class="footer-bottom-links"><a href="#">Política de Privacidad</a><a href="#">Cookies</a><a href="#">FAQ</a></div>
+    </div>
+  </div>
+</footer>
 
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+<a href="#" class="back-top" id="backTop"><i class="bi bi-arrow-up"></i></a>
 
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+/* SPINNER */
+window.addEventListener('load',()=>{const s=document.getElementById('spinner');s.classList.add('hide');setTimeout(()=>s.remove(),600)});
+
+/* NAVBAR */
+const mNav=document.getElementById('mainNav');
+window.addEventListener('scroll',()=>mNav.classList.toggle('scrolled',scrollY>20),{passive:true});
+
+/* FADE UP */
+const fo=new IntersectionObserver(ee=>{ee.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');fo.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -36px 0px'});
+document.querySelectorAll('.fade-up').forEach(el=>fo.observe(el));
+
+/* COUNTERS */
+function runC(el){const t=+el.dataset.target,inc=t/112;let c=0;const ti=setInterval(()=>{c=Math.min(c+inc,t);el.textContent=Math.floor(c)+'+';if(c>=t)clearInterval(ti)},16)}
+const co=new IntersectionObserver(ee=>{ee.forEach(e=>{if(e.isIntersecting){runC(e.target);co.unobserve(e.target)}})},{threshold:.5});
+document.querySelectorAll('.counter-val').forEach(el=>co.observe(el));
+
+/* BACK TOP */
+const bt=document.getElementById('backTop');
+window.addEventListener('scroll',()=>bt.classList.toggle('show',scrollY>300),{passive:true});
+bt.addEventListener('click',e=>{e.preventDefault();scrollTo({top:0,behavior:'smooth'})});
+</script>
 </body>
-
 </html>
