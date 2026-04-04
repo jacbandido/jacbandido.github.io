@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="utf-8">
     <title>Andean Consulting & Environmental Solutions S.A.C.</title>
@@ -11,528 +10,903 @@
     <link href="img/favicon.ico" rel="icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="lib/animate/animate.min.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --green: #006a39;
+            --blue: #00658c;
+            --dark-text: #464646;
+            --green-light: #e8f5ee;
+            --blue-light: #e6f3f8;
+            --off-white: #f8f9f6;
+            --border: #dde8e2;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 400;
+            color: var(--dark-text);
+            background: #fff;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            color: var(--dark-text);
+        }
+
+        /* ── SPINNER ── */
+        #spinner {
+            position: fixed; inset: 0; background: #fff;
+            display: flex; align-items: center; justify-content: center;
+            z-index: 9999; transition: opacity .4s;
+        }
+        #spinner.hide { opacity: 0; pointer-events: none; }
+        .spin-ring {
+            width: 48px; height: 48px;
+            border: 3px solid var(--green-light);
+            border-top-color: var(--green);
+            border-radius: 50%;
+            animation: spin .8s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* ── NAVBAR ── */
+        .navbar {
+            background: #fff;
+            box-shadow: 0 1px 24px rgba(0,106,57,.08);
+            padding: 0;
+            position: sticky; top: 0; z-index: 1000;
+        }
+        .navbar-brand { padding: 12px 24px; }
+        .navbar-brand img { height: 46px; object-fit: contain; }
+        .nav-link {
+            font-family: 'DM Sans', sans-serif;
+            font-weight: 500;
+            font-size: .9rem;
+            letter-spacing: .02em;
+            color: var(--dark-text) !important;
+            padding: 1.5rem 1rem !important;
+            transition: color .2s;
+        }
+        .nav-link:hover, .nav-link.active { color: var(--green) !important; }
+        .dropdown-menu { border: none; box-shadow: 0 8px 32px rgba(0,0,0,.1); border-radius: 8px; padding: 8px 0; }
+        .dropdown-item { font-family: 'DM Sans', sans-serif; font-size: .88rem; padding: 10px 20px; color: var(--dark-text); }
+        .dropdown-item:hover { background: var(--green-light); color: var(--green); }
+        .btn-nav-cta {
+            background: var(--green);
+            color: #fff !important;
+            font-weight: 600;
+            font-size: .85rem;
+            letter-spacing: .04em;
+            padding: 12px 24px !important;
+            border-radius: 0;
+            border: none;
+            transition: background .2s;
+        }
+        .btn-nav-cta:hover { background: #005530 !important; color: #fff !important; }
+
+        /* ── HERO CAROUSEL ── */
+        .hero {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+        .hero-slide {
+            display: none;
+            position: relative;
+            width: 100%;
+            height: 92vh;
+            min-height: 520px;
+            max-height: 820px;
+        }
+        .hero-slide.active { display: block; }
+        .hero-slide img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+        .hero-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(120deg, rgba(0,26,15,.78) 0%, rgba(0,101,140,.45) 100%);
+            display: flex; align-items: center;
+        }
+        .hero-content {
+            padding: 0 5%;
+            max-width: 680px;
+            animation: heroIn .7s ease both;
+        }
+        @keyframes heroIn {
+            from { opacity: 0; transform: translateY(28px); }
+            to   { opacity: 1; transform: none; }
+        }
+        .hero-tag {
+            display: inline-block;
+            background: rgba(255,255,255,.15);
+            border: 1px solid rgba(255,255,255,.3);
+            color: #fff;
+            font-size: .75rem;
+            font-weight: 600;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            padding: 6px 16px;
+            border-radius: 40px;
+            margin-bottom: 20px;
+            backdrop-filter: blur(4px);
+        }
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.8rem, 5vw, 3.2rem);
+            color: #fff;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        .hero-content p {
+            font-size: clamp(.9rem, 2vw, 1.05rem);
+            color: rgba(255,255,255,.88);
+            line-height: 1.7;
+            margin-bottom: 32px;
+            font-weight: 300;
+        }
+        .hero-btns { display: flex; gap: 12px; flex-wrap: wrap; }
+        .btn-hero-primary {
+            background: var(--green);
+            color: #fff;
+            font-weight: 600;
+            font-size: .88rem;
+            letter-spacing: .04em;
+            padding: 14px 28px;
+            border-radius: 6px;
+            border: none;
+            text-decoration: none;
+            transition: background .2s, transform .15s;
+        }
+        .btn-hero-primary:hover { background: #005530; color: #fff; transform: translateY(-2px); }
+        .btn-hero-secondary {
+            background: transparent;
+            color: #fff;
+            font-weight: 600;
+            font-size: .88rem;
+            letter-spacing: .04em;
+            padding: 14px 28px;
+            border-radius: 6px;
+            border: 2px solid rgba(255,255,255,.6);
+            text-decoration: none;
+            transition: border-color .2s, background .2s, transform .15s;
+        }
+        .btn-hero-secondary:hover { background: rgba(255,255,255,.12); border-color: #fff; color: #fff; transform: translateY(-2px); }
+
+        /* carousel dots */
+        .hero-dots {
+            position: absolute; bottom: 24px; left: 50%;
+            transform: translateX(-50%);
+            display: flex; gap: 8px; z-index: 10;
+        }
+        .hero-dot {
+            width: 8px; height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,.4);
+            cursor: pointer; border: none;
+            transition: background .2s, transform .2s;
+        }
+        .hero-dot.active { background: #fff; transform: scale(1.3); }
+
+        /* carousel arrows */
+        .hero-arrow {
+            position: absolute; top: 50%; transform: translateY(-50%);
+            background: rgba(255,255,255,.15);
+            border: 1px solid rgba(255,255,255,.3);
+            color: #fff;
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; z-index: 10;
+            backdrop-filter: blur(4px);
+            transition: background .2s;
+            font-size: 1.1rem;
+        }
+        .hero-arrow:hover { background: rgba(255,255,255,.28); }
+        .hero-arrow.prev { left: 20px; }
+        .hero-arrow.next { right: 20px; }
+
+        /* ── SECTION LABEL ── */
+        .section-label {
+            display: inline-block;
+            font-size: .7rem;
+            font-weight: 700;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+            color: var(--green);
+            background: var(--green-light);
+            padding: 5px 14px;
+            border-radius: 40px;
+            margin-bottom: 14px;
+        }
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.5rem, 4vw, 2.2rem);
+            color: var(--dark-text);
+            line-height: 1.25;
+        }
+
+        /* ── SERVICES ── */
+        .services-section { padding: 80px 0; background: var(--off-white); }
+        .service-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 36px 28px;
+            border: 1px solid var(--border);
+            transition: transform .25s, box-shadow .25s;
+            height: 100%;
+        }
+        .service-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0,106,57,.1); }
+        .service-icon {
+            width: 56px; height: 56px;
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+        }
+        .service-icon.green { background: var(--green-light); color: var(--green); }
+        .service-icon.blue  { background: var(--blue-light);  color: var(--blue);  }
+        .service-card h5 { font-size: 1rem; font-weight: 600; margin-bottom: 10px; font-family: 'DM Sans', sans-serif; }
+        .service-card p  { font-size: .88rem; color: #777; line-height: 1.65; margin: 0; }
+
+        /* ── ABOUT ── */
+        .about-section { padding: 80px 0; }
+        .about-img-wrap {
+            border-radius: 16px; overflow: hidden;
+            height: 460px;
+            position: relative;
+        }
+        .about-img-wrap img { width: 100%; height: 100%; object-fit: cover; }
+        .about-badge {
+            position: absolute; bottom: 28px; left: 28px;
+            background: var(--green);
+            color: #fff;
+            padding: 16px 24px;
+            border-radius: 10px;
+            font-size: .85rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+        .about-badge span { font-size: 1.8rem; font-family: 'Playfair Display', serif; display: block; }
+        .feature-pill {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: var(--green-light);
+            border-radius: 6px;
+            padding: 8px 14px;
+            font-size: .82rem;
+            font-weight: 500;
+            color: var(--green);
+            margin: 4px;
+        }
+        .feature-pill i { font-size: .7rem; }
+        .btn-primary-custom {
+            background: var(--green);
+            color: #fff;
+            font-weight: 600;
+            font-size: .88rem;
+            letter-spacing: .04em;
+            padding: 14px 32px;
+            border-radius: 6px;
+            border: none;
+            text-decoration: none;
+            transition: background .2s, transform .15s;
+            display: inline-block;
+        }
+        .btn-primary-custom:hover { background: #005530; color: #fff; transform: translateY(-2px); }
+
+        /* ── SERVICES CARDS (areas temáticas) ── */
+        .areas-section { padding: 80px 0; background: var(--off-white); }
+        .area-card {
+            background: #fff;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: transform .25s, box-shadow .25s;
+            cursor: pointer;
+            text-decoration: none;
+            display: block;
+            height: 100%;
+        }
+        .area-card:hover { transform: translateY(-8px); box-shadow: 0 20px 60px rgba(0,0,0,.1); }
+        .area-card-img {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+        .area-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+        .area-card:hover .area-card-img img { transform: scale(1.06); }
+        .area-card-img-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(180deg, transparent 40%, rgba(0,26,15,.55));
+        }
+        .area-card-body { padding: 22px; }
+        .area-card-body h5 { font-family: 'DM Sans', sans-serif; font-size: .95rem; font-weight: 700; margin-bottom: 6px; }
+        .area-card-body p  { font-size: .82rem; color: #777; margin: 0; line-height: 1.6; }
+        .area-badge {
+            display: inline-block;
+            font-size: .68rem;
+            font-weight: 700;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: var(--green);
+            background: var(--green-light);
+            padding: 3px 10px;
+            border-radius: 40px;
+            margin-bottom: 8px;
+        }
+
+        /* ── COURSES ── */
+        .courses-section { padding: 80px 0; }
+        .course-card {
+            background: #fff;
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            transition: transform .25s, box-shadow .25s;
+            height: 100%;
+        }
+        .course-card:hover { transform: translateY(-6px); box-shadow: 0 16px 48px rgba(0,0,0,.08); }
+        .course-card-img { height: 200px; overflow: hidden; }
+        .course-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
+        .course-card:hover .course-card-img img { transform: scale(1.05); }
+        .course-card-body { padding: 22px 22px 16px; }
+        .course-status {
+            font-size: .7rem; font-weight: 700; letter-spacing: .1em;
+            text-transform: uppercase; color: var(--blue);
+            background: var(--blue-light);
+            padding: 3px 10px; border-radius: 40px;
+            display: inline-block; margin-bottom: 10px;
+        }
+        .course-card-body h5 { font-family: 'DM Sans', sans-serif; font-size: .95rem; font-weight: 600; line-height: 1.4; margin: 0; }
+        .course-card-footer {
+            border-top: 1px solid var(--border);
+            padding: 12px 22px;
+            display: flex; gap: 0;
+        }
+        .course-meta {
+            flex: 1; text-align: center;
+            font-size: .75rem; color: #888;
+            padding: 6px 0;
+        }
+        .course-meta:not(:last-child) { border-right: 1px solid var(--border); }
+        .course-meta i { color: var(--green); margin-right: 4px; }
+        .course-btns { display: flex; gap: 8px; padding: 0 22px 22px; }
+        .btn-course {
+            flex: 1; text-align: center;
+            background: var(--green);
+            color: #fff; border: none;
+            padding: 10px; border-radius: 6px;
+            font-size: .82rem; font-weight: 600;
+            text-decoration: none;
+            transition: background .2s;
+        }
+        .btn-course:hover { background: #005530; color: #fff; }
+        .btn-course-outline {
+            flex: 1; text-align: center;
+            background: transparent;
+            color: var(--green);
+            border: 1.5px solid var(--green);
+            padding: 10px; border-radius: 6px;
+            font-size: .82rem; font-weight: 600;
+            text-decoration: none;
+            transition: background .2s, color .2s;
+        }
+        .btn-course-outline:hover { background: var(--green); color: #fff; }
+
+        /* ── FOOTER ── */
+        .footer { background: #0f1f16; padding: 64px 0 0; }
+        .footer h5 {
+            font-family: 'DM Sans', sans-serif;
+            font-size: .8rem; font-weight: 700;
+            letter-spacing: .1em; text-transform: uppercase;
+            color: rgba(255,255,255,.4); margin-bottom: 20px;
+        }
+        .footer-link {
+            display: block;
+            font-size: .88rem;
+            color: rgba(255,255,255,.7);
+            text-decoration: none;
+            margin-bottom: 8px;
+            transition: color .2s;
+        }
+        .footer-link:hover { color: #fff; }
+        .footer-contact {
+            font-size: .88rem;
+            color: rgba(255,255,255,.7);
+            display: flex; align-items: flex-start; gap: 10px;
+            margin-bottom: 10px;
+        }
+        .footer-contact i { color: var(--green); margin-top: 2px; flex-shrink: 0; }
+        .social-btn {
+            width: 36px; height: 36px;
+            border-radius: 8px;
+            background: rgba(255,255,255,.08);
+            color: rgba(255,255,255,.7);
+            display: inline-flex; align-items: center; justify-content: center;
+            font-size: .85rem;
+            text-decoration: none;
+            transition: background .2s, color .2s;
+            margin-right: 6px;
+        }
+        .social-btn:hover { background: var(--green); color: #fff; }
+        .newsletter-form { display: flex; gap: 0; margin-top: 4px; }
+        .newsletter-form input {
+            flex: 1;
+            background: rgba(255,255,255,.07);
+            border: 1px solid rgba(255,255,255,.12);
+            border-right: none;
+            color: #fff;
+            padding: 12px 16px;
+            font-size: .85rem;
+            border-radius: 6px 0 0 6px;
+            outline: none;
+        }
+        .newsletter-form input::placeholder { color: rgba(255,255,255,.35); }
+        .newsletter-form button {
+            background: var(--green);
+            border: none;
+            color: #fff;
+            padding: 12px 18px;
+            font-size: .82rem;
+            font-weight: 600;
+            border-radius: 0 6px 6px 0;
+            cursor: pointer;
+            transition: background .2s;
+        }
+        .newsletter-form button:hover { background: #005530; }
+        .footer-divider { border-color: rgba(255,255,255,.08); margin: 40px 0 0; }
+        .footer-bottom {
+            padding: 20px 0;
+            font-size: .8rem;
+            color: rgba(255,255,255,.35);
+            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;
+        }
+        .footer-bottom a { color: rgba(255,255,255,.35); text-decoration: none; }
+        .footer-bottom a:hover { color: rgba(255,255,255,.7); }
+        .footer-bottom-links { display: flex; gap: 20px; }
+
+        /* ── BACK TO TOP ── */
+        .back-top {
+            position: fixed; bottom: 24px; right: 24px;
+            width: 44px; height: 44px;
+            background: var(--green);
+            color: #fff;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem;
+            text-decoration: none;
+            opacity: 0; pointer-events: none;
+            transition: opacity .3s, transform .2s;
+            z-index: 999;
+            box-shadow: 0 4px 16px rgba(0,106,57,.3);
+        }
+        .back-top.show { opacity: 1; pointer-events: all; }
+        .back-top:hover { transform: translateY(-3px); color: #fff; }
+
+        /* ── MOBILE ── */
+        @media (max-width: 768px) {
+            .hero-slide { height: 75vh; min-height: 480px; }
+            .hero-content { padding: 0 6%; }
+            .hero-arrow { display: none; }
+            .services-section, .about-section, .areas-section, .courses-section { padding: 56px 0; }
+            .about-img-wrap { height: 280px; margin-bottom: 32px; }
+            .about-badge span { font-size: 1.3rem; }
+            .navbar-collapse { background: #fff; padding: 8px 16px 16px; border-top: 1px solid var(--border); }
+            .nav-link { padding: .75rem .5rem !important; font-size: .95rem; }
+            .btn-nav-cta { display: none; }
+            .footer-bottom { flex-direction: column; text-align: center; }
+            .footer-bottom-links { flex-wrap: wrap; justify-content: center; gap: 12px; }
+        }
+
+        /* ── FADE-IN ON SCROLL ── */
+        .fade-up {
+            opacity: 0; transform: translateY(32px);
+            transition: opacity .55s ease, transform .55s ease;
+        }
+        .fade-up.visible { opacity: 1; transform: none; }
+        .fade-up-delay-1 { transition-delay: .1s; }
+        .fade-up-delay-2 { transition-delay: .2s; }
+        .fade-up-delay-3 { transition-delay: .3s; }
+        .fade-up-delay-4 { transition-delay: .4s; }
+    </style>
 </head>
-
 <body>
-    <!-- Spinner Start -->
-    <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
-        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
-            <span class="sr-only">Cargando...</span>
-        </div>
-    </div>
-    <!-- Spinner End -->
 
-    <!-- Navbar Start -->
-    <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
-        <a href="index.html" class="navbar-brand d-flex align-items-center px-4 px-lg-5">
-            <img src="img/Andeanlogo.png" alt="Andean Consulting Logo" style="height: 50px; object-fit: contain;">
+<!-- Spinner -->
+<div id="spinner">
+    <div class="spin-ring"></div>
+</div>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg">
+    <a href="index.html" class="navbar-brand">
+        <img src="img/Andeanlogo.png" alt="Andean Consulting Logo">
+    </a>
+    <button type="button" class="navbar-toggler border-0 me-3" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav ms-auto p-3 p-lg-0">
+            <a href="index.html" class="nav-item nav-link active">Inicio</a>
+            <a href="about.html" class="nav-item nav-link">Nosotros</a>
+            <a href="courses.html" class="nav-item nav-link">Cursos</a>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Servicios</a>
+                <div class="dropdown-menu fade-down m-0">
+                    <a href="team.html" class="dropdown-item">Nuestro Equipo</a>
+                    <a href="testimonial.html" class="dropdown-item">Testimonios</a>
+                </div>
+            </div>
+            <a href="contact.html" class="nav-item nav-link">Contacto</a>
+        </div>
+        <a href="#servicios" class="btn-nav-cta d-none d-lg-flex align-items-center gap-2">
+            Ver Nuestros Servicios <i class="fas fa-arrow-right" style="font-size:.75rem"></i>
         </a>
-        <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarCollapse">
-            <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="index.html" class="nav-item nav-link active">Inicio</a>
-                <a href="about.html" class="nav-item nav-link">Nosotros</a>
-                <a href="courses.html" class="nav-item nav-link">Cursos</a>
-                <div class="nav-item dropdown">
-                    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Servicios</a>
-                    <div class="dropdown-menu fade-down m-0">
-                        <a href="team.html" class="dropdown-item">Nuestro Equipo</a>
-                        <a href="testimonial.html" class="dropdown-item">Testimonios</a>
-                        <a href="404.html" class="dropdown-item">Página 404</a>
-                    </div>
-                </div>
-                <a href="contact.html" class="nav-item nav-link">Contacto</a>
-            </div>
-            <a href="courses.html" class="btn btn-primary py-4 px-lg-5 d-none d-lg-block">Ver Cursos<i class="fa fa-arrow-right ms-3"></i></a>
-        </div>
-    </nav>
-    <!-- Navbar End -->
+    </div>
+</nav>
 
-    <!-- Carousel Start -->
-    <div class="container-fluid p-0 mb-5">
-        <div class="owl-carousel header-carousel position-relative">
-            <div class="owl-carousel-item position-relative">
-                <img class="img-fluid" src="img/carousel-1.jpg" alt="">
-                <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(24, 29, 56, .7);">
-                    <div class="container">
-                        <div class="row justify-content-start">
-                            <div class="col-sm-10 col-lg-8">
-                                <h5 class="text-primary text-uppercase mb-3 animated slideInDown">Cursos Virtuales Especializados</h5>
-                                <h1 class="display-3 text-white animated slideInDown">Aprende Ciencias Ambientales desde Cualquier Lugar</h1>
-                                <p class="fs-5 text-white mb-4 pb-2">Formación profesional en ecología, monitoreo ambiental, SIG, bioinformática y gestión de recursos naturales. Aprende con expertos desde la comodidad de tu hogar.</p>
-                                <a href="about.html" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Conócenos</a>
-                                <a href="courses.html" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Ver Cursos</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="owl-carousel-item position-relative">
-                <img class="img-fluid" src="img/carousel-2.jpg" alt="">
-                <div class="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center" style="background: rgba(24, 29, 56, .7);">
-                    <div class="container">
-                        <div class="row justify-content-start">
-                            <div class="col-sm-10 col-lg-8">
-                                <h5 class="text-primary text-uppercase mb-3 animated slideInDown">Consultoría y Servicios Ambientales</h5>
-                                <h1 class="display-3 text-white animated slideInDown">Soluciones Técnicas para el Ambiente y la Biodiversidad</h1>
-                                <p class="fs-5 text-white mb-4 pb-2">Ofrecemos levantamientos biológicos, monitoreo ambiental, alquiler de equipos especializados y asesoría técnica para entidades públicas, privadas y comunidades.</p>
-                                <a href="about.html" class="btn btn-primary py-md-3 px-md-5 me-3 animated slideInLeft">Más Información</a>
-                                <a href="contact.html" class="btn btn-light py-md-3 px-md-5 animated slideInRight">Contáctanos</a>
-                            </div>
-                        </div>
+<!-- Hero Carousel -->
+<div class="hero" id="hero">
+    <!-- Slide 1: Consultoría (primero) -->
+    <div class="hero-slide active">
+        <img src="img/carousel-2.jpg" alt="Consultoría Ambiental">
+        <div class="hero-overlay">
+            <div class="container">
+                <div class="hero-content">
+                    <span class="hero-tag">Consultoría y Servicios Ambientales</span>
+                    <h1>Soluciones Técnicas para el Ambiente y la Biodiversidad</h1>
+                    <p>Levantamientos biológicos, monitoreo ambiental, alquiler de equipos especializados y asesoría técnica para entidades públicas, privadas y comunidades.</p>
+                    <div class="hero-btns">
+                        <a href="about.html" class="btn-hero-primary">Más Información</a>
+                        <a href="contact.html" class="btn-hero-secondary">Contáctanos</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Carousel End -->
-
-    <!-- Service Start -->
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="service-item text-center pt-3">
-                        <div class="p-4">
-                            <i class="fa fa-3x fa-graduation-cap text-primary mb-4"></i>
-                            <h5 class="mb-3">Cursos Virtuales</h5>
-                            <p>Cursos y talleres especializados en ecología, SIG, modelamiento ambiental y bioinformática dictados por expertos.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="service-item text-center pt-3">
-                        <div class="p-4">
-                            <i class="fa fa-3x fa-leaf text-primary mb-4"></i>
-                            <h5 class="mb-3">Levantamientos Biológicos</h5>
-                            <p>Líneas base físicas y biológicas, inventarios de biodiversidad y monitoreo de ecosistemas a nivel nacional.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="service-item text-center pt-3">
-                        <div class="p-4">
-                            <i class="fa fa-3x fa-microscope text-primary mb-4"></i>
-                            <h5 class="mb-3">Alquiler de Equipos</h5>
-                            <p>Equipos especializados para monitoreo biológico, muestreo científico y trabajo de campo ambiental.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-sm-6 wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="service-item text-center pt-3">
-                        <div class="p-4">
-                            <i class="fa fa-3x fa-laptop-code text-primary mb-4"></i>
-                            <h5 class="mb-3">Soluciones Tecnológicas</h5>
-                            <p>Sistemas de información geográfica, teledetección, modelamiento ambiental y análisis de datos geoespaciales.</p>
-                        </div>
+    <!-- Slide 2: Cursos (segundo) -->
+    <div class="hero-slide">
+        <img src="img/carousel-1.jpg" alt="Cursos Virtuales Especializados">
+        <div class="hero-overlay">
+            <div class="container">
+                <div class="hero-content">
+                    <span class="hero-tag">Cursos Virtuales Especializados</span>
+                    <h1>Aprende Ciencias Ambientales desde Cualquier Lugar</h1>
+                    <p>Formación profesional en ecología, monitoreo ambiental, SIG, bioinformática y gestión de recursos naturales con expertos de campo.</p>
+                    <div class="hero-btns">
+                        <a href="about.html" class="btn-hero-primary">Conócenos</a>
+                        <a href="courses.html" class="btn-hero-secondary">Ver Cursos</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Service End -->
 
-    <!-- About Start -->
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="row g-5">
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s" style="min-height: 400px;">
-                    <div class="position-relative h-100">
-                        <img class="img-fluid position-absolute w-100 h-100" src="img/about.jpg" alt="Andean Consulting - Trabajo de campo" style="object-fit: cover;">
-                    </div>
+    <button class="hero-arrow prev" onclick="moveSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+    <button class="hero-arrow next" onclick="moveSlide(1)"><i class="fas fa-chevron-right"></i></button>
+    <div class="hero-dots">
+        <button class="hero-dot active" onclick="goSlide(0)"></button>
+        <button class="hero-dot"        onclick="goSlide(1)"></button>
+    </div>
+</div>
+
+<!-- Services Strip -->
+<div class="services-section" id="servicios">
+    <div class="container">
+        <div class="text-center mb-5 fade-up">
+            <span class="section-label">Lo que hacemos</span>
+            <h2 class="section-title">Nuestros Servicios</h2>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-3 col-sm-6 fade-up fade-up-delay-1">
+                <div class="service-card">
+                    <div class="service-icon green"><i class="fas fa-graduation-cap"></i></div>
+                    <h5>Cursos Virtuales</h5>
+                    <p>Talleres especializados en ecología, SIG, modelamiento ambiental y bioinformática dictados por expertos con experiencia de campo.</p>
                 </div>
-                <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <h6 class="section-title bg-white text-start text-primary pe-3">Sobre Nosotros</h6>
-                    <h1 class="mb-4">Bienvenidos a Andean Consulting & Environmental Solutions</h1>
-                    <p class="mb-4">Somos una empresa peruana especializada en consultoría ambiental, formación especializada y soluciones tecnológicas para la gestión sostenible del ambiente y la biodiversidad. Trabajamos con entidades públicas, privadas, ONGs y comunidades a nivel nacional.</p>
-                    <p class="mb-4">Nuestra propuesta educativa virtual te permite acceder a conocimientos especializados en ecología, ciencias ambientales, SIG y bioinformática desde cualquier lugar del mundo, con instructores con experiencia real en campo.</p>
-                    <div class="row gy-2 gx-4 mb-4">
-                        <div class="col-sm-6">
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Cursos Virtuales Especializados</p>
-                        </div>
-                        <div class="col-sm-6">
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Levantamientos Biológicos</p>
-                        </div>
-                        <div class="col-sm-6">
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Alquiler de Equipos de Monitoreo</p>
-                        </div>
-                        <div class="col-sm-6">
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Asesoría Ambiental</p>
-                        </div>
-                        <div class="col-sm-6">
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Análisis de Datos y SIG</p>
-                        </div>
-                        <div class="col-sm-6">
-                            <p class="mb-0"><i class="fa fa-arrow-right text-primary me-2"></i>Certificados Reconocidos</p>
-                        </div>
-                    </div>
-                    <a class="btn btn-primary py-3 px-5 mt-2" href="about.html">Leer Más</a>
+            </div>
+            <div class="col-lg-3 col-sm-6 fade-up fade-up-delay-2">
+                <div class="service-card">
+                    <div class="service-icon blue"><i class="fas fa-leaf"></i></div>
+                    <h5>Levantamientos Biológicos</h5>
+                    <p>Líneas base físicas y biológicas, inventarios de biodiversidad y monitoreo de ecosistemas a nivel nacional.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 fade-up fade-up-delay-3">
+                <div class="service-card">
+                    <div class="service-icon green"><i class="fas fa-microscope"></i></div>
+                    <h5>Alquiler de Equipos</h5>
+                    <p>Equipos especializados para monitoreo biológico, muestreo científico y trabajo de campo ambiental.</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-sm-6 fade-up fade-up-delay-4">
+                <div class="service-card">
+                    <div class="service-icon blue"><i class="fas fa-laptop-code"></i></div>
+                    <h5>Soluciones Tecnológicas</h5>
+                    <p>Sistemas de información geográfica, teledetección, modelamiento ambiental y análisis de datos geoespaciales.</p>
                 </div>
             </div>
         </div>
     </div>
-    <!-- About End -->
+</div>
 
-    <!-- Categories Start -->
-    <div class="container-xxl py-5 category">
-        <div class="container">
-            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="section-title bg-white text-center text-primary px-3">Categorías</h6>
-                <h1 class="mb-5">Áreas Temáticas</h1>
-            </div>
-            <div class="row g-3">
-                <div class="col-lg-7 col-md-6">
-                    <div class="row g-3">
-                        <div class="col-lg-12 col-md-12 wow zoomIn" data-wow-delay="0.1s">
-                            <a class="position-relative d-block overflow-hidden" href="courses.html">
-                                <img class="img-fluid" src="img/cat-1.jpg" alt="Ecología y Biodiversidad">
-                                <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
-                                    <h5 class="m-0">Ecología y Biodiversidad</h5>
-                                    <small class="text-primary">Cursos Disponibles</small>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.3s">
-                            <a class="position-relative d-block overflow-hidden" href="courses.html">
-                                <img class="img-fluid" src="img/cat-2.jpg" alt="SIG y Teledetección">
-                                <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
-                                    <h5 class="m-0">SIG y Teledetección</h5>
-                                    <small class="text-primary">Cursos Disponibles</small>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-6 col-md-12 wow zoomIn" data-wow-delay="0.5s">
-                            <a class="position-relative d-block overflow-hidden" href="courses.html">
-                                <img class="img-fluid" src="img/cat-3.jpg" alt="Monitoreo Ambiental">
-                                <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
-                                    <h5 class="m-0">Monitoreo Ambiental</h5>
-                                    <small class="text-primary">Cursos Disponibles</small>
-                                </div>
-                            </a>
-                        </div>
+<!-- About -->
+<div class="about-section">
+    <div class="container">
+        <div class="row g-5 align-items-center">
+            <div class="col-lg-6 fade-up">
+                <div class="about-img-wrap">
+                    <img src="img/about.jpg" alt="Andean Consulting – Trabajo de campo">
+                    <div class="about-badge">
+                        <span>+5</span>años de experiencia ambiental
                     </div>
                 </div>
-                <div class="col-lg-5 col-md-6 wow zoomIn" data-wow-delay="0.7s" style="min-height: 350px;">
-                    <a class="position-relative d-block h-100 overflow-hidden" href="courses.html">
-                        <img class="img-fluid position-absolute w-100 h-100" src="img/cat-4.jpg" alt="Bioinformática y Análisis de Datos" style="object-fit: cover;">
-                        <div class="bg-white text-center position-absolute bottom-0 end-0 py-2 px-3" style="margin: 1px;">
-                            <h5 class="m-0">Bioinformática y Análisis de Datos</h5>
-                            <small class="text-primary">Cursos Disponibles</small>
-                        </div>
-                    </a>
+            </div>
+            <div class="col-lg-6 fade-up fade-up-delay-2">
+                <span class="section-label">Sobre Nosotros</span>
+                <h2 class="section-title mb-4">Bienvenidos a Andean Consulting & Environmental Solutions</h2>
+                <p style="font-size:.95rem;line-height:1.75;margin-bottom:16px;color:#555;">
+                    Somos una empresa peruana especializada en consultoría ambiental, formación especializada y soluciones tecnológicas para la gestión sostenible del ambiente y la biodiversidad. Trabajamos con entidades públicas, privadas, ONGs y comunidades a nivel nacional.
+                </p>
+                <p style="font-size:.95rem;line-height:1.75;margin-bottom:28px;color:#555;">
+                    Nuestra propuesta educativa virtual te permite acceder a conocimientos especializados en ecología, ciencias ambientales, SIG y bioinformática desde cualquier lugar del mundo.
+                </p>
+                <div style="margin-bottom:32px;">
+                    <span class="feature-pill"><i class="fas fa-check"></i> Cursos Virtuales Especializados</span>
+                    <span class="feature-pill"><i class="fas fa-check"></i> Levantamientos Biológicos</span>
+                    <span class="feature-pill"><i class="fas fa-check"></i> Alquiler de Equipos</span>
+                    <span class="feature-pill"><i class="fas fa-check"></i> Asesoría Ambiental</span>
+                    <span class="feature-pill"><i class="fas fa-check"></i> Análisis de Datos y SIG</span>
+                    <span class="feature-pill"><i class="fas fa-check"></i> Certificados Reconocidos</span>
                 </div>
+                <a class="btn-primary-custom" href="about.html">Leer Más</a>
             </div>
         </div>
     </div>
-    <!-- Categories End -->
+</div>
 
-    <!-- Courses Start -->
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="section-title bg-white text-center text-primary px-3">Cursos</h6>
-                <h1 class="mb-5">Cursos Destacados</h1>
+<!-- Áreas Temáticas / Servicios -->
+<div class="areas-section">
+    <div class="container">
+        <div class="text-center mb-5 fade-up">
+            <span class="section-label">Áreas de Trabajo</span>
+            <h2 class="section-title">Nuestras Especialidades</h2>
+        </div>
+        <div class="row g-4">
+            <div class="col-lg-3 col-sm-6 fade-up fade-up-delay-1">
+                <a class="area-card" href="courses.html">
+                    <div class="area-card-img">
+                        <img src="img/cat-1.jpg" alt="Ecología y Biodiversidad">
+                        <div class="area-card-img-overlay"></div>
+                    </div>
+                    <div class="area-card-body">
+                        <div class="area-badge">Cursos disponibles</div>
+                        <h5>Ecología y Biodiversidad</h5>
+                        <p>Inventarios, monitoreo y análisis de ecosistemas y especies.</p>
+                    </div>
+                </a>
             </div>
-            <div class="row g-4 justify-content-center">
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="course-item bg-light">
-                        <div class="position-relative overflow-hidden">
-                            <img class="img-fluid" src="img/course-1.jpg" alt="Curso Ecología">
-                            <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
-                                <a href="courses.html" class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Ver Más</a>
-                                <a href="courses.html" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Inscribirse</a>
-                            </div>
-                        </div>
-                        <div class="text-center p-4 pb-0">
-                            <h3 class="mb-0">Próximamente</h3>
-                            <div class="mb-3">
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                            </div>
-                            <h5 class="mb-4">Introducción a la Ecología y Monitoreo de Biodiversidad</h5>
-                        </div>
-                        <div class="d-flex border-top">
-                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-user-tie text-primary me-2"></i>Especialistas Andean</small>
-                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-globe text-primary me-2"></i>En línea</small>
-                            <small class="flex-fill text-center py-2"><i class="fa fa-certificate text-primary me-2"></i>Certificado</small>
-                        </div>
+            <div class="col-lg-3 col-sm-6 fade-up fade-up-delay-2">
+                <a class="area-card" href="courses.html">
+                    <div class="area-card-img">
+                        <img src="img/cat-2.jpg" alt="SIG y Teledetección">
+                        <div class="area-card-img-overlay"></div>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="course-item bg-light">
-                        <div class="position-relative overflow-hidden">
-                            <img class="img-fluid" src="img/course-2.jpg" alt="Curso SIG">
-                            <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
-                                <a href="courses.html" class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Ver Más</a>
-                                <a href="courses.html" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Inscribirse</a>
-                            </div>
-                        </div>
-                        <div class="text-center p-4 pb-0">
-                            <h3 class="mb-0">Próximamente</h3>
-                            <div class="mb-3">
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                            </div>
-                            <h5 class="mb-4">SIG y Teledetección Aplicados al Análisis Ambiental</h5>
-                        </div>
-                        <div class="d-flex border-top">
-                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-user-tie text-primary me-2"></i>Especialistas Andean</small>
-                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-globe text-primary me-2"></i>En línea</small>
-                            <small class="flex-fill text-center py-2"><i class="fa fa-certificate text-primary me-2"></i>Certificado</small>
-                        </div>
+                    <div class="area-card-body">
+                        <div class="area-badge">Cursos disponibles</div>
+                        <h5>SIG y Teledetección</h5>
+                        <p>Análisis espacial, cartografía y procesamiento de imágenes satelitales.</p>
                     </div>
-                </div>
-                <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="course-item bg-light">
-                        <div class="position-relative overflow-hidden">
-                            <img class="img-fluid" src="img/course-3.jpg" alt="Curso Bioinformática">
-                            <div class="w-100 d-flex justify-content-center position-absolute bottom-0 start-0 mb-4">
-                                <a href="courses.html" class="flex-shrink-0 btn btn-sm btn-primary px-3 border-end" style="border-radius: 30px 0 0 30px;">Ver Más</a>
-                                <a href="courses.html" class="flex-shrink-0 btn btn-sm btn-primary px-3" style="border-radius: 0 30px 30px 0;">Inscribirse</a>
-                            </div>
-                        </div>
-                        <div class="text-center p-4 pb-0">
-                            <h3 class="mb-0">Próximamente</h3>
-                            <div class="mb-3">
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                                <small class="fa fa-star text-primary"></small>
-                            </div>
-                            <h5 class="mb-4">Bioinformática y Análisis Estadístico para Ecólogos</h5>
-                        </div>
-                        <div class="d-flex border-top">
-                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-user-tie text-primary me-2"></i>Especialistas Andean</small>
-                            <small class="flex-fill text-center border-end py-2"><i class="fa fa-globe text-primary me-2"></i>En línea</small>
-                            <small class="flex-fill text-center py-2"><i class="fa fa-certificate text-primary me-2"></i>Certificado</small>
-                        </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-sm-6 fade-up fade-up-delay-3">
+                <a class="area-card" href="courses.html">
+                    <div class="area-card-img">
+                        <img src="img/cat-3.jpg" alt="Monitoreo Ambiental">
+                        <div class="area-card-img-overlay"></div>
                     </div>
-                </div>
+                    <div class="area-card-body">
+                        <div class="area-badge">Servicio disponible</div>
+                        <h5>Monitoreo Ambiental</h5>
+                        <p>Monitoreo de agua, suelo, aire y biodiversidad con equipos de campo.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-sm-6 fade-up fade-up-delay-4">
+                <a class="area-card" href="courses.html">
+                    <div class="area-card-img">
+                        <img src="img/cat-4.jpg" alt="Alquiler de Equipos">
+                        <div class="area-card-img-overlay"></div>
+                    </div>
+                    <div class="area-card-body">
+                        <div class="area-badge">Servicio disponible</div>
+                        <h5>Alquiler de Equipos</h5>
+                        <p>Equipos especializados para muestreo biológico y trabajo de campo científico.</p>
+                    </div>
+                </a>
             </div>
         </div>
     </div>
-    <!-- Courses End -->
+</div>
 
-    <!-- Team Start -->
-    <div class="container-xxl py-5">
-        <div class="container">
-            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h6 class="section-title bg-white text-center text-primary px-3">Instructores</h6>
-                <h1 class="mb-5">Nuestro Equipo de Expertos</h1>
+<!-- Courses -->
+<div class="courses-section">
+    <div class="container">
+        <div class="text-center mb-5 fade-up">
+            <span class="section-label">Formación</span>
+            <h2 class="section-title">Cursos Destacados</h2>
+        </div>
+        <div class="row g-4 justify-content-center">
+            <div class="col-lg-4 col-md-6 fade-up fade-up-delay-1">
+                <div class="course-card">
+                    <div class="course-card-img"><img src="img/course-1.jpg" alt="Ecología"></div>
+                    <div class="course-card-body">
+                        <div class="course-status">Próximamente</div>
+                        <h5>Introducción a la Ecología y Monitoreo de Biodiversidad</h5>
+                    </div>
+                    <div class="course-card-footer">
+                        <div class="course-meta"><i class="fas fa-user-tie"></i>Especialistas Andean</div>
+                        <div class="course-meta"><i class="fas fa-globe"></i>En línea</div>
+                        <div class="course-meta"><i class="fas fa-certificate"></i>Certificado</div>
+                    </div>
+                    <div class="course-btns">
+                        <a href="courses.html" class="btn-course-outline">Ver Más</a>
+                        <a href="courses.html" class="btn-course">Inscribirse</a>
+                    </div>
+                </div>
             </div>
-            <div class="row g-4">
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                    <div class="team-item bg-light">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/team-1.jpg" alt="">
-                        </div>
-                        <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
-                            <div class="bg-light d-flex justify-content-center pt-2 px-1">
-                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                        <div class="text-center p-4">
-                            <h5 class="mb-0">Nombre del Instructor</h5>
-                            <small>Biólogo / Ecólogo</small>
-                        </div>
+            <div class="col-lg-4 col-md-6 fade-up fade-up-delay-2">
+                <div class="course-card">
+                    <div class="course-card-img"><img src="img/course-2.jpg" alt="SIG"></div>
+                    <div class="course-card-body">
+                        <div class="course-status">Próximamente</div>
+                        <h5>SIG y Teledetección Aplicados al Análisis Ambiental</h5>
+                    </div>
+                    <div class="course-card-footer">
+                        <div class="course-meta"><i class="fas fa-user-tie"></i>Especialistas Andean</div>
+                        <div class="course-meta"><i class="fas fa-globe"></i>En línea</div>
+                        <div class="course-meta"><i class="fas fa-certificate"></i>Certificado</div>
+                    </div>
+                    <div class="course-btns">
+                        <a href="courses.html" class="btn-course-outline">Ver Más</a>
+                        <a href="courses.html" class="btn-course">Inscribirse</a>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                    <div class="team-item bg-light">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/team-2.jpg" alt="">
-                        </div>
-                        <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
-                            <div class="bg-light d-flex justify-content-center pt-2 px-1">
-                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                        <div class="text-center p-4">
-                            <h5 class="mb-0">Nombre del Instructor</h5>
-                            <small>Especialista en SIG</small>
-                        </div>
+            </div>
+            <div class="col-lg-4 col-md-6 fade-up fade-up-delay-3">
+                <div class="course-card">
+                    <div class="course-card-img"><img src="img/course-3.jpg" alt="Bioinformática"></div>
+                    <div class="course-card-body">
+                        <div class="course-status">Próximamente</div>
+                        <h5>Bioinformática y Análisis Estadístico para Ecólogos</h5>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                    <div class="team-item bg-light">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/team-3.jpg" alt="">
-                        </div>
-                        <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
-                            <div class="bg-light d-flex justify-content-center pt-2 px-1">
-                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                        <div class="text-center p-4">
-                            <h5 class="mb-0">Nombre del Instructor</h5>
-                            <small>Consultor Ambiental</small>
-                        </div>
+                    <div class="course-card-footer">
+                        <div class="course-meta"><i class="fas fa-user-tie"></i>Especialistas Andean</div>
+                        <div class="course-meta"><i class="fas fa-globe"></i>En línea</div>
+                        <div class="course-meta"><i class="fas fa-certificate"></i>Certificado</div>
                     </div>
-                </div>
-                <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.7s">
-                    <div class="team-item bg-light">
-                        <div class="overflow-hidden">
-                            <img class="img-fluid" src="img/team-4.jpg" alt="">
-                        </div>
-                        <div class="position-relative d-flex justify-content-center" style="margin-top: -23px;">
-                            <div class="bg-light d-flex justify-content-center pt-2 px-1">
-                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-facebook-f"></i></a>
-                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-twitter"></i></a>
-                                <a class="btn btn-sm-square btn-primary mx-1" href=""><i class="fab fa-instagram"></i></a>
-                            </div>
-                        </div>
-                        <div class="text-center p-4">
-                            <h5 class="mb-0">Nombre del Instructor</h5>
-                            <small>Investigador Científico</small>
-                        </div>
+                    <div class="course-btns">
+                        <a href="courses.html" class="btn-course-outline">Ver Más</a>
+                        <a href="courses.html" class="btn-course">Inscribirse</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Team End -->
+</div>
 
-    <!-- Testimonial Start -->
-    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container">
-            <div class="text-center">
-                <h6 class="section-title bg-white text-center text-primary px-3">Testimonios</h6>
-                <h1 class="mb-5">Lo que Dicen Nuestros Estudiantes</h1>
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <div class="row g-5">
+            <div class="col-lg-3 col-md-6">
+                <h5>Enlaces Rápidos</h5>
+                <a class="footer-link" href="about.html">Sobre Nosotros</a>
+                <a class="footer-link" href="contact.html">Contáctanos</a>
+                <a class="footer-link" href="#">Política de Privacidad</a>
+                <a class="footer-link" href="#">Términos y Condiciones</a>
+                <a class="footer-link" href="#">Preguntas Frecuentes</a>
             </div>
-            <div class="owl-carousel testimonial-carousel position-relative">
-                <div class="testimonial-item text-center">
-                    <img class="border rounded-circle p-2 mx-auto mb-3" src="img/testimonial-1.jpg" style="width: 80px; height: 80px;">
-                    <h5 class="mb-0">Nombre del Estudiante</h5>
-                    <p>Biólogo / Cusco</p>
-                    <div class="testimonial-text bg-light text-center p-4">
-                        <p class="mb-0">Los cursos de Andean Consulting me permitieron aplicar conocimientos de SIG directamente en mi trabajo de campo. Excelente calidad de enseñanza y materiales muy actualizados.</p>
-                    </div>
+            <div class="col-lg-3 col-md-6">
+                <h5>Contacto</h5>
+                <div class="footer-contact"><i class="fas fa-map-marker-alt"></i><span>Cusco, Perú</span></div>
+                <div class="footer-contact"><i class="fas fa-phone-alt"></i><span>+51 XXX XXX XXX</span></div>
+                <div class="footer-contact"><i class="fas fa-envelope"></i><span>info@andeanconsulting.com</span></div>
+                <div style="margin-top:20px;">
+                    <a class="social-btn" href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a class="social-btn" href="#"><i class="fab fa-instagram"></i></a>
+                    <a class="social-btn" href="#"><i class="fab fa-youtube"></i></a>
+                    <a class="social-btn" href="#"><i class="fab fa-linkedin-in"></i></a>
                 </div>
-                <div class="testimonial-item text-center">
-                    <img class="border rounded-circle p-2 mx-auto mb-3" src="img/testimonial-2.jpg" style="width: 80px; height: 80px;">
-                    <h5 class="mb-0">Nombre del Estudiante</h5>
-                    <p>Ambientalista / Lima</p>
-                    <div class="testimonial-text bg-light text-center p-4">
-                        <p class="mb-0">Increíble plataforma virtual. Los instructores tienen experiencia real en campo y eso se nota en cada sesión. Recomiendo ampliamente sus cursos de monitoreo ambiental.</p>
-                    </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h5>Galería</h5>
+                <div class="row g-2 pt-1">
+                    <div class="col-4"><img class="img-fluid rounded" src="img/course-1.jpg" alt="" style="aspect-ratio:1;object-fit:cover;opacity:.7;"></div>
+                    <div class="col-4"><img class="img-fluid rounded" src="img/course-2.jpg" alt="" style="aspect-ratio:1;object-fit:cover;opacity:.7;"></div>
+                    <div class="col-4"><img class="img-fluid rounded" src="img/course-3.jpg" alt="" style="aspect-ratio:1;object-fit:cover;opacity:.7;"></div>
+                    <div class="col-4"><img class="img-fluid rounded" src="img/cat-1.jpg"    alt="" style="aspect-ratio:1;object-fit:cover;opacity:.7;"></div>
+                    <div class="col-4"><img class="img-fluid rounded" src="img/cat-2.jpg"    alt="" style="aspect-ratio:1;object-fit:cover;opacity:.7;"></div>
+                    <div class="col-4"><img class="img-fluid rounded" src="img/cat-3.jpg"    alt="" style="aspect-ratio:1;object-fit:cover;opacity:.7;"></div>
                 </div>
-                <div class="testimonial-item text-center">
-                    <img class="border rounded-circle p-2 mx-auto mb-3" src="img/testimonial-3.jpg" style="width: 80px; height: 80px;">
-                    <h5 class="mb-0">Nombre del Estudiante</h5>
-                    <p>Ecóloga / Arequipa</p>
-                    <div class="testimonial-text bg-light text-center p-4">
-                        <p class="mb-0">Muy satisfecha con el curso de bioinformática. El contenido es muy práctico y el equipo de Andean siempre está dispuesto a resolver dudas. ¡Volveré a tomar más cursos!</p>
-                    </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <h5>Boletín Informativo</h5>
+                <p style="font-size:.85rem;color:rgba(255,255,255,.5);margin-bottom:16px;">Suscríbete para recibir noticias sobre nuevos cursos y novedades ambientales.</p>
+                <div class="newsletter-form">
+                    <input type="email" placeholder="Tu correo electrónico">
+                    <button type="button">Suscribir</button>
                 </div>
-                <div class="testimonial-item text-center">
-                    <img class="border rounded-circle p-2 mx-auto mb-3" src="img/testimonial-4.jpg" style="width: 80px; height: 80px;">
-                    <h5 class="mb-0">Nombre del Estudiante</h5>
-                    <p>Investigador / Puno</p>
-                    <div class="testimonial-text bg-light text-center p-4">
-                        <p class="mb-0">El servicio de alquiler de equipos fue fundamental para mi investigación. Equipos en óptimas condiciones y el equipo técnico me orientó muy bien en el proceso de muestreo.</p>
-                    </div>
-                </div>
+            </div>
+        </div>
+        <hr class="footer-divider">
+        <div class="footer-bottom">
+            <span>&copy; 2025 Andean Consulting & Environmental Solutions S.A.C.</span>
+            <div class="footer-bottom-links">
+                <a href="index.html">Inicio</a>
+                <a href="#">Cookies</a>
+                <a href="#">Ayuda</a>
+                <a href="#">FAQ</a>
             </div>
         </div>
     </div>
-    <!-- Testimonial End -->
+</footer>
 
-    <!-- Footer Start -->
-    <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
-        <div class="container py-5">
-            <div class="row g-5">
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-3">Enlaces Rápidos</h4>
-                    <a class="btn btn-link" href="about.html">Sobre Nosotros</a>
-                    <a class="btn btn-link" href="contact.html">Contáctanos</a>
-                    <a class="btn btn-link" href="#">Política de Privacidad</a>
-                    <a class="btn btn-link" href="#">Términos y Condiciones</a>
-                    <a class="btn btn-link" href="#">Preguntas Frecuentes</a>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-3">Contacto</h4>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>Cusco, Perú</p>
-                    <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>+51 XXX XXX XXX</p>
-                    <p class="mb-2"><i class="fa fa-envelope me-3"></i>info@andeanconsulting.com</p>
-                    <div class="d-flex pt-2">
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-youtube"></i></a>
-                        <a class="btn btn-outline-light btn-social" href=""><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-3">Galería</h4>
-                    <div class="row g-2 pt-2">
-                        <div class="col-4"><img class="img-fluid bg-light p-1" src="img/course-1.jpg" alt=""></div>
-                        <div class="col-4"><img class="img-fluid bg-light p-1" src="img/course-2.jpg" alt=""></div>
-                        <div class="col-4"><img class="img-fluid bg-light p-1" src="img/course-3.jpg" alt=""></div>
-                        <div class="col-4"><img class="img-fluid bg-light p-1" src="img/course-2.jpg" alt=""></div>
-                        <div class="col-4"><img class="img-fluid bg-light p-1" src="img/course-3.jpg" alt=""></div>
-                        <div class="col-4"><img class="img-fluid bg-light p-1" src="img/course-1.jpg" alt=""></div>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-6">
-                    <h4 class="text-white mb-3">Boletín Informativo</h4>
-                    <p>Suscríbete para recibir noticias sobre nuevos cursos, convocatorias y novedades ambientales.</p>
-                    <div class="position-relative mx-auto" style="max-width: 400px;">
-                        <input class="form-control border-0 w-100 py-3 ps-4 pe-5" type="text" placeholder="Tu correo electrónico">
-                        <button type="button" class="btn btn-primary py-2 position-absolute top-0 end-0 mt-2 me-2">Suscribir</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="container">
-            <div class="copyright">
-                <div class="row">
-                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a class="border-bottom" href="#">Andean Consulting & Environmental Solutions S.A.C.</a>, Todos los derechos reservados.
-                    </div>
-                    <div class="col-md-6 text-center text-md-end">
-                        <div class="footer-menu">
-                            <a href="index.html">Inicio</a>
-                            <a href="#">Cookies</a>
-                            <a href="#">Ayuda</a>
-                            <a href="#">Preguntas Frecuentes</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Footer End -->
+<a href="#" class="back-top" id="backTop"><i class="bi bi-arrow-up"></i></a>
 
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// Spinner
+window.addEventListener('load', () => {
+    const s = document.getElementById('spinner');
+    s.classList.add('hide');
+    setTimeout(() => s.remove(), 500);
+});
 
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/wow/wow.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/waypoints/waypoints.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="js/main.js"></script>
+// Hero Carousel
+let currentSlide = 0;
+const slides = document.querySelectorAll('.hero-slide');
+const dots   = document.querySelectorAll('.hero-dot');
+let autoTimer;
+
+function showSlide(n) {
+    slides[currentSlide].classList.remove('active');
+    dots[currentSlide].classList.remove('active');
+    currentSlide = (n + slides.length) % slides.length;
+    slides[currentSlide].classList.add('active');
+    dots[currentSlide].classList.add('active');
+    // re-trigger animation
+    const c = slides[currentSlide].querySelector('.hero-content');
+    c.style.animation = 'none';
+    c.offsetHeight;
+    c.style.animation = '';
+}
+function moveSlide(dir) { clearInterval(autoTimer); showSlide(currentSlide + dir); startAuto(); }
+function goSlide(n)     { clearInterval(autoTimer); showSlide(n); startAuto(); }
+function startAuto()    { autoTimer = setInterval(() => showSlide(currentSlide + 1), 6000); }
+startAuto();
+
+// Scroll fade-in
+const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: .12 });
+document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+
+// Back to top
+const bt = document.getElementById('backTop');
+window.addEventListener('scroll', () => {
+    bt.classList.toggle('show', window.scrollY > 320);
+});
+bt.addEventListener('click', e => { e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+</script>
 </body>
-
 </html>
