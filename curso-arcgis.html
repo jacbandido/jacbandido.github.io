@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>ArcGIS Básico – Andean Consulting & Environmental Solutions S.A.C.</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="ArcGIS básico, SIG, cursos online Perú, cartografía ambiental" name="keywords">
+<meta content="Aprende ArcGIS desde cero con un especialista en SIG y Biología. 20 horas certificadas. Inicia 20 de abril." name="description">
+
+<link rel="icon" type="image/x-icon" href="img/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+<link rel="apple-touch-icon" href="img/favicon.ico">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+:root{
+  --forest:#0a1f14;--green:#006a39;--lime:#00b060;
+  --offwhite:#f6f8f4;--border:#d8e4dd;--text:#1c2b22;--muted:#5a6e62;
+  --light-green:#e4f2eb;--wa:#25D366;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;font-weight:400;color:var(--text);background:#fff;overflow-x:hidden}
+h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
+
+#spinner{position:fixed;inset:0;background:#fff;display:flex;align-items:center;justify-content:center;z-index:9999;transition:opacity .5s}
+#spinner.hide{opacity:0;pointer-events:none}
+.spin-ring{width:44px;height:44px;border:2px solid var(--light-green);border-top-color:var(--green);border-radius:50%;animation:spin .9s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.topbar{background:var(--forest);color:rgba(255,255,255,.6);font-size:.75rem;letter-spacing:.06em;padding:8px 0}
+.topbar a{color:rgba(255,255,255,.55);text-decoration:none;transition:color .2s}
+.topbar a:hover{color:#fff}
+.topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.topbar-left{display:flex;gap:20px;align-items:center}
+.topbar-right{display:flex;gap:16px;align-items:center}
+.tb-div{width:1px;height:12px;background:rgba(255,255,255,.15)}
+
+.navbar{background:#fff;border-bottom:1px solid var(--border);padding:0;position:sticky;top:0;z-index:1000;transition:box-shadow .3s}
+.navbar.scrolled{box-shadow:0 2px 24px rgba(10,31,20,.1)}
+.navbar-brand{padding:14px 24px}
+.navbar-brand img{height:44px;object-fit:contain}
+.navbar-toggler{border:1px solid #ccc!important;padding:6px 10px;margin-right:16px;border-radius:3px;background:transparent}
+.navbar-toggler-icon{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%230a1f14' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")}
+.nav-link{font-family:'Outfit',sans-serif;font-weight:500;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--text)!important;padding:1.5rem 1.1rem!important;transition:color .2s;position:relative}
+.nav-link::after{content:'';position:absolute;bottom:0;left:1.1rem;right:1.1rem;height:2px;background:var(--green);transform:scaleX(0);transition:transform .25s}
+.nav-link:hover,.nav-link.active{color:var(--green)!important}
+.nav-link:hover::after,.nav-link.active::after{transform:scaleX(1)}
+.dropdown-menu{border:1px solid var(--border);border-radius:8px;box-shadow:0 12px 40px rgba(0,0,0,.1);padding:8px 0;margin-top:-1px}
+.dropdown-item{font-family:'Outfit',sans-serif;font-size:.82rem;letter-spacing:.04em;padding:10px 20px;color:var(--text);font-weight:500;text-transform:uppercase;transition:background .15s,color .15s}
+.dropdown-item:hover{background:var(--light-green);color:var(--green)}
+.btn-nav-cta{background:var(--green);color:#fff!important;font-weight:700;font-size:.88rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none!important;padding:18px 40px!important;margin:8px 20px;border-radius:3px;display:inline-flex;align-items:center;gap:10px;transition:background .2s,transform .15s;white-space:nowrap;line-height:1}
+.btn-nav-cta:hover{background:var(--forest)!important;color:#fff!important;transform:translateY(-1px)}
+
+/* COURSE HERO */
+.course-hero{background:var(--forest);padding:72px 0 0;position:relative;overflow:hidden}
+.course-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,106,57,.2) 0%,transparent 65%)}
+.ch-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.ch-eyebrow-line{width:24px;height:1px;background:var(--lime)}
+.ch-eyebrow span{font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--lime)}
+.ch-badge{display:inline-flex;align-items:center;gap:6px;font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--lime);background:rgba(0,176,96,.15);border:1px solid rgba(0,176,96,.3);padding:5px 14px;border-radius:40px;margin-bottom:16px}
+.course-hero h1{font-family:'Fraunces',serif;font-size:clamp(1.8rem,4.5vw,3rem);font-weight:600;color:#fff;line-height:1.18;letter-spacing:-.02em;margin-bottom:18px}
+.course-hero p{font-size:.97rem;color:rgba(255,255,255,.7);line-height:1.8;margin-bottom:28px;font-weight:300;max-width:560px}
+.hero-pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.hero-pill{display:flex;align-items:center;gap:6px;font-size:.77rem;font-weight:500;color:rgba(255,255,255,.65);background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);padding:7px 14px;border-radius:40px}
+.hero-pill i{color:var(--lime);font-size:.72rem}
+.ch-img{position:relative;border-radius:4px 4px 0 0;overflow:hidden;height:340px;margin-top:32px}
+.ch-img img{width:100%;height:100%;object-fit:cover}
+.ch-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,var(--forest) 100%)}
+
+/* LAYOUT — sticky sidebar */
+.course-layout{padding:0}
+.course-main{padding:56px 0 80px}
+.course-sidebar{position:sticky;top:80px}
+
+/* ENROLLMENT CARD */
+.enroll-card{background:#fff;border:1px solid var(--border);border-radius:4px;overflow:hidden;box-shadow:0 8px 40px rgba(0,80,40,.1)}
+.ec-header{background:var(--forest);padding:24px 28px}
+.ec-price{font-family:'Fraunces',serif;font-size:2.2rem;font-weight:600;color:#fff;line-height:1}
+.ec-price-sub{font-size:.8rem;color:rgba(255,255,255,.5);margin-top:4px}
+.ec-badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:14px}
+.ec-badge{font-size:.62rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--lime);background:rgba(0,176,96,.15);border:1px solid rgba(0,176,96,.25);padding:4px 10px;border-radius:40px}
+.ec-body{padding:24px 28px}
+.ec-detail{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--border)}
+.ec-detail:last-of-type{border-bottom:none}
+.ec-detail i{width:18px;text-align:center;color:var(--green);font-size:.9rem;flex-shrink:0}
+.ec-detail span{font-size:.87rem;color:var(--text)}
+.ec-detail strong{font-weight:600}
+.btn-enroll{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;background:var(--lime);color:#fff;font-weight:700;font-size:.92rem;letter-spacing:.08em;text-transform:uppercase;padding:17px;border-radius:3px;text-decoration:none;transition:background .2s,transform .15s;margin-top:20px}
+.btn-enroll:hover{background:#009950;color:#fff;transform:translateY(-2px)}
+.btn-wa-enroll{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;background:transparent;color:var(--wa);font-weight:600;font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;padding:13px;border-radius:3px;border:1px solid var(--wa);text-decoration:none;transition:background .2s,color .2s;margin-top:10px}
+.btn-wa-enroll:hover{background:var(--wa);color:#fff}
+.ec-guarantee{display:flex;align-items:center;gap:10px;margin-top:16px;padding:14px 16px;background:var(--offwhite);border-radius:3px}
+.ec-guarantee i{color:var(--green);font-size:1rem;flex-shrink:0}
+.ec-guarantee p{font-size:.78rem;color:var(--muted);line-height:1.5;margin:0}
+
+/* SECTION LABELS */
+.section-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.section-eyebrow-line{width:28px;height:1px;background:var(--green);flex-shrink:0}
+.section-eyebrow span{font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--green)}
+.section-title{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.4rem,3vw,2rem);line-height:1.2;letter-spacing:-.02em}
+
+/* LEARN LIST */
+.learn-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 24px;margin-top:4px}
+.learn-item{display:flex;align-items:flex-start;gap:10px;font-size:.88rem;color:var(--text);line-height:1.5}
+.learn-item i{color:var(--lime);font-size:.72rem;margin-top:4px;flex-shrink:0}
+
+/* SYLLABUS ACCORDION */
+.syllabus-item{border:1px solid var(--border);border-radius:4px;margin-bottom:8px;overflow:hidden}
+.syllabus-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;cursor:pointer;background:#fff;transition:background .15s;gap:12px;-webkit-user-select:none;user-select:none}
+.syllabus-header:hover{background:var(--offwhite)}
+.syllabus-header.open{background:var(--light-green)}
+.syl-left{display:flex;align-items:center;gap:14px}
+.syl-num{font-family:'Fraunces',serif;font-size:.9rem;font-weight:600;color:var(--green);flex-shrink:0;width:28px}
+.syl-title{font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:600;color:var(--text)}
+.syl-meta{font-size:.75rem;color:var(--muted);margin-top:2px}
+.syl-arrow{color:var(--green);font-size:.8rem;transition:transform .3s;flex-shrink:0}
+.syllabus-header.open .syl-arrow{transform:rotate(180deg)}
+.syllabus-body{display:none;padding:0 20px 16px 62px}
+.syllabus-body.open{display:block}
+.syllabus-body ul{list-style:none;padding:0;margin:0}
+.syllabus-body ul li{font-size:.85rem;color:var(--muted);padding:6px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+.syllabus-body ul li:last-child{border-bottom:none}
+.syllabus-body ul li::before{content:'\f144';font-family:'Font Awesome 5 Free';font-weight:900;color:var(--lime);font-size:.6rem;flex-shrink:0}
+
+/* INSTRUCTOR */
+.instructor-card{display:flex;gap:24px;align-items:flex-start;padding:28px;border:1px solid var(--border);border-radius:4px;background:#fff}
+.instructor-avatar{width:80px;height:80px;border-radius:50%;background:var(--light-green);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Fraunces',serif;font-size:1.8rem;font-weight:600;color:var(--green)}
+.instructor-body h5{font-family:'Fraunces',serif;font-size:1.1rem;margin-bottom:4px}
+.instructor-body .role{font-size:.8rem;color:var(--green);font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px}
+.instructor-body p{font-size:.87rem;color:var(--muted);line-height:1.75;margin:0}
+
+/* PAYMENT SECTION */
+.payment-section{padding:72px 0;background:var(--offwhite)}
+.pay-step{display:flex;gap:20px;align-items:flex-start;padding:24px 0;border-bottom:1px solid var(--border)}
+.pay-step:last-child{border-bottom:none}
+.step-num{width:40px;height:40px;border-radius:50%;background:var(--green);color:#fff;font-family:'Fraunces',serif;font-size:1rem;font-weight:600;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-body h5{font-family:'Fraunces',serif;font-size:1rem;margin-bottom:6px}
+.step-body p{font-size:.87rem;color:var(--muted);line-height:1.7;margin:0}
+
+/* PAYMENT METHODS */
+.pay-method{background:#fff;border:1px solid var(--border);border-radius:4px;padding:20px 22px;margin-bottom:12px}
+.pay-method-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.pay-method-icon{width:40px;height:40px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.pay-method-icon.yape{background:#6c2d91;color:#fff}
+.pay-method-icon.plin{background:#00a859;color:#fff}
+.pay-method-icon.transfer{background:var(--forest);color:#fff}
+.pay-method h6{font-family:'Fraunces',serif;font-size:.95rem;margin:0}
+.pay-method p{font-size:.85rem;color:var(--muted);margin:0;line-height:1.6}
+.pay-detail{font-size:.88rem;color:var(--text);font-weight:600;background:var(--offwhite);border:1px solid var(--border);border-radius:3px;padding:10px 14px;margin-top:10px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.copy-btn{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);background:var(--light-green);border:none;padding:5px 12px;border-radius:3px;cursor:pointer;font-family:'Outfit',sans-serif;transition:background .15s}
+.copy-btn:hover{background:#c5e8d4}
+.copy-btn.copied{color:#fff;background:var(--green)}
+
+/* ENROLLMENT FORM */
+.enroll-section{padding:72px 0;background:var(--forest);position:relative;overflow:hidden}
+.enroll-section::before{content:'';position:absolute;top:-80px;right:-80px;width:360px;height:360px;border-radius:50%;background:rgba(0,176,96,.04);pointer-events:none}
+.enroll-wrap{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:44px 40px}
+.form-label-e{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:6px;display:block}
+.form-ctrl-e{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:3px;padding:13px 16px;font-family:'Outfit',sans-serif;font-size:.9rem;color:#fff;outline:none;transition:border-color .2s;-webkit-appearance:none}
+.form-ctrl-e:focus{border-color:var(--lime)}
+.form-ctrl-e::placeholder{color:rgba(255,255,255,.25)}
+.form-ctrl-e option{background:var(--forest);color:#fff}
+
+/* FILE UPLOAD */
+.file-upload-area{border:2px dashed rgba(255,255,255,.18);border-radius:4px;padding:28px 20px;text-align:center;cursor:pointer;transition:border-color .2s,background .2s;position:relative}
+.file-upload-area:hover,.file-upload-area.dragover{border-color:var(--lime);background:rgba(0,176,96,.06)}
+.file-upload-area input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%}
+.fua-icon{font-size:1.8rem;color:rgba(255,255,255,.25);margin-bottom:10px}
+.fua-text{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.6}
+.fua-text strong{color:var(--lime);display:block;margin-bottom:4px;font-size:.9rem}
+.fua-text small{font-size:.75rem;color:rgba(255,255,255,.3)}
+.file-name{display:none;margin-top:10px;font-size:.82rem;color:var(--lime);font-weight:600}
+
+.btn-submit-e{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;background:var(--lime);color:#fff;font-weight:700;font-size:.92rem;letter-spacing:.1em;text-transform:uppercase;padding:17px;border-radius:3px;border:none;cursor:pointer;transition:background .2s,transform .15s;font-family:'Outfit',sans-serif}
+.btn-submit-e:hover{background:#009950;transform:translateY(-2px)}
+.enroll-note{display:flex;align-items:flex-start;gap:10px;margin-top:16px;padding:14px 16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:3px}
+.enroll-note i{color:var(--lime);flex-shrink:0;margin-top:2px}
+.enroll-note p{font-size:.8rem;color:rgba(255,255,255,.45);line-height:1.6;margin:0}
+
+.form-success-e{display:none;text-align:center;padding:48px 20px}
+.form-success-e i{font-size:2.8rem;color:var(--lime);margin-bottom:16px;display:block}
+.form-success-e h4{font-family:'Fraunces',serif;font-size:1.4rem;color:#fff;margin-bottom:10px}
+.form-success-e p{font-size:.9rem;color:rgba(255,255,255,.55);line-height:1.7}
+
+/* FOOTER */
+.footer{background:var(--forest);padding:72px 0 0}
+.footer-brand img{height:42px;filter:brightness(0) invert(1);opacity:.85;margin-bottom:20px}
+.footer-desc{font-size:.87rem;color:rgba(255,255,255,.5);line-height:1.75;max-width:300px}
+.footer-heading{font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:22px}
+.footer-link{display:block;font-size:.87rem;color:rgba(255,255,255,.6);text-decoration:none;margin-bottom:10px;transition:color .2s}
+.footer-link:hover{color:#fff}
+.footer-cr{display:flex;align-items:flex-start;gap:12px;margin-bottom:12px}
+.footer-cr i{color:var(--lime);margin-top:2px;flex-shrink:0;font-size:.85rem}
+.footer-cr span{font-size:.87rem;color:rgba(255,255,255,.6);line-height:1.5}
+.social-link{width:36px;height:36px;border-radius:3px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.6);display:inline-flex;align-items:center;justify-content:center;font-size:.82rem;text-decoration:none;transition:background .2s,color .2s,border-color .2s;margin-right:6px}
+.social-link:hover{background:var(--lime);border-color:var(--lime);color:#fff}
+.newsletter-row{display:flex;margin-top:6px}
+.newsletter-row input{flex:1;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-right:none;color:#fff;padding:12px 16px;font-size:.85rem;border-radius:3px 0 0 3px;outline:none;font-family:'Outfit',sans-serif}
+.newsletter-row input::placeholder{color:rgba(255,255,255,.3)}
+.newsletter-row button{background:var(--lime);border:none;color:#fff;padding:12px 18px;font-size:.78rem;font-weight:600;font-family:'Outfit',sans-serif;letter-spacing:.06em;text-transform:uppercase;border-radius:0 3px 3px 0;cursor:pointer;transition:background .2s}
+.newsletter-row button:hover{background:#009950}
+.footer-divider{border-color:rgba(255,255,255,.08);margin:48px 0 0}
+.footer-bottom{padding:20px 0;font-size:.78rem;color:rgba(255,255,255,.3);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.footer-bottom a{color:rgba(255,255,255,.3);text-decoration:none;transition:color .2s}
+.footer-bottom a:hover{color:rgba(255,255,255,.7)}
+.footer-bottom-links{display:flex;gap:20px;flex-wrap:wrap}
+
+.back-top{position:fixed;bottom:28px;right:28px;width:44px;height:44px;background:var(--green);color:#fff;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:1rem;text-decoration:none;opacity:0;pointer-events:none;transition:opacity .3s,transform .2s;z-index:999}
+.back-top.show{opacity:1;pointer-events:all}
+.back-top:hover{transform:translateY(-3px);color:#fff}
+.wa-float{position:fixed;bottom:84px;right:28px;z-index:998;width:52px;height:52px;background:var(--wa);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.4rem;text-decoration:none;box-shadow:0 4px 18px rgba(37,211,102,.45);transition:transform .2s}
+.wa-float:hover{transform:scale(1.1);color:#fff}
+
+.fade-up{opacity:0;transform:translateY(36px);transition:opacity .6s ease,transform .6s ease}
+.fade-up.visible{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+@media(max-width:992px){
+  .navbar-collapse{background:#fff;border-top:1px solid var(--border);padding:8px 16px 20px}
+  .nav-link{padding:.75rem .5rem!important;font-size:.9rem}
+  .btn-nav-cta{display:none!important}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .footer-bottom-links{justify-content:center}
+  .learn-grid{grid-template-columns:1fr}
+  .instructor-card{flex-direction:column;align-items:center;text-align:center}
+  .enroll-wrap{padding:28px 20px}
+  .course-sidebar{position:static;margin-top:40px}
+  .ch-img{height:220px}
+}
+</style>
+</head>
+<body>
+
+<div id="spinner"><div class="spin-ring"></div></div>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-inner">
+      <div class="topbar-left">
+        <span><i class="fas fa-map-marker-alt" style="color:var(--lime);margin-right:6px"></i>Perú</span>
+        <div class="tb-div"></div>
+        <a href="mailto:capacitacion@andeanbioconsulting.com"><i class="fas fa-envelope" style="margin-right:5px"></i>capacitacion@andeanbioconsulting.com</a>
+      </div>
+      <div class="topbar-right">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <div class="tb-div"></div>
+        <a href="contact.html" style="color:var(--lime);font-weight:600">Contáctanos →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg" id="mainNav">
+  <a href="index.html" class="navbar-brand">
+    <img src="img/Andeanlogo.png" alt="Andean Consulting">
+  </a>
+  <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navCollapse" aria-label="Menú">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navCollapse">
+    <div class="navbar-nav ms-auto p-3 p-lg-0">
+      <a href="index.html" class="nav-item nav-link">Inicio</a>
+      <a href="about.html" class="nav-item nav-link">Nosotros</a>
+      <a href="courses.html" class="nav-item nav-link active">Cursos</a>
+      <div class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Servicios</a>
+        <div class="dropdown-menu">
+          <a href="consultoria.html" class="dropdown-item">Consultoría &amp; Equipos</a>
+          <a href="alumnos.html" class="dropdown-item">Portal Alumnos</a>
+        </div>
+      </div>
+      <a href="contact.html" class="nav-item nav-link">Contacto</a>
+    </div>
+    <a href="#inscripcion" class="btn-nav-cta d-none d-lg-flex">
+      Inscribirme <i class="fas fa-arrow-right" style="font-size:.72rem"></i>
+    </a>
+  </div>
+</nav>
+
+<!-- COURSE HERO -->
+<div class="course-hero">
+  <div class="container">
+    <div class="row align-items-end">
+      <div class="col-lg-7">
+        <div style="padding-top:16px">
+          <div class="ch-eyebrow"><div class="ch-eyebrow-line"></div><span><a href="courses.html" style="color:var(--lime);text-decoration:none">Cursos</a> &nbsp;/&nbsp; SIG · Teledetección</span></div>
+          <div class="ch-badge"><i class="fas fa-circle" style="font-size:.4rem"></i> Inscripciones Abiertas</div>
+          <h1>ArcGIS Básico para Ciencias Ambientales</h1>
+          <p>Domina las herramientas fundamentales de ArcGIS para crear mapas, analizar datos espaciales y generar productos cartográficos aplicados a proyectos ambientales y biológicos.</p>
+          <div class="hero-pills">
+            <div class="hero-pill"><i class="fas fa-calendar-alt"></i> 20 – 25 Abril 2025</div>
+            <div class="hero-pill"><i class="fas fa-clock"></i> 20 horas certificadas</div>
+            <div class="hero-pill"><i class="fas fa-globe"></i> 100% Online</div>
+            <div class="hero-pill"><i class="fas fa-certificate"></i> Con Certificado</div>
+            <div class="hero-pill"><i class="fas fa-users"></i> Cupos limitados</div>
+          </div>
+          <a href="#inscripcion" class="btn-enroll" style="max-width:280px;margin-bottom:32px">Inscribirme Ahora — S/ 120 <i class="fas fa-arrow-right" style="font-size:.75rem"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="ch-img">
+          <img src="img/course-2.jpg" alt="ArcGIS Básico">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTENT + SIDEBAR -->
+<div class="course-layout">
+  <div class="container">
+    <div class="row g-5 course-main">
+
+      <!-- MAIN CONTENT -->
+      <div class="col-lg-8">
+
+        <!-- QUÉ APRENDERÁS -->
+        <div class="mb-5 fade-up">
+          <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span>Contenido</span></div>
+          <h2 class="section-title mb-4">¿Qué aprenderás?</h2>
+          <div class="learn-grid">
+            <div class="learn-item"><i class="fas fa-check-circle"></i>Interfaz y herramientas esenciales de ArcGIS Pro / ArcMap</div>
+            <div class="learn-item"><i class="fas fa-check-circle"></i>Importación y gestión de datos vectoriales y ráster</div>
+            <div class="learn-item"><i class="fas fa-check-circle"></i>Sistemas de referencia de coordenadas y proyecciones</div>
+            <div class="learn-item"><i class="fas fa-check-circle"></i>Simbología, clasificación y etiquetado de capas</div>
+            <div class="learn-item"><i class="fas fa-check-circle"></i>Edición y digitalización de geometrías</div>
+            <div class="learn-item"><i class="fas fa-check-circle"></i>Tablas de atributos: consultas y joins</div>
+            <div class="learn-item"><i class="fas fa-check-circle"></i>Geoprocesamiento básico: clip, buffer, dissolve, intersect</div>
+            <div class="learn-item"><i class="fas fa-check-circle"></i>Diseño y exportación de mapas para informes técnicos</div>
+          </div>
+        </div>
+
+        <!-- A QUIÉN VA DIRIGIDO -->
+        <div class="mb-5 fade-up">
+          <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span>Audiencia</span></div>
+          <h2 class="section-title mb-3">¿A quién va dirigido?</h2>
+          <p style="font-size:.93rem;color:var(--muted);line-height:1.8;margin-bottom:16px">Este curso está diseñado para personas que quieren iniciarse en el uso de SIG aplicado a ciencias ambientales, sin necesidad de conocimientos previos en el software.</p>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <div class="learn-item"><i class="fas fa-check-circle"></i>Biólogos, ecólogos y estudiantes de ciencias ambientales</div>
+            <div class="learn-item"><i class="fas fa-check-circle"></i>Consultores ambientales que elaboran informes con cartografía</div>
+            <div class="learn-item"><i class="fas fa-check-circle"></i>Investigadores que trabajan con datos geoespaciales</div>
+            <div class="learn-item"><i class="fas fa-check-circle"></i>Cualquier persona interesada en aprender SIG desde cero</div>
+          </div>
+        </div>
+
+        <!-- TEMARIO -->
+        <div class="mb-5 fade-up">
+          <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span>Programa</span></div>
+          <h2 class="section-title mb-4">Temario del Curso</h2>
+
+          <div class="syllabus-item">
+            <div class="syllabus-header" onclick="toggleSyl(this)">
+              <div class="syl-left"><span class="syl-num">01</span><div><div class="syl-title">Introducción a los SIG y ArcGIS</div><div class="syl-meta">4 temas · Día 1</div></div></div>
+              <i class="fas fa-chevron-down syl-arrow"></i>
+            </div>
+            <div class="syllabus-body">
+              <ul>
+                <li>¿Qué es un SIG? Conceptos fundamentales</li>
+                <li>Tipos de datos espaciales: vectorial vs ráster</li>
+                <li>Instalación y configuración del entorno ArcGIS</li>
+                <li>Interfaz de trabajo: paneles, catálogo y herramientas</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="syllabus-item">
+            <div class="syllabus-header" onclick="toggleSyl(this)">
+              <div class="syl-left"><span class="syl-num">02</span><div><div class="syl-title">Gestión de Datos Geoespaciales</div><div class="syl-meta">4 temas · Día 2</div></div></div>
+              <i class="fas fa-chevron-down syl-arrow"></i>
+            </div>
+            <div class="syllabus-body">
+              <ul>
+                <li>Importación de shapefiles, KML y datos GPS</li>
+                <li>Sistemas de coordenadas y proyecciones cartográficas</li>
+                <li>Gestión de geodatabases</li>
+                <li>Carga de imágenes satelitales y DEM</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="syllabus-item">
+            <div class="syllabus-header" onclick="toggleSyl(this)">
+              <div class="syl-left"><span class="syl-num">03</span><div><div class="syl-title">Visualización y Simbología</div><div class="syl-meta">3 temas · Día 3</div></div></div>
+              <i class="fas fa-chevron-down syl-arrow"></i>
+            </div>
+            <div class="syllabus-body">
+              <ul>
+                <li>Simbología por categorías, gradientes y valores únicos</li>
+                <li>Etiquetado automático de elementos</li>
+                <li>Escala de visualización y transparencias</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="syllabus-item">
+            <div class="syllabus-header" onclick="toggleSyl(this)">
+              <div class="syl-left"><span class="syl-num">04</span><div><div class="syl-title">Edición y Análisis Básico</div><div class="syl-meta">4 temas · Día 4</div></div></div>
+              <i class="fas fa-chevron-down syl-arrow"></i>
+            </div>
+            <div class="syllabus-body">
+              <ul>
+                <li>Digitalización de puntos, líneas y polígonos</li>
+                <li>Edición de tablas de atributos y consultas SQL</li>
+                <li>Geoprocesamiento: buffer, clip, intersect, dissolve</li>
+                <li>Uniones espaciales (spatial join)</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="syllabus-item">
+            <div class="syllabus-header" onclick="toggleSyl(this)">
+              <div class="syl-left"><span class="syl-num">05</span><div><div class="syl-title">Cartografía y Producto Final</div><div class="syl-meta">3 temas · Días 5–6</div></div></div>
+              <i class="fas fa-chevron-down syl-arrow"></i>
+            </div>
+            <div class="syllabus-body">
+              <ul>
+                <li>Diseño de layouts: leyenda, escala gráfica, norte, título</li>
+                <li>Exportación a PDF, PNG y JPEG en alta resolución</li>
+                <li>Proyecto final: mapa técnico ambiental completo</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- INSTRUCTOR -->
+        <div class="mb-5 fade-up">
+          <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span>Docente</span></div>
+          <h2 class="section-title mb-4">Tu Instructor</h2>
+          <div class="instructor-card">
+            <div class="instructor-avatar">JM</div>
+            <div class="instructor-body">
+              <h5>Jack Malon Rodriguez Pumaccajia</h5>
+              <div class="role">Biólogo · Especialista en SIG y Teledetección</div>
+              <p>Biólogo con especialización en Sistemas de Información Geográfica aplicados a la gestión ambiental y el monitoreo de biodiversidad. Con experiencia en proyectos de levantamiento biológico, consultoría ambiental y formación de profesionales en ciencias ambientales en el Perú. Fundador de Andean Consulting &amp; Environmental Solutions.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- SIDEBAR -->
+      <div class="col-lg-4">
+        <div class="course-sidebar fade-up d2">
+          <div class="enroll-card">
+            <div class="ec-header">
+              <div class="ec-price">S/ 120</div>
+              <div class="ec-price-sub">Pago único · Incluye certificado</div>
+              <div class="ec-badges">
+                <span class="ec-badge">20 Horas</span>
+                <span class="ec-badge">Certificado</span>
+                <span class="ec-badge">Online</span>
+              </div>
+            </div>
+            <div class="ec-body">
+              <div class="ec-detail"><i class="fas fa-calendar-alt"></i><span><strong>Inicio:</strong> 20 de Abril 2025</span></div>
+              <div class="ec-detail"><i class="fas fa-calendar-check"></i><span><strong>Fin:</strong> 25 de Abril 2025</span></div>
+              <div class="ec-detail"><i class="fas fa-clock"></i><span><strong>Duración:</strong> 20 horas certificadas</span></div>
+              <div class="ec-detail"><i class="fas fa-globe"></i><span><strong>Modalidad:</strong> 100% Online</span></div>
+              <div class="ec-detail"><i class="fas fa-users"></i><span><strong>Cupos:</strong> Limitados</span></div>
+              <div class="ec-detail"><i class="fas fa-certificate"></i><span><strong>Certificado:</strong> Incluido</span></div>
+              <a href="#inscripcion" class="btn-enroll">Inscribirme Ahora <i class="fas fa-arrow-right" style="font-size:.75rem"></i></a>
+              <a href="https://wa.me/51969392189?text=Hola%2C%20me%20interesa%20el%20curso%20de%20ArcGIS%20B%C3%A1sico%20del%2020%20de%20abril." target="_blank" rel="noopener" class="btn-wa-enroll"><i class="fab fa-whatsapp"></i> Consultar por WhatsApp</a>
+              <div class="ec-guarantee">
+                <i class="fas fa-shield-alt"></i>
+                <p>Al inscribirte recibirás confirmación por correo en menos de 24 horas hábiles.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- FORMAS DE PAGO -->
+<div class="payment-section" id="pago">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="text-center mb-5 fade-up">
+          <div class="section-eyebrow justify-content-center"><div class="section-eyebrow-line"></div><span>Pago</span></div>
+          <h2 class="section-title">¿Cómo pagar?</h2>
+          <p style="font-size:.92rem;color:var(--muted);margin-top:10px">Realiza tu pago por cualquiera de estas vías y luego sube tu comprobante en el formulario de inscripción.</p>
+        </div>
+
+        <div class="pay-method fade-up d1">
+          <div class="pay-method-header">
+            <div class="pay-method-icon yape"><i class="fas fa-mobile-alt"></i></div>
+            <h6>Yape</h6>
+          </div>
+          <p>Envía S/ 120 al siguiente número mediante Yape:</p>
+          <div class="pay-detail">
+            <span>📱 &nbsp;<strong>969 392 189</strong> — Jack Malon Rodriguez</span>
+            <button class="copy-btn" onclick="copyText('969392189', this)">Copiar</button>
+          </div>
+        </div>
+
+        <div class="pay-method fade-up d2">
+          <div class="pay-method-header">
+            <div class="pay-method-icon plin"><i class="fas fa-mobile-alt"></i></div>
+            <h6>Plin</h6>
+          </div>
+          <p>Envía S/ 120 al siguiente número mediante Plin (Interbank):</p>
+          <div class="pay-detail">
+            <span>📱 &nbsp;<strong>969 392 189</strong> — Jack Malon Rodriguez</span>
+            <button class="copy-btn" onclick="copyText('969392189', this)">Copiar</button>
+          </div>
+        </div>
+
+        <div class="pay-method fade-up d3">
+          <div class="pay-method-header">
+            <div class="pay-method-icon transfer"><i class="fas fa-university"></i></div>
+            <h6>Transferencia Bancaria — Interbank</h6>
+          </div>
+          <p>Transferencia o depósito en cuenta Interbank a nombre de Jack Malon Rodriguez Pumaccajia:</p>
+          <div class="pay-detail" style="flex-direction:column;align-items:flex-start;gap:6px">
+            <div style="display:flex;justify-content:space-between;width:100%;flex-wrap:wrap;gap:6px">
+              <span>🏦 &nbsp;Cuenta Soles: <strong>426 3133451950</strong></span>
+              <button class="copy-btn" onclick="copyText('42631334 51950', this)">Copiar</button>
+            </div>
+            <div style="display:flex;justify-content:space-between;width:100%;flex-wrap:wrap;gap:6px">
+              <span>🔗 &nbsp;CCI: <strong>003 426 013133451950 44</strong></span>
+              <button class="copy-btn" onclick="copyText('00342601313345195044', this)">Copiar</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- PASOS -->
+        <div style="background:#fff;border:1px solid var(--border);border-radius:4px;padding:28px 24px;margin-top:24px" class="fade-up">
+          <h5 style="font-family:'Fraunces',serif;font-size:1rem;margin-bottom:4px">Pasos para inscribirte</h5>
+          <div class="pay-step"><div class="step-num">1</div><div class="step-body"><h5>Realiza el pago</h5><p>Envía S/ 120 por Yape, Plin o transferencia bancaria usando los datos de arriba.</p></div></div>
+          <div class="pay-step"><div class="step-num">2</div><div class="step-body"><h5>Toma foto o captura el comprobante</h5><p>Guarda la foto o captura de pantalla de la operación exitosa (Yape, Plin o constancia bancaria).</p></div></div>
+          <div class="pay-step"><div class="step-num">3</div><div class="step-body"><h5>Completa el formulario de inscripción</h5><p>Llena tus datos y sube el comprobante en el formulario que está justo abajo.</p></div></div>
+          <div class="pay-step" style="border-bottom:none"><div class="step-num">4</div><div class="step-body"><h5>Recibe confirmación</h5><p>Te enviaremos un correo de confirmación con el acceso al curso en menos de 24 horas hábiles.</p></div></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FORMULARIO DE INSCRIPCIÓN -->
+<div class="enroll-section" id="inscripcion">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-7">
+        <div class="text-center mb-5 fade-up">
+          <div class="section-eyebrow justify-content-center">
+            <div class="section-eyebrow-line" style="background:var(--lime)"></div>
+            <span style="color:var(--lime)">Inscripción</span>
+          </div>
+          <h2 class="section-title" style="color:#fff">Formulario de Inscripción</h2>
+          <p style="font-size:.9rem;color:rgba(255,255,255,.5);margin-top:10px">Completa tus datos y sube tu comprobante de pago. Te confirmamos en menos de 24 horas.</p>
+        </div>
+        <div class="enroll-wrap fade-up d1">
+          <form id="enrollForm" action="https://formspree.io/f/xnjogwgn" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="curso" value="ArcGIS Básico — 20 al 25 de Abril 2025">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label-e">Nombre completo *</label>
+                <input class="form-ctrl-e" type="text" name="nombre" placeholder="Tu nombre completo" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label-e">DNI *</label>
+                <input class="form-ctrl-e" type="text" name="dni" placeholder="Tu número de DNI" required maxlength="8">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label-e">Correo electrónico *</label>
+                <input class="form-ctrl-e" type="email" name="email" placeholder="tu@correo.com" required>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label-e">WhatsApp / Teléfono *</label>
+                <input class="form-ctrl-e" type="tel" name="telefono" placeholder="+51 999 999 999" required>
+              </div>
+              <div class="col-12">
+                <label class="form-label-e">Ocupación / Profesión</label>
+                <input class="form-ctrl-e" type="text" name="ocupacion" placeholder="Ej: Biólogo, estudiante, consultor ambiental...">
+              </div>
+              <div class="col-12">
+                <label class="form-label-e">Método de pago utilizado *</label>
+                <select class="form-ctrl-e" name="metodo_pago" required>
+                  <option value="" disabled selected>Selecciona</option>
+                  <option>Yape</option>
+                  <option>Plin</option>
+                  <option>Transferencia bancaria Interbank</option>
+                </select>
+              </div>
+              <div class="col-12">
+                <label class="form-label-e" style="margin-bottom:8px">Comprobante de pago *</label>
+                <div class="file-upload-area" id="fileArea">
+                  <input type="file" name="comprobante" id="fileInput" accept="image/*,.pdf" required onchange="showFileName(this)">
+                  <div class="fua-icon"><i class="fas fa-cloud-upload-alt"></i></div>
+                  <div class="fua-text">
+                    <strong>Sube tu comprobante aquí</strong>
+                    Arrastra o haz clic para seleccionar<br>
+                    <small>JPG, PNG o PDF · Máx. 5 MB</small>
+                  </div>
+                  <div class="file-name" id="fileName"></div>
+                </div>
+              </div>
+              <div class="col-12">
+                <button class="btn-submit-e" type="submit" id="enrollBtn">
+                  Enviar Inscripción <i class="fas fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </form>
+          <div class="form-success-e" id="enrollSuccess">
+            <i class="fas fa-check-circle"></i>
+            <h4>¡Inscripción recibida!</h4>
+            <p>Gracias, <span id="successName"></span>. Revisaremos tu comprobante y te enviaremos el acceso al curso a tu correo en menos de 24 horas hábiles.<br><br>Si tienes dudas, escríbenos por WhatsApp al <strong>+51 969 392 189</strong>.</p>
+          </div>
+          <div class="enroll-note">
+            <i class="fas fa-lock"></i>
+            <p>Tus datos son confidenciales y solo se usarán para gestionar tu inscripción. No compartimos información con terceros.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-3 col-md-6">
+        <div class="footer-brand"><img src="img/Andeanlogo.png" alt="Andean Consulting"></div>
+        <p class="footer-desc">Empresa peruana especializada en consultoría ambiental y formación especializada para la gestión sostenible del ambiente y la biodiversidad.</p>
+        <div style="margin-top:24px">
+          <a class="social-link" href="#"><i class="fab fa-facebook-f"></i></a>
+          <a class="social-link" href="#"><i class="fab fa-instagram"></i></a>
+          <a class="social-link" href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-6">
+        <div class="footer-heading">Navegación</div>
+        <a class="footer-link" href="index.html">Inicio</a>
+        <a class="footer-link" href="about.html">Nosotros</a>
+        <a class="footer-link" href="courses.html">Cursos</a>
+        <a class="footer-link" href="consultoria.html">Consultoría</a>
+        <a class="footer-link" href="contact.html">Contacto</a>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="footer-heading">Contacto</div>
+        <div class="footer-cr"><i class="fas fa-map-marker-alt"></i><span>Perú</span></div>
+        <div class="footer-cr"><i class="fas fa-phone-alt"></i><span>+51 969 392 189</span></div>
+        <div class="footer-cr"><i class="fas fa-envelope"></i><span>capacitacion@andeanbioconsulting.com</span></div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="footer-heading">Boletín Informativo</div>
+        <p style="font-size:.85rem;color:rgba(255,255,255,.45);margin-bottom:18px;line-height:1.7">Suscríbete para recibir noticias sobre nuevos cursos.</p>
+        <div class="newsletter-row">
+          <input type="email" placeholder="Tu correo electrónico">
+          <button type="button">Suscribir</button>
+        </div>
+      </div>
+    </div>
+    <hr class="footer-divider">
+    <div class="footer-bottom">
+      <span>&copy; 2025 Andean Consulting &amp; Environmental Solutions S.A.C.</span>
+      <div class="footer-bottom-links"><a href="#">Política de Privacidad</a><a href="#">Cookies</a><a href="#">FAQ</a></div>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/51969392189?text=Hola%2C%20me%20interesa%20el%20curso%20de%20ArcGIS%20B%C3%A1sico." target="_blank" rel="noopener" class="wa-float"><i class="fab fa-whatsapp"></i></a>
+<a href="#" class="back-top" id="backTop"><i class="bi bi-arrow-up"></i></a>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+window.addEventListener('load',()=>{const s=document.getElementById('spinner');s.classList.add('hide');setTimeout(()=>s.remove(),600)});
+const mNav=document.getElementById('mainNav');
+window.addEventListener('scroll',()=>mNav.classList.toggle('scrolled',scrollY>20),{passive:true});
+const fo=new IntersectionObserver(ee=>{ee.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');fo.unobserve(e.target)}})},{threshold:.1,rootMargin:'0px 0px -36px 0px'});
+document.querySelectorAll('.fade-up').forEach(el=>fo.observe(el));
+const bt=document.getElementById('backTop');
+window.addEventListener('scroll',()=>bt.classList.toggle('show',scrollY>300),{passive:true});
+bt.addEventListener('click',e=>{e.preventDefault();scrollTo({top:0,behavior:'smooth'})});
+
+// ACCORDION
+function toggleSyl(header){
+  const body=header.nextElementSibling;
+  const isOpen=header.classList.contains('open');
+  document.querySelectorAll('.syllabus-header.open').forEach(h=>{h.classList.remove('open');h.nextElementSibling.classList.remove('open')});
+  if(!isOpen){header.classList.add('open');body.classList.add('open');}
+}
+
+// FILE UPLOAD
+function showFileName(input){
+  const fn=document.getElementById('fileName');
+  if(input.files&&input.files[0]){
+    fn.textContent='✓ '+input.files[0].name;
+    fn.style.display='block';
+    document.getElementById('fileArea').style.borderColor='var(--lime)';
+  }
+}
+
+// COPY BUTTONS
+function copyText(text, btn){
+  navigator.clipboard.writeText(text).then(()=>{
+    btn.textContent='¡Copiado!';btn.classList.add('copied');
+    setTimeout(()=>{btn.textContent='Copiar';btn.classList.remove('copied')},2000);
+  });
+}
+
+// DRAG & DROP
+const fa=document.getElementById('fileArea');
+fa.addEventListener('dragover',e=>{e.preventDefault();fa.classList.add('dragover')});
+fa.addEventListener('dragleave',()=>fa.classList.remove('dragover'));
+fa.addEventListener('drop',e=>{e.preventDefault();fa.classList.remove('dragover');const f=e.dataTransfer.files[0];if(f){document.getElementById('fileInput').files=e.dataTransfer.files;showFileName(document.getElementById('fileInput'));}});
+
+// FORM SUBMIT
+const ef=document.getElementById('enrollForm');
+const es=document.getElementById('enrollSuccess');
+const eb=document.getElementById('enrollBtn');
+ef.addEventListener('submit',async e=>{
+  e.preventDefault();
+  const nombre=ef.querySelector('[name=nombre]').value;
+  eb.innerHTML='Enviando… <i class="fas fa-spinner fa-spin"></i>';eb.disabled=true;
+  try{
+    const r=await fetch(ef.action,{method:'POST',body:new FormData(ef),headers:{'Accept':'application/json'}});
+    if(r.ok){
+      ef.style.display='none';
+      document.getElementById('successName').textContent=nombre.split(' ')[0];
+      es.style.display='block';
+    } else {
+      eb.innerHTML='Error — intenta de nuevo <i class="fas fa-arrow-right"></i>';eb.disabled=false;
+    }
+  }catch{
+    eb.innerHTML='Error — intenta de nuevo <i class="fas fa-arrow-right"></i>';eb.disabled=false;
+  }
+});
+</script>
+</body>
+</html>
