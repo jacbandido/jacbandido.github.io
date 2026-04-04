@@ -84,15 +84,41 @@
         .btn-nav-cta {
             background: var(--green);
             color: #fff !important;
-            font-weight: 600;
-            font-size: .85rem;
-            letter-spacing: .04em;
-            padding: 12px 24px !important;
-            border-radius: 0;
+            font-weight: 700;
+            font-size: .82rem;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            padding: 14px 28px !important;
+            border-radius: 6px;
             border: none;
-            transition: background .2s;
+            margin: 10px 20px;
+            box-shadow: 0 4px 20px rgba(0,106,57,.35), 0 0 0 0 rgba(0,106,57,.4);
+            animation: pulse-cta 2.8s ease infinite;
+            transition: background .2s, transform .15s, box-shadow .2s;
+            position: relative;
+            overflow: hidden;
         }
-        .btn-nav-cta:hover { background: #005530 !important; color: #fff !important; }
+        .btn-nav-cta::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,.18) 50%, transparent 70%);
+            transform: translateX(-100%);
+            transition: transform .5s;
+        }
+        .btn-nav-cta:hover::after { transform: translateX(100%); }
+        .btn-nav-cta:hover {
+            background: #005530 !important;
+            color: #fff !important;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 28px rgba(0,106,57,.45) !important;
+            animation: none;
+        }
+        @keyframes pulse-cta {
+            0%   { box-shadow: 0 4px 20px rgba(0,106,57,.35), 0 0 0 0 rgba(0,106,57,.35); }
+            60%  { box-shadow: 0 4px 20px rgba(0,106,57,.35), 0 0 0 10px rgba(0,106,57,0); }
+            100% { box-shadow: 0 4px 20px rgba(0,106,57,.35), 0 0 0 0 rgba(0,106,57,0); }
+        }
 
         /* ── HERO CAROUSEL ── */
         .hero {
@@ -937,19 +963,15 @@
                 <h5>Enlaces Rápidos</h5>
                 <a class="footer-link" href="about.html">Sobre Nosotros</a>
                 <a class="footer-link" href="contact.html">Contáctanos</a>
-                <a class="footer-link" href="#">Política de Privacidad</a>
-                <a class="footer-link" href="#">Términos y Condiciones</a>
-                <a class="footer-link" href="#">Preguntas Frecuentes</a>
             </div>
             <div class="col-lg-3 col-md-6">
                 <h5>Contacto</h5>
-                <div class="footer-contact"><i class="fas fa-map-marker-alt"></i><span>Cusco, Perú</span></div>
-                <div class="footer-contact"><i class="fas fa-phone-alt"></i><span>+51 XXX XXX XXX</span></div>
+                <div class="footer-contact"><i class="fas fa-map-marker-alt"></i><span>Perú</span></div>
+                <div class="footer-contact"><i class="fas fa-phone-alt"></i><span>+51 969392189</span></div>
                 <div class="footer-contact"><i class="fas fa-envelope"></i><span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a3cacdc5cce3c2cdc7c6c2cdc0cccdd0d6cfd7cacdc48dc0ccce">[email&#160;protected]</a></span></div>
                 <div style="margin-top:20px;">
                     <a class="social-btn" href="#"><i class="fab fa-facebook-f"></i></a>
                     <a class="social-btn" href="#"><i class="fab fa-instagram"></i></a>
-                    <a class="social-btn" href="#"><i class="fab fa-youtube"></i></a>
                     <a class="social-btn" href="#"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
@@ -977,14 +999,14 @@
                 <h5>Boletín Informativo</h5>
                 <p style="font-size:.85rem;color:rgba(255,255,255,.5);margin-bottom:16px;">Suscríbete para recibir noticias sobre nuevos cursos y novedades ambientales.</p>
                 <div class="newsletter-form">
-                    <input type="email" placeholder="Tu correo electrónico">
+                    <input type="email" placeholder="capacitacion@andeanbioconsulting.com">
                     <button type="button">Suscribir</button>
                 </div>
             </div>
         </div>
         <hr class="footer-divider">
         <div class="footer-bottom">
-            <span>&copy; 2025 Andean Consulting & Environmental Solutions S.A.C.</span>
+            <span>&copy; 2026 Andean Consulting & Environmental Solutions S.A.C.</span>
             <div class="footer-bottom-links">
                 <a href="index.html">Inicio</a>
                 <a href="#">Cookies</a>
