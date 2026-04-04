@@ -82,7 +82,7 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
 .courses-section .section-eyebrow span{color:var(--lime)}
 .courses-section .section-title{color:#fff}
 
-/* COURSE CARD — full image with overlay, impactful */
+/* COURSE CARD */
 .course-card{position:relative;border-radius:6px;overflow:hidden;height:480px;display:flex;flex-direction:column;justify-content:flex-end;text-decoration:none;cursor:pointer;transition:transform .4s cubic-bezier(.25,.46,.45,.94),box-shadow .4s}
 .course-card:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 28px 70px rgba(0,0,0,.45)}
 .cc-bg{position:absolute;inset:0;z-index:0}
@@ -90,52 +90,180 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
 .course-card:hover .cc-bg img{transform:scale(1.08)}
 .cc-gradient{position:absolute;inset:0;background:linear-gradient(175deg,rgba(0,0,0,.05) 0%,rgba(8,24,14,.92) 100%);transition:background .4s;z-index:1}
 .course-card:hover .cc-gradient{background:linear-gradient(175deg,rgba(0,80,40,.15) 0%,rgba(8,24,14,.96) 100%)}
-
-/* status badge top-left */
 .cc-status{position:absolute;top:18px;left:18px;z-index:3;font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:6px 14px;border-radius:40px;backdrop-filter:blur(8px)}
 .cc-status.open{background:rgba(0,176,96,.85);color:#fff;border:1px solid rgba(0,255,120,.2)}
 .cc-status.soon{background:rgba(10,31,20,.7);color:rgba(255,255,255,.75);border:1px solid rgba(255,255,255,.15)}
-
-/* big number watermark */
 .cc-watermark{position:absolute;top:14px;right:18px;z-index:2;font-family:'Fraunces',serif;font-size:5rem;font-weight:700;color:rgba(255,255,255,.06);line-height:1;pointer-events:none;transition:color .4s}
 .course-card:hover .cc-watermark{color:rgba(0,176,96,.12)}
-
-/* content at bottom */
 .cc-content{position:relative;z-index:3;padding:28px 26px 26px}
 .cc-cat{font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--lime);margin-bottom:10px;display:flex;align-items:center;gap:6px}
 .cc-cat::before{content:'';width:20px;height:1px;background:var(--lime);flex-shrink:0}
 .cc-content h3{font-family:'Fraunces',serif;font-size:1.25rem;font-weight:600;color:#fff;line-height:1.3;margin-bottom:10px}
 .cc-content p{font-size:.83rem;color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:18px;max-height:0;overflow:hidden;opacity:0;transition:max-height .45s ease,opacity .4s}
 .course-card:hover .cc-content p{max-height:100px;opacity:1}
-
 .cc-meta-row{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:18px}
 .cc-meta-row span{font-size:.74rem;color:rgba(255,255,255,.5);display:flex;align-items:center;gap:5px}
 .cc-meta-row i{color:var(--lime);font-size:.68rem}
-
 .cc-footer-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:16px;border-top:1px solid rgba(255,255,255,.1)}
 .cc-price-badge{font-family:'Fraunces',serif;font-size:1.5rem;font-weight:600;color:#fff;line-height:1}
 .cc-price-badge small{font-family:'Outfit',sans-serif;font-size:.72rem;font-weight:400;color:rgba(255,255,255,.4);display:block;margin-top:2px}
 .cc-price-badge.tbd{font-size:.88rem;color:rgba(255,255,255,.45)}
-
 .btn-curso{display:inline-flex;align-items:center;gap:8px;background:var(--lime);color:#fff;font-weight:700;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;padding:12px 20px;border-radius:3px;text-decoration:none;transition:background .2s,transform .15s,gap .2s}
 .btn-curso:hover{background:#009950;color:#fff;gap:12px}
 .btn-curso i{font-size:.68rem;transition:transform .2s}
 .btn-curso:hover i{transform:translateX(3px)}
-
 .btn-curso-soon{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);color:rgba(255,255,255,.6);font-weight:600;font-size:.75rem;letter-spacing:.08em;text-transform:uppercase;padding:11px 18px;border-radius:3px;border:1px solid rgba(255,255,255,.15);text-decoration:none;transition:background .2s,color .2s,border-color .2s}
 .btn-curso-soon:hover{background:rgba(255,255,255,.14);color:#fff;border-color:rgba(255,255,255,.3)}
 
-/* COUNTDOWN */
-.countdown-wrap{background:var(--forest);padding:56px 0;position:relative;overflow:hidden}
-.countdown-wrap::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,106,57,.2) 0%,transparent 60%)}
-.cd-label{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--lime);margin-bottom:12px}
-.cd-title{font-family:'Fraunces',serif;font-size:clamp(1.4rem,3vw,2rem);font-weight:600;color:#fff;margin-bottom:28px;line-height:1.25}
-.cd-boxes{display:flex;gap:12px;flex-wrap:wrap}
-.cd-box{text-align:center;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:16px 20px;min-width:72px}
-.cd-num{font-family:'Fraunces',serif;font-size:2rem;font-weight:600;color:#fff;line-height:1;display:block}
-.cd-unit{font-size:.62rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);display:block;margin-top:4px}
-.btn-countdown{display:inline-flex;align-items:center;gap:10px;background:var(--lime);color:#fff;font-weight:700;font-size:.85rem;letter-spacing:.08em;text-transform:uppercase;padding:14px 28px;border-radius:3px;text-decoration:none;transition:background .2s,transform .15s}
-.btn-countdown:hover{background:#009950;color:#fff;transform:translateY(-2px)}
+/* =============================================
+   COUNTDOWN — rediseñado, más impactante
+   ============================================= */
+.countdown-wrap{
+  background:linear-gradient(135deg,#00180b 0%,#011f0e 40%,#00180b 100%);
+  border-top:3px solid var(--lime);
+  border-bottom:1px solid rgba(0,176,96,.18);
+  padding:0;
+  position:relative;
+  overflow:hidden;
+}
+/* fondo animado sutil */
+.countdown-wrap::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 80% at 20% 50%,rgba(0,176,96,.12) 0%,transparent 70%);
+  pointer-events:none;
+}
+.countdown-wrap::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 40% 60% at 80% 50%,rgba(0,106,57,.1) 0%,transparent 70%);
+  pointer-events:none;
+}
+
+/* barra superior "urgencia" */
+.cd-urgency-bar{
+  background:var(--lime);
+  text-align:center;
+  padding:10px 16px;
+  font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  color:#003d20;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+}
+.cd-urgency-bar .dot{
+  width:8px;height:8px;border-radius:50%;background:#003d20;
+  animation:pulse-dot 1.4s ease-in-out infinite;
+}
+@keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+
+.cd-inner{padding:52px 0 56px;position:relative;z-index:1;}
+
+.cd-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(0,176,96,.15);border:1px solid rgba(0,176,96,.3);
+  border-radius:40px;padding:7px 18px;
+  font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--lime);margin-bottom:20px;
+}
+.cd-badge i{font-size:.7rem}
+
+.cd-headline{
+  font-family:'Fraunces',serif;
+  font-size:clamp(1.7rem,4vw,2.6rem);
+  font-weight:600;color:#fff;line-height:1.2;
+  letter-spacing:-.02em;margin-bottom:6px;
+}
+.cd-headline em{font-style:italic;font-weight:300;color:var(--lime)}
+
+.cd-sub{font-size:.88rem;color:rgba(255,255,255,.45);margin-bottom:32px;line-height:1.6}
+
+/* cajas del countdown */
+.cd-boxes{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px}
+.cd-box{
+  text-align:center;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(0,176,96,.25);
+  border-radius:6px;padding:18px 22px;min-width:78px;
+  position:relative;overflow:hidden;
+  transition:border-color .3s,background .3s;
+}
+.cd-box::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--lime),transparent);
+  opacity:.5;
+}
+.cd-num{
+  font-family:'Fraunces',serif;font-size:2.4rem;font-weight:700;
+  color:#fff;line-height:1;display:block;
+  text-shadow:0 0 24px rgba(0,176,96,.3);
+}
+.cd-unit{
+  font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--lime);display:block;margin-top:6px;opacity:.85;
+}
+
+/* separadores : animados */
+.cd-sep{
+  font-family:'Fraunces',serif;font-size:2rem;font-weight:700;
+  color:rgba(0,176,96,.4);line-height:1;
+  align-self:center;padding-bottom:16px;
+  animation:blink-sep 1s step-end infinite;
+}
+@keyframes blink-sep{0%,100%{opacity:1}50%{opacity:.1}}
+
+.cd-features{display:flex;gap:20px;flex-wrap:wrap;margin-bottom:36px}
+.cd-feat{display:flex;align-items:center;gap:8px;font-size:.82rem;color:rgba(255,255,255,.55)}
+.cd-feat i{color:var(--lime);font-size:.8rem}
+
+.btn-countdown-main{
+  display:inline-flex;align-items:center;gap:12px;
+  background:var(--lime);color:#fff;
+  font-weight:700;font-size:.9rem;letter-spacing:.08em;text-transform:uppercase;
+  padding:16px 36px;border-radius:3px;text-decoration:none;
+  transition:background .2s,transform .15s,box-shadow .2s;
+  box-shadow:0 8px 32px rgba(0,176,96,.35);
+}
+.btn-countdown-main:hover{
+  background:#009950;color:#fff;
+  transform:translateY(-2px);
+  box-shadow:0 14px 40px rgba(0,176,96,.5);
+}
+.btn-countdown-main i{font-size:.78rem;transition:transform .2s}
+.btn-countdown-main:hover i{transform:translateX(4px)}
+
+.btn-countdown-ghost{
+  display:inline-flex;align-items:center;gap:8px;
+  background:transparent;color:rgba(255,255,255,.65);
+  font-weight:600;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;
+  padding:16px 28px;border-radius:3px;text-decoration:none;
+  border:1px solid rgba(255,255,255,.18);
+  transition:background .2s,color .2s,border-color .2s;
+  margin-left:12px;
+}
+.btn-countdown-ghost:hover{background:rgba(255,255,255,.07);color:#fff;border-color:rgba(255,255,255,.35)}
+
+/* precio highlight */
+.cd-price{
+  display:inline-flex;align-items:baseline;gap:6px;
+  background:rgba(0,176,96,.1);border:1px solid rgba(0,176,96,.2);
+  border-radius:6px;padding:14px 22px;margin-bottom:28px;
+}
+.cd-price-amount{
+  font-family:'Fraunces',serif;font-size:2.2rem;font-weight:700;color:#fff;line-height:1;
+}
+.cd-price-label{font-size:.78rem;color:rgba(255,255,255,.45);line-height:1.4}
+
+.cd-divider{width:1px;background:rgba(255,255,255,.08);margin:0 8px;align-self:stretch}
+
+/* imagen decorativa */
+.cd-img-wrap{position:relative;height:100%;}
+.cd-img-wrap img{
+  width:100%;height:100%;object-fit:cover;
+  border-radius:8px;opacity:.45;
+  filter:saturate(0.6) brightness(0.7);
+}
+.cd-img-wrap::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(to right,#011f0e 0%,transparent 40%,transparent 100%);
+  border-radius:8px;
+}
 
 /* FOOTER */
 .footer{background:var(--forest);padding:72px 0 0}
@@ -177,7 +305,9 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
   .footer-bottom{flex-direction:column;text-align:center}
   .footer-bottom-links{justify-content:center}
   .courses-section{padding:64px 0}
-  .cd-boxes{justify-content:center}
+  .cd-boxes{justify-content:flex-start}
+  .cd-img-wrap{display:none}
+  .btn-countdown-ghost{margin-left:0;margin-top:12px}
 }
 </style>
 </head>
@@ -253,18 +383,74 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
   </div>
 </div>
 
-<!-- COUNTDOWN BANNER -->
+<!-- =============================================
+     COUNTDOWN BANNER — rediseñado
+     ============================================= -->
 <div class="countdown-wrap">
-  <div class="container">
-    <div class="row align-items-center g-4">
-      <div class="col-lg-6">
-        <div class="cd-label">⚡ Curso activo — Inscripciones abiertas</div>
-        <div class="cd-title">ArcGIS Básico inicia el<br><em style="font-style:italic;font-weight:300">20 de abril de 2025</em></div>
-        <div class="cd-boxes" id="countdown"></div>
-      </div>
-      <div class="col-lg-6 text-lg-end">
-        <p style="font-size:.9rem;color:rgba(255,255,255,.55);margin-bottom:20px;line-height:1.7">Plazas limitadas. Asegura tu lugar ahora y aprende ArcGIS desde cero con un especialista en SIG y Biología.</p>
-        <a href="curso-arcgis.html" class="btn-countdown">Ver Curso e Inscribirme <i class="fas fa-arrow-right" style="font-size:.75rem"></i></a>
+
+  <!-- barra de urgencia superior -->
+  <div class="cd-urgency-bar">
+    <div class="dot"></div>
+    ¡Quedan pocos días! &nbsp;·&nbsp; Plazas limitadas &nbsp;·&nbsp; Inscripciones abiertas ahora
+    <div class="dot"></div>
+  </div>
+
+  <div class="cd-inner">
+    <div class="container">
+      <div class="row align-items-center g-5">
+
+        <!-- LEFT: toda la info -->
+        <div class="col-lg-7">
+
+          <div class="cd-badge">
+            <i class="fas fa-bolt"></i> Curso activo · Inscripciones abiertas
+          </div>
+
+          <h2 class="cd-headline">
+            ArcGIS Básico para<br>Ciencias Ambientales<br>
+            <em>inicia el 20 de abril</em>
+          </h2>
+          <p class="cd-sub">SIG · Teledetección · 20 horas · Certificado incluido · Dictado por Jack Malon</p>
+
+          <!-- COUNTDOWN BOXES -->
+          <div class="cd-boxes" id="countdown"></div>
+
+          <!-- features -->
+          <div class="cd-features">
+            <div class="cd-feat"><i class="fas fa-video"></i> 100% virtual</div>
+            <div class="cd-feat"><i class="fas fa-certificate"></i> Certificado oficial</div>
+            <div class="cd-feat"><i class="fas fa-users"></i> Cupos limitados</div>
+            <div class="cd-feat"><i class="fas fa-headset"></i> Soporte en vivo</div>
+          </div>
+
+          <!-- precio + botones -->
+          <div class="d-flex align-items-center gap-3 flex-wrap">
+            <div class="cd-price">
+              <div>
+                <div class="cd-price-amount">S/ 120</div>
+                <div class="cd-price-label">por persona<br>con certificado</div>
+              </div>
+            </div>
+            <div class="cd-divider"></div>
+            <div>
+              <a href="curso-arcgis.html" class="btn-countdown-main">
+                Ver Curso e Inscribirme <i class="fas fa-arrow-right"></i>
+              </a>
+              <a href="https://wa.me/51969392189?text=Hola%2C%20me%20interesa%20el%20curso%20de%20ArcGIS%20b%C3%A1sico." target="_blank" rel="noopener" class="btn-countdown-ghost">
+                <i class="fab fa-whatsapp"></i> Consultar
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- RIGHT: imagen decorativa -->
+        <div class="col-lg-5 d-none d-lg-block" style="height:380px;">
+          <div class="cd-img-wrap" style="height:100%;">
+            <img src="img/course-2.jpg" alt="ArcGIS Básico">
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
@@ -413,20 +599,33 @@ const bt=document.getElementById('backTop');
 window.addEventListener('scroll',()=>bt.classList.toggle('show',scrollY>300),{passive:true});
 bt.addEventListener('click',e=>{e.preventDefault();scrollTo({top:0,behavior:'smooth'})});
 
-// COUNTDOWN
+// COUNTDOWN — siempre muestra días restantes sin decir "ya empezó"
 function updateCountdown(){
   const target=new Date('2025-04-20T00:00:00');
   const now=new Date();
   const diff=target-now;
-  if(diff<=0){document.getElementById('countdown').innerHTML='<span style="color:var(--lime);font-size:.9rem;font-weight:600">¡El curso ya comenzó!</span>';return;}
+  if(diff<=0){
+    document.getElementById('countdown').innerHTML=`
+      <div class="cd-box"><span class="cd-num">00</span><span class="cd-unit">Días</span></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-box"><span class="cd-num">00</span><span class="cd-unit">Horas</span></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-box"><span class="cd-num">00</span><span class="cd-unit">Min</span></div>
+      <div class="cd-sep">:</div>
+      <div class="cd-box"><span class="cd-num">00</span><span class="cd-unit">Seg</span></div>`;
+    return;
+  }
   const d=Math.floor(diff/86400000);
   const h=Math.floor((diff%86400000)/3600000);
   const m=Math.floor((diff%3600000)/60000);
   const s=Math.floor((diff%60000)/1000);
   document.getElementById('countdown').innerHTML=`
     <div class="cd-box"><span class="cd-num">${String(d).padStart(2,'0')}</span><span class="cd-unit">Días</span></div>
+    <div class="cd-sep">:</div>
     <div class="cd-box"><span class="cd-num">${String(h).padStart(2,'0')}</span><span class="cd-unit">Horas</span></div>
+    <div class="cd-sep">:</div>
     <div class="cd-box"><span class="cd-num">${String(m).padStart(2,'0')}</span><span class="cd-unit">Min</span></div>
+    <div class="cd-sep">:</div>
     <div class="cd-box"><span class="cd-num">${String(s).padStart(2,'0')}</span><span class="cd-unit">Seg</span></div>`;
 }
 updateCountdown();
