@@ -431,20 +431,117 @@
         .area-tile:hover .area-tile-arrow { opacity: 1; transform: none; }
 
         /* mobile stack */
+        /* (slider handles mobile — grid only for desktop) */
         @media (max-width: 767px) {
-            .areas-grid {
-                grid-template-columns: 1fr 1fr;
-                grid-template-rows: 220px 220px;
-            }
-            .area-tile:nth-child(1) { grid-row: auto; }
-            .area-tile-body p { max-height: none; opacity: 1; }
-            .area-tile-arrow { opacity: 1; transform: none; }
+            .areas-grid-desktop { display: none !important; }
         }
-        @media (max-width: 480px) {
-            .areas-grid {
-                grid-template-columns: 1fr;
-                grid-template-rows: repeat(4, 240px);
-            }
+        @media (min-width: 768px) {
+            .areas-slider-mobile { display: none !important; }
+        }
+
+        /* ── AREAS SLIDER (mobile) ── */
+        .areas-slider-mobile {
+            position: relative;
+            overflow: hidden;
+            margin: 0 -16px; /* bleed to edges */
+            padding: 0 16px;
+        }
+        .areas-track {
+            display: flex;
+            gap: 14px;
+            transition: transform .45s cubic-bezier(.25,.46,.45,.94);
+            will-change: transform;
+            cursor: grab;
+            user-select: none;
+        }
+        .areas-track.grabbing { cursor: grabbing; transition: none; }
+        .areas-slide {
+            flex: 0 0 78vw;
+            max-width: 320px;
+            height: 420px;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            text-decoration: none;
+            display: block;
+            flex-shrink: 0;
+        }
+        .areas-slide img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform .5s ease;
+        }
+        .areas-slide-overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(170deg, rgba(0,0,0,.05) 0%, rgba(0,18,9,.88) 100%);
+        }
+        .areas-slide-body {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 28px 24px;
+        }
+        .areas-slide-tag {
+            display: inline-block;
+            font-size: .62rem;
+            font-weight: 700;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: #6fcf97;
+            background: rgba(0,106,57,.45);
+            border: 1px solid rgba(111,207,151,.2);
+            padding: 4px 11px;
+            border-radius: 40px;
+            margin-bottom: 10px;
+            backdrop-filter: blur(6px);
+        }
+        .areas-slide-body h4 {
+            color: #fff;
+            font-size: 1.15rem;
+            font-weight: 700;
+            line-height: 1.25;
+            margin-bottom: 8px;
+        }
+        .areas-slide-body p {
+            font-size: .82rem;
+            color: rgba(255,255,255,.68);
+            line-height: 1.6;
+            margin: 0 0 16px;
+        }
+        .areas-slide-arrow {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            background: var(--green);
+            color: #fff;
+            font-size: .8rem;
+        }
+        /* pagination dots */
+        .areas-dots {
+            display: flex; justify-content: center; gap: 8px;
+            margin-top: 24px;
+        }
+        .areas-dot {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            background: rgba(255,255,255,.25);
+            border: none; cursor: pointer;
+            transition: background .25s, transform .25s, width .3s;
+            padding: 0;
+        }
+        .areas-dot.active {
+            background: var(--green);
+            width: 22px;
+            border-radius: 4px;
+        }
+        /* peek next card */
+        .areas-slider-mobile::after {
+            content: '';
+            position: absolute;
+            top: 0; right: 0;
+            width: 40px; height: 100%;
+            background: linear-gradient(to right, transparent, #0d1a12);
+            pointer-events: none;
+            z-index: 2;
         }
 
         /* ── COURSES — nuevo layout ── */
@@ -805,9 +902,9 @@
             <span class="section-label">Áreas de Trabajo</span>
             <h2 class="section-title">Nuestras Especialidades</h2>
         </div>
-        <div class="areas-grid fade-up fade-up-delay-1">
 
-            <!-- Tile grande -->
+        <!-- DESKTOP: grid asimétrico -->
+        <div class="areas-grid areas-grid-desktop fade-up fade-up-delay-1">
             <a class="area-tile" href="courses.html">
                 <img src="img/cat-1.jpg" alt="Ecología y Biodiversidad">
                 <div class="area-tile-overlay"></div>
@@ -818,8 +915,6 @@
                     <div class="area-tile-arrow"><i class="fas fa-arrow-right"></i></div>
                 </div>
             </a>
-
-            <!-- Tile mediano top -->
             <a class="area-tile" href="courses.html">
                 <img src="img/cat-2.jpg" alt="SIG y Teledetección">
                 <div class="area-tile-overlay"></div>
@@ -830,8 +925,6 @@
                     <div class="area-tile-arrow"><i class="fas fa-arrow-right"></i></div>
                 </div>
             </a>
-
-            <!-- Tile mediano top -->
             <a class="area-tile" href="courses.html">
                 <img src="img/cat-3.jpg" alt="Monitoreo Ambiental">
                 <div class="area-tile-overlay"></div>
@@ -842,8 +935,6 @@
                     <div class="area-tile-arrow"><i class="fas fa-arrow-right"></i></div>
                 </div>
             </a>
-
-            <!-- Tile mediano bottom -->
             <a class="area-tile" href="courses.html">
                 <img src="img/cat-4.jpg" alt="Alquiler de Equipos">
                 <div class="area-tile-overlay"></div>
@@ -854,8 +945,6 @@
                     <div class="area-tile-arrow"><i class="fas fa-arrow-right"></i></div>
                 </div>
             </a>
-
-            <!-- Tile mediano bottom -->
             <a class="area-tile" href="contact.html">
                 <img src="img/about.jpg" alt="Consultoría Ambiental">
                 <div class="area-tile-overlay"></div>
@@ -866,8 +955,71 @@
                     <div class="area-tile-arrow"><i class="fas fa-arrow-right"></i></div>
                 </div>
             </a>
-
         </div>
+
+        <!-- MOBILE: slider táctil -->
+        <div class="areas-slider-mobile">
+            <div class="areas-track" id="areasTrack">
+                <a class="areas-slide" href="courses.html">
+                    <img src="img/cat-1.jpg" alt="Ecología y Biodiversidad">
+                    <div class="areas-slide-overlay"></div>
+                    <div class="areas-slide-body">
+                        <div class="areas-slide-tag">Cursos disponibles</div>
+                        <h4>Ecología y Biodiversidad</h4>
+                        <p>Inventarios de fauna y flora, monitoreo y análisis de ecosistemas.</p>
+                        <div class="areas-slide-arrow"><i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </a>
+                <a class="areas-slide" href="courses.html">
+                    <img src="img/cat-2.jpg" alt="SIG y Teledetección">
+                    <div class="areas-slide-overlay"></div>
+                    <div class="areas-slide-body">
+                        <div class="areas-slide-tag">Cursos disponibles</div>
+                        <h4>SIG y Teledetección</h4>
+                        <p>Análisis espacial, cartografía y procesamiento de imágenes satelitales.</p>
+                        <div class="areas-slide-arrow"><i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </a>
+                <a class="areas-slide" href="courses.html">
+                    <img src="img/cat-3.jpg" alt="Monitoreo Ambiental">
+                    <div class="areas-slide-overlay"></div>
+                    <div class="areas-slide-body">
+                        <div class="areas-slide-tag">Servicio disponible</div>
+                        <h4>Monitoreo Ambiental</h4>
+                        <p>Agua, suelo, aire y biodiversidad con equipos de campo.</p>
+                        <div class="areas-slide-arrow"><i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </a>
+                <a class="areas-slide" href="courses.html">
+                    <img src="img/cat-4.jpg" alt="Alquiler de Equipos">
+                    <div class="areas-slide-overlay"></div>
+                    <div class="areas-slide-body">
+                        <div class="areas-slide-tag">Servicio disponible</div>
+                        <h4>Alquiler de Equipos</h4>
+                        <p>Equipos para muestreo biológico y trabajo de campo científico.</p>
+                        <div class="areas-slide-arrow"><i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </a>
+                <a class="areas-slide" href="contact.html">
+                    <img src="img/about.jpg" alt="Consultoría Ambiental">
+                    <div class="areas-slide-overlay"></div>
+                    <div class="areas-slide-body">
+                        <div class="areas-slide-tag">Servicio disponible</div>
+                        <h4>Consultoría &amp; Asesoría</h4>
+                        <p>Asesoría técnica para entidades públicas, privadas y comunidades.</p>
+                        <div class="areas-slide-arrow"><i class="fas fa-arrow-right"></i></div>
+                    </div>
+                </a>
+            </div>
+            <div class="areas-dots" id="areasDots">
+                <button class="areas-dot active" data-idx="0"></button>
+                <button class="areas-dot" data-idx="1"></button>
+                <button class="areas-dot" data-idx="2"></button>
+                <button class="areas-dot" data-idx="3"></button>
+                <button class="areas-dot" data-idx="4"></button>
+            </div>
+        </div>
+
     </div>
 </div>
 
@@ -966,8 +1118,8 @@
             </div>
             <div class="col-lg-3 col-md-6">
                 <h5>Contacto</h5>
-                <div class="footer-contact"><i class="fas fa-map-marker-alt"></i><span>Perú</span></div>
-                <div class="footer-contact"><i class="fas fa-phone-alt"></i><span>+51 969392189</span></div>
+                <div class="footer-contact"><i class="fas fa-map-marker-alt"></i><span>Cusco, Perú</span></div>
+                <div class="footer-contact"><i class="fas fa-phone-alt"></i><span>+51 XXX XXX XXX</span></div>
                 <div class="footer-contact"><i class="fas fa-envelope"></i><span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a3cacdc5cce3c2cdc7c6c2cdc0cccdd0d6cfd7cacdc48dc0ccce">[email&#160;protected]</a></span></div>
                 <div style="margin-top:20px;">
                     <a class="social-btn" href="#"><i class="fab fa-facebook-f"></i></a>
@@ -999,14 +1151,14 @@
                 <h5>Boletín Informativo</h5>
                 <p style="font-size:.85rem;color:rgba(255,255,255,.5);margin-bottom:16px;">Suscríbete para recibir noticias sobre nuevos cursos y novedades ambientales.</p>
                 <div class="newsletter-form">
-                    <input type="email" placeholder="capacitacion@andeanbioconsulting.com">
+                    <input type="email" placeholder="Tu correo electrónico">
                     <button type="button">Suscribir</button>
                 </div>
             </div>
         </div>
         <hr class="footer-divider">
         <div class="footer-bottom">
-            <span>&copy; 2026 Andean Consulting & Environmental Solutions S.A.C.</span>
+            <span>&copy; 2025 Andean Consulting & Environmental Solutions S.A.C.</span>
             <div class="footer-bottom-links">
                 <a href="index.html">Inicio</a>
                 <a href="#">Cookies</a>
@@ -1135,6 +1287,78 @@ window.addEventListener('scroll', () => {
     bt.classList.toggle('show', window.scrollY > 320);
 }, {passive:true});
 bt.addEventListener('click', e => { e.preventDefault(); window.scrollTo({top:0, behavior:'smooth'}); });
+
+/* ── AREAS SLIDER (mobile) ── */
+(function() {
+    const track  = document.getElementById('areasTrack');
+    const dots   = document.querySelectorAll('.areas-dot');
+    if (!track) return;
+
+    const slides = track.querySelectorAll('.areas-slide');
+    let current = 0;
+    let startX = 0, startOffset = 0, dragging = false, didDrag = false;
+
+    function getOffset(idx) {
+        // center the active slide with a small peek on the right
+        const slide = slides[idx];
+        const containerW = track.parentElement.offsetWidth;
+        const slideW = slide.offsetWidth;
+        const gap = 14;
+        let offset = idx * (slideW + gap) - (containerW - slideW) / 2;
+        return Math.max(0, offset);
+    }
+
+    function goTo(idx, animate = true) {
+        idx = Math.max(0, Math.min(slides.length - 1, idx));
+        current = idx;
+        track.style.transition = animate ? 'transform .45s cubic-bezier(.25,.46,.45,.94)' : 'none';
+        track.style.transform = `translateX(-${getOffset(idx)}px)`;
+        dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+        // scale active slide
+        slides.forEach((s, i) => {
+            s.style.transition = 'transform .35s ease, opacity .35s ease';
+            s.style.transform  = i === idx ? 'scale(1)'    : 'scale(.93)';
+            s.style.opacity    = i === idx ? '1'           : '.65';
+        });
+    }
+
+    // pointer/touch events
+    track.addEventListener('pointerdown', e => {
+        dragging = true; didDrag = false;
+        startX = e.clientX;
+        startOffset = getOffset(current);
+        track.classList.add('grabbing');
+        track.setPointerCapture(e.pointerId);
+    });
+    track.addEventListener('pointermove', e => {
+        if (!dragging) return;
+        const dx = e.clientX - startX;
+        if (Math.abs(dx) > 4) didDrag = true;
+        track.style.transition = 'none';
+        track.style.transform  = `translateX(-${startOffset - dx}px)`;
+    });
+    track.addEventListener('pointerup', e => {
+        if (!dragging) return;
+        dragging = false;
+        track.classList.remove('grabbing');
+        const dx = e.clientX - startX;
+        if (Math.abs(dx) > 48) {
+            goTo(dx < 0 ? current + 1 : current - 1);
+        } else {
+            goTo(current);
+        }
+    });
+    // prevent link navigation when dragging
+    track.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', e => { if (didDrag) { e.preventDefault(); didDrag = false; } });
+    });
+    // dot clicks
+    dots.forEach(d => d.addEventListener('click', () => goTo(+d.dataset.idx)));
+
+    // init
+    goTo(0, false);
+    window.addEventListener('resize', () => goTo(current, false));
+})();
 
 /* ── SMOOTH ANCHOR SCROLL ── */
 document.querySelectorAll('a[href^="#"]').forEach(a => {
