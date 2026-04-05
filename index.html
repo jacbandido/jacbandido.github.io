@@ -52,15 +52,7 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
 .dropdown-menu{border:1px solid var(--border);border-radius:8px;box-shadow:0 12px 40px rgba(0,0,0,.1);padding:8px 0;margin-top:-1px}
 .dropdown-item{font-family:'Outfit',sans-serif;font-size:.82rem;letter-spacing:.04em;padding:10px 20px;color:var(--text);font-weight:500;text-transform:uppercase;transition:background .15s,color .15s}
 .dropdown-item:hover{background:var(--light-green);color:var(--green)}
-/* CTA — bigger, no underline */
-.btn-nav-cta{
-  background:var(--green);color:#fff!important;font-weight:700;font-size:.88rem;
-  letter-spacing:.1em;text-transform:uppercase;text-decoration:none!important;
-  padding:18px 40px!important;margin:8px 20px;border-radius:3px;
-  display:inline-flex;align-items:center;gap:10px;
-  position:relative;overflow:hidden;transition:background .2s,transform .15s;
-  white-space:nowrap;line-height:1
-}
+.btn-nav-cta{background:var(--green);color:#fff!important;font-weight:700;font-size:.88rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none!important;padding:18px 40px!important;margin:8px 20px;border-radius:3px;display:inline-flex;align-items:center;gap:10px;position:relative;overflow:hidden;transition:background .2s,transform .15s;white-space:nowrap;line-height:1}
 .btn-nav-cta:hover,.btn-nav-cta:focus{background:var(--forest)!important;color:#fff!important;transform:translateY(-1px);text-decoration:none!important}
 .btn-nav-cta::after{content:'';position:absolute;inset:0;background:linear-gradient(120deg,transparent 30%,rgba(255,255,255,.15) 50%,transparent 70%);transform:translateX(-100%);transition:transform .5s}
 .btn-nav-cta:hover::after{transform:translateX(100%)}
@@ -113,9 +105,15 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
 .about-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
 .about-img-wrap:hover img{transform:scale(1.03)}
 .about-accent{position:absolute;bottom:-28px;right:-28px;width:180px;height:180px;border:2px solid var(--green);border-radius:2px;z-index:-1}
-.about-badge{position:absolute;bottom:32px;left:32px;background:var(--forest);color:#fff;padding:20px 28px;border-radius:2px}
-.about-badge-num{font-family:'Fraunces',serif;font-size:2.4rem;font-weight:600;color:#fff;display:block;margin-bottom:4px}
-.about-badge-text{font-size:.78rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.6);display:block}
+.about-badge{
+  position:absolute;bottom:24px;left:24px;
+  background:var(--forest);color:#fff;
+  padding:14px 20px;border-radius:2px;
+  /* prevent overflow on small screens */
+  max-width:calc(100% - 48px);
+}
+.about-badge-num{font-family:'Fraunces',serif;font-size:clamp(1.4rem,5vw,2.4rem);font-weight:600;color:#fff;display:block;margin-bottom:4px;line-height:1}
+.about-badge-text{font-size:clamp(.62rem,.9vw,.78rem);font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.6);display:block}
 .about-tag{display:inline-flex;align-items:center;gap:7px;background:var(--light-green);border-radius:3px;padding:7px 14px;font-size:.8rem;font-weight:500;color:var(--green);margin:4px 4px 4px 0}
 .about-tag i{font-size:.65rem}
 .btn-primary-custom{display:inline-flex;align-items:center;gap:10px;background:var(--green);color:#fff;font-weight:600;font-size:.82rem;letter-spacing:.08em;padding:15px 32px;border-radius:3px;border:none;text-decoration:none;transition:background .2s,transform .15s;text-transform:uppercase}
@@ -123,13 +121,23 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
 .btn-outline-custom{display:inline-flex;align-items:center;gap:10px;background:transparent;color:var(--green);font-weight:600;font-size:.82rem;letter-spacing:.08em;padding:13px 28px;border-radius:3px;border:1px solid var(--green);text-decoration:none;transition:background .2s,color .2s,transform .15s;text-transform:uppercase;margin-left:12px}
 .btn-outline-custom:hover{background:var(--green);color:#fff;transform:translateY(-2px)}
 
-/* AREAS (desktop) */
+/* =============================================
+   NUESTRAS ESPECIALIDADES — un solo grid
+   responsive sin slider duplicado
+   ============================================= */
 .areas-section{padding:96px 0;background:var(--forest)}
 .areas-section .section-eyebrow-line{background:var(--lime)}
 .areas-section .section-eyebrow span{color:var(--lime)}
 .areas-section .section-title{color:#fff}
-.areas-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;grid-template-rows:280px 280px;gap:10px}
-.area-tile{position:relative;overflow:hidden;border-radius:2px;cursor:pointer;text-decoration:none;display:block}
+
+/* ── Desktop: mosaico ── */
+.areas-grid{
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr;
+  grid-template-rows:280px 280px;
+  gap:10px;
+}
+.area-tile{position:relative;overflow:hidden;border-radius:6px;cursor:pointer;text-decoration:none;display:block}
 .area-tile:nth-child(1){grid-row:1/3;grid-column:1}
 .area-tile:nth-child(2){grid-row:1;grid-column:2}
 .area-tile:nth-child(3){grid-row:1;grid-column:3}
@@ -139,49 +147,48 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
 .area-tile:hover img{transform:scale(1.08)}
 .area-overlay{position:absolute;inset:0;background:linear-gradient(175deg,rgba(0,0,0,.04) 0%,rgba(8,24,14,.86) 100%)}
 .area-tile:hover .area-overlay{background:linear-gradient(175deg,rgba(0,80,40,.12) 0%,rgba(8,24,14,.92) 100%)}
-.area-body{position:absolute;bottom:0;left:0;right:0;padding:28px 26px;transform:translateY(6px);transition:transform .4s ease}
+.area-body{position:absolute;bottom:0;left:0;right:0;padding:24px 22px;transform:translateY(6px);transition:transform .4s ease}
 .area-tile:hover .area-body{transform:none}
-.area-tag{display:inline-flex;align-items:center;gap:6px;font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--lime);background:rgba(0,80,40,.45);border:1px solid rgba(0,176,96,.2);padding:4px 11px;border-radius:40px;margin-bottom:12px;backdrop-filter:blur(4px)}
-.area-body h4{color:#fff;font-family:'Fraunces',serif;font-size:1.1rem;font-weight:600;line-height:1.25;margin-bottom:8px}
-.area-tile:nth-child(1) .area-body h4{font-size:1.5rem}
+.area-tag{display:inline-flex;align-items:center;gap:6px;font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--lime);background:rgba(0,80,40,.45);border:1px solid rgba(0,176,96,.2);padding:4px 11px;border-radius:40px;margin-bottom:10px;backdrop-filter:blur(4px)}
+.area-body h4{color:#fff;font-family:'Fraunces',serif;font-size:1.05rem;font-weight:600;line-height:1.25;margin-bottom:8px}
+.area-tile:nth-child(1) .area-body h4{font-size:1.4rem}
 .area-body p{font-size:.8rem;color:rgba(255,255,255,.6);line-height:1.65;max-height:0;overflow:hidden;opacity:0;transition:max-height .45s ease,opacity .45s;margin:0}
 .area-tile:hover .area-body p{max-height:80px;opacity:1}
-.area-arrow{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--lime);color:#fff;font-size:.7rem;margin-top:14px;opacity:0;transform:translateX(-10px);transition:opacity .3s,transform .3s}
+.area-arrow{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:50%;background:var(--lime);color:#fff;font-size:.7rem;margin-top:12px;opacity:0;transform:translateX(-10px);transition:opacity .3s,transform .3s}
 .area-tile:hover .area-arrow{opacity:1;transform:none}
 
-/* AREAS MOBILE — hide/show */
-@media(max-width:767px){.areas-grid{display:none!important}}
-@media(min-width:768px){.areas-mobile-wrap{display:none!important}}
+/* ── Tablet: 2 columnas ── */
+@media(max-width:900px){
+  .areas-grid{
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:repeat(3, 220px);
+  }
+  .area-tile:nth-child(1){grid-row:1;grid-column:1/3} /* full width top */
+  .area-tile:nth-child(2){grid-row:2;grid-column:1}
+  .area-tile:nth-child(3){grid-row:2;grid-column:2}
+  .area-tile:nth-child(4){grid-row:3;grid-column:1}
+  .area-tile:nth-child(5){grid-row:3;grid-column:2}
+  /* show description always on touch */
+  .area-body p{max-height:60px;opacity:1}
+  .area-arrow{opacity:1;transform:none}
+  .area-body{transform:none}
+}
 
-/* AREAS MOBILE SLIDER */
-.areas-mobile-wrap{position:relative;overflow:hidden;padding-bottom:4px;touch-action:pan-y}
-.areas-track-m{
-  display:flex;gap:14px;
-  will-change:transform;
-  transition:transform .5s cubic-bezier(.25,.46,.45,.94);
-  -webkit-user-select:none;user-select:none;
+/* ── Mobile: 1 columna ── */
+@media(max-width:580px){
+  .areas-grid{
+    grid-template-columns:1fr;
+    grid-template-rows:repeat(5, 200px);
+    gap:8px;
+  }
+  .area-tile:nth-child(1){grid-row:1;grid-column:1}
+  .area-tile:nth-child(2){grid-row:2;grid-column:1}
+  .area-tile:nth-child(3){grid-row:3;grid-column:1}
+  .area-tile:nth-child(4){grid-row:4;grid-column:1}
+  .area-tile:nth-child(5){grid-row:5;grid-column:1}
+  .area-body h4{font-size:.95rem}
+  .area-tile:nth-child(1) .area-body h4{font-size:1.1rem}
 }
-.areas-track-m.notransition{transition:none!important}
-.areas-slide-m{
-  flex:0 0 80vw;max-width:320px;height:420px;
-  border-radius:14px;overflow:hidden;position:relative;
-  text-decoration:none;display:block;flex-shrink:0;
-  opacity:.6;transform:scale(.92);
-  transition:opacity .4s,transform .4s;
-  -webkit-tap-highlight-color:transparent;
-}
-.areas-slide-m.act{opacity:1;transform:scale(1)}
-.areas-slide-m img{width:100%;height:100%;object-fit:cover;pointer-events:none;-webkit-user-drag:none}
-.slide-ov-m{position:absolute;inset:0;background:linear-gradient(170deg,rgba(0,0,0,.04) 0%,rgba(8,24,14,.9) 100%)}
-.slide-bd-m{position:absolute;bottom:0;left:0;right:0;padding:28px 24px}
-.slide-tag-m{display:inline-block;font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--lime);background:rgba(0,80,40,.5);border:1px solid rgba(0,176,96,.2);padding:4px 11px;border-radius:40px;margin-bottom:10px}
-.slide-bd-m h4{color:#fff;font-family:'Fraunces',serif;font-size:1.2rem;font-weight:600;line-height:1.25;margin-bottom:8px}
-.slide-bd-m p{font-size:.82rem;color:rgba(255,255,255,.68);line-height:1.6;margin:0 0 14px}
-.slide-arr-m{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:var(--lime);color:#fff;font-size:.78rem}
-.areas-dots-m{display:flex;justify-content:center;gap:8px;margin-top:28px}
-.areas-dot-m{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.3);border:none;cursor:pointer;transition:background .25s,width .3s;padding:0}
-.areas-dot-m.act{background:var(--lime);width:24px;border-radius:4px}
-.areas-mobile-wrap::after{content:'';position:absolute;top:0;right:0;width:48px;height:calc(100% - 56px);background:linear-gradient(to right,transparent,var(--forest));pointer-events:none;z-index:2}
 
 /* STATS */
 .stats-band{background:var(--green);padding:56px 0}
@@ -190,13 +197,12 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
 .stat-num{font-family:'Fraunces',serif;font-size:3rem;font-weight:600;color:#fff;line-height:1;display:block;margin-bottom:6px}
 .stat-label{font-size:.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6)}
 
-/* COURSES — dark impactful */
+/* COURSES */
 .courses-section{padding:100px 0;background:var(--forest);position:relative;overflow:hidden}
 .courses-section::before{content:'';position:absolute;top:-120px;right:-120px;width:500px;height:500px;border-radius:50%;background:rgba(0,176,96,.04);pointer-events:none}
 .courses-section .section-eyebrow-line{background:var(--lime)}
 .courses-section .section-eyebrow span{color:var(--lime)}
 .courses-section .section-title{color:#fff}
-/* featured */
 .course-featured{position:relative;border-radius:6px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;min-height:420px;margin-bottom:16px;text-decoration:none;transition:transform .3s}
 .course-featured:hover{transform:translateY(-4px)}
 .cf-img{position:relative;overflow:hidden}
@@ -214,7 +220,6 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
 .btn-course-cta:hover{background:#009950;color:#fff;transform:translateY(-2px)}
 .btn-course-cta i{font-size:.72rem;transition:transform .2s}
 .btn-course-cta:hover i{transform:translateX(4px)}
-/* small cards */
 .course-sm{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:6px;overflow:hidden;display:flex;flex-direction:column;text-decoration:none;transition:background .25s,transform .25s,border-color .25s;height:100%}
 .course-sm:hover{background:rgba(255,255,255,.07);border-color:rgba(0,176,96,.3);transform:translateY(-4px)}
 .cs-img{height:160px;overflow:hidden;position:relative;flex-shrink:0}
@@ -267,6 +272,7 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
 .fade-up.visible{opacity:1;transform:none}
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
 
+/* RESPONSIVE GENERAL */
 @media(max-width:992px){
   .hero-side,.hero-arrow{display:none}
   .hero-slide{height:78vh}
@@ -289,6 +295,8 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
 @media(max-width:576px){
   .hero-content h1{font-size:1.9rem}
   .about-img-wrap{height:260px}
+  /* badge más compacto en móvil */
+  .about-badge{padding:10px 14px;bottom:16px;left:16px}
 }
 </style>
 </head>
@@ -303,7 +311,7 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
       <div class="topbar-left">
         <span><i class="fas fa-map-marker-alt" style="color:var(--lime);margin-right:6px"></i>Perú</span>
         <div class="tb-div"></div>
-        <a href="mailto:capacitacion@andeanbioconsulting"><i class="fas fa-envelope" style="margin-right:5px"></i>info@andeanbioconsulting.com</a>
+        <a href="mailto:capacitacion@andeanbioconsulting.com"><i class="fas fa-envelope" style="margin-right:5px"></i>info@andeanbioconsulting.com</a>
       </div>
       <div class="topbar-right">
         <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -344,9 +352,8 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
   </div>
 </nav>
 
-<!-- HERO — slide 1: SOLUCIONES TÉCNICAS / slide 2: CURSOS -->
+<!-- HERO -->
 <div class="hero" id="hero">
-
   <div class="hero-slide active">
     <img src="img/carousel-2.jpg" alt="Consultoría Ambiental">
     <div class="hero-overlay"></div>
@@ -435,7 +442,7 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
   </div>
 </div>
 
-<!-- NUESTRAS ESPECIALIDADES -->
+<!-- NUESTRAS ESPECIALIDADES — un solo grid, sin slider duplicado -->
 <div class="areas-section" id="especialidades">
   <div class="container">
     <div class="text-center mb-5 fade-up">
@@ -443,31 +450,57 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
       <h2 class="section-title">Nuestras Especialidades</h2>
     </div>
 
-    <!-- desktop -->
     <div class="areas-grid fade-up d1">
-      <a class="area-tile" href="consultoria.html"><img src="img/cat1.jpg" alt="Ecología"><div class="area-overlay"></div><div class="area-body"><div class="area-tag"><i class="fas fa-circle" style="font-size:.4rem"></i> Servicio disponible</div><h4>Levantamientos Biológicos</h4><p>Inventarios de fauna y flora, monitoreo de ecosistemas y análisis de biodiversidad.</p><div class="area-arrow"><i class="fas fa-arrow-right"></i></div></div></a>
-      <a class="area-tile" href="consultoria.html"><img src="img/cat2.jpg" alt="SIG"><div class="area-overlay"></div><div class="area-body"><div class="area-tag"><i class="fas fa-circle" style="font-size:.4rem"></i> Servicio disponible</div><h4>Análisis SIG & Cartografía</h4><p>Análisis espacial, cartografía y procesamiento de imágenes satelitales.</p><div class="area-arrow"><i class="fas fa-arrow-right"></i></div></div></a>
-      <a class="area-tile" href="courses.html"><img src="img/cat3.jpg" alt="Formación"><div class="area-overlay"></div><div class="area-body"><div class="area-tag"><i class="fas fa-circle" style="font-size:.4rem"></i> Cursos disponibles</div><h4>Formación especializada</h4><p>Formación virtual práctica con certificado, orientada a estudiantes y profesionales de distintas disciplinas.</p><div class="area-arrow"><i class="fas fa-arrow-right"></i></div></div></a>
-      <a class="area-tile" href="consultoria.html"><img src="img/cat4.jpg" alt="Equipos"><div class="area-overlay"></div><div class="area-body"><div class="area-tag"><i class="fas fa-circle" style="font-size:.4rem"></i> Servicio disponible</div><h4>Alquiler de Equipos</h4><p>Equipos para muestreo biológico y trabajo de campo científico.</p><div class="area-arrow"><i class="fas fa-arrow-right"></i></div></div></a>
-      <a class="area-tile" href="consultoria.html"><img src="img/cat5.jpg" alt="Consultoría"><div class="area-overlay"></div><div class="area-body"><div class="area-tag"><i class="fas fa-circle" style="font-size:.4rem"></i> Servicio disponible</div><h4>Consultoría &amp; Asesoría</h4><p>Asesoría técnica para entidades públicas, privadas, ONGs y comunidades.</p><div class="area-arrow"><i class="fas fa-arrow-right"></i></div></div></a>
-    </div>
-
-    <!-- mobile slider -->
-    <div class="areas-mobile-wrap" id="areasMobileWrap">
-      <div class="areas-track-m" id="areaTrackM">
-        <a class="areas-slide-m act" href="courses.html"><img src="img/cat-1.jpg" alt="Ecología"><div class="slide-ov-m"></div><div class="slide-bd-m"><div class="slide-tag-m">Cursos disponibles</div><h4>Ecología y Biodiversidad</h4><p>Inventarios de fauna y flora, monitoreo y análisis de ecosistemas.</p><div class="slide-arr-m"><i class="fas fa-arrow-right"></i></div></div></a>
-        <a class="areas-slide-m" href="courses.html"><img src="img/cat-2.jpg" alt="SIG"><div class="slide-ov-m"></div><div class="slide-bd-m"><div class="slide-tag-m">Cursos disponibles</div><h4>SIG y Teledetección</h4><p>Análisis espacial, cartografía y procesamiento de imágenes satelitales.</p><div class="slide-arr-m"><i class="fas fa-arrow-right"></i></div></div></a>
-        <a class="areas-slide-m" href="courses.html"><img src="img/cat-3.jpg" alt="Monitoreo"><div class="slide-ov-m"></div><div class="slide-bd-m"><div class="slide-tag-m">Servicio disponible</div><h4>Monitoreo Ambiental</h4><p>Agua, suelo, aire y biodiversidad con equipos de campo especializados.</p><div class="slide-arr-m"><i class="fas fa-arrow-right"></i></div></div></a>
-        <a class="areas-slide-m" href="courses.html"><img src="img/cat-4.jpg" alt="Equipos"><div class="slide-ov-m"></div><div class="slide-bd-m"><div class="slide-tag-m">Servicio disponible</div><h4>Alquiler de Equipos</h4><p>Equipos para muestreo biológico y trabajo de campo científico.</p><div class="slide-arr-m"><i class="fas fa-arrow-right"></i></div></div></a>
-        <a class="areas-slide-m" href="contact.html"><img src="img/about.jpg" alt="Consultoría"><div class="slide-ov-m"></div><div class="slide-bd-m"><div class="slide-tag-m">Servicio disponible</div><h4>Consultoría &amp; Asesoría</h4><p>Asesoría técnica para entidades públicas, privadas y comunidades.</p><div class="slide-arr-m"><i class="fas fa-arrow-right"></i></div></div></a>
-      </div>
-      <div class="areas-dots-m" id="areaDotsM">
-        <button class="areas-dot-m act" data-i="0"></button>
-        <button class="areas-dot-m" data-i="1"></button>
-        <button class="areas-dot-m" data-i="2"></button>
-        <button class="areas-dot-m" data-i="3"></button>
-        <button class="areas-dot-m" data-i="4"></button>
-      </div>
+      <a class="area-tile" href="consultoria.html">
+        <img src="img/cat1.jpg" alt="Levantamientos Biológicos">
+        <div class="area-overlay"></div>
+        <div class="area-body">
+          <div class="area-tag"><i class="fas fa-circle" style="font-size:.4rem"></i> Servicio disponible</div>
+          <h4>Levantamientos Biológicos</h4>
+          <p>Inventarios de fauna y flora, monitoreo de ecosistemas y análisis de biodiversidad.</p>
+          <div class="area-arrow"><i class="fas fa-arrow-right"></i></div>
+        </div>
+      </a>
+      <a class="area-tile" href="consultoria.html">
+        <img src="img/cat2.jpg" alt="SIG">
+        <div class="area-overlay"></div>
+        <div class="area-body">
+          <div class="area-tag"><i class="fas fa-circle" style="font-size:.4rem"></i> Servicio disponible</div>
+          <h4>Análisis SIG &amp; Cartografía</h4>
+          <p>Análisis espacial, cartografía y procesamiento de imágenes satelitales.</p>
+          <div class="area-arrow"><i class="fas fa-arrow-right"></i></div>
+        </div>
+      </a>
+      <a class="area-tile" href="courses.html">
+        <img src="img/cat3.jpg" alt="Formación">
+        <div class="area-overlay"></div>
+        <div class="area-body">
+          <div class="area-tag"><i class="fas fa-circle" style="font-size:.4rem"></i> Cursos disponibles</div>
+          <h4>Formación Especializada</h4>
+          <p>Formación virtual práctica con certificado, orientada a estudiantes y profesionales de distintas disciplinas.</p>
+          <div class="area-arrow"><i class="fas fa-arrow-right"></i></div>
+        </div>
+      </a>
+      <a class="area-tile" href="consultoria.html">
+        <img src="img/cat4.jpg" alt="Equipos">
+        <div class="area-overlay"></div>
+        <div class="area-body">
+          <div class="area-tag"><i class="fas fa-circle" style="font-size:.4rem"></i> Servicio disponible</div>
+          <h4>Alquiler de Equipos</h4>
+          <p>Equipos especializados para muestreo biológico y trabajo de campo.</p>
+          <div class="area-arrow"><i class="fas fa-arrow-right"></i></div>
+        </div>
+      </a>
+      <a class="area-tile" href="consultoria.html">
+        <img src="img/cat5.jpg" alt="Consultoría">
+        <div class="area-overlay"></div>
+        <div class="area-body">
+          <div class="area-tag"><i class="fas fa-circle" style="font-size:.4rem"></i> Servicio disponible</div>
+          <h4>Consultoría &amp; Asesoría</h4>
+          <p>Asesoría técnica para entidades públicas, privadas, ONGs y comunidades.</p>
+          <div class="area-arrow"><i class="fas fa-arrow-right"></i></div>
+        </div>
+      </a>
     </div>
   </div>
 </div>
@@ -553,13 +586,13 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
         <div class="footer-heading">Contacto</div>
         <div class="footer-cr"><i class="fas fa-map-marker-alt"></i><span>Perú</span></div>
         <div class="footer-cr"><i class="fas fa-phone-alt"></i><span>+51 969 392 189</span></div>
-        <div class="footer-cr"><i class="fas fa-envelope"></i><span>capacitacion@andeanbioconsulting</span></div>
+        <div class="footer-cr"><i class="fas fa-envelope"></i><span>capacitacion@andeanbioconsulting.com</span></div>
       </div>
       <div class="col-lg-4 col-md-6">
         <div class="footer-heading">Boletín Informativo</div>
         <p style="font-size:.85rem;color:rgba(255,255,255,.45);margin-bottom:18px;line-height:1.7">Suscríbete para recibir noticias sobre nuevos cursos y novedades ambientales.</p>
         <div class="newsletter-row">
-          <input type="email" placeholder="capacitacion@andeanbioconsulting">
+          <input type="email" placeholder="Tu correo electrónico">
           <button type="button">Suscribir</button>
         </div>
       </div>
@@ -614,105 +647,6 @@ bt.addEventListener('click',e=>{e.preventDefault();scrollTo({top:0,behavior:'smo
 
 /* SMOOTH ANCHOR */
 document.querySelectorAll('a[href^="#"]').forEach(a=>{a.addEventListener('click',e=>{const t=document.querySelector(a.getAttribute('href'));if(t&&a.getAttribute('href')!=='#'){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}})});
-
-/* ======================================================
-   MOBILE AREAS SLIDER — touch-native, auto-advance
-   ====================================================== */
-(function(){
-  var wrap  = document.getElementById('areasMobileWrap');
-  var track = document.getElementById('areaTrackM');
-  var dotsEl= document.querySelectorAll('.areas-dot-m');
-  if(!track) return;
-
-  var slides = Array.from(track.querySelectorAll('.areas-slide-m'));
-  var N      = slides.length;
-  var cur    = 0;
-  var autoT  = null;
-
-  /* gap between slides in px */
-  var GAP = 14;
-
-  /* pixel offset to center slide[i] */
-  function getOffset(i){
-    var wrapW = wrap.offsetWidth;
-    var slideW= slides[i] ? slides[i].offsetWidth : wrapW * 0.8;
-    return Math.max(0, i*(slideW+GAP) - (wrapW-slideW)/2);
-  }
-
-  function activate(i, anim){
-    i = ((i % N) + N) % N;
-    cur = i;
-    track.style.transition = anim ? 'transform .5s cubic-bezier(.25,.46,.45,.94)' : 'none';
-    track.style.transform  = 'translateX(-' + getOffset(i) + 'px)';
-    slides.forEach(function(s,j){
-      s.classList.toggle('act', j===i);
-      s.style.transition = 'opacity .4s,transform .4s';
-      s.style.opacity    = j===i ? '1' : '.6';
-      s.style.transform  = j===i ? 'scale(1)' : 'scale(.92)';
-    });
-    dotsEl.forEach(function(d,j){ d.classList.toggle('act', j===i); });
-  }
-
-  function startAuto(){ autoT = setInterval(function(){ activate(cur+1, true); }, 3400); }
-  function stopAuto(){  clearInterval(autoT); }
-
-  /* ── touch handling ── */
-  var tx0=0, baseOff=0, isSwiping=false, hasMoved=false;
-
-  track.addEventListener('touchstart', function(e){
-    stopAuto();
-    tx0 = e.touches[0].clientX;
-    baseOff = getOffset(cur);
-    isSwiping = true;
-    hasMoved  = false;
-  }, {passive:true});
-
-  track.addEventListener('touchmove', function(e){
-    if(!isSwiping) return;
-    var dx = e.touches[0].clientX - tx0;
-    if(Math.abs(dx) > 5){ hasMoved = true; }
-    if(hasMoved){
-      track.style.transition = 'none';
-      track.style.transform  = 'translateX(-' + (baseOff - dx) + 'px)';
-    }
-  }, {passive:true});
-
-  track.addEventListener('touchend', function(e){
-    if(!isSwiping) return;
-    isSwiping = false;
-    var dx = e.changedTouches[0].clientX - tx0;
-    if(hasMoved && Math.abs(dx) > 50){
-      activate(dx < 0 ? cur+1 : cur-1, true);
-    } else {
-      activate(cur, true);   /* snap back if no significant swipe */
-    }
-    hasMoved = false;
-    startAuto();
-  }, {passive:true});
-
-  /* block link tap when swiped */
-  slides.forEach(function(s){
-    s.addEventListener('click', function(e){ if(hasMoved){ e.preventDefault(); } });
-  });
-
-  /* dot buttons */
-  dotsEl.forEach(function(d){
-    d.addEventListener('click', function(){
-      stopAuto();
-      activate(+d.dataset.i, true);
-      startAuto();
-    });
-  });
-
-  /* hover pause (desktop) */
-  wrap.addEventListener('mouseenter', stopAuto);
-  wrap.addEventListener('mouseleave', startAuto);
-
-  /* init */
-  activate(0, false);
-  window.addEventListener('resize', function(){ activate(cur, false); });
-  startAuto();
-})();
 </script>
 </body>
 </html>
