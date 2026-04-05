@@ -741,7 +741,7 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
         <a class="footer-link" href="contact.html">Contacto</a>
       </div>
       <div class="col-lg-3 col-md-6">
-            <div class="footer-heading">Contacto</div>
+         <div class="footer-heading">Contacto</div>
         <div class="footer-cr"><i class="fas fa-map-marker-alt"></i><span>Perú</span></div>
         <div class="footer-cr"><i class="fas fa-phone-alt"></i><span>+51 969 392 189</span></div>
         <div class="footer-cr"><i class="fas fa-envelope"></i><span>capacitacion@andeanbioconsulting.com</span></div>
@@ -932,11 +932,12 @@ document.querySelectorAll('.newsletter-btn').forEach(function(btn){
     var row   = btn.closest('.newsletter-row');
     var input = row.querySelector('input[type=email]');
     var msgId = input.id === 'nlEmail2' ? 'nlMsg2' : null;
+    var msg   = msgId ? document.getElementById(msgId) : null;
     var email = input.value.trim();
     if(!email || !/\S+@\S+\.\S+/.test(email)){
       input.style.borderColor='rgba(255,80,80,.6)';
       input.focus();
-      setTimeout(()=>input.style.borderColor='',2000);
+      setTimeout(function(){ input.style.borderColor=''; },2000);
       return;
     }
     /* Web3Forms — boletín */
@@ -945,5 +946,27 @@ document.querySelectorAll('.newsletter-btn').forEach(function(btn){
     fd.append('subject',      '📧 Nueva suscripción al boletín — Andean Consulting');
     fd.append('from_name',    'Andean Consulting — Boletín');
     fd.append('email_suscriptor', email);
-    fetch('https://api.web3forms.com/submit',{method:'POST',body:fd}).catch(()=>{});
-   
+    fetch('https://api.web3forms.com/submit',{method:'POST',body:fd})
+      .then(function(){
+        if(msg){
+          msg.style.display='block';
+          setTimeout(function(){ msg.style.display='none'; }, 2500);
+        }
+      })
+      .catch(function(){});
+  });
+});
+</script>
+<script>
+/* ── SPINNER SAFETY ── */
+setTimeout(function(){
+  var s=document.getElementById('spinner');
+  if(s){
+    s.classList.add('hide');
+    setTimeout(function(){ if(s && s.parentNode){ s.remove(); } }, 650);
+  }
+}, 8000);
+</script>
+</body>
+</html>
+
