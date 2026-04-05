@@ -11,6 +11,24 @@
 <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
 <link rel="apple-touch-icon" href="img/Andeanlogo.png">
 
+<!-- ═══ OPEN GRAPH — compartir en WhatsApp, Facebook, etc. ═══ -->
+<!-- IMPORTANTE: cambia https://tudominio.com por tu dominio real -->
+<meta property="og:type"         content="website">
+<meta property="og:url"          content="https://tudominio.com/curso-arcgis.html">
+<meta property="og:title"        content="ArcGIS Básico — Andean Consulting · Inicia 20 Abril">
+<meta property="og:description"  content="Aprende ArcGIS desde cero con un especialista en SIG y Biología. 20 horas certificadas, 100% online. Solo S/ 120.">
+<meta property="og:image"        content="https://tudominio.com/img/course-1.jpg">
+<meta property="og:image:width"  content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt"    content="Curso ArcGIS Básico — Andean Consulting">
+<meta property="og:locale"       content="es_PE">
+<meta property="og:site_name"    content="Andean Consulting">
+<!-- Twitter / X Card -->
+<meta name="twitter:card"        content="summary_large_image">
+<meta name="twitter:title"       content="ArcGIS Básico — Andean Consulting · Inicia 20 Abril">
+<meta name="twitter:description" content="Aprende ArcGIS desde cero. 20 horas certificadas, 100% online. Solo S/ 120.">
+<meta name="twitter:image"       content="https://tudominio.com/img/course-1.jpg">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -270,7 +288,7 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
       <div class="topbar-left">
         <span><i class="fas fa-map-marker-alt" style="color:var(--lime);margin-right:6px"></i>Perú</span>
         <div class="tb-div"></div>
-        <a href="mailto:capacitacion@andeanbioconsulting.com"><i class="fas fa-envelope" style="margin-right:5px"></i>info@andeanbioconsulting.com</a>
+        <a href="/cdn-cgi/l/email-protection#6d0e0c1d0c0e04190c0e0402032d0c0309080c030f04020e02031e18011904030a430e0200"><i class="fas fa-envelope" style="margin-right:5px"></i><span class="__cf_email__" data-cfemail="fa93949c95ba9b949e9f9b94989395999594898f968e93949dd4999597">[email&#160;protected]</span></a>
       </div>
       <div class="topbar-right">
         <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -726,7 +744,7 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
         <div class="footer-heading">Contacto</div>
         <div class="footer-cr"><i class="fas fa-map-marker-alt"></i><span>Perú</span></div>
         <div class="footer-cr"><i class="fas fa-phone-alt"></i><span>+51 969 392 189</span></div>
-        <div class="footer-cr"><i class="fas fa-envelope"></i><span>capacitacion@andeanbioconsulting.com</span></div>
+        <div class="footer-cr"><i class="fas fa-envelope"></i><span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="482b2938292b213c292b2127260829262c2d29262a21272b27263b3d243c21262f662b2725">[email&#160;protected]</a></span></div>
       </div>
       <div class="col-lg-4 col-md-6">
         <div class="footer-heading">Boletín Informativo</div>
@@ -749,7 +767,7 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
 <a href="https://wa.me/51969392189?text=Hola%2C%20me%20interesa%20el%20curso%20de%20ArcGIS%20B%C3%A1sico." target="_blank" rel="noopener" class="wa-float"><i class="fab fa-whatsapp"></i></a>
 <a href="#" class="back-top" id="backTop"><i class="bi bi-arrow-up"></i></a>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
 /* ── SPINNER ── */
 window.addEventListener('load',()=>{
@@ -917,22 +935,8 @@ document.querySelectorAll('.newsletter-btn').forEach(function(btn){
     }
     /* Web3Forms — boletín */
     var fd = new FormData();
-    fd.append('access_key',   '086fd9ab-94b5-4db6-a669-90ff4e6fdbb8');
+    fd.append('access_key',   'aa194f1d-00a1-4a57-8267-04dee194164a');
     fd.append('subject',      '📧 Nueva suscripción al boletín — Andean Consulting');
     fd.append('from_name',    'Andean Consulting — Boletín');
     fd.append('email_suscriptor', email);
     fetch('https://api.web3forms.com/submit',{method:'POST',body:fd}).catch(()=>{});
-    input.value='';
-    btn.textContent='✓ Suscrito';
-    btn.style.background='rgba(0,176,96,.5)';
-    if(msgId){ var m=document.getElementById(msgId); if(m) m.style.display='block'; }
-    setTimeout(()=>{
-      btn.textContent='Suscribir';
-      btn.style.background='';
-      if(msgId){ var m=document.getElementById(msgId); if(m) m.style.display='none'; }
-    },4000);
-  });
-});
-</script>
-</body>
-</html>
