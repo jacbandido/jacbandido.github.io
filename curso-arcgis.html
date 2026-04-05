@@ -177,7 +177,7 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
 .copy-btn.copied{color:#fff;background:var(--green)}
 
 /* ENROLLMENT FORM */
-.enroll-section{padding:72px 0;background:var(--forest);position:relative;overflow:hidden}
+.enroll-section{padding:72px 0;background:var(--forest);position:relative;overflow:hidden;scroll-margin-top:90px}
 .enroll-section::before{content:'';position:absolute;top:-80px;right:-80px;width:360px;height:360px;border-radius:50%;background:rgba(0,176,96,.04);pointer-events:none}
 .enroll-wrap{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:44px 40px}
 .form-label-e{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:6px;display:block}
@@ -880,6 +880,20 @@ fileArea.addEventListener('drop', e=>{
   }
 });
 
+/* ── SMOOTH SCROLL PARA ANCLAS INTERNAS ── */
+document.querySelectorAll('a[href^="#"]').forEach(function(link){
+  link.addEventListener('click', function(e){
+    var targetId = this.getAttribute('href');
+    if(targetId && targetId.length > 1){
+      var target = document.querySelector(targetId);
+      if(target){
+        e.preventDefault();
+        target.scrollIntoView({behavior:'smooth', block:'start'});
+      }
+    }
+  });
+});
+
 /* ── FORM SUBMIT — Web3Forms ── */
 var enrollForm   = document.getElementById('enrollForm');
 var enrollSuccess= document.getElementById('enrollSuccess');
@@ -900,30 +914,37 @@ enrollForm.addEventListener('submit', async function(e){
   }
 
   var nombre = enrollForm.querySelector('[name=nombre]').value.trim();
+  var originalText = enrollBtn.innerHTML;
+
+  /* igual que el ejemplo oficial: usar FormData y appendar access_key */
+  var formData = new FormData(enrollForm);
+  formData.set('access_key', '086fd9ab-94b5-4db6-a669-90ff4e6fdbb8');
 
   enrollBtn.disabled = true;
   enrollBtn.innerHTML = 'Enviando… &nbsp;<i class="fas fa-spinner fa-spin"></i>';
 
   try {
-    var resp = await fetch('https://api.web3forms.com/submit', {
+    var response = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
-      body: new FormData(enrollForm)
+      body: formData
     });
-    var data = await resp.json();
 
-    if(data.success){
-      enrollForm.style.display   = 'none';
-      enrollNote.style.display   = 'none';
-      enrollSuccess.style.display= 'block';
+    var data = await response.json();
+
+    if(response.ok && data.success){
+      enrollForm.style.display    = 'none';
+      enrollNote.style.display    = 'none';
+      enrollSuccess.style.display = 'block';
       document.getElementById('successName').textContent = nombre.split(' ')[0];
     } else {
       throw new Error(data.message || 'Error desconocido');
     }
   } catch(err) {
     console.error(err);
+    formErrorMsg.textContent = 'Hubo un problema al enviar. Por favor intenta de nuevo o escríbenos por WhatsApp al +51 969 392 189.';
     formErrorMsg.style.display = 'block';
     enrollBtn.disabled = false;
-    enrollBtn.innerHTML = 'Enviar Inscripción &nbsp;<i class="fas fa-arrow-right"></i>';
+    enrollBtn.innerHTML = originalText;
   }
 });
 
@@ -942,7 +963,7 @@ document.querySelectorAll('.newsletter-btn').forEach(function(btn){
     }
     /* Web3Forms — boletín */
     var fd = new FormData();
-    fd.append('access_key',   'aa194f1d-00a1-4a57-8267-04dee194164a');
+    fd.append('access_key',   '086fd9ab-94b5-4db6-a669-90ff4e6fdbb8');
     fd.append('subject',      '📧 Nueva suscripción al boletín — Andean Consulting');
     fd.append('from_name',    'Andean Consulting — Boletín');
     fd.append('email_suscriptor', email);
