@@ -510,7 +510,7 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
 <div class="enroll-section" id="inscripcion">
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-lg-7">
+      <div class="col-lg-8">
         <div class="text-center mb-5 fade-up">
           <div class="section-eyebrow justify-content-center">
             <div class="section-eyebrow-line" style="background:var(--lime)"></div>
@@ -519,108 +519,24 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
           <h2 class="section-title" style="color:#fff">Formulario de Inscripción</h2>
           <p style="font-size:.9rem;color:rgba(255,255,255,.5);margin-top:10px">Completa tus datos y adjunta tu comprobante. Te confirmamos en menos de 24 horas.</p>
         </div>
-
-        <div class="enroll-wrap fade-up d1">
-          <form
-            id="enrollForm"
-            name="inscripcion-arcgis"
-            method="POST"
-            enctype="multipart/form-data"
-            data-netlify="true"
-            data-netlify-honeypot="bot-field"
-            action="/gracias.html"
-          >
-            <!-- Campo oculto requerido por Netlify -->
-            <input type="hidden" name="form-name" value="inscripcion-arcgis">
-            <!-- Honeypot antispam -->
-            <p style="display:none"><input name="bot-field"></p>
-
-            <div class="row g-3">
-              <div class="col-md-6">
-                <label class="form-label-e">Nombre completo *</label>
-                <input class="form-ctrl-e" type="text" name="nombre" placeholder="Tu nombre completo" required autocomplete="name">
-              </div>
-              <div class="col-md-6">
-                <label class="form-label-e">DNI *</label>
-                <input class="form-ctrl-e" type="text" name="dni" placeholder="Tu número de DNI" required maxlength="8" pattern="[0-9]{8}" inputmode="numeric">
-              </div>
-              <div class="col-md-6">
-                <label class="form-label-e">Correo electrónico *</label>
-                <input class="form-ctrl-e" type="email" name="email" placeholder="tu@correo.com" required autocomplete="email">
-              </div>
-              <div class="col-md-6">
-                <label class="form-label-e">WhatsApp / Teléfono *</label>
-                <input class="form-ctrl-e" type="tel" name="telefono" placeholder="+51 999 999 999" required autocomplete="tel">
-              </div>
-              <div class="col-12">
-                <label class="form-label-e">Ocupación / Profesión</label>
-                <input class="form-ctrl-e" type="text" name="ocupacion" placeholder="Ej: Biólogo, estudiante, consultor ambiental...">
-              </div>
-              <div class="col-12">
-                <label class="form-label-e">Método de pago *</label>
-                <select class="form-ctrl-e" name="metodo_pago" required>
-                  <option value="" disabled selected>Selecciona el método</option>
-                  <option value="Yape">Yape</option>
-                  <option value="Plin">Plin</option>
-                  <option value="Transferencia bancaria Interbank">Transferencia bancaria Interbank</option>
-                </select>
-              </div>
-
-              <!-- ARCHIVO — Netlify lo recibe nativamente con enctype multipart -->
-              <div class="col-12">
-                <label class="form-label-e" style="margin-bottom:8px">Comprobante de pago *</label>
-                <div class="file-upload-area" id="fileArea">
-                  <input type="file" id="fileInput" name="comprobante"
-                    accept="image/jpeg,image/png,image/jpg,image/webp,application/pdf" required>
-                  <div class="fua-icon">
-                    <i class="fas fa-cloud-upload-alt ico-default"></i>
-                    <i class="fas fa-check-circle ico-ok"></i>
-                  </div>
-                  <div class="fua-default-text">
-                    <strong>Sube tu comprobante aquí</strong>
-                    Toca o arrastra para seleccionar
-                    <small>JPG, PNG o PDF · Máx. 10 MB</small>
-                  </div>
-                  <div class="fua-ok-text">
-                    <strong>✓ Archivo listo para enviar</strong>
-                    <span id="fileNameTxt"></span>
-                    <small>Toca para cambiar el archivo</small>
-                  </div>
-                </div>
-                <p id="fileErrMsg"></p>
-                <div class="upload-progress" id="uploadProgress">
-                  <div class="upload-progress-bar"><div class="upload-progress-fill" id="progressFill"></div></div>
-                  <div class="upload-progress-text" id="progressText">Enviando inscripción…</div>
-                </div>
-              </div>
-
-              <div class="col-12">
-                <button class="btn-submit-e" type="submit" id="submitBtn">
-                  Enviar Inscripción &nbsp;<i class="fas fa-arrow-right"></i>
-                </button>
-                <div class="form-err-banner" id="errBanner">
-                  <strong>⚠ No se pudo enviar</strong>
-                  Intenta de nuevo o envíanos tu comprobante directamente por WhatsApp:
-                  <br>
-                  <a class="wa-fallback" href="https://wa.me/51969392189?text=Hola%2C%20quiero%20inscribirme%20al%20curso%20de%20ArcGIS%20B%C3%A1sico.%20Adjunto%20mi%20comprobante." target="_blank" rel="noopener">
-                    <i class="fab fa-whatsapp"></i> Enviar por WhatsApp
-                  </a>
-                </div>
-              </div>
-            </div>
-          </form>
-
-          <div class="form-success-e" id="successBox">
-            <i class="fas fa-check-circle big"></i>
-            <h4>¡Inscripción recibida!</h4>
-            <p>Gracias, <strong id="successName"></strong>. Revisaremos tu comprobante y te enviaremos el acceso al curso a tu correo en menos de 24 horas hábiles.<br><br>
-            Dudas: WhatsApp <strong>+51 969 392 189</strong>.</p>
+        <div class="enroll-wrap fade-up d1" style="padding:0;overflow:hidden;">
+          <div style="background:rgba(0,106,57,.15);border-bottom:1px solid rgba(0,176,96,.2);padding:14px 20px;display:flex;align-items:center;gap:10px;">
+            <i class="fas fa-info-circle" style="color:var(--lime);flex-shrink:0;font-size:.85rem"></i>
+            <span style="font-size:.8rem;color:rgba(255,255,255,.55);line-height:1.5;">Completa el formulario y adjunta tu comprobante de pago para confirmar tu inscripción.</span>
           </div>
-
-          <div class="enroll-note" id="enrollNote">
-            <i class="fas fa-lock"></i>
-            <p>Tus datos son confidenciales y solo se usarán para gestionar tu inscripción.</p>
-          </div>
+          <iframe
+            src="https://docs.google.com/forms/d/e/1FAIpQLSfK4kHRt7i-0urbfNnOg04KeIk5lM5Z2a2Cddmc5X2zW5VYSA/viewform?embedded=true"
+            width="100%"
+            height="950"
+            frameborder="0"
+            marginheight="0"
+            marginwidth="0"
+            style="display:block;width:100%;border:none;background:#fff;"
+          >Cargando…</iframe>
+        </div>
+        <div class="enroll-note" style="margin-top:16px;">
+          <i class="fas fa-lock"></i>
+          <p>Tus datos son confidenciales y solo se usarán para gestionar tu inscripción.</p>
         </div>
       </div>
     </div>
