@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>¡Inscripción recibida! – Andean Consulting</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link rel="icon" type="image/x-icon" href="img/favicon.ico">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+<style>
+:root{--forest:#0a1f14;--green:#006a39;--lime:#00b060;--wa:#25D366}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Outfit',sans-serif;background:var(--forest);min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px}
+.card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:56px 48px;max-width:520px;width:100%;text-align:center}
+.icon-wrap{width:80px;height:80px;border-radius:50%;background:rgba(0,176,96,.15);border:2px solid rgba(0,176,96,.3);display:flex;align-items:center;justify-content:center;margin:0 auto 28px;animation:pop .5s cubic-bezier(.34,1.56,.64,1) both}
+@keyframes pop{from{transform:scale(0);opacity:0}to{transform:scale(1);opacity:1}}
+.icon-wrap i{font-size:2rem;color:var(--lime)}
+h1{font-family:'Fraunces',serif;font-size:1.8rem;color:#fff;margin-bottom:12px}
+p{font-size:.95rem;color:rgba(255,255,255,.55);line-height:1.8;margin-bottom:8px}
+p strong{color:rgba(255,255,255,.8)}
+.divider{width:48px;height:1px;background:rgba(255,255,255,.1);margin:28px auto}
+.btn-wa{display:inline-flex;align-items:center;gap:10px;background:var(--wa);color:#fff;font-weight:700;font-size:.9rem;letter-spacing:.08em;text-transform:uppercase;padding:14px 28px;border-radius:4px;text-decoration:none;transition:opacity .2s;margin-bottom:16px}
+.btn-wa:hover{opacity:.88;color:#fff}
+.btn-back{display:inline-flex;align-items:center;gap:8px;color:rgba(255,255,255,.4);font-size:.85rem;text-decoration:none;transition:color .2s}
+.btn-back:hover{color:rgba(255,255,255,.8)}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="icon-wrap"><i class="fas fa-check"></i></div>
+  <h1>¡Inscripción recibida!</h1>
+  <p>Hemos recibido tus datos y tu comprobante de pago correctamente.</p>
+  <p>Te confirmaremos el acceso al curso en tu correo en menos de <strong>24 horas hábiles</strong>.</p>
+  <div class="divider"></div>
+  <p style="margin-bottom:16px;font-size:.85rem">¿Tienes alguna duda?</p>
+  <a class="btn-wa" href="https://wa.me/51969392189?text=Hola%2C%20acabo%20de%20inscribirme%20al%20curso%20de%20ArcGIS%20B%C3%A1sico." target="_blank" rel="noopener">
+    <i class="fab fa-whatsapp"></i> Escribir al WhatsApp
+  </a>
+  <br>
+  <a class="btn-back" href="index.html"><i class="fas fa-arrow-left" style="font-size:.75rem"></i> Volver al inicio</a>
+</div>
+</body>
+</html>
