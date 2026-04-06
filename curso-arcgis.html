@@ -148,53 +148,53 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
 .copy-btn{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);background:var(--light-green);border:none;padding:5px 12px;border-radius:3px;cursor:pointer;font-family:'Outfit',sans-serif;transition:background .15s}
 .copy-btn:hover{background:#c5e8d4}
 .copy-btn.copied{color:#fff;background:var(--green)}
-/* FORMULARIO */
-.enroll-section{padding:72px 0;background:var(--forest);position:relative;overflow:hidden}
-.enroll-section::before{content:'';position:absolute;top:-80px;right:-80px;width:360px;height:360px;border-radius:50%;background:rgba(0,176,96,.04);pointer-events:none}
-.enroll-wrap{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:44px 40px;position:relative;z-index:1}
-.form-label-e{font-family:'Outfit',sans-serif;font-size:.78rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:6px;display:block}
-.form-ctrl-e{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:3px;padding:13px 16px;font-family:'Outfit',sans-serif;font-size:.9rem;color:#fff;outline:none;transition:border-color .2s;-webkit-appearance:none}
-.form-ctrl-e:focus{border-color:var(--lime)}
-.form-ctrl-e::placeholder{color:rgba(255,255,255,.25)}
-.form-ctrl-e option{background:var(--forest);color:#fff}
-/* FILE UPLOAD */
-.file-upload-area{border:2px dashed rgba(255,255,255,.2);border-radius:4px;padding:28px 20px;text-align:center;cursor:pointer;transition:border-color .25s,background .25s;position:relative;overflow:hidden}
-.file-upload-area:hover,.file-upload-area.drag{border-color:var(--lime);background:rgba(0,176,96,.07)}
-.file-upload-area.ok{border-color:var(--lime);border-style:solid;background:rgba(0,176,96,.1)}
-.file-upload-area input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;z-index:2}
-.fua-icon{font-size:1.8rem;margin-bottom:10px}
-.fua-icon .ico-default{color:rgba(255,255,255,.25)}
-.fua-icon .ico-ok{color:var(--lime);display:none}
-.file-upload-area.ok .ico-default{display:none}
-.file-upload-area.ok .ico-ok{display:inline}
-.fua-default-text{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.6}
-.fua-default-text strong{color:var(--lime);display:block;margin-bottom:4px;font-size:.9rem}
-.fua-default-text small{font-size:.75rem;color:rgba(255,255,255,.3)}
-.fua-ok-text{display:none;font-size:.85rem;color:rgba(255,255,255,.7);line-height:1.6}
-.fua-ok-text strong{color:var(--lime);display:block;margin-bottom:4px;font-size:.95rem}
-.fua-ok-text small{font-size:.75rem;color:rgba(255,255,255,.35);display:block;margin-top:4px}
-.file-upload-area.ok .fua-default-text{display:none}
-.file-upload-area.ok .fua-ok-text{display:block}
-#fileErrMsg{display:none;color:#ff9090;font-size:.8rem;margin-top:7px}
-/* PROGRESS */
-.upload-progress{display:none;margin-top:10px}
-.upload-progress-bar{height:4px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden}
-.upload-progress-fill{height:100%;background:var(--lime);width:0%;transition:width .4s ease;border-radius:2px}
-.upload-progress-text{font-size:.75rem;color:rgba(255,255,255,.45);margin-top:6px;text-align:center}
-.btn-submit-e{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;background:var(--lime);color:#fff;font-weight:700;font-size:.92rem;letter-spacing:.1em;text-transform:uppercase;padding:17px;border-radius:3px;border:none;cursor:pointer;transition:background .2s,transform .15s,opacity .2s;font-family:'Outfit',sans-serif}
-.btn-submit-e:hover:not(:disabled){background:#009950;transform:translateY(-2px)}
-.btn-submit-e:disabled{opacity:.6;cursor:not-allowed;transform:none!important}
-.enroll-note{display:flex;align-items:flex-start;gap:10px;margin-top:16px;padding:14px 16px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:3px}
-.enroll-note i{color:var(--lime);flex-shrink:0;margin-top:2px}
-.enroll-note p{font-size:.8rem;color:rgba(255,255,255,.45);line-height:1.6;margin:0}
-.form-success-e{display:none;text-align:center;padding:48px 20px}
-.form-success-e i.big{font-size:2.8rem;color:var(--lime);margin-bottom:16px;display:block}
-.form-success-e h4{font-family:'Fraunces',serif;font-size:1.4rem;color:#fff;margin-bottom:10px}
-.form-success-e p{font-size:.9rem;color:rgba(255,255,255,.55);line-height:1.7}
-.form-err-banner{display:none;background:rgba(220,50,50,.12);border:1px solid rgba(220,50,50,.3);border-radius:3px;padding:16px 18px;margin-top:12px;font-size:.85rem;color:#ff9090;line-height:1.6}
-.form-err-banner strong{color:#ffb3b3;display:block;margin-bottom:4px}
-.form-err-banner .wa-fallback{display:inline-flex;align-items:center;gap:7px;margin-top:10px;background:var(--wa);color:#fff;font-weight:700;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;padding:10px 18px;border-radius:3px;text-decoration:none;transition:opacity .2s}
-.form-err-banner .wa-fallback:hover{opacity:.85;color:#fff}
+
+/* ── SECCIÓN INSCRIPCIÓN NUEVA ── */
+.enroll-section{padding:80px 0;background:var(--forest);position:relative;overflow:hidden}
+.enroll-section::before{content:'';position:absolute;top:-120px;right:-120px;width:480px;height:480px;border-radius:50%;background:rgba(0,176,96,.04);pointer-events:none}
+.enroll-section::after{content:'';position:absolute;bottom:-80px;left:-60px;width:320px;height:320px;border-radius:50%;background:rgba(0,176,96,.03);pointer-events:none}
+
+/* Pasos */
+.insc-steps{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:36px}
+.insc-step{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:6px;padding:22px 20px}
+.insc-step-num{width:34px;height:34px;border-radius:50%;background:rgba(0,176,96,.15);border:1px solid rgba(0,176,96,.3);display:flex;align-items:center;justify-content:center;margin-bottom:14px;flex-shrink:0}
+.insc-step-num span{font-family:'Fraunces',serif;font-size:.95rem;font-weight:700;color:var(--lime);line-height:1}
+.insc-step h5{font-family:'Fraunces',serif;font-size:.93rem;color:#fff;margin:0 0 6px}
+.insc-step p{font-size:.82rem;color:rgba(255,255,255,.45);margin:0;line-height:1.65}
+
+/* Card central con botón */
+.insc-card{background:rgba(0,176,96,.07);border:1px solid rgba(0,176,96,.22);border-radius:8px;padding:40px 36px;text-align:center;position:relative;z-index:1}
+.insc-card-icon{width:60px;height:60px;border-radius:50%;background:rgba(0,176,96,.15);border:1px solid rgba(0,176,96,.3);display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
+.insc-card-icon i{font-size:1.4rem;color:var(--lime)}
+.insc-card h3{font-family:'Fraunces',serif;font-size:clamp(1.15rem,2.5vw,1.45rem);color:#fff;margin:0 0 10px;font-weight:600}
+.insc-card p{font-size:.88rem;color:rgba(255,255,255,.45);margin:0 0 28px;line-height:1.7;max-width:420px;margin-inline:auto;margin-bottom:28px}
+
+/* Botón principal */
+.btn-gform{display:inline-flex;align-items:center;justify-content:center;gap:12px;background:var(--lime);color:#fff;font-family:'Outfit',sans-serif;font-weight:700;font-size:1rem;letter-spacing:.08em;text-transform:uppercase;padding:18px 40px;border-radius:4px;text-decoration:none;transition:background .2s,transform .15s,box-shadow .2s;position:relative;overflow:hidden}
+.btn-gform::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.08);opacity:0;transition:opacity .2s}
+.btn-gform:hover{background:#009950;color:#fff;transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,176,96,.35)}
+.btn-gform:hover::before{opacity:1}
+.btn-gform:active{transform:translateY(-1px)}
+.btn-gform i{font-size:.9rem;transition:transform .2s}
+.btn-gform:hover i{transform:translateX(3px)}
+
+/* Divider */
+.insc-or{display:flex;align-items:center;gap:14px;margin:24px 0}
+.insc-or-line{flex:1;height:1px;background:rgba(255,255,255,.08)}
+.insc-or span{font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.25)}
+
+/* Botón WhatsApp alternativo */
+.btn-wa-alt{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:transparent;color:var(--wa);font-family:'Outfit',sans-serif;font-weight:600;font-size:.88rem;letter-spacing:.06em;text-transform:uppercase;padding:14px 32px;border-radius:4px;border:1px solid rgba(37,211,102,.4);text-decoration:none;transition:background .2s,border-color .2s,color .2s,transform .15s;width:100%;max-width:360px}
+.btn-wa-alt:hover{background:rgba(37,211,102,.1);border-color:var(--wa);color:var(--wa);transform:translateY(-2px)}
+.btn-wa-alt i{font-size:1rem}
+
+/* Nota informativa */
+.insc-notice{display:flex;align-items:flex-start;gap:11px;margin-top:20px;padding:14px 18px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:4px;text-align:left}
+.insc-notice i{color:var(--lime);flex-shrink:0;margin-top:1px;font-size:.82rem}
+.insc-notice p{font-size:.78rem;color:rgba(255,255,255,.38);line-height:1.65;margin:0}
+.insc-notice a{color:rgba(0,176,96,.7);text-decoration:none;transition:color .2s}
+.insc-notice a:hover{color:var(--lime)}
+
 /* FOOTER */
 .footer{background:var(--forest);padding:72px 0 0}
 .footer-brand img{height:42px;filter:brightness(0) invert(1);opacity:.85;margin-bottom:20px}
@@ -233,9 +233,11 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
   .footer-bottom-links{justify-content:center}
   .learn-grid{grid-template-columns:1fr}
   .instructor-card{flex-direction:column;align-items:center;text-align:center}
-  .enroll-wrap{padding:28px 20px}
   .course-sidebar{position:static;margin-top:40px}
   .ch-img{height:220px}
+  .insc-steps{grid-template-columns:1fr}
+  .insc-card{padding:28px 20px}
+  .btn-gform{width:100%;padding:17px 24px}
 }
 </style>
 </head>
@@ -460,7 +462,7 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
         <div class="text-center mb-5 fade-up">
           <div class="section-eyebrow justify-content-center"><div class="section-eyebrow-line"></div><span>Pago</span></div>
           <h2 class="section-title">¿Cómo pagar?</h2>
-          <p style="font-size:.92rem;color:var(--muted);margin-top:10px">Realiza tu pago y sube el comprobante en el formulario de inscripción.</p>
+          <p style="font-size:.92rem;color:var(--muted);margin-top:10px">Realiza tu pago y luego completa el formulario de inscripción con tu comprobante.</p>
         </div>
         <div class="pay-method fade-up d1">
           <div class="pay-method-header"><div class="pay-method-icon yape"><i class="fas fa-mobile-alt"></i></div><h6>Yape</h6></div>
@@ -492,52 +494,86 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
             </div>
           </div>
         </div>
-        <div style="background:#fff;border:1px solid var(--border);border-radius:4px;padding:28px 24px;margin-top:24px" class="fade-up">
-          <h5 style="font-family:'Fraunces',serif;font-size:1rem;margin-bottom:4px">Pasos para inscribirte</h5>
-          <div class="pay-step"><div class="step-num">1</div><div class="step-body"><h5>Realiza el pago</h5><p>Envía S/ 120 por Yape, Plin o transferencia bancaria usando los datos de arriba.</p></div></div>
-          <div class="pay-step"><div class="step-num">2</div><div class="step-body"><h5>Guarda el comprobante</h5><p>Toma foto o captura de pantalla de la operación exitosa.</p></div></div>
-          <div class="pay-step"><div class="step-num">3</div><div class="step-body"><h5>Completa el formulario y sube el comprobante</h5><p>Llena tus datos y adjunta la imagen o PDF de tu comprobante en el formulario de abajo.</p></div></div>
-          <div class="pay-step" style="border-bottom:none"><div class="step-num">4</div><div class="step-body"><h5>Recibe confirmación</h5><p>Te enviamos el acceso al curso por correo en menos de 24 horas hábiles.</p></div></div>
-        </div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════════════════
-     FORMULARIO — Netlify Forms con soporte nativo de archivos
-     ═══════════════════════════════════════════════════════════ -->
+<!-- ═══════════════════════════════════════
+     SECCIÓN INSCRIPCIÓN — Botón + Google Form
+     ═══════════════════════════════════════ -->
 <div class="enroll-section" id="inscripcion">
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-lg-8">
+      <div class="col-lg-7">
+
         <div class="text-center mb-5 fade-up">
           <div class="section-eyebrow justify-content-center">
             <div class="section-eyebrow-line" style="background:var(--lime)"></div>
             <span style="color:var(--lime)">Inscripción</span>
+            <div class="section-eyebrow-line" style="background:var(--lime)"></div>
           </div>
-          <h2 class="section-title" style="color:#fff">Formulario de Inscripción</h2>
-          <p style="font-size:.9rem;color:rgba(255,255,255,.5);margin-top:10px">Completa tus datos y adjunta tu comprobante. Te confirmamos en menos de 24 horas.</p>
+          <h2 class="section-title" style="color:#fff">¿Listo para inscribirte?</h2>
+          <p style="font-size:.9rem;color:rgba(255,255,255,.45);margin-top:10px;line-height:1.8">Sigue estos dos pasos para asegurar tu cupo. Es rápido y sencillo.</p>
         </div>
-        <div class="enroll-wrap fade-up d1" style="padding:0;overflow:hidden;">
-          <div style="background:rgba(0,106,57,.15);border-bottom:1px solid rgba(0,176,96,.2);padding:14px 20px;display:flex;align-items:center;gap:10px;">
-            <i class="fas fa-info-circle" style="color:var(--lime);flex-shrink:0;font-size:.85rem"></i>
-            <span style="font-size:.8rem;color:rgba(255,255,255,.55);line-height:1.5;">Completa el formulario y adjunta tu comprobante de pago para confirmar tu inscripción.</span>
+
+        <!-- Pasos -->
+        <div class="insc-steps fade-up d1">
+          <div class="insc-step">
+            <div class="insc-step-num"><span>1</span></div>
+            <h5>Realiza tu pago</h5>
+            <p>Envía S/ 120 por Yape, Plin o transferencia usando los datos de la sección anterior.</p>
           </div>
-          <iframe
-            src="https://docs.google.com/forms/d/e/1FAIpQLSfK4kHRt7i-0urbfNnOg04KeIk5lM5Z2a2Cddmc5X2zW5VYSA/viewform?embedded=true"
-            width="100%"
-            height="950"
-            frameborder="0"
-            marginheight="0"
-            marginwidth="0"
-            style="display:block;width:100%;border:none;background:#fff;"
-          >Cargando…</iframe>
+          <div class="insc-step">
+            <div class="insc-step-num"><span>2</span></div>
+            <h5>Completa el formulario</h5>
+            <p>Llena tus datos y adjunta la foto o PDF de tu comprobante en el formulario de Google.</p>
+          </div>
         </div>
-        <div class="enroll-note" style="margin-top:16px;">
-          <i class="fas fa-lock"></i>
-          <p>Tus datos son confidenciales y solo se usarán para gestionar tu inscripción.</p>
+
+        <!-- Card con botón principal -->
+        <div class="insc-card fade-up d2">
+          <div class="insc-card-icon">
+            <i class="fas fa-pen-alt"></i>
+          </div>
+          <h3>Completar inscripción y subir comprobante</h3>
+          <p>Se abrirá el formulario de Google en una nueva pestaña donde podrás ingresar tus datos y adjuntar tu comprobante de pago sin ningún problema.</p>
+
+          <a
+            href="https://forms.gle/2QzpyeSFtM3V1Tfv8"
+            target="_blank"
+            rel="noopener"
+            class="btn-gform"
+          >
+            <i class="fas fa-arrow-right"></i>
+            Ir al formulario de inscripción
+          </a>
+
+          <!-- Divider -->
+          <div class="insc-or">
+            <div class="insc-or-line"></div>
+            <span>o si prefieres</span>
+            <div class="insc-or-line"></div>
+          </div>
+
+          <!-- WhatsApp alternativo -->
+          <a
+            href="https://wa.me/51969392189?text=Hola%2C%20quiero%20inscribirme%20al%20curso%20de%20ArcGIS%20B%C3%A1sico.%20Ya%20realic%C3%A9%20mi%20pago%20y%20adjunto%20mi%20comprobante."
+            target="_blank"
+            rel="noopener"
+            class="btn-wa-alt"
+          >
+            <i class="fab fa-whatsapp"></i>
+            Enviar comprobante por WhatsApp
+          </a>
+
+          <!-- Nota informativa -->
+          <div class="insc-notice">
+            <i class="fas fa-info-circle"></i>
+            <p>Al hacer clic en el botón verde serás redirigido a <strong style="color:rgba(255,255,255,.6)">Google Formularios</strong>, una plataforma segura donde podrás adjuntar tu comprobante sin salir de tu navegador. Si prefieres no usar el formulario, también puedes enviarnos tu comprobante y datos directamente por WhatsApp al <strong style="color:rgba(255,255,255,.6)">+51 969 392 189</strong>. Te confirmaremos en menos de 24 horas hábiles.</p>
+          </div>
         </div>
+
       </div>
     </div>
   </div>
@@ -591,20 +627,17 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-/* SPINNER */
 window.addEventListener('load', function() {
   var s = document.getElementById('spinner');
   s.classList.add('hide');
   setTimeout(function(){ s.remove(); }, 600);
 });
 
-/* NAVBAR */
 var mainNav = document.getElementById('mainNav');
 window.addEventListener('scroll', function() {
   mainNav.classList.toggle('scrolled', window.scrollY > 20);
 }, {passive:true});
 
-/* FADE UP */
 var fo = new IntersectionObserver(function(entries) {
   entries.forEach(function(e) {
     if (e.isIntersecting) { e.target.classList.add('visible'); fo.unobserve(e.target); }
@@ -612,12 +645,10 @@ var fo = new IntersectionObserver(function(entries) {
 }, {threshold:0.1, rootMargin:'0px 0px -36px 0px'});
 document.querySelectorAll('.fade-up').forEach(function(el){ fo.observe(el); });
 
-/* BACK TOP */
 var bt = document.getElementById('backTop');
 window.addEventListener('scroll', function(){ bt.classList.toggle('show', window.scrollY > 300); }, {passive:true});
 bt.addEventListener('click', function(e){ e.preventDefault(); window.scrollTo({top:0, behavior:'smooth'}); });
 
-/* SYLLABUS */
 function toggleSyl(header) {
   var body = header.nextElementSibling;
   var isOpen = header.classList.contains('open');
@@ -627,7 +658,6 @@ function toggleSyl(header) {
   if (!isOpen) { header.classList.add('open'); body.classList.add('open'); }
 }
 
-/* COPY */
 function copyTxt(text, btn) {
   var orig = btn.textContent;
   function done() { btn.textContent='¡Copiado!'; btn.classList.add('copied'); setTimeout(function(){ btn.textContent=orig; btn.classList.remove('copied'); }, 2000); }
@@ -639,133 +669,6 @@ function copyTxt(text, btn) {
   }
 }
 
-/* FILE UPLOAD */
-var fileInput   = document.getElementById('fileInput');
-var fileArea    = document.getElementById('fileArea');
-var fileNameTxt = document.getElementById('fileNameTxt');
-var fileErrMsg  = document.getElementById('fileErrMsg');
-
-fileInput.addEventListener('change', function() { validateFile(this.files[0]); });
-
-function validateFile(file) {
-  fileErrMsg.style.display = 'none';
-  fileArea.classList.remove('ok');
-  if (!file) return;
-  if (file.size > 10 * 1024 * 1024) {
-    fileErrMsg.textContent = '⚠ El archivo supera los 10 MB. Por favor comprime la imagen.';
-    fileErrMsg.style.display = 'block';
-    fileInput.value = ''; return;
-  }
-  var allowed = ['image/jpeg','image/png','image/jpg','image/webp','application/pdf'];
-  if (!allowed.includes(file.type)) {
-    fileErrMsg.textContent = '⚠ Solo se permiten JPG, PNG o PDF.';
-    fileErrMsg.style.display = 'block';
-    fileInput.value = ''; return;
-  }
-  fileNameTxt.textContent = file.name + ' (' + (file.size/(1024*1024)).toFixed(1) + ' MB)';
-  fileArea.classList.add('ok');
-}
-
-/* DRAG & DROP */
-fileArea.addEventListener('dragover',  function(e){ e.preventDefault(); fileArea.classList.add('drag'); });
-fileArea.addEventListener('dragleave', function()  { fileArea.classList.remove('drag'); });
-fileArea.addEventListener('drop', function(e) {
-  e.preventDefault(); fileArea.classList.remove('drag');
-  var f = e.dataTransfer.files[0];
-  if (f) { try { var dt=new DataTransfer(); dt.items.add(f); fileInput.files=dt.files; } catch(x){} validateFile(f); }
-});
-
-/* PROGRESS BAR */
-var progressEl   = document.getElementById('uploadProgress');
-var progressFill = document.getElementById('progressFill');
-var progressText = document.getElementById('progressText');
-var progressTimer = null;
-
-function startProgress() {
-  progressEl.style.display = 'block';
-  progressFill.style.width = '0%';
-  var pct = 0;
-  progressTimer = setInterval(function() {
-    pct < 60 ? pct += 5 : pct < 85 ? pct += 1.5 : pct < 92 ? pct += 0.3 : null;
-    progressFill.style.width = Math.min(pct, 92) + '%';
-  }, 200);
-}
-
-function finishProgress(ok) {
-  clearInterval(progressTimer);
-  progressFill.style.width = '100%';
-  if (!ok) { progressFill.style.background='#e05555'; progressText.textContent='Error al enviar.'; }
-}
-
-/* FORM SUBMIT — XHR con progreso real de subida */
-var form      = document.getElementById('enrollForm');
-var submitBtn = document.getElementById('submitBtn');
-var errBanner = document.getElementById('errBanner');
-var successBox= document.getElementById('successBox');
-var enrollNote= document.getElementById('enrollNote');
-
-form.addEventListener('submit', function(e) {
-  e.preventDefault();
-  errBanner.style.display = 'none';
-
-  if (!form.checkValidity()) { form.reportValidity(); return; }
-
-  if (!fileInput.files || fileInput.files.length === 0) {
-    fileErrMsg.textContent = '⚠ Por favor selecciona el comprobante de pago.';
-    fileErrMsg.style.display = 'block';
-    fileArea.scrollIntoView({behavior:'smooth', block:'center'});
-    return;
-  }
-
-  var nombre = form.querySelector('[name=nombre]').value.trim();
-  var origHtml = submitBtn.innerHTML;
-  submitBtn.innerHTML = 'Enviando… &nbsp;<i class="fas fa-spinner fa-spin"></i>';
-  submitBtn.disabled = true;
-
-  var formData = new FormData(form);
-
-  startProgress();
-
-  var xhr = new XMLHttpRequest();
-  xhr.open('POST', '/', true);
-
-  /* Progreso real de subida del archivo */
-  xhr.upload.addEventListener('progress', function(ev) {
-    if (ev.lengthComputable) {
-      clearInterval(progressTimer);
-      progressFill.style.width = Math.round((ev.loaded / ev.total) * 90) + '%';
-    }
-  });
-
-  xhr.addEventListener('load', function() {
-    if (xhr.status >= 200 && xhr.status < 400) {
-      finishProgress(true);
-      setTimeout(function() {
-        form.style.display     = 'none';
-        enrollNote.style.display  = 'none';
-        progressEl.style.display  = 'none';
-        successBox.style.display  = 'block';
-        document.getElementById('successName').textContent = nombre.split(' ')[0];
-      }, 500);
-    } else {
-      finishProgress(false);
-      errBanner.style.display = 'block';
-      submitBtn.innerHTML = origHtml;
-      submitBtn.disabled  = false;
-    }
-  });
-
-  xhr.addEventListener('error', function() {
-    finishProgress(false);
-    errBanner.style.display = 'block';
-    submitBtn.innerHTML = origHtml;
-    submitBtn.disabled  = false;
-  });
-
-  xhr.send(formData);
-});
-
-/* NEWSLETTER */
 function sendNewsletter() {
   var input = document.getElementById('nlEmail');
   var email = input.value.trim();
