@@ -75,7 +75,7 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
 .btn-nav-cta{background:var(--green);color:#fff!important;font-weight:700;font-size:.88rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none!important;padding:18px 40px!important;margin:8px 20px;border-radius:3px;display:inline-flex;align-items:center;gap:10px;transition:background .2s,transform .15s;white-space:nowrap;line-height:1}
 .btn-nav-cta:hover{background:var(--forest)!important;color:#fff!important;transform:translateY(-1px)}
 
-/* COURSE HERO — pointer-events:none en ::before para que no bloquee clics */
+/* COURSE HERO */
 .course-hero{background:var(--forest);padding:72px 0 0;position:relative;overflow:hidden}
 .course-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,106,57,.2) 0%,transparent 65%);pointer-events:none}
 .ch-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:16px;position:relative;z-index:1}
@@ -205,6 +205,12 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
 .file-upload-area.ok .fua-ok-text{display:block}
 #fileErrMsg{display:none;color:#ff9090;font-size:.8rem;margin-top:7px}
 
+/* PROGRESS BAR */
+.upload-progress{display:none;margin-top:10px}
+.upload-progress-bar{height:4px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden}
+.upload-progress-fill{height:100%;background:var(--lime);width:0%;transition:width .3s ease;border-radius:2px}
+.upload-progress-text{font-size:.75rem;color:rgba(255,255,255,.45);margin-top:6px;text-align:center}
+
 .btn-submit-e{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;background:var(--lime);color:#fff;font-weight:700;font-size:.92rem;letter-spacing:.1em;text-transform:uppercase;padding:17px;border-radius:3px;border:none;cursor:pointer;transition:background .2s,transform .15s,opacity .2s;font-family:'Outfit',sans-serif}
 .btn-submit-e:hover:not(:disabled){background:#009950;transform:translateY(-2px)}
 .btn-submit-e:disabled{opacity:.6;cursor:not-allowed;transform:none!important}
@@ -215,7 +221,12 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
 .form-success-e i.big{font-size:2.8rem;color:var(--lime);margin-bottom:16px;display:block}
 .form-success-e h4{font-family:'Fraunces',serif;font-size:1.4rem;color:#fff;margin-bottom:10px}
 .form-success-e p{font-size:.9rem;color:rgba(255,255,255,.55);line-height:1.7}
-.form-err-banner{display:none;background:rgba(220,50,50,.12);border:1px solid rgba(220,50,50,.3);border-radius:3px;padding:12px 16px;margin-top:12px;font-size:.85rem;color:#ff9090;line-height:1.6}
+
+/* ERROR BANNER MEJORADO */
+.form-err-banner{display:none;background:rgba(220,50,50,.12);border:1px solid rgba(220,50,50,.3);border-radius:3px;padding:16px 18px;margin-top:12px;font-size:.85rem;color:#ff9090;line-height:1.6}
+.form-err-banner strong{color:#ffb3b3;display:block;margin-bottom:4px}
+.form-err-banner .wa-fallback{display:inline-flex;align-items:center;gap:7px;margin-top:10px;background:var(--wa);color:#fff;font-weight:700;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;padding:10px 18px;border-radius:3px;text-decoration:none;transition:opacity .2s}
+.form-err-banner .wa-fallback:hover{opacity:.85;color:#fff}
 
 /* FOOTER */
 .footer{background:var(--forest);padding:72px 0 0}
@@ -569,11 +580,24 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
         </div>
 
         <div class="enroll-wrap fade-up d1">
-          <form id="enrollForm">
+
+          <!--
+          =====================================================================
+          INSTRUCCIONES PARA ACTIVAR EL FORMULARIO (lee esto antes de publicar)
+          =====================================================================
+          1. Ve a https://formspree.io y crea una cuenta gratuita.
+          2. Crea un nuevo formulario y copia tu "Form ID" (ej: xpwzqdro).
+          3. Reemplaza "TU_FORM_ID_AQUI" en el action de abajo con tu ID real.
+          4. En el dashboard de Formspree activa "File Uploads" en Settings.
+          5. El plan gratuito permite 50 envíos/mes con archivos hasta 10MB.
+          =====================================================================
+          -->
+
+          <form id="enrollForm" enctype="multipart/form-data">
             <div class="row g-3">
               <div class="col-md-6">
                 <label class="form-label-e">Nombre completo *</label>
-                <input class="form-ctrl-e" type="text" name="nombre" placeholder="Tu nombre completo" required>
+                <input class="form-ctrl-e" type="text" name="nombre" placeholder="Tu nombre completo" required autocomplete="name">
               </div>
               <div class="col-md-6">
                 <label class="form-label-e">DNI *</label>
@@ -581,11 +605,11 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
               </div>
               <div class="col-md-6">
                 <label class="form-label-e">Correo electrónico *</label>
-                <input class="form-ctrl-e" type="email" name="email" placeholder="tu@correo.com" required>
+                <input class="form-ctrl-e" type="email" name="email" placeholder="tu@correo.com" required autocomplete="email">
               </div>
               <div class="col-md-6">
                 <label class="form-label-e">WhatsApp / Teléfono *</label>
-                <input class="form-ctrl-e" type="tel" name="telefono" placeholder="+51 999 999 999" required>
+                <input class="form-ctrl-e" type="tel" name="telefono" placeholder="+51 999 999 999" required autocomplete="tel">
               </div>
               <div class="col-12">
                 <label class="form-label-e">Ocupación / Profesión</label>
@@ -605,8 +629,9 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
               <div class="col-12">
                 <label class="form-label-e" style="margin-bottom:8px">Comprobante de pago *</label>
                 <div class="file-upload-area" id="fileArea">
+                  <!-- name="attachment" es el nombre requerido por Formspree para archivos adjuntos -->
                   <input type="file" id="fileInput" name="attachment"
-                    accept="image/jpeg,image/png,image/jpg,image/webp,application/pdf" required>
+                    accept="image/jpeg,image/png,image/jpg,image/webp,application/pdf">
                   <div class="fua-icon">
                     <i class="fas fa-cloud-upload-alt ico-default"></i>
                     <i class="fas fa-check-circle ico-ok"></i>
@@ -614,7 +639,7 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
                   <div class="fua-default-text">
                     <strong>Sube tu comprobante aquí</strong>
                     Toca o arrastra para seleccionar
-                    <small>JPG, PNG o PDF · Máx. 5 MB</small>
+                    <small>JPG, PNG o PDF · Máx. 10 MB</small>
                   </div>
                   <div class="fua-ok-text">
                     <strong>✓ Archivo listo para enviar</strong>
@@ -623,14 +648,28 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
                   </div>
                 </div>
                 <p id="fileErrMsg"></p>
+                <!-- Barra de progreso visible durante el envío -->
+                <div class="upload-progress" id="uploadProgress">
+                  <div class="upload-progress-bar"><div class="upload-progress-fill" id="progressFill"></div></div>
+                  <div class="upload-progress-text" id="progressText">Subiendo comprobante…</div>
+                </div>
               </div>
+
+              <!-- Campo oculto de honeypot antispam (Formspree lo ignora si está vacío) -->
+              <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
               <div class="col-12">
                 <button class="btn-submit-e" type="submit" id="submitBtn">
                   Enviar Inscripción &nbsp;<i class="fas fa-arrow-right"></i>
                 </button>
+
                 <div class="form-err-banner" id="errBanner">
-                  Hubo un problema al enviar. Intenta de nuevo o escríbenos al <strong>+51 969 392 189</strong>.
+                  <strong>⚠ No se pudo enviar el formulario</strong>
+                  Hubo un problema al procesar tu inscripción. Puedes intentarlo de nuevo o enviarnos tu comprobante directamente por WhatsApp:
+                  <br>
+                  <a class="wa-fallback" href="https://wa.me/51969392189?text=Hola%2C%20quiero%20inscribirme%20al%20curso%20de%20ArcGIS%20B%C3%A1sico.%20Adjunto%20mi%20comprobante." target="_blank" rel="noopener">
+                    <i class="fab fa-whatsapp"></i> Enviar por WhatsApp
+                  </a>
                 </div>
               </div>
             </div>
@@ -702,6 +741,16 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
+/* =====================================================================
+   CONFIGURACIÓN — pon aquí tu Form ID de Formspree
+   Pasos:
+   1. Crea cuenta en https://formspree.io (gratis)
+   2. Crea un formulario nuevo → copia el ID (ej: "xpwzqdro")
+   3. Pega el ID en la constante de abajo
+   4. En Formspree > Settings > activa "File Uploads"
+   ===================================================================== */
+var FORMSPREE_ID = 'TU_FORM_ID_AQUI'; // ← reemplaza esto
+
 /* === SPINNER === */
 window.addEventListener('load', function() {
   var s = document.getElementById('spinner');
@@ -750,31 +799,40 @@ function copyTxt(text, btn) {
   }
 }
 
-/* === FILE UPLOAD feedback === */
+/* === FILE UPLOAD — validación local (instantánea, sin subir nada aún) === */
 var fileInput   = document.getElementById('fileInput');
 var fileArea    = document.getElementById('fileArea');
 var fileNameTxt = document.getElementById('fileNameTxt');
 var fileErrMsg  = document.getElementById('fileErrMsg');
 
 fileInput.addEventListener('change', function() {
-  handleFile(this.files[0]);
+  validateFile(this.files[0]);
 });
 
-function handleFile(file) {
+function validateFile(file) {
   fileErrMsg.style.display = 'none';
+  fileArea.classList.remove('ok');
+
   if (!file) return;
-  if (file.size > 5 * 1024 * 1024) {
-    fileErrMsg.textContent = '⚠ El archivo supera los 5 MB. Por favor comprime la imagen.';
+
+  var MAX_MB = 10;
+  if (file.size > MAX_MB * 1024 * 1024) {
+    fileErrMsg.textContent = '⚠ El archivo supera los ' + MAX_MB + ' MB. Por favor comprime la imagen.';
     fileErrMsg.style.display = 'block';
-    fileArea.classList.remove('ok'); fileInput.value = ''; return;
+    fileInput.value = '';
+    return;
   }
+
   var allowed = ['image/jpeg','image/png','image/jpg','image/webp','application/pdf'];
   if (!allowed.includes(file.type)) {
     fileErrMsg.textContent = '⚠ Solo se permiten JPG, PNG o PDF.';
     fileErrMsg.style.display = 'block';
-    fileArea.classList.remove('ok'); fileInput.value = ''; return;
+    fileInput.value = '';
+    return;
   }
-  var mb = (file.size / (1024*1024)).toFixed(1);
+
+  /* Archivo válido — mostrar feedback visual */
+  var mb = (file.size / (1024 * 1024)).toFixed(1);
   fileNameTxt.textContent = file.name + ' (' + mb + ' MB)';
   fileArea.classList.add('ok');
 }
@@ -786,23 +844,60 @@ fileArea.addEventListener('drop', function(e) {
   e.preventDefault(); fileArea.classList.remove('drag');
   var f = e.dataTransfer.files[0];
   if (f) {
-    try { var dt=new DataTransfer(); dt.items.add(f); fileInput.files=dt.files; } catch(x){}
-    handleFile(f);
+    try { var dt = new DataTransfer(); dt.items.add(f); fileInput.files = dt.files; } catch(x){}
+    validateFile(f);
   }
 });
 
-/* === FORM SUBMIT — Web3Forms (patrón oficial) === */
+/* === PROGRESS BAR animada durante el envío === */
+var progressEl   = document.getElementById('uploadProgress');
+var progressFill = document.getElementById('progressFill');
+var progressText = document.getElementById('progressText');
+var progressTimer = null;
+
+function startProgress() {
+  progressEl.style.display = 'block';
+  progressFill.style.width = '0%';
+  var pct = 0;
+  progressTimer = setInterval(function() {
+    /* avanza rápido al inicio, se frena cerca del 90% (espera respuesta real) */
+    if (pct < 60)      pct += 4;
+    else if (pct < 85) pct += 1.5;
+    else if (pct < 92) pct += 0.3;
+    progressFill.style.width = Math.min(pct, 92) + '%';
+  }, 200);
+}
+
+function finishProgress(success) {
+  clearInterval(progressTimer);
+  progressFill.style.width = '100%';
+  progressText.textContent = success ? '✓ ¡Enviado correctamente!' : 'Error al enviar.';
+  if (!success) {
+    progressFill.style.background = '#e05555';
+    setTimeout(function(){ progressEl.style.display = 'none'; }, 3000);
+  }
+}
+
+/* ===================================================================
+   FORM SUBMIT — usa XMLHttpRequest para tener progreso de subida real
+   =================================================================== */
 var form      = document.getElementById('enrollForm');
 var submitBtn = document.getElementById('submitBtn');
 var errBanner = document.getElementById('errBanner');
 var successBox= document.getElementById('successBox');
 var enrollNote= document.getElementById('enrollNote');
 
-form.addEventListener('submit', async function(e) {
+form.addEventListener('submit', function(e) {
   e.preventDefault();
   errBanner.style.display = 'none';
 
-  /* validar archivo seleccionado */
+  /* Validar formulario HTML5 */
+  if (!form.checkValidity()) {
+    form.reportValidity();
+    return;
+  }
+
+  /* Validar que hay archivo */
   if (!fileInput.files || fileInput.files.length === 0) {
     fileErrMsg.textContent = '⚠ Por favor selecciona el comprobante de pago.';
     fileErrMsg.style.display = 'block';
@@ -810,42 +905,79 @@ form.addEventListener('submit', async function(e) {
     return;
   }
 
+  /* Validar que Form ID esté configurado */
+  if (FORMSPREE_ID === 'TU_FORM_ID_AQUI') {
+    errBanner.querySelector('strong').textContent = '⚠ Formulario no configurado';
+    errBanner.style.display = 'block';
+    console.error('Formspree: debes reemplazar TU_FORM_ID_AQUI con tu Form ID real.');
+    return;
+  }
+
   var nombre = form.querySelector('[name=nombre]').value.trim();
-  var originalText = submitBtn.innerHTML;
+  var originalHtml = submitBtn.innerHTML;
   submitBtn.innerHTML = 'Enviando… &nbsp;<i class="fas fa-spinner fa-spin"></i>';
   submitBtn.disabled = true;
 
-  /* construir FormData con access_key */
+  /* Construir FormData — Formspree lee automáticamente todos los campos
+     incluido name="attachment" para el archivo adjunto */
   var formData = new FormData(form);
-  formData.append('access_key',  'aa194f1d-00a1-4a57-8267-04dee194164a');
-  formData.append('subject',     '🎓 Nueva inscripción — ArcGIS Básico');
-  formData.append('from_name',   'Andean Consulting — Inscripciones');
-  formData.append('curso',       'ArcGIS Básico — 20 al 25 de Abril 2026');
+  /* Campos extra informativos */
+  formData.append('_subject', '🎓 Nueva inscripción — ArcGIS Básico');
+  formData.append('curso',    'ArcGIS Básico — 20 al 25 de Abril 2026');
 
-  try {
-    var response = await fetch('https://api.web3forms.com/submit', {
-      method: 'POST',
-      body: formData
-    });
-    var data = await response.json();
+  startProgress();
 
-    if (response.ok) {
-      form.style.display    = 'none';
-      enrollNote.style.display = 'none';
-      successBox.style.display = 'block';
-      document.getElementById('successName').textContent = nombre.split(' ')[0];
-    } else {
-      throw new Error(data.message || 'Error');
+  /* Usamos XHR para tener evento de progreso de subida real */
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', 'https://formspree.io/f/' + FORMSPREE_ID, true);
+  xhr.setRequestHeader('Accept', 'application/json');
+
+  /* Progreso de subida real (reemplaza al timer al completar) */
+  xhr.upload.addEventListener('progress', function(ev) {
+    if (ev.lengthComputable) {
+      var real = Math.round((ev.loaded / ev.total) * 90);
+      clearInterval(progressTimer);
+      progressFill.style.width = real + '%';
     }
-  } catch (error) {
+  });
+
+  xhr.addEventListener('load', function() {
+    if (xhr.status >= 200 && xhr.status < 300) {
+      try {
+        var data = JSON.parse(xhr.responseText);
+        if (data.ok) {
+          finishProgress(true);
+          setTimeout(function() {
+            form.style.display    = 'none';
+            enrollNote.style.display = 'none';
+            progressEl.style.display = 'none';
+            successBox.style.display  = 'block';
+            document.getElementById('successName').textContent = nombre.split(' ')[0];
+          }, 600);
+          return;
+        }
+      } catch(parseErr) {}
+    }
+    /* Si llegamos aquí, algo falló */
+    finishProgress(false);
     errBanner.style.display = 'block';
-    submitBtn.innerHTML = originalText;
+    submitBtn.innerHTML = originalHtml;
     submitBtn.disabled  = false;
-  }
+  });
+
+  xhr.addEventListener('error', function() {
+    finishProgress(false);
+    errBanner.style.display = 'block';
+    submitBtn.innerHTML = originalHtml;
+    submitBtn.disabled  = false;
+  });
+
+  xhr.send(formData);
 });
 
 /* === NEWSLETTER === */
 function sendNewsletter() {
+  if (FORMSPREE_ID === 'TU_FORM_ID_AQUI') return;
   var input = document.getElementById('nlEmail');
   var email = input.value.trim();
   if (!email || !/\S+@\S+\.\S+/.test(email)) {
@@ -853,10 +985,11 @@ function sendNewsletter() {
     setTimeout(function(){ input.style.borderColor=''; }, 2000); return;
   }
   var fd = new FormData();
-  fd.append('access_key', 'aa194f1d-00a1-4a57-8267-04dee194164a');
-  fd.append('subject',    '📧 Nueva suscripción al boletín');
   fd.append('email_suscriptor', email);
-  fetch('https://api.web3forms.com/submit', {method:'POST', body:fd}).catch(function(){});
+  fd.append('_subject', '📧 Nueva suscripción al boletín — ArcGIS');
+  fetch('https://formspree.io/f/' + FORMSPREE_ID, {
+    method:'POST', body:fd, headers:{'Accept':'application/json'}
+  }).catch(function(){});
   input.value = '';
   document.getElementById('nlOk').style.display = 'block';
   setTimeout(function(){ document.getElementById('nlOk').style.display='none'; }, 4000);
