@@ -580,20 +580,7 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
         </div>
 
         <div class="enroll-wrap fade-up d1">
-
-          <!--
-          =====================================================================
-          INSTRUCCIONES PARA ACTIVAR EL FORMULARIO (lee esto antes de publicar)
-          =====================================================================
-          1. Ve a https://formspree.io y crea una cuenta gratuita.
-          2. Crea un nuevo formulario y copia tu "Form ID" (ej: xpwzqdro).
-          3. Reemplaza "TU_FORM_ID_AQUI" en el action de abajo con tu ID real.
-          4. En el dashboard de Formspree activa "File Uploads" en Settings.
-          5. El plan gratuito permite 50 envíos/mes con archivos hasta 10MB.
-          =====================================================================
-          -->
-
-          <form id="enrollForm" enctype="multipart/form-data">
+<form id="enrollForm" enctype="multipart/form-data">
             <div class="row g-3">
               <div class="col-md-6">
                 <label class="form-label-e">Nombre completo *</label>
@@ -741,15 +728,7 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-/* =====================================================================
-   CONFIGURACIÓN — pon aquí tu Form ID de Formspree
-   Pasos:
-   1. Crea cuenta en https://formspree.io (gratis)
-   2. Crea un formulario nuevo → copia el ID (ej: "xpwzqdro")
-   3. Pega el ID en la constante de abajo
-   4. En Formspree > Settings > activa "File Uploads"
-   ===================================================================== */
-var FORMSPREE_ID = 'TU_FORM_ID_AQUI'; // ← reemplaza esto
+var FORMSPREE_ID = 'xnjogwgn';
 
 /* === SPINNER === */
 window.addEventListener('load', function() {
@@ -877,10 +856,6 @@ function finishProgress(success) {
     setTimeout(function(){ progressEl.style.display = 'none'; }, 3000);
   }
 }
-
-/* ===================================================================
-   FORM SUBMIT — usa XMLHttpRequest para tener progreso de subida real
-   =================================================================== */
 var form      = document.getElementById('enrollForm');
 var submitBtn = document.getElementById('submitBtn');
 var errBanner = document.getElementById('errBanner');
@@ -902,14 +877,6 @@ form.addEventListener('submit', function(e) {
     fileErrMsg.textContent = '⚠ Por favor selecciona el comprobante de pago.';
     fileErrMsg.style.display = 'block';
     fileArea.scrollIntoView({behavior:'smooth', block:'center'});
-    return;
-  }
-
-  /* Validar que Form ID esté configurado */
-  if (FORMSPREE_ID === 'TU_FORM_ID_AQUI') {
-    errBanner.querySelector('strong').textContent = '⚠ Formulario no configurado';
-    errBanner.style.display = 'block';
-    console.error('Formspree: debes reemplazar TU_FORM_ID_AQUI con tu Form ID real.');
     return;
   }
 
@@ -977,7 +944,6 @@ form.addEventListener('submit', function(e) {
 
 /* === NEWSLETTER === */
 function sendNewsletter() {
-  if (FORMSPREE_ID === 'https://formspree.io/f/xnjogwgn') return;
   var input = document.getElementById('nlEmail');
   var email = input.value.trim();
   if (!email || !/\S+@\S+\.\S+/.test(email)) {
