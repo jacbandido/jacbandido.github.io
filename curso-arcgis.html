@@ -6,33 +6,28 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <meta content="ArcGIS básico, SIG, cursos online Perú, cartografía ambiental" name="keywords">
 <meta content="Aprende ArcGIS desde cero con un especialista en SIG y Biología. 20 horas certificadas. Inicia 20 de abril." name="description">
-
 <link rel="icon" type="image/x-icon" href="img/favicon.ico">
 <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
 <link rel="apple-touch-icon" href="img/Andeanlogo.png">
-
-<!-- OG / WhatsApp preview -->
-<meta property="og:type"         content="website">
-<meta property="og:url"          content="https://tudominio.com/curso-arcgis.html">
-<meta property="og:title"        content="ArcGIS Básico — Andean Consulting · Inicia 20 Abril">
-<meta property="og:description"  content="Aprende ArcGIS desde cero. 20 horas certificadas, 100% online. Solo S/ 120.">
-<meta property="og:image"        content="https://tudominio.com/img/course-1.jpg">
-<meta property="og:image:width"  content="1200">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://andeanbioconsulting.com/curso-arcgis.html">
+<meta property="og:title" content="ArcGIS Básico — Andean Consulting · Inicia 20 Abril">
+<meta property="og:description" content="Aprende ArcGIS desde cero. 20 horas certificadas, 100% online. Solo S/ 120.">
+<meta property="og:image" content="https://andeanbioconsulting.com/img/course-1.jpg">
+<meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:locale"       content="es_PE">
-<meta property="og:site_name"    content="Andean Consulting">
-<meta name="twitter:card"        content="summary_large_image">
-<meta name="twitter:title"       content="ArcGIS Básico — Andean Consulting · Inicia 20 Abril">
+<meta property="og:locale" content="es_PE">
+<meta property="og:site_name" content="Andean Consulting">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ArcGIS Básico — Andean Consulting · Inicia 20 Abril">
 <meta name="twitter:description" content="Aprende ArcGIS desde cero. 20 horas certificadas, 100% online. Solo S/ 120.">
-<meta name="twitter:image"       content="https://tudominio.com/img/course-1.jpg">
-
+<meta name="twitter:image" content="https://andeanbioconsulting.com/img/course-1.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
-
 <style>
 :root{
   --forest:#0a1f14;--green:#006a39;--lime:#00b060;
@@ -43,13 +38,10 @@
 html{scroll-behavior:smooth}
 body{font-family:'Outfit',sans-serif;font-weight:400;color:var(--text);background:#fff;overflow-x:hidden}
 h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
-
 #spinner{position:fixed;inset:0;background:#fff;display:flex;align-items:center;justify-content:center;z-index:9999;transition:opacity .5s}
 #spinner.hide{opacity:0;pointer-events:none}
 .spin-ring{width:44px;height:44px;border:2px solid var(--light-green);border-top-color:var(--green);border-radius:50%;animation:spin .9s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
-
-/* TOPBAR */
 .topbar{background:var(--forest);color:rgba(255,255,255,.6);font-size:.75rem;letter-spacing:.06em;padding:8px 0}
 .topbar a{color:rgba(255,255,255,.55);text-decoration:none;transition:color .2s}
 .topbar a:hover{color:#fff}
@@ -57,8 +49,6 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
 .topbar-left{display:flex;gap:20px;align-items:center}
 .topbar-right{display:flex;gap:16px;align-items:center}
 .tb-div{width:1px;height:12px;background:rgba(255,255,255,.15)}
-
-/* NAVBAR */
 .navbar{background:#fff;border-bottom:1px solid var(--border);padding:0;position:sticky;top:0;z-index:1000;transition:box-shadow .3s}
 .navbar.scrolled{box-shadow:0 2px 24px rgba(10,31,20,.1)}
 .navbar-brand{padding:14px 24px}
@@ -74,8 +64,6 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
 .dropdown-item:hover{background:var(--light-green);color:var(--green)}
 .btn-nav-cta{background:var(--green);color:#fff!important;font-weight:700;font-size:.88rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none!important;padding:18px 40px!important;margin:8px 20px;border-radius:3px;display:inline-flex;align-items:center;gap:10px;transition:background .2s,transform .15s;white-space:nowrap;line-height:1}
 .btn-nav-cta:hover{background:var(--forest)!important;color:#fff!important;transform:translateY(-1px)}
-
-/* COURSE HERO */
 .course-hero{background:var(--forest);padding:72px 0 0;position:relative;overflow:hidden}
 .course-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,106,57,.2) 0%,transparent 65%);pointer-events:none}
 .ch-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:16px;position:relative;z-index:1}
@@ -93,12 +81,8 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
 .ch-img{position:relative;border-radius:4px 4px 0 0;overflow:hidden;height:340px;margin-top:32px}
 .ch-img img{width:100%;height:100%;object-fit:cover}
 .ch-img::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,var(--forest) 100%);pointer-events:none}
-
-/* LAYOUT */
 .course-main{padding:56px 0 80px}
 .course-sidebar{position:sticky;top:80px}
-
-/* ENROLL CARD */
 .enroll-card{background:#fff;border:1px solid var(--border);border-radius:4px;overflow:hidden;box-shadow:0 8px 40px rgba(0,80,40,.1)}
 .ec-header{background:var(--forest);padding:24px 28px}
 .ec-price{font-family:'Fraunces',serif;font-size:2.2rem;font-weight:600;color:#fff;line-height:1}
@@ -118,19 +102,13 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
 .ec-guarantee{display:flex;align-items:center;gap:10px;margin-top:16px;padding:14px 16px;background:var(--offwhite);border-radius:3px}
 .ec-guarantee i{color:var(--green);font-size:1rem;flex-shrink:0}
 .ec-guarantee p{font-size:.78rem;color:var(--muted);line-height:1.5;margin:0}
-
-/* SECTION LABELS */
 .section-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:14px}
 .section-eyebrow-line{width:28px;height:1px;background:var(--green);flex-shrink:0}
 .section-eyebrow span{font-family:'Outfit',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--green)}
 .section-title{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(1.4rem,3vw,2rem);line-height:1.2;letter-spacing:-.02em}
-
-/* LEARN LIST */
 .learn-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 24px;margin-top:4px}
 .learn-item{display:flex;align-items:flex-start;gap:10px;font-size:.88rem;color:var(--text);line-height:1.5}
 .learn-item i{color:var(--lime);font-size:.72rem;margin-top:4px;flex-shrink:0}
-
-/* SYLLABUS */
 .syllabus-item{border:1px solid var(--border);border-radius:4px;margin-bottom:8px;overflow:hidden}
 .syllabus-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;cursor:pointer;background:#fff;transition:background .15s;gap:12px;user-select:none;-webkit-user-select:none}
 .syllabus-header:hover{background:var(--offwhite)}
@@ -147,15 +125,11 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
 .syllabus-body ul li{font-size:.85rem;color:var(--muted);padding:6px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
 .syllabus-body ul li:last-child{border-bottom:none}
 .syllabus-body ul li::before{content:'\f144';font-family:'Font Awesome 5 Free';font-weight:900;color:var(--lime);font-size:.6rem;flex-shrink:0}
-
-/* INSTRUCTOR */
 .instructor-card{display:flex;gap:24px;align-items:flex-start;padding:28px;border:1px solid var(--border);border-radius:4px;background:#fff}
 .instructor-avatar{width:80px;height:80px;border-radius:50%;background:var(--light-green);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Fraunces',serif;font-size:1.8rem;font-weight:600;color:var(--green)}
 .instructor-body h5{font-family:'Fraunces',serif;font-size:1.1rem;margin-bottom:4px}
 .instructor-body .role{font-size:.8rem;color:var(--green);font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:10px}
 .instructor-body p{font-size:.87rem;color:var(--muted);line-height:1.75;margin:0}
-
-/* PAYMENT */
 .payment-section{padding:72px 0;background:var(--offwhite)}
 .pay-step{display:flex;gap:20px;align-items:flex-start;padding:24px 0;border-bottom:1px solid var(--border)}
 .pay-step:last-child{border-bottom:none}
@@ -174,8 +148,7 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
 .copy-btn{font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);background:var(--light-green);border:none;padding:5px 12px;border-radius:3px;cursor:pointer;font-family:'Outfit',sans-serif;transition:background .15s}
 .copy-btn:hover{background:#c5e8d4}
 .copy-btn.copied{color:#fff;background:var(--green)}
-
-/* ENROLLMENT FORM */
+/* FORMULARIO */
 .enroll-section{padding:72px 0;background:var(--forest);position:relative;overflow:hidden}
 .enroll-section::before{content:'';position:absolute;top:-80px;right:-80px;width:360px;height:360px;border-radius:50%;background:rgba(0,176,96,.04);pointer-events:none}
 .enroll-wrap{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:4px;padding:44px 40px;position:relative;z-index:1}
@@ -184,13 +157,12 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
 .form-ctrl-e:focus{border-color:var(--lime)}
 .form-ctrl-e::placeholder{color:rgba(255,255,255,.25)}
 .form-ctrl-e option{background:var(--forest);color:#fff}
-
 /* FILE UPLOAD */
 .file-upload-area{border:2px dashed rgba(255,255,255,.2);border-radius:4px;padding:28px 20px;text-align:center;cursor:pointer;transition:border-color .25s,background .25s;position:relative;overflow:hidden}
 .file-upload-area:hover,.file-upload-area.drag{border-color:var(--lime);background:rgba(0,176,96,.07)}
 .file-upload-area.ok{border-color:var(--lime);border-style:solid;background:rgba(0,176,96,.1)}
 .file-upload-area input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;z-index:2}
-.fua-icon{font-size:1.8rem;margin-bottom:10px;transition:color .25s}
+.fua-icon{font-size:1.8rem;margin-bottom:10px}
 .fua-icon .ico-default{color:rgba(255,255,255,.25)}
 .fua-icon .ico-ok{color:var(--lime);display:none}
 .file-upload-area.ok .ico-default{display:none}
@@ -204,13 +176,11 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
 .file-upload-area.ok .fua-default-text{display:none}
 .file-upload-area.ok .fua-ok-text{display:block}
 #fileErrMsg{display:none;color:#ff9090;font-size:.8rem;margin-top:7px}
-
-/* PROGRESS BAR */
+/* PROGRESS */
 .upload-progress{display:none;margin-top:10px}
 .upload-progress-bar{height:4px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden}
-.upload-progress-fill{height:100%;background:var(--lime);width:0%;transition:width .3s ease;border-radius:2px}
+.upload-progress-fill{height:100%;background:var(--lime);width:0%;transition:width .4s ease;border-radius:2px}
 .upload-progress-text{font-size:.75rem;color:rgba(255,255,255,.45);margin-top:6px;text-align:center}
-
 .btn-submit-e{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;background:var(--lime);color:#fff;font-weight:700;font-size:.92rem;letter-spacing:.1em;text-transform:uppercase;padding:17px;border-radius:3px;border:none;cursor:pointer;transition:background .2s,transform .15s,opacity .2s;font-family:'Outfit',sans-serif}
 .btn-submit-e:hover:not(:disabled){background:#009950;transform:translateY(-2px)}
 .btn-submit-e:disabled{opacity:.6;cursor:not-allowed;transform:none!important}
@@ -221,13 +191,10 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
 .form-success-e i.big{font-size:2.8rem;color:var(--lime);margin-bottom:16px;display:block}
 .form-success-e h4{font-family:'Fraunces',serif;font-size:1.4rem;color:#fff;margin-bottom:10px}
 .form-success-e p{font-size:.9rem;color:rgba(255,255,255,.55);line-height:1.7}
-
-/* ERROR BANNER MEJORADO */
 .form-err-banner{display:none;background:rgba(220,50,50,.12);border:1px solid rgba(220,50,50,.3);border-radius:3px;padding:16px 18px;margin-top:12px;font-size:.85rem;color:#ff9090;line-height:1.6}
 .form-err-banner strong{color:#ffb3b3;display:block;margin-bottom:4px}
 .form-err-banner .wa-fallback{display:inline-flex;align-items:center;gap:7px;margin-top:10px;background:var(--wa);color:#fff;font-weight:700;font-size:.8rem;letter-spacing:.06em;text-transform:uppercase;padding:10px 18px;border-radius:3px;text-decoration:none;transition:opacity .2s}
 .form-err-banner .wa-fallback:hover{opacity:.85;color:#fff}
-
 /* FOOTER */
 .footer{background:var(--forest);padding:72px 0 0}
 .footer-brand img{height:42px;filter:brightness(0) invert(1);opacity:.85;margin-bottom:20px}
@@ -250,17 +217,14 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
 .footer-bottom a{color:rgba(255,255,255,.3);text-decoration:none;transition:color .2s}
 .footer-bottom a:hover{color:rgba(255,255,255,.7)}
 .footer-bottom-links{display:flex;gap:20px;flex-wrap:wrap}
-
 .back-top{position:fixed;bottom:28px;right:28px;width:44px;height:44px;background:var(--green);color:#fff;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:1rem;text-decoration:none;opacity:0;pointer-events:none;transition:opacity .3s,transform .2s;z-index:999}
 .back-top.show{opacity:1;pointer-events:all}
 .back-top:hover{transform:translateY(-3px);color:#fff}
 .wa-float{position:fixed;bottom:84px;right:28px;z-index:998;width:52px;height:52px;background:var(--wa);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.4rem;text-decoration:none;box-shadow:0 4px 18px rgba(37,211,102,.45);transition:transform .2s}
 .wa-float:hover{transform:scale(1.1);color:#fff}
-
 .fade-up{opacity:0;transform:translateY(36px);transition:opacity .6s ease,transform .6s ease}
 .fade-up.visible{opacity:1;transform:none}
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
-
 @media(max-width:992px){
   .navbar-collapse{background:#fff;border-top:1px solid var(--border);padding:8px 16px 20px}
   .nav-link{padding:.75rem .5rem!important;font-size:.9rem}
@@ -276,10 +240,8 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
 </style>
 </head>
 <body>
-
 <div id="spinner"><div class="spin-ring"></div></div>
 
-<!-- TOPBAR -->
 <div class="topbar">
   <div class="container">
     <div class="topbar-inner">
@@ -299,11 +261,8 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
   </div>
 </div>
 
-<!-- NAVBAR -->
 <nav class="navbar navbar-expand-lg" id="mainNav">
-  <a href="index.html" class="navbar-brand">
-    <img src="img/Andeanlogo.png" alt="Andean Consulting">
-  </a>
+  <a href="index.html" class="navbar-brand"><img src="img/Andeanlogo.png" alt="Andean Consulting"></a>
   <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navCollapse" aria-label="Menú">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -321,13 +280,10 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
       </div>
       <a href="contact.html" class="nav-item nav-link">Contacto</a>
     </div>
-    <a href="#inscripcion" class="btn-nav-cta d-none d-lg-flex">
-      Inscribirme <i class="fas fa-arrow-right" style="font-size:.72rem"></i>
-    </a>
+    <a href="#inscripcion" class="btn-nav-cta d-none d-lg-flex">Inscribirme <i class="fas fa-arrow-right" style="font-size:.72rem"></i></a>
   </div>
 </nav>
 
-<!-- COURSE HERO -->
 <div class="course-hero">
   <div class="container">
     <div class="row align-items-end">
@@ -351,19 +307,14 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
         </a>
       </div>
       <div class="col-lg-5">
-        <div class="ch-img">
-          <img src="img/course-1.jpg" alt="ArcGIS Básico para Ciencias Ambientales">
-        </div>
+        <div class="ch-img"><img src="img/course-1.jpg" alt="ArcGIS Básico para Ciencias Ambientales"></div>
       </div>
     </div>
   </div>
 </div>
 
-<!-- CONTENT + SIDEBAR -->
 <div class="container">
   <div class="row g-5 course-main">
-
-    <!-- MAIN -->
     <div class="col-lg-8">
 
       <div class="mb-5 fade-up">
@@ -396,7 +347,6 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
       <div class="mb-5 fade-up">
         <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span>Programa</span></div>
         <h2 class="section-title mb-4">Temario del Curso</h2>
-
         <div class="syllabus-item">
           <div class="syllabus-header" onclick="toggleSyl(this)">
             <div class="syl-left"><span class="syl-num">01</span><div><div class="syl-title">Introducción a los SIG y ArcGIS</div><div class="syl-meta">4 temas · Día 1</div></div></div>
@@ -409,7 +359,6 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
             <li>Interfaz de trabajo: paneles, catálogo y herramientas</li>
           </ul></div>
         </div>
-
         <div class="syllabus-item">
           <div class="syllabus-header" onclick="toggleSyl(this)">
             <div class="syl-left"><span class="syl-num">02</span><div><div class="syl-title">Gestión de Datos Geoespaciales</div><div class="syl-meta">4 temas · Día 2</div></div></div>
@@ -422,7 +371,6 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
             <li>Carga de imágenes satelitales y DEM</li>
           </ul></div>
         </div>
-
         <div class="syllabus-item">
           <div class="syllabus-header" onclick="toggleSyl(this)">
             <div class="syl-left"><span class="syl-num">03</span><div><div class="syl-title">Visualización y Simbología</div><div class="syl-meta">3 temas · Día 3</div></div></div>
@@ -434,7 +382,6 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
             <li>Escala de visualización y transparencias</li>
           </ul></div>
         </div>
-
         <div class="syllabus-item">
           <div class="syllabus-header" onclick="toggleSyl(this)">
             <div class="syl-left"><span class="syl-num">04</span><div><div class="syl-title">Edición y Análisis Básico</div><div class="syl-meta">4 temas · Día 4</div></div></div>
@@ -447,7 +394,6 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
             <li>Uniones espaciales (spatial join)</li>
           </ul></div>
         </div>
-
         <div class="syllabus-item">
           <div class="syllabus-header" onclick="toggleSyl(this)">
             <div class="syl-left"><span class="syl-num">05</span><div><div class="syl-title">Cartografía y Producto Final</div><div class="syl-meta">3 temas · Días 5–6</div></div></div>
@@ -475,7 +421,6 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
       </div>
     </div>
 
-    <!-- SIDEBAR -->
     <div class="col-lg-4">
       <div class="course-sidebar fade-up d2">
         <div class="enroll-card">
@@ -505,11 +450,9 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
         </div>
       </div>
     </div>
-
   </div>
 </div>
 
-<!-- FORMAS DE PAGO -->
 <div class="payment-section" id="pago">
   <div class="container">
     <div class="row justify-content-center">
@@ -519,7 +462,6 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
           <h2 class="section-title">¿Cómo pagar?</h2>
           <p style="font-size:.92rem;color:var(--muted);margin-top:10px">Realiza tu pago y sube el comprobante en el formulario de inscripción.</p>
         </div>
-
         <div class="pay-method fade-up d1">
           <div class="pay-method-header"><div class="pay-method-icon yape"><i class="fas fa-mobile-alt"></i></div><h6>Yape</h6></div>
           <p>Envía S/ 120 al siguiente número mediante Yape:</p>
@@ -528,7 +470,6 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
             <button class="copy-btn" onclick="copyTxt('947735404',this)">Copiar</button>
           </div>
         </div>
-
         <div class="pay-method fade-up d2">
           <div class="pay-method-header"><div class="pay-method-icon plin"><i class="fas fa-mobile-alt"></i></div><h6>Plin</h6></div>
           <p>Envía S/ 120 al siguiente número mediante Plin (Interbank):</p>
@@ -537,7 +478,6 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
             <button class="copy-btn" onclick="copyTxt('969392189',this)">Copiar</button>
           </div>
         </div>
-
         <div class="pay-method fade-up d3">
           <div class="pay-method-header"><div class="pay-method-icon transfer"><i class="fas fa-university"></i></div><h6>Transferencia Bancaria — Interbank</h6></div>
           <p>A nombre de Jack Malon Rodriguez Pumaccajia:</p>
@@ -552,7 +492,6 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
             </div>
           </div>
         </div>
-
         <div style="background:#fff;border:1px solid var(--border);border-radius:4px;padding:28px 24px;margin-top:24px" class="fade-up">
           <h5 style="font-family:'Fraunces',serif;font-size:1rem;margin-bottom:4px">Pasos para inscribirte</h5>
           <div class="pay-step"><div class="step-num">1</div><div class="step-body"><h5>Realiza el pago</h5><p>Envía S/ 120 por Yape, Plin o transferencia bancaria usando los datos de arriba.</p></div></div>
@@ -565,7 +504,9 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
   </div>
 </div>
 
-<!-- FORMULARIO DE INSCRIPCIÓN -->
+<!-- ═══════════════════════════════════════════════════════════
+     FORMULARIO — Netlify Forms con soporte nativo de archivos
+     ═══════════════════════════════════════════════════════════ -->
 <div class="enroll-section" id="inscripcion">
   <div class="container">
     <div class="row justify-content-center">
@@ -580,7 +521,20 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
         </div>
 
         <div class="enroll-wrap fade-up d1">
-<form id="enrollForm" enctype="multipart/form-data">
+          <form
+            id="enrollForm"
+            name="inscripcion-arcgis"
+            method="POST"
+            enctype="multipart/form-data"
+            data-netlify="true"
+            data-netlify-honeypot="bot-field"
+            action="/gracias.html"
+          >
+            <!-- Campo oculto requerido por Netlify -->
+            <input type="hidden" name="form-name" value="inscripcion-arcgis">
+            <!-- Honeypot antispam -->
+            <p style="display:none"><input name="bot-field"></p>
+
             <div class="row g-3">
               <div class="col-md-6">
                 <label class="form-label-e">Nombre completo *</label>
@@ -612,13 +566,12 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
                 </select>
               </div>
 
-              <!-- FILE UPLOAD -->
+              <!-- ARCHIVO — Netlify lo recibe nativamente con enctype multipart -->
               <div class="col-12">
                 <label class="form-label-e" style="margin-bottom:8px">Comprobante de pago *</label>
                 <div class="file-upload-area" id="fileArea">
-                  <!-- name="attachment" es el nombre requerido por Formspree para archivos adjuntos -->
-                  <input type="file" id="fileInput" name="attachment"
-                    accept="image/jpeg,image/png,image/jpg,image/webp,application/pdf">
+                  <input type="file" id="fileInput" name="comprobante"
+                    accept="image/jpeg,image/png,image/jpg,image/webp,application/pdf" required>
                   <div class="fua-icon">
                     <i class="fas fa-cloud-upload-alt ico-default"></i>
                     <i class="fas fa-check-circle ico-ok"></i>
@@ -635,24 +588,19 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
                   </div>
                 </div>
                 <p id="fileErrMsg"></p>
-                <!-- Barra de progreso visible durante el envío -->
                 <div class="upload-progress" id="uploadProgress">
                   <div class="upload-progress-bar"><div class="upload-progress-fill" id="progressFill"></div></div>
-                  <div class="upload-progress-text" id="progressText">Subiendo comprobante…</div>
+                  <div class="upload-progress-text" id="progressText">Enviando inscripción…</div>
                 </div>
               </div>
-
-              <!-- Campo oculto de honeypot antispam (Formspree lo ignora si está vacío) -->
-              <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
 
               <div class="col-12">
                 <button class="btn-submit-e" type="submit" id="submitBtn">
                   Enviar Inscripción &nbsp;<i class="fas fa-arrow-right"></i>
                 </button>
-
                 <div class="form-err-banner" id="errBanner">
-                  <strong>⚠ No se pudo enviar el formulario</strong>
-                  Hubo un problema al procesar tu inscripción. Puedes intentarlo de nuevo o enviarnos tu comprobante directamente por WhatsApp:
+                  <strong>⚠ No se pudo enviar</strong>
+                  Intenta de nuevo o envíanos tu comprobante directamente por WhatsApp:
                   <br>
                   <a class="wa-fallback" href="https://wa.me/51969392189?text=Hola%2C%20quiero%20inscribirme%20al%20curso%20de%20ArcGIS%20B%C3%A1sico.%20Adjunto%20mi%20comprobante." target="_blank" rel="noopener">
                     <i class="fab fa-whatsapp"></i> Enviar por WhatsApp
@@ -679,7 +627,6 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
   </div>
 </div>
 
-<!-- FOOTER -->
 <footer class="footer">
   <div class="container">
     <div class="row g-5">
@@ -728,22 +675,20 @@ h1,h2,h3,h4,h5,h6{font-family:'Fraunces',serif;font-weight:600;color:var(--text)
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-var FORMSPREE_ID = 'xnjogwgn';
-
-/* === SPINNER === */
+/* SPINNER */
 window.addEventListener('load', function() {
   var s = document.getElementById('spinner');
   s.classList.add('hide');
   setTimeout(function(){ s.remove(); }, 600);
 });
 
-/* === NAVBAR scroll === */
+/* NAVBAR */
 var mainNav = document.getElementById('mainNav');
 window.addEventListener('scroll', function() {
   mainNav.classList.toggle('scrolled', window.scrollY > 20);
 }, {passive:true});
 
-/* === FADE UP === */
+/* FADE UP */
 var fo = new IntersectionObserver(function(entries) {
   entries.forEach(function(e) {
     if (e.isIntersecting) { e.target.classList.add('visible'); fo.unobserve(e.target); }
@@ -751,12 +696,12 @@ var fo = new IntersectionObserver(function(entries) {
 }, {threshold:0.1, rootMargin:'0px 0px -36px 0px'});
 document.querySelectorAll('.fade-up').forEach(function(el){ fo.observe(el); });
 
-/* === BACK TOP === */
+/* BACK TOP */
 var bt = document.getElementById('backTop');
 window.addEventListener('scroll', function(){ bt.classList.toggle('show', window.scrollY > 300); }, {passive:true});
 bt.addEventListener('click', function(e){ e.preventDefault(); window.scrollTo({top:0, behavior:'smooth'}); });
 
-/* === SYLLABUS ACCORDION === */
+/* SYLLABUS */
 function toggleSyl(header) {
   var body = header.nextElementSibling;
   var isOpen = header.classList.contains('open');
@@ -766,7 +711,7 @@ function toggleSyl(header) {
   if (!isOpen) { header.classList.add('open'); body.classList.add('open'); }
 }
 
-/* === COPY BUTTONS === */
+/* COPY */
 function copyTxt(text, btn) {
   var orig = btn.textContent;
   function done() { btn.textContent='¡Copiado!'; btn.classList.add('copied'); setTimeout(function(){ btn.textContent=orig; btn.classList.remove('copied'); }, 2000); }
@@ -778,57 +723,43 @@ function copyTxt(text, btn) {
   }
 }
 
-/* === FILE UPLOAD — validación local (instantánea, sin subir nada aún) === */
+/* FILE UPLOAD */
 var fileInput   = document.getElementById('fileInput');
 var fileArea    = document.getElementById('fileArea');
 var fileNameTxt = document.getElementById('fileNameTxt');
 var fileErrMsg  = document.getElementById('fileErrMsg');
 
-fileInput.addEventListener('change', function() {
-  validateFile(this.files[0]);
-});
+fileInput.addEventListener('change', function() { validateFile(this.files[0]); });
 
 function validateFile(file) {
   fileErrMsg.style.display = 'none';
   fileArea.classList.remove('ok');
-
   if (!file) return;
-
-  var MAX_MB = 10;
-  if (file.size > MAX_MB * 1024 * 1024) {
-    fileErrMsg.textContent = '⚠ El archivo supera los ' + MAX_MB + ' MB. Por favor comprime la imagen.';
+  if (file.size > 10 * 1024 * 1024) {
+    fileErrMsg.textContent = '⚠ El archivo supera los 10 MB. Por favor comprime la imagen.';
     fileErrMsg.style.display = 'block';
-    fileInput.value = '';
-    return;
+    fileInput.value = ''; return;
   }
-
   var allowed = ['image/jpeg','image/png','image/jpg','image/webp','application/pdf'];
   if (!allowed.includes(file.type)) {
     fileErrMsg.textContent = '⚠ Solo se permiten JPG, PNG o PDF.';
     fileErrMsg.style.display = 'block';
-    fileInput.value = '';
-    return;
+    fileInput.value = ''; return;
   }
-
-  /* Archivo válido — mostrar feedback visual */
-  var mb = (file.size / (1024 * 1024)).toFixed(1);
-  fileNameTxt.textContent = file.name + ' (' + mb + ' MB)';
+  fileNameTxt.textContent = file.name + ' (' + (file.size/(1024*1024)).toFixed(1) + ' MB)';
   fileArea.classList.add('ok');
 }
 
-/* drag & drop */
+/* DRAG & DROP */
 fileArea.addEventListener('dragover',  function(e){ e.preventDefault(); fileArea.classList.add('drag'); });
 fileArea.addEventListener('dragleave', function()  { fileArea.classList.remove('drag'); });
 fileArea.addEventListener('drop', function(e) {
   e.preventDefault(); fileArea.classList.remove('drag');
   var f = e.dataTransfer.files[0];
-  if (f) {
-    try { var dt = new DataTransfer(); dt.items.add(f); fileInput.files = dt.files; } catch(x){}
-    validateFile(f);
-  }
+  if (f) { try { var dt=new DataTransfer(); dt.items.add(f); fileInput.files=dt.files; } catch(x){} validateFile(f); }
 });
 
-/* === PROGRESS BAR animada durante el envío === */
+/* PROGRESS BAR */
 var progressEl   = document.getElementById('uploadProgress');
 var progressFill = document.getElementById('progressFill');
 var progressText = document.getElementById('progressText');
@@ -839,23 +770,18 @@ function startProgress() {
   progressFill.style.width = '0%';
   var pct = 0;
   progressTimer = setInterval(function() {
-    /* avanza rápido al inicio, se frena cerca del 90% (espera respuesta real) */
-    if (pct < 60)      pct += 4;
-    else if (pct < 85) pct += 1.5;
-    else if (pct < 92) pct += 0.3;
+    pct < 60 ? pct += 5 : pct < 85 ? pct += 1.5 : pct < 92 ? pct += 0.3 : null;
     progressFill.style.width = Math.min(pct, 92) + '%';
   }, 200);
 }
 
-function finishProgress(success) {
+function finishProgress(ok) {
   clearInterval(progressTimer);
   progressFill.style.width = '100%';
-  progressText.textContent = success ? '✓ ¡Enviado correctamente!' : 'Error al enviar.';
-  if (!success) {
-    progressFill.style.background = '#e05555';
-    setTimeout(function(){ progressEl.style.display = 'none'; }, 3000);
-  }
+  if (!ok) { progressFill.style.background='#e05555'; progressText.textContent='Error al enviar.'; }
 }
+
+/* FORM SUBMIT — XHR con progreso real de subida */
 var form      = document.getElementById('enrollForm');
 var submitBtn = document.getElementById('submitBtn');
 var errBanner = document.getElementById('errBanner');
@@ -866,13 +792,8 @@ form.addEventListener('submit', function(e) {
   e.preventDefault();
   errBanner.style.display = 'none';
 
-  /* Validar formulario HTML5 */
-  if (!form.checkValidity()) {
-    form.reportValidity();
-    return;
-  }
+  if (!form.checkValidity()) { form.reportValidity(); return; }
 
-  /* Validar que hay archivo */
   if (!fileInput.files || fileInput.files.length === 0) {
     fileErrMsg.textContent = '⚠ Por favor selecciona el comprobante de pago.';
     fileErrMsg.style.display = 'block';
@@ -881,83 +802,63 @@ form.addEventListener('submit', function(e) {
   }
 
   var nombre = form.querySelector('[name=nombre]').value.trim();
-  var originalHtml = submitBtn.innerHTML;
+  var origHtml = submitBtn.innerHTML;
   submitBtn.innerHTML = 'Enviando… &nbsp;<i class="fas fa-spinner fa-spin"></i>';
   submitBtn.disabled = true;
 
-  /* Construir FormData — Formspree lee automáticamente todos los campos
-     incluido name="attachment" para el archivo adjunto */
   var formData = new FormData(form);
-  /* Campos extra informativos */
-  formData.append('_subject', '🎓 Nueva inscripción — ArcGIS Básico');
-  formData.append('curso',    'ArcGIS Básico — 20 al 25 de Abril 2026');
 
   startProgress();
 
-  /* Usamos XHR para tener evento de progreso de subida real */
   var xhr = new XMLHttpRequest();
-  xhr.open('POST', 'https://formspree.io/f/' + FORMSPREE_ID, true);
-  xhr.setRequestHeader('Accept', 'application/json');
+  xhr.open('POST', '/', true);
 
-  /* Progreso de subida real (reemplaza al timer al completar) */
+  /* Progreso real de subida del archivo */
   xhr.upload.addEventListener('progress', function(ev) {
     if (ev.lengthComputable) {
-      var real = Math.round((ev.loaded / ev.total) * 90);
       clearInterval(progressTimer);
-      progressFill.style.width = real + '%';
+      progressFill.style.width = Math.round((ev.loaded / ev.total) * 90) + '%';
     }
   });
 
   xhr.addEventListener('load', function() {
-    if (xhr.status >= 200 && xhr.status < 300) {
-      try {
-        var data = JSON.parse(xhr.responseText);
-        if (data.ok) {
-          finishProgress(true);
-          setTimeout(function() {
-            form.style.display    = 'none';
-            enrollNote.style.display = 'none';
-            progressEl.style.display = 'none';
-            successBox.style.display  = 'block';
-            document.getElementById('successName').textContent = nombre.split(' ')[0];
-          }, 600);
-          return;
-        }
-      } catch(parseErr) {}
+    if (xhr.status >= 200 && xhr.status < 400) {
+      finishProgress(true);
+      setTimeout(function() {
+        form.style.display     = 'none';
+        enrollNote.style.display  = 'none';
+        progressEl.style.display  = 'none';
+        successBox.style.display  = 'block';
+        document.getElementById('successName').textContent = nombre.split(' ')[0];
+      }, 500);
+    } else {
+      finishProgress(false);
+      errBanner.style.display = 'block';
+      submitBtn.innerHTML = origHtml;
+      submitBtn.disabled  = false;
     }
-    /* Si llegamos aquí, algo falló */
-    finishProgress(false);
-    errBanner.style.display = 'block';
-    submitBtn.innerHTML = originalHtml;
-    submitBtn.disabled  = false;
   });
 
   xhr.addEventListener('error', function() {
     finishProgress(false);
     errBanner.style.display = 'block';
-    submitBtn.innerHTML = originalHtml;
+    submitBtn.innerHTML = origHtml;
     submitBtn.disabled  = false;
   });
 
   xhr.send(formData);
 });
 
-/* === NEWSLETTER === */
+/* NEWSLETTER */
 function sendNewsletter() {
   var input = document.getElementById('nlEmail');
   var email = input.value.trim();
   if (!email || !/\S+@\S+\.\S+/.test(email)) {
-    input.style.borderColor = 'rgba(255,80,80,.6)'; input.focus();
+    input.style.borderColor='rgba(255,80,80,.6)'; input.focus();
     setTimeout(function(){ input.style.borderColor=''; }, 2000); return;
   }
-  var fd = new FormData();
-  fd.append('email_suscriptor', email);
-  fd.append('_subject', '📧 Nueva suscripción al boletín — ArcGIS');
-  fetch('https://formspree.io/f/' + FORMSPREE_ID, {
-    method:'POST', body:fd, headers:{'Accept':'application/json'}
-  }).catch(function(){});
-  input.value = '';
-  document.getElementById('nlOk').style.display = 'block';
+  input.value='';
+  document.getElementById('nlOk').style.display='block';
   setTimeout(function(){ document.getElementById('nlOk').style.display='none'; }, 4000);
 }
 </script>
