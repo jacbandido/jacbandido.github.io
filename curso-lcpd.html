@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Láminas Lancaster – Botánica · Andean Consulting & Environmental Solutions S.A.C.</title>
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta content="láminas Lancaster, botánica, morfología vegetal, cursos online Perú, identificación plantas" name="keywords">
+<meta content="Aprende a interpretar y elaborar láminas Lancaster para identificación botánica. 18 horas certificadas. Metodología científica aplicada." name="description">
+<link rel="icon" type="image/x-icon" href="img/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+:root{
+  --forest:#0d1f14;
+  --deep:#07130c;
+  --green:#1a5c32;
+  --sage:#4a7c59;
+  --lime:#5cb85c;
+  --mint:#a8d5b5;
+  --gold:#c9a84c;
+  --cream:#f5f0e8;
+  --offwhite:#faf7f2;
+  --border:#dde8e0;
+  --text:#1a2b1e;
+  --muted:#5c7060;
+  --light:#e8f0eb;
+  --wa:#25D366;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;font-weight:400;color:var(--text);background:#fff;overflow-x:hidden}
+h1,h2,h3,h4,h5,h6{font-family:'Cormorant Garamond',serif;font-weight:600;color:var(--text)}
+
+/* ─── SPINNER ─── */
+#spinner{position:fixed;inset:0;background:var(--deep);display:flex;align-items:center;justify-content:center;z-index:9999;transition:opacity .7s}
+#spinner.hide{opacity:0;pointer-events:none}
+.spin-leaf{width:48px;height:48px;position:relative;animation:leafSpin 1.2s ease-in-out infinite}
+.spin-leaf svg{width:100%;height:100%}
+@keyframes leafSpin{0%{transform:rotate(0deg) scale(1)}50%{transform:rotate(180deg) scale(1.15)}100%{transform:rotate(360deg) scale(1)}}
+
+/* ─── TOPBAR ─── */
+.topbar{background:var(--deep);color:rgba(255,255,255,.55);font-size:.73rem;letter-spacing:.06em;padding:8px 0}
+.topbar a{color:rgba(255,255,255,.5);text-decoration:none;transition:color .2s}
+.topbar a:hover{color:#fff}
+.topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.topbar-left{display:flex;gap:20px;align-items:center}
+.topbar-right{display:flex;gap:16px;align-items:center}
+.tb-div{width:1px;height:12px;background:rgba(255,255,255,.15)}
+
+/* ─── NAVBAR ─── */
+.navbar{background:#fff;border-bottom:1px solid var(--border);padding:0;position:sticky;top:0;z-index:1000;transition:box-shadow .3s}
+.navbar.scrolled{box-shadow:0 2px 28px rgba(10,31,20,.12)}
+.navbar-brand{padding:14px 24px}
+.navbar-brand img{height:44px;object-fit:contain}
+.navbar-toggler{border:1px solid #ccc!important;padding:6px 10px;margin-right:16px;border-radius:3px;background:transparent}
+.navbar-toggler-icon{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%230d1f14' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e")}
+.nav-link{font-family:'DM Sans',sans-serif;font-weight:500;font-size:.78rem;letter-spacing:.09em;text-transform:uppercase;color:var(--text)!important;padding:1.5rem 1.1rem!important;transition:color .2s;position:relative}
+.nav-link::after{content:'';position:absolute;bottom:0;left:1.1rem;right:1.1rem;height:2px;background:var(--green);transform:scaleX(0);transition:transform .25s}
+.nav-link:hover,.nav-link.active{color:var(--green)!important}
+.nav-link:hover::after,.nav-link.active::after{transform:scaleX(1)}
+.dropdown-menu{border:1px solid var(--border);border-radius:8px;box-shadow:0 12px 40px rgba(0,0,0,.1);padding:8px 0}
+.dropdown-item{font-family:'DM Sans',sans-serif;font-size:.8rem;letter-spacing:.04em;padding:10px 20px;color:var(--text);font-weight:500;text-transform:uppercase;transition:background .15s,color .15s}
+.dropdown-item:hover{background:var(--light);color:var(--green)}
+.btn-nav-cta{background:var(--green);color:#fff!important;font-weight:600;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none!important;padding:18px 36px!important;margin:8px 20px;border-radius:2px;display:inline-flex;align-items:center;gap:10px;transition:background .2s,transform .15s;white-space:nowrap;line-height:1}
+.btn-nav-cta:hover{background:var(--forest)!important;color:#fff!important}
+
+/* ═══════════════════════════════════════
+   HERO 3D BOTÁNICO
+   ═══════════════════════════════════════ */
+.course-hero{
+  background:var(--deep);
+  min-height:92vh;
+  display:flex;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
+  padding:80px 0 0;
+}
+
+/* Fondo con textura de papel botánico */
+.hero-bg-texture{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 120% 80% at 60% 50%, rgba(26,92,50,.18) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 60% at 15% 80%, rgba(90,180,120,.07) 0%, transparent 60%),
+    linear-gradient(160deg, #07130c 0%, #0d1f14 40%, #071a0e 100%);
+  z-index:0;
+}
+
+/* Grid de líneas botánicas sutil */
+.hero-grid{
+  position:absolute;inset:0;z-index:0;
+  background-image:
+    linear-gradient(rgba(168,213,181,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(168,213,181,.04) 1px, transparent 1px);
+  background-size:60px 60px;
+}
+
+/* ─── PARTÍCULAS / ELEMENTOS FLOTANTES 3D ─── */
+.botanical-scene{
+  position:absolute;inset:0;z-index:1;
+  perspective:1200px;
+  pointer-events:none;
+}
+
+.leaf-3d{
+  position:absolute;
+  transform-style:preserve-3d;
+  will-change:transform;
+}
+
+/* Animaciones de flotación únicas para cada hoja */
+@keyframes float1{
+  0%  {transform:translate(0,0)    rotateX(15deg) rotateY(20deg) rotateZ(-5deg) scale(1)}
+  25% {transform:translate(8px,-14px)  rotateX(25deg) rotateY(10deg) rotateZ(5deg)  scale(1.03)}
+  50% {transform:translate(4px,-20px)  rotateX(10deg) rotateY(30deg) rotateZ(-2deg) scale(.97)}
+  75% {transform:translate(-6px,-10px) rotateX(30deg) rotateY(15deg) rotateZ(8deg)  scale(1.02)}
+  100%{transform:translate(0,0)    rotateX(15deg) rotateY(20deg) rotateZ(-5deg) scale(1)}
+}
+@keyframes float2{
+  0%  {transform:translate(0,0)    rotateX(-20deg) rotateY(-15deg) rotateZ(10deg)  scale(1)}
+  30% {transform:translate(-10px,-18px) rotateX(-10deg) rotateY(-25deg) rotateZ(-5deg) scale(1.04)}
+  60% {transform:translate(6px,-24px)  rotateX(-30deg) rotateY(-8deg)  rotateZ(15deg) scale(.96)}
+  100%{transform:translate(0,0)    rotateX(-20deg) rotateY(-15deg) rotateZ(10deg)  scale(1)}
+}
+@keyframes float3{
+  0%  {transform:translate(0,0) rotateX(5deg)  rotateY(40deg) rotateZ(-15deg) scale(1)}
+  40% {transform:translate(12px,-22px) rotateX(20deg) rotateY(20deg) rotateZ(5deg)  scale(1.05)}
+  70% {transform:translate(-4px,-16px) rotateX(-5deg) rotateY(50deg) rotateZ(-20deg) scale(.98)}
+  100%{transform:translate(0,0) rotateX(5deg)  rotateY(40deg) rotateZ(-15deg) scale(1)}
+}
+@keyframes float4{
+  0%  {transform:translate(0,0) rotateX(25deg) rotateY(-30deg) rotateZ(5deg) scale(1)}
+  35% {transform:translate(-14px,-12px) rotateX(10deg) rotateY(-10deg) rotateZ(-8deg) scale(1.03)}
+  65% {transform:translate(8px,-20px)  rotateX(35deg) rotateY(-40deg) rotateZ(12deg) scale(.95)}
+  100%{transform:translate(0,0) rotateX(25deg) rotateY(-30deg) rotateZ(5deg) scale(1)}
+}
+@keyframes float5{
+  0%  {transform:translate(0,0) rotateX(-10deg) rotateY(25deg) rotateZ(20deg) scale(1)}
+  45% {transform:translate(16px,-28px) rotateX(-25deg) rotateY(5deg) rotateZ(5deg) scale(1.06)}
+  80% {transform:translate(-8px,-10px) rotateX(-5deg)  rotateY(40deg) rotateZ(25deg) scale(.97)}
+  100%{transform:translate(0,0) rotateX(-10deg) rotateY(25deg) rotateZ(20deg) scale(1)}
+}
+@keyframes float6{
+  0%  {transform:translate(0,0) rotateX(30deg) rotateY(10deg)  rotateZ(-25deg) scale(1)}
+  30% {transform:translate(-18px,-16px) rotateX(15deg) rotateY(30deg) rotateZ(-10deg) scale(1.04)}
+  70% {transform:translate(10px,-24px)  rotateX(45deg) rotateY(-5deg) rotateZ(-30deg) scale(.96)}
+  100%{transform:translate(0,0) rotateX(30deg) rotateY(10deg)  rotateZ(-25deg) scale(1)}
+}
+@keyframes float7{
+  0%  {transform:translate(0,0)   rotateX(-15deg) rotateY(-35deg) rotateZ(15deg) scale(1)}
+  50% {transform:translate(20px,-30px) rotateX(-30deg) rotateY(-15deg) rotateZ(-5deg) scale(1.05)}
+  100%{transform:translate(0,0)   rotateX(-15deg) rotateY(-35deg) rotateZ(15deg) scale(1)}
+}
+@keyframes driftSlow{
+  0%  {opacity:.55;transform:translateY(0)}
+  50% {opacity:.8;transform:translateY(-30px)}
+  100%{opacity:.55;transform:translateY(0)}
+}
+
+.hero-content{position:relative;z-index:2}
+
+/* Badge pulsante */
+.ch-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  font-family:'DM Sans',sans-serif;
+  font-size:.66rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--mint);
+  background:rgba(168,213,181,.1);
+  border:1px solid rgba(168,213,181,.25);
+  padding:7px 16px;border-radius:40px;margin-bottom:20px
+}
+.ch-badge::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--mint);animation:dotBlink 1.6s ease infinite;flex-shrink:0}
+@keyframes dotBlink{0%,100%{opacity:1}50%{opacity:.15}}
+
+.ch-eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:18px}
+.ch-eyebrow-line{width:28px;height:1px;background:var(--gold);opacity:.7}
+.ch-eyebrow span{font-family:'DM Sans',sans-serif;font-size:.68rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);opacity:.9}
+
+.course-hero h1{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.4rem,6vw,4.2rem);
+  font-weight:700;
+  color:#fff;
+  line-height:1.1;
+  letter-spacing:-.02em;
+  margin-bottom:10px;
+}
+.hero-sub{
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(1rem,2vw,1.35rem);
+  font-weight:300;
+  font-style:italic;
+  color:rgba(255,255,255,.45);
+  margin-bottom:22px;
+  letter-spacing:.02em;
+}
+.hero-desc{
+  font-size:.93rem;
+  color:rgba(255,255,255,.6);
+  line-height:1.85;
+  margin-bottom:32px;
+  font-weight:300;
+  max-width:560px;
+}
+.hero-pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px}
+.hero-pill{
+  display:flex;align-items:center;gap:7px;
+  font-size:.76rem;font-weight:500;
+  color:rgba(255,255,255,.6);
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.1);
+  padding:8px 15px;border-radius:40px;
+  backdrop-filter:blur(4px);
+}
+.hero-pill i{color:var(--mint);font-size:.7rem}
+
+/* Imagen hero botanical */
+.hero-img-wrap{
+  position:relative;
+  border-radius:4px 4px 0 0;
+  overflow:hidden;
+  height:380px;
+  margin-top:48px;
+}
+.hero-img-wrap img{width:100%;height:100%;object-fit:cover;filter:saturate(1.1) brightness(.9)}
+.hero-img-wrap::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(180deg, transparent 30%, var(--deep) 100%);
+}
+
+/* Decorative botanical border */
+.hero-img-border{
+  position:absolute;top:-1px;left:-1px;right:-1px;
+  height:4px;
+  background:linear-gradient(90deg, transparent, var(--gold), var(--mint), var(--gold), transparent);
+  z-index:10;
+  opacity:.7;
+}
+
+/* ─── MAIN CONTENT ─── */
+.course-main{padding:64px 0 80px;background:#fff}
+
+/* Sidebar */
+.course-sidebar{position:sticky;top:80px}
+.enroll-card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:4px;
+  overflow:hidden;
+  box-shadow:0 8px 48px rgba(10,50,25,.1);
+}
+.ec-header{background:var(--forest);padding:26px 28px;position:relative;overflow:hidden}
+.ec-header::before{
+  content:'';position:absolute;top:-40px;right:-40px;
+  width:140px;height:140px;border-radius:50%;
+  background:rgba(168,213,181,.07);
+}
+.ec-price{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:700;color:#fff;line-height:1}
+.ec-price-sub{font-size:.78rem;color:rgba(255,255,255,.45);margin-top:5px}
+.ec-badges{display:flex;gap:6px;flex-wrap:wrap;margin-top:16px}
+.ec-badge{font-size:.6rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--mint);background:rgba(168,213,181,.12);border:1px solid rgba(168,213,181,.25);padding:4px 11px;border-radius:40px}
+.ec-body{padding:24px 28px}
+.ec-detail{display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid var(--border)}
+.ec-detail:last-of-type{border-bottom:none}
+.ec-detail i{width:18px;text-align:center;color:var(--sage);font-size:.88rem;flex-shrink:0}
+.ec-detail span{font-size:.86rem;color:var(--text)}
+.ec-detail strong{font-weight:600}
+.btn-enroll{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  width:100%;background:var(--green);color:#fff;
+  font-family:'DM Sans',sans-serif;
+  font-weight:600;font-size:.88rem;letter-spacing:.08em;text-transform:uppercase;
+  padding:17px;border-radius:2px;text-decoration:none;
+  transition:background .2s,transform .15s;margin-top:22px;
+}
+.btn-enroll:hover{background:var(--forest);color:#fff;transform:translateY(-2px)}
+.btn-wa-enroll{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  width:100%;background:transparent;color:var(--wa);
+  font-weight:600;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;
+  padding:13px;border-radius:2px;border:1px solid var(--wa);
+  text-decoration:none;transition:background .2s,color .2s;margin-top:10px;
+}
+.btn-wa-enroll:hover{background:var(--wa);color:#fff}
+.ec-guarantee{
+  display:flex;align-items:center;gap:10px;margin-top:16px;
+  padding:13px 15px;background:var(--offwhite);border-radius:3px;
+}
+.ec-guarantee i{color:var(--sage);font-size:.95rem;flex-shrink:0}
+.ec-guarantee p{font-size:.77rem;color:var(--muted);line-height:1.5;margin:0}
+
+/* Sections */
+.section-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.section-eyebrow-line{width:28px;height:1px;background:var(--sage);flex-shrink:0}
+.section-eyebrow span{font-family:'DM Sans',sans-serif;font-size:.68rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--sage)}
+.section-title{font-family:'Cormorant Garamond',serif;font-weight:700;font-size:clamp(1.6rem,3.5vw,2.4rem);line-height:1.15;letter-spacing:-.02em}
+
+/* Learn grid */
+.learn-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 28px;margin-top:8px}
+.learn-item{display:flex;align-items:flex-start;gap:10px;font-size:.88rem;color:var(--text);line-height:1.55}
+.learn-item i{color:var(--lime);font-size:.7rem;margin-top:4px;flex-shrink:0}
+
+/* Syllabus */
+.syllabus-item{border:1px solid var(--border);border-radius:4px;margin-bottom:8px;overflow:hidden}
+.syllabus-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;cursor:pointer;background:#fff;transition:background .15s;gap:12px;user-select:none}
+.syllabus-header:hover{background:var(--offwhite)}
+.syllabus-header.open{background:var(--light)}
+.syl-left{display:flex;align-items:center;gap:14px}
+.syl-num{font-family:'Cormorant Garamond',serif;font-size:.95rem;font-weight:700;color:var(--green);flex-shrink:0;width:28px}
+.syl-title{font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:600;color:var(--text)}
+.syl-meta{font-size:.73rem;color:var(--muted);margin-top:2px}
+.syl-arrow{color:var(--green);font-size:.78rem;transition:transform .3s;flex-shrink:0}
+.syllabus-header.open .syl-arrow{transform:rotate(180deg)}
+.syllabus-body{display:none;padding:0 20px 16px 62px}
+.syllabus-body.open{display:block}
+.syllabus-body ul{list-style:none;padding:0;margin:0}
+.syllabus-body ul li{font-size:.84rem;color:var(--muted);padding:6px 0;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+.syllabus-body ul li:last-child{border-bottom:none}
+.syllabus-body ul li::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--mint);flex-shrink:0}
+
+/* Instructor */
+.instructor-card{display:flex;gap:24px;align-items:flex-start;padding:28px;border:1px solid var(--border);border-radius:4px;background:#fff}
+.instructor-avatar{width:80px;height:80px;border-radius:50%;background:var(--light);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Cormorant Garamond',serif;font-size:1.9rem;font-weight:700;color:var(--green);border:1px solid var(--border)}
+.instructor-body h5{font-family:'Cormorant Garamond',serif;font-size:1.2rem;margin-bottom:4px}
+.instructor-body .role{font-size:.78rem;color:var(--green);font-weight:600;letter-spacing:.07em;text-transform:uppercase;margin-bottom:10px}
+.instructor-body p{font-size:.86rem;color:var(--muted);line-height:1.8;margin:0}
+
+/* ═══ PAYMENT ═══ */
+.payment-section{padding:72px 0;background:var(--offwhite)}
+.pay-method{background:#fff;border:1px solid var(--border);border-radius:4px;padding:20px 22px;margin-bottom:12px}
+.pay-method-header{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+.pay-method-icon{width:40px;height:40px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.pay-method-icon.yape{background:#6c2d91;color:#fff}
+.pay-method-icon.plin{background:#00a859;color:#fff}
+.pay-method-icon.transfer{background:var(--forest);color:#fff}
+.pay-method h6{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:600;margin:0}
+.pay-method p{font-size:.84rem;color:var(--muted);margin:0;line-height:1.6}
+.pay-detail{font-size:.87rem;color:var(--text);font-weight:600;background:var(--offwhite);border:1px solid var(--border);border-radius:3px;padding:10px 14px;margin-top:10px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.copy-btn{font-size:.7rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--green);background:var(--light);border:none;padding:5px 12px;border-radius:3px;cursor:pointer;font-family:'DM Sans',sans-serif;transition:background .15s}
+.copy-btn:hover{background:#c5e8d4}
+.copy-btn.copied{color:#fff;background:var(--green)}
+
+/* ═══ INSCRIPCIÓN ═══ */
+.enroll-section{padding:88px 0;background:var(--forest);position:relative;overflow:hidden}
+
+/* Decoración botánica de fondo */
+.enroll-section::before{
+  content:'';position:absolute;top:-100px;right:-100px;
+  width:500px;height:500px;border-radius:50%;
+  background:radial-gradient(circle, rgba(168,213,181,.05) 0%, transparent 70%);
+}
+
+.insc-steps{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:40px}
+.insc-step{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:4px;padding:24px 20px;transition:border-color .3s}
+.insc-step:hover{border-color:rgba(168,213,181,.2)}
+.insc-step-num{width:36px;height:36px;border-radius:50%;background:rgba(168,213,181,.1);border:1px solid rgba(168,213,181,.25);display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.insc-step-num span{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:700;color:var(--mint);line-height:1}
+.insc-step h5{font-family:'Cormorant Garamond',serif;font-size:1rem;color:#fff;margin:0 0 7px;font-weight:600}
+.insc-step p{font-size:.82rem;color:rgba(255,255,255,.4);margin:0;line-height:1.65}
+
+.insc-card{
+  background:rgba(168,213,181,.05);
+  border:1px solid rgba(168,213,181,.18);
+  border-radius:6px;padding:44px 40px;text-align:center;position:relative;z-index:1;
+}
+.insc-card-icon{width:62px;height:62px;border-radius:50%;background:rgba(168,213,181,.1);border:1px solid rgba(168,213,181,.25);display:flex;align-items:center;justify-content:center;margin:0 auto 22px}
+.insc-card-icon i{font-size:1.4rem;color:var(--mint)}
+.insc-card h3{font-family:'Cormorant Garamond',serif;font-size:clamp(1.2rem,2.5vw,1.6rem);color:#fff;margin:0 0 12px;font-weight:600}
+.insc-card p{font-size:.87rem;color:rgba(255,255,255,.4);margin:0 auto 32px;line-height:1.75;max-width:420px}
+
+.btn-gform{
+  display:inline-flex;align-items:center;justify-content:center;gap:12px;
+  background:var(--lime);color:#fff;
+  font-family:'DM Sans',sans-serif;font-weight:600;font-size:.95rem;letter-spacing:.08em;text-transform:uppercase;
+  padding:18px 44px;border-radius:3px;text-decoration:none;
+  transition:background .2s,transform .2s,box-shadow .2s;position:relative;overflow:hidden;
+}
+.btn-gform:hover{background:#4aa34a;color:#fff;transform:translateY(-3px);box-shadow:0 14px 40px rgba(92,184,92,.3)}
+.btn-gform i{font-size:.85rem;transition:transform .2s}
+.btn-gform:hover i{transform:translateX(4px)}
+
+.insc-or{display:flex;align-items:center;gap:14px;margin:26px 0}
+.insc-or-line{flex:1;height:1px;background:rgba(255,255,255,.07)}
+.insc-or span{font-size:.7rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.2)}
+
+.btn-wa-alt{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:transparent;color:var(--wa);font-family:'DM Sans',sans-serif;font-weight:600;font-size:.86rem;letter-spacing:.06em;text-transform:uppercase;padding:14px 32px;border-radius:3px;border:1px solid rgba(37,211,102,.35);text-decoration:none;transition:all .2s;width:100%;max-width:360px}
+.btn-wa-alt:hover{background:rgba(37,211,102,.08);border-color:var(--wa);color:var(--wa);transform:translateY(-2px)}
+
+.insc-notice{display:flex;align-items:flex-start;gap:11px;margin-top:22px;padding:15px 18px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);border-radius:4px;text-align:left}
+.insc-notice i{color:var(--mint);flex-shrink:0;margin-top:1px;font-size:.8rem}
+.insc-notice p{font-size:.77rem;color:rgba(255,255,255,.35);line-height:1.65;margin:0}
+
+/* ─── FOOTER ─── */
+.footer{background:var(--deep);padding:72px 0 0}
+.footer-brand img{height:42px;filter:brightness(0) invert(1);opacity:.75;margin-bottom:20px}
+.footer-desc{font-size:.86rem;color:rgba(255,255,255,.45);line-height:1.8;max-width:280px}
+.footer-heading{font-family:'DM Sans',sans-serif;font-size:.7rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:22px}
+.footer-link{display:block;font-size:.86rem;color:rgba(255,255,255,.55);text-decoration:none;margin-bottom:10px;transition:color .2s}
+.footer-link:hover{color:#fff}
+.footer-cr{display:flex;align-items:flex-start;gap:12px;margin-bottom:12px}
+.footer-cr i{color:var(--mint);margin-top:2px;flex-shrink:0;font-size:.83rem}
+.footer-cr span{font-size:.86rem;color:rgba(255,255,255,.55);line-height:1.5}
+.social-link{width:36px;height:36px;border-radius:3px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.55);display:inline-flex;align-items:center;justify-content:center;font-size:.8rem;text-decoration:none;transition:all .2s;margin-right:6px}
+.social-link:hover{background:var(--sage);border-color:var(--sage);color:#fff}
+.newsletter-row{display:flex;margin-top:6px}
+.newsletter-row input{flex:1;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-right:none;color:#fff;padding:12px 16px;font-size:.84rem;border-radius:3px 0 0 3px;outline:none;font-family:'DM Sans',sans-serif}
+.newsletter-row input::placeholder{color:rgba(255,255,255,.25)}
+.newsletter-row .nl-btn{background:var(--sage);border:none;color:#fff;padding:12px 18px;font-size:.76rem;font-weight:600;font-family:'DM Sans',sans-serif;letter-spacing:.06em;text-transform:uppercase;border-radius:0 3px 3px 0;cursor:pointer;transition:background .2s}
+.newsletter-row .nl-btn:hover{background:var(--green)}
+.footer-divider{border-color:rgba(255,255,255,.07);margin:48px 0 0}
+.footer-bottom{padding:20px 0;font-size:.77rem;color:rgba(255,255,255,.28);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+.footer-bottom a{color:rgba(255,255,255,.28);text-decoration:none;transition:color .2s}
+.footer-bottom a:hover{color:rgba(255,255,255,.65)}
+.footer-bottom-links{display:flex;gap:20px;flex-wrap:wrap}
+.back-top{position:fixed;bottom:28px;right:28px;width:44px;height:44px;background:var(--green);color:#fff;border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:1rem;text-decoration:none;opacity:0;pointer-events:none;transition:opacity .3s,transform .2s;z-index:999}
+.back-top.show{opacity:1;pointer-events:all}
+.back-top:hover{transform:translateY(-3px);color:#fff}
+.wa-float{position:fixed;bottom:84px;right:28px;z-index:998;width:52px;height:52px;background:var(--wa);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.4rem;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,.4);transition:transform .2s}
+.wa-float:hover{transform:scale(1.1);color:#fff}
+
+/* Animaciones de entrada */
+.fade-up{opacity:0;transform:translateY(32px);transition:opacity .65s ease,transform .65s ease}
+.fade-up.visible{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+@media(max-width:992px){
+  .navbar-collapse{background:#fff;border-top:1px solid var(--border);padding:8px 16px 20px}
+  .nav-link{padding:.75rem .5rem!important;font-size:.88rem}
+  .btn-nav-cta{display:none!important}
+  .learn-grid{grid-template-columns:1fr}
+  .instructor-card{flex-direction:column;align-items:center;text-align:center}
+  .course-sidebar{position:static;margin-top:40px}
+  .hero-img-wrap{height:220px;margin-top:32px}
+  .insc-steps{grid-template-columns:1fr}
+  .insc-card{padding:28px 20px}
+  .btn-gform{width:100%}
+  .footer-bottom{flex-direction:column;text-align:center}
+  .footer-bottom-links{justify-content:center}
+  .course-hero{min-height:auto;padding-bottom:0}
+}
+</style>
+</head>
+<body>
+
+<!-- SPINNER -->
+<div id="spinner">
+  <div class="spin-leaf">
+    <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M24 4C24 4 8 12 8 28C8 37.941 15.059 46 24 46C32.941 46 40 37.941 40 28C40 12 24 4 24 4Z" fill="rgba(168,213,181,0.3)" stroke="#a8d5b5" stroke-width="1.5"/>
+      <path d="M24 4C24 4 24 18 24 30" stroke="#5cb85c" stroke-width="1.5" stroke-linecap="round"/>
+    </svg>
+  </div>
+</div>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-inner">
+      <div class="topbar-left">
+        <span><i class="fas fa-map-marker-alt" style="color:var(--mint);margin-right:6px"></i>Perú</span>
+        <div class="tb-div"></div>
+        <a href="mailto:capacitacion@andeanbioconsulting.com"><i class="fas fa-envelope" style="margin-right:5px"></i>info@andeanbioconsulting.com</a>
+      </div>
+      <div class="topbar-right">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <div class="tb-div"></div>
+        <a href="contact.html" style="color:var(--mint);font-weight:600">Contáctanos →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg" id="mainNav">
+  <a href="index.html" class="navbar-brand"><img src="img/Andeanlogo.png" alt="Andean Consulting"></a>
+  <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navCollapse" aria-label="Menú">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navCollapse">
+    <div class="navbar-nav ms-auto p-3 p-lg-0">
+      <a href="index.html" class="nav-item nav-link">Inicio</a>
+      <a href="about.html" class="nav-item nav-link">Nosotros</a>
+      <a href="courses.html" class="nav-item nav-link active">Cursos</a>
+      <div class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Servicios</a>
+        <div class="dropdown-menu">
+          <a href="consultoria.html" class="dropdown-item">Consultoría &amp; Equipos</a>
+          <a href="alumnos.html" class="dropdown-item">Portal Alumnos</a>
+        </div>
+      </div>
+      <a href="contact.html" class="nav-item nav-link">Contacto</a>
+    </div>
+    <a href="#inscripcion" class="btn-nav-cta d-none d-lg-flex">Inscribirme <i class="fas fa-arrow-right" style="font-size:.7rem"></i></a>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════
+     HERO — ESCENA BOTÁNICA 3D
+     ═══════════════════════════════════════════ -->
+<div class="course-hero">
+  <div class="hero-bg-texture"></div>
+  <div class="hero-grid"></div>
+
+  <!-- ELEMENTOS BOTÁNICOS FLOTANTES 3D (SVG puro, sin libs) -->
+  <div class="botanical-scene" aria-hidden="true">
+
+    <!-- HOJA 1 — grande, izq superior -->
+    <div class="leaf-3d" style="left:3%;top:8%;animation:float1 7s ease-in-out infinite;opacity:.55">
+      <svg width="110" height="130" viewBox="0 0 110 130" fill="none">
+        <path d="M55 120 C20 90 5 55 15 20 C25 -5 55 5 75 25 C95 45 105 80 55 120Z"
+              fill="url(#lf1)" stroke="rgba(168,213,181,.4)" stroke-width="1"/>
+        <path d="M55 120 C55 80 50 50 15 20" stroke="rgba(168,213,181,.5)" stroke-width="1" fill="none"/>
+        <path d="M55 85 C40 70 30 60 20 45" stroke="rgba(168,213,181,.25)" stroke-width=".8" fill="none"/>
+        <path d="M55 85 C68 70 78 62 88 50" stroke="rgba(168,213,181,.25)" stroke-width=".8" fill="none"/>
+        <defs>
+          <linearGradient id="lf1" x1="15" y1="20" x2="95" y2="110" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#1a5c32" stop-opacity=".7"/>
+            <stop offset="100%" stop-color="#4a7c59" stop-opacity=".3"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+
+    <!-- HOJA 2 — pequeña, derecha -->
+    <div class="leaf-3d" style="right:5%;top:15%;animation:float2 9s ease-in-out infinite .5s;opacity:.5">
+      <svg width="80" height="100" viewBox="0 0 80 100" fill="none">
+        <path d="M40 92 C10 65 5 35 18 10 C28 -5 55 5 65 28 C75 52 65 78 40 92Z"
+              fill="url(#lf2)" stroke="rgba(168,213,181,.35)" stroke-width="1"/>
+        <path d="M40 92 C38 60 32 38 18 10" stroke="rgba(168,213,181,.45)" stroke-width=".9" fill="none"/>
+        <defs>
+          <linearGradient id="lf2" x1="18" y1="10" x2="70" y2="85" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#4a7c59" stop-opacity=".6"/>
+            <stop offset="100%" stop-color="#1a5c32" stop-opacity=".25"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+
+    <!-- FLOR 3 — centro derecha, corola pentápeta -->
+    <div class="leaf-3d" style="right:12%;top:40%;animation:float3 8s ease-in-out infinite 1s;opacity:.5">
+      <svg width="90" height="90" viewBox="0 0 90 90" fill="none">
+        <!-- Pétalos -->
+        <ellipse cx="45" cy="20" rx="10" ry="18" fill="rgba(201,168,76,.22)" stroke="rgba(201,168,76,.4)" stroke-width=".8" transform="rotate(0,45,45)"/>
+        <ellipse cx="45" cy="20" rx="10" ry="18" fill="rgba(201,168,76,.18)" stroke="rgba(201,168,76,.35)" stroke-width=".8" transform="rotate(72,45,45)"/>
+        <ellipse cx="45" cy="20" rx="10" ry="18" fill="rgba(201,168,76,.2)" stroke="rgba(201,168,76,.35)" stroke-width=".8" transform="rotate(144,45,45)"/>
+        <ellipse cx="45" cy="20" rx="10" ry="18" fill="rgba(201,168,76,.18)" stroke="rgba(201,168,76,.3)" stroke-width=".8" transform="rotate(216,45,45)"/>
+        <ellipse cx="45" cy="20" rx="10" ry="18" fill="rgba(201,168,76,.22)" stroke="rgba(201,168,76,.4)" stroke-width=".8" transform="rotate(288,45,45)"/>
+        <!-- Centro -->
+        <circle cx="45" cy="45" r="10" fill="rgba(201,168,76,.25)" stroke="rgba(201,168,76,.5)" stroke-width="1"/>
+        <circle cx="45" cy="45" r="5" fill="rgba(255,220,100,.2)"/>
+      </svg>
+    </div>
+
+    <!-- HOJA COMPUESTA 4 — abajo izq -->
+    <div class="leaf-3d" style="left:8%;bottom:20%;animation:float4 10s ease-in-out infinite .3s;opacity:.45">
+      <svg width="140" height="80" viewBox="0 0 140 80" fill="none">
+        <!-- Raquis -->
+        <path d="M5 40 C50 38 100 40 135 42" stroke="rgba(168,213,181,.5)" stroke-width="1.2" fill="none"/>
+        <!-- Folíolos alternos -->
+        <path d="M30 38 C22 25 15 18 20 10 C28 5 38 18 30 38Z" fill="rgba(26,92,50,.45)" stroke="rgba(168,213,181,.3)" stroke-width=".7"/>
+        <path d="M50 40 C58 27 65 20 60 12 C52 7 42 20 50 40Z" fill="rgba(26,92,50,.4)" stroke="rgba(168,213,181,.3)" stroke-width=".7"/>
+        <path d="M72 39 C64 26 57 19 62 11 C70 6 80 19 72 39Z" fill="rgba(26,92,50,.45)" stroke="rgba(168,213,181,.3)" stroke-width=".7"/>
+        <path d="M95 40 C103 27 110 20 105 12 C97 7 87 20 95 40Z" fill="rgba(26,92,50,.4)" stroke="rgba(168,213,181,.3)" stroke-width=".7"/>
+        <path d="M30 42 C22 55 15 62 20 70 C28 75 38 62 30 42Z" fill="rgba(74,124,89,.35)" stroke="rgba(168,213,181,.25)" stroke-width=".7"/>
+        <path d="M55 41 C63 54 70 61 65 69 C57 74 47 61 55 41Z" fill="rgba(74,124,89,.32)" stroke="rgba(168,213,181,.25)" stroke-width=".7"/>
+        <path d="M80 40 C72 53 65 60 70 68 C78 73 88 60 80 40Z" fill="rgba(74,124,89,.35)" stroke="rgba(168,213,181,.25)" stroke-width=".7"/>
+        <path d="M105 41 C113 54 120 61 115 69 C107 74 97 61 105 41Z" fill="rgba(74,124,89,.3)" stroke="rgba(168,213,181,.25)" stroke-width=".7"/>
+      </svg>
+    </div>
+
+    <!-- INFLORESCENCIA 5 — superior centro -->
+    <div class="leaf-3d" style="left:42%;top:5%;animation:float5 11s ease-in-out infinite 2s;opacity:.4">
+      <svg width="70" height="100" viewBox="0 0 70 100" fill="none">
+        <!-- Pedúnculo -->
+        <path d="M35 95 C33 75 32 55 35 40" stroke="rgba(168,213,181,.55)" stroke-width="1.2" fill="none"/>
+        <!-- Flores pequeñas -->
+        <circle cx="35" cy="38" r="7" fill="rgba(201,168,76,.2)" stroke="rgba(201,168,76,.45)" stroke-width=".9"/>
+        <circle cx="22" cy="52" r="5.5" fill="rgba(201,168,76,.18)" stroke="rgba(201,168,76,.4)" stroke-width=".8"/>
+        <circle cx="48" cy="50" r="5.5" fill="rgba(201,168,76,.18)" stroke="rgba(201,168,76,.4)" stroke-width=".8"/>
+        <circle cx="18" cy="66" r="4.5" fill="rgba(201,168,76,.15)" stroke="rgba(201,168,76,.35)" stroke-width=".7"/>
+        <circle cx="52" cy="64" r="4.5" fill="rgba(201,168,76,.15)" stroke="rgba(201,168,76,.35)" stroke-width=".7"/>
+        <!-- Pedicelos -->
+        <path d="M35 40 C28 44 22 48 22 52" stroke="rgba(168,213,181,.35)" stroke-width=".8" fill="none"/>
+        <path d="M35 40 C42 44 48 46 48 50" stroke="rgba(168,213,181,.35)" stroke-width=".8" fill="none"/>
+        <path d="M22 52 C20 57 18 61 18 66" stroke="rgba(168,213,181,.3)" stroke-width=".7" fill="none"/>
+        <path d="M48 50 C50 55 52 59 52 64" stroke="rgba(168,213,181,.3)" stroke-width=".7" fill="none"/>
+      </svg>
+    </div>
+
+    <!-- SEMILLA 6 — derecha inferior -->
+    <div class="leaf-3d" style="right:6%;bottom:15%;animation:float6 8.5s ease-in-out infinite 1.5s;opacity:.45">
+      <svg width="60" height="80" viewBox="0 0 60 80" fill="none">
+        <!-- Semilla elíptica con textura -->
+        <ellipse cx="30" cy="42" rx="18" ry="26" fill="rgba(92,184,92,.15)" stroke="rgba(92,184,92,.4)" stroke-width="1"/>
+        <ellipse cx="30" cy="42" rx="10" ry="16" fill="none" stroke="rgba(92,184,92,.2)" stroke-width=".7"/>
+        <path d="M30 18 C28 28 27 35 30 42 C33 35 32 28 30 18Z" stroke="rgba(168,213,181,.5)" stroke-width=".9" fill="none"/>
+        <!-- Hilio -->
+        <ellipse cx="30" cy="16" rx="5" ry="3" fill="rgba(168,213,181,.2)" stroke="rgba(168,213,181,.4)" stroke-width=".8"/>
+      </svg>
+    </div>
+
+    <!-- HOJA 7 — centro izq, grande translúcida -->
+    <div class="leaf-3d" style="left:18%;top:30%;animation:float7 13s ease-in-out infinite .8s;opacity:.3">
+      <svg width="160" height="100" viewBox="0 0 160 100" fill="none">
+        <path d="M10 50 C30 20 80 10 140 18 C120 45 80 55 50 80 C30 65 10 50 10 50Z"
+              fill="rgba(26,92,50,.25)" stroke="rgba(168,213,181,.25)" stroke-width="1"/>
+        <path d="M10 50 C60 48 110 42 140 18" stroke="rgba(168,213,181,.35)" stroke-width="1" fill="none"/>
+        <path d="M30 48 C40 35 55 28 75 22" stroke="rgba(168,213,181,.18)" stroke-width=".7" fill="none"/>
+        <path d="M60 46 C70 33 85 26 105 22" stroke="rgba(168,213,181,.18)" stroke-width=".7" fill="none"/>
+      </svg>
+    </div>
+
+  </div><!-- /botanical-scene -->
+
+  <!-- CONTENIDO DEL HERO -->
+  <div class="container hero-content">
+    <div class="row align-items-end">
+      <div class="col-lg-7" style="padding-top:20px;padding-bottom:0">
+        <div class="ch-eyebrow">
+          <div class="ch-eyebrow-line"></div>
+          <span><a href="courses.html" style="color:var(--gold);text-decoration:none;opacity:.9">Cursos</a> &nbsp;/&nbsp; Botánica · Morfología Vegetal</span>
+        </div>
+        <div class="ch-badge">Inscripciones Abiertas</div>
+        <h1>Láminas Lancaster<br><span style="font-style:italic;font-weight:300;font-size:.72em;color:rgba(255,255,255,.6)">para Botánica</span></h1>
+        <p class="hero-desc">Aprende a interpretar, elaborar y presentar láminas estilo Lancaster aplicadas a la identificación y descripción morfológica de plantas. Una metodología científica visual que eleva la calidad de tus estudios e informes botánicos.</p>
+        <div class="hero-pills">
+          <div class="hero-pill"><i class="fas fa-calendar-alt"></i> Mayo 2026</div>
+          <div class="hero-pill"><i class="fas fa-clock"></i> 18 horas certificadas</div>
+          <div class="hero-pill"><i class="fas fa-globe"></i> 100% Online</div>
+          <div class="hero-pill"><i class="fas fa-certificate"></i> Con Certificado</div>
+          <div class="hero-pill"><i class="fas fa-leaf"></i> Cupos limitados</div>
+        </div>
+        <a href="#inscripcion" class="btn-enroll" style="max-width:320px;margin-bottom:40px;background:var(--sage);border-radius:2px">
+          <i class="fas fa-pen" style="font-size:.78rem"></i> Inscribirme Ahora — S/ 120
+        </a>
+      </div>
+      <div class="col-lg-5">
+        <div class="hero-img-wrap">
+          <div class="hero-img-border"></div>
+          <img src="img/course-botanica.jpg" alt="Láminas Lancaster para Botánica" onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(135deg,#1a5c32,#0d1f14)'">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     CONTENIDO PRINCIPAL
+     ═══════════════════════════════════════════ -->
+<div class="container">
+  <div class="row g-5 course-main">
+    <div class="col-lg-8">
+
+      <!-- ¿Qué aprenderás? -->
+      <div class="mb-5 fade-up">
+        <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span>Contenido</span></div>
+        <h2 class="section-title mb-4">¿Qué aprenderás?</h2>
+        <div class="learn-grid">
+          <div class="learn-item"><i class="fas fa-check-circle"></i>Historia y fundamentos de las láminas Lancaster en botánica</div>
+          <div class="learn-item"><i class="fas fa-check-circle"></i>Morfología vegetal: raíz, tallo, hoja, flor, fruto y semilla</div>
+          <div class="learn-item"><i class="fas fa-check-circle"></i>Estándares de representación y escala científica</div>
+          <div class="learn-item"><i class="fas fa-check-circle"></i>Técnicas de observación y disección botánica</div>
+          <div class="learn-item"><i class="fas fa-check-circle"></i>Uso de microscopio estereoscópico y lupa de campo</div>
+          <div class="learn-item"><i class="fas fa-check-circle"></i>Elaboración de láminas a mano y asistidas por software</div>
+          <div class="learn-item"><i class="fas fa-check-circle"></i>Clave dicotómica y descripción taxonómica</div>
+          <div class="learn-item"><i class="fas fa-check-circle"></i>Aplicación en EIA, estudios de flora e informes técnicos</div>
+        </div>
+      </div>
+
+      <!-- ¿A quién va dirigido? -->
+      <div class="mb-5 fade-up">
+        <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span>Audiencia</span></div>
+        <h2 class="section-title mb-3">¿A quién va dirigido?</h2>
+        <p style="font-size:.92rem;color:var(--muted);line-height:1.85;margin-bottom:16px">Diseñado para quienes trabajan o estudian botánica y quieren comunicar con rigor científico la morfología de las plantas.</p>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div class="learn-item"><i class="fas fa-check-circle"></i>Biólogos, botánicos y estudiantes de ciencias naturales</div>
+          <div class="learn-item"><i class="fas fa-check-circle"></i>Consultores ambientales que elaboran líneas de base de flora</div>
+          <div class="learn-item"><i class="fas fa-check-circle"></i>Docentes de botánica y profesores de ciencias</div>
+          <div class="learn-item"><i class="fas fa-check-circle"></i>Investigadores en herbarios, jardines botánicos y universidades</div>
+        </div>
+      </div>
+
+      <!-- Temario -->
+      <div class="mb-5 fade-up">
+        <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span>Programa</span></div>
+        <h2 class="section-title mb-4">Temario del Curso</h2>
+
+        <div class="syllabus-item">
+          <div class="syllabus-header" onclick="toggleSyl(this)">
+            <div class="syl-left"><span class="syl-num">01</span><div><div class="syl-title">Introducción a las Láminas Lancaster</div><div class="syl-meta">4 temas · Día 1</div></div></div>
+            <i class="fas fa-chevron-down syl-arrow"></i>
+          </div>
+          <div class="syllabus-body"><ul>
+            <li>Historia y contexto: William Lancaster y la ilustración botánica científica</li>
+            <li>Diferencias entre láminas Lancaster, ilustración botánica y diagramas</li>
+            <li>Materiales necesarios: papel vegetal, lápices, microscopios</li>
+            <li>Estándares internacionales de representación taxonómica</li>
+          </ul></div>
+        </div>
+
+        <div class="syllabus-item">
+          <div class="syllabus-header" onclick="toggleSyl(this)">
+            <div class="syl-left"><span class="syl-num">02</span><div><div class="syl-title">Morfología Vegetal Aplicada</div><div class="syl-meta">5 temas · Días 2–3</div></div></div>
+            <i class="fas fa-chevron-down syl-arrow"></i>
+          </div>
+          <div class="syllabus-body"><ul>
+            <li>Órganos vegetativos: raíz, tallo y hoja — terminología y variantes</li>
+            <li>Órganos reproductivos: flor, inflorescencia, fruto y semilla</li>
+            <li>Técnicas de disección: corte transversal, longitudinal y secciones</li>
+            <li>Observación con microscopio estereoscópico: técnica y registro</li>
+            <li>Medición, escala y proporcionalidad en las láminas</li>
+          </ul></div>
+        </div>
+
+        <div class="syllabus-item">
+          <div class="syllabus-header" onclick="toggleSyl(this)">
+            <div class="syl-left"><span class="syl-num">03</span><div><div class="syl-title">Elaboración Manual de Láminas</div><div class="syl-meta">4 temas · Días 3–4</div></div></div>
+            <i class="fas fa-chevron-down syl-arrow"></i>
+          </div>
+          <div class="syllabus-body"><ul>
+            <li>Trazado y boceto: técnica de contorno y detalle de superficies</li>
+            <li>Composición de la lámina: disposición de partes, flechas y rótulos</li>
+            <li>Diagramas florales y fórmulas florales complementarias</li>
+            <li>Ejercicio práctico: lámina completa de una familia vegetal</li>
+          </ul></div>
+        </div>
+
+        <div class="syllabus-item">
+          <div class="syllabus-header" onclick="toggleSyl(this)">
+            <div class="syl-left"><span class="syl-num">04</span><div><div class="syl-title">Láminas Asistidas por Software</div><div class="syl-meta">3 temas · Día 5</div></div></div>
+            <i class="fas fa-chevron-down syl-arrow"></i>
+          </div>
+          <div class="syllabus-body"><ul>
+            <li>Digitalización de bocetos con Inkscape / Adobe Illustrator</li>
+            <li>Vectorización y etiquetado técnico digital</li>
+            <li>Integración de láminas en informes PDF y publicaciones científicas</li>
+          </ul></div>
+        </div>
+
+        <div class="syllabus-item">
+          <div class="syllabus-header" onclick="toggleSyl(this)">
+            <div class="syl-left"><span class="syl-num">05</span><div><div class="syl-title">Aplicación en Estudios Ambientales</div><div class="syl-meta">3 temas · Días 5–6</div></div></div>
+            <i class="fas fa-chevron-down syl-arrow"></i>
+          </div>
+          <div class="syllabus-body"><ul>
+            <li>Uso de láminas Lancaster en EIA: líneas de base de flora</li>
+            <li>Claves dicotómicas con soporte ilustrado</li>
+            <li>Proyecto final: lámina Lancaster completa de especie nativa peruana</li>
+          </ul></div>
+        </div>
+      </div>
+
+      <!-- Instructor -->
+      <div class="mb-5 fade-up">
+        <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span>Docente</span></div>
+        <h2 class="section-title mb-4">Tu Instructor</h2>
+        <div class="instructor-card">
+          <div class="instructor-avatar">JM</div>
+          <div class="instructor-body">
+            <h5>Jack Malon Rodriguez Pumaccajia</h5>
+            <div class="role">Biólogo · Especialista en Botánica y SIG</div>
+            <p>Biólogo con más de 3 años de experiencia en la formulación de Estudios de Impacto Ambiental y Líneas de Base Biológicas para proyectos en el Perú. Especialista en identificación taxonómica de flora nativa y elaboración de materiales científico-ilustrativos. Actualmente cursa la Maestría en Ciencias Biológicas en la Universidade Federal do Rio de Janeiro (UFRJ), Brasil.</p>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /col-lg-8 -->
+
+    <!-- SIDEBAR -->
+    <div class="col-lg-4">
+      <div class="course-sidebar fade-up d2">
+        <div class="enroll-card">
+          <div class="ec-header">
+            <div class="ec-price">S/ 120</div>
+            <div class="ec-price-sub">Pago único · Incluye certificado</div>
+            <div class="ec-badges">
+              <span class="ec-badge">18 Horas</span>
+              <span class="ec-badge">Certificado</span>
+              <span class="ec-badge">Online</span>
+            </div>
+          </div>
+          <div class="ec-body">
+            <div class="ec-detail"><i class="fas fa-calendar-alt"></i><span><strong>Inicio:</strong> Mayo 2026</span></div>
+            <div class="ec-detail"><i class="fas fa-clock"></i><span><strong>Duración:</strong> 18 horas</span></div>
+            <div class="ec-detail"><i class="fas fa-globe"></i><span><strong>Modalidad:</strong> 100% Online</span></div>
+            <div class="ec-detail"><i class="fas fa-users"></i><span><strong>Cupos:</strong> Limitados</span></div>
+            <div class="ec-detail"><i class="fas fa-certificate"></i><span><strong>Certificado:</strong> Incluido</span></div>
+            <div class="ec-detail"><i class="fas fa-leaf"></i><span><strong>Nivel:</strong> Básico – Intermedio</span></div>
+            <a href="#inscripcion" class="btn-enroll">Inscribirme Ahora <i class="fas fa-arrow-right" style="font-size:.72rem"></i></a>
+            <a href="https://wa.me/51969392189?text=Hola%2C%20me%20interesa%20el%20curso%20de%20L%C3%A1minas%20Lancaster%20para%20Bot%C3%A1nica." target="_blank" rel="noopener" class="btn-wa-enroll"><i class="fab fa-whatsapp"></i> Consultar por WhatsApp</a>
+            <div class="ec-guarantee">
+              <i class="fas fa-shield-alt"></i>
+              <p>Confirmación por correo en menos de 24 horas hábiles.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /row -->
+</div><!-- /container -->
+
+
+<!-- ═══ PAGO ═══ -->
+<div class="payment-section" id="pago">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="text-center mb-5 fade-up">
+          <div class="section-eyebrow justify-content-center"><div class="section-eyebrow-line"></div><span>Pago</span></div>
+          <h2 class="section-title">¿Cómo pagar?</h2>
+          <p style="font-size:.9rem;color:var(--muted);margin-top:10px">Realiza tu pago y luego completa el formulario de inscripción con tu comprobante.</p>
+        </div>
+        <div class="pay-method fade-up d1">
+          <div class="pay-method-header"><div class="pay-method-icon yape"><i class="fas fa-mobile-alt"></i></div><h6>Yape</h6></div>
+          <p>Envía S/ 120 al siguiente número mediante Yape:</p>
+          <div class="pay-detail">
+            <span>📱 &nbsp;<strong>947 735 404</strong> — Rolando Chaparrea Cardenas</span>
+            <button class="copy-btn" onclick="copyTxt('947735404',this)">Copiar</button>
+          </div>
+        </div>
+        <div class="pay-method fade-up d2">
+          <div class="pay-method-header"><div class="pay-method-icon plin"><i class="fas fa-mobile-alt"></i></div><h6>Plin</h6></div>
+          <p>Envía S/ 120 al siguiente número mediante Plin (Interbank):</p>
+          <div class="pay-detail">
+            <span>📱 &nbsp;<strong>969 392 189</strong> — Jack Malon Rodriguez</span>
+            <button class="copy-btn" onclick="copyTxt('969392189',this)">Copiar</button>
+          </div>
+        </div>
+        <div class="pay-method fade-up d3">
+          <div class="pay-method-header"><div class="pay-method-icon transfer"><i class="fas fa-university"></i></div><h6>Transferencia Bancaria — Interbank</h6></div>
+          <p>A nombre de Jack Malon Rodriguez Pumaccajia:</p>
+          <div class="pay-detail" style="flex-direction:column;align-items:flex-start;gap:8px">
+            <div style="display:flex;justify-content:space-between;width:100%;flex-wrap:wrap;gap:6px">
+              <span>🏦 &nbsp;Cuenta Soles: <strong>426 3133451950</strong></span>
+              <button class="copy-btn" onclick="copyTxt('42631334 51950',this)">Copiar</button>
+            </div>
+            <div style="display:flex;justify-content:space-between;width:100%;flex-wrap:wrap;gap:6px">
+              <span>🔗 &nbsp;CCI: <strong>003 426 013133451950 44</strong></span>
+              <button class="copy-btn" onclick="copyTxt('00342601313345195044',this)">Copiar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ INSCRIPCIÓN ═══ -->
+<div class="enroll-section" id="inscripcion">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-7">
+        <div class="text-center mb-5 fade-up">
+          <div class="section-eyebrow justify-content-center">
+            <div class="section-eyebrow-line" style="background:var(--mint)"></div>
+            <span style="color:var(--mint)">Inscripción</span>
+            <div class="section-eyebrow-line" style="background:var(--mint)"></div>
+          </div>
+          <h2 class="section-title" style="color:#fff">¿Listo para inscribirte?</h2>
+          <p style="font-size:.88rem;color:rgba(255,255,255,.42);margin-top:10px;line-height:1.85">Sigue estos dos pasos para asegurar tu cupo. Es rápido y sencillo.</p>
+        </div>
+        <div class="insc-steps fade-up d1">
+          <div class="insc-step">
+            <div class="insc-step-num"><span>1</span></div>
+            <h5>Realiza tu pago</h5>
+            <p>Envía S/ 120 por Yape, Plin o transferencia usando los datos de la sección anterior.</p>
+          </div>
+          <div class="insc-step">
+            <div class="insc-step-num"><span>2</span></div>
+            <h5>Completa el formulario</h5>
+            <p>Llena tus datos y adjunta la foto o PDF de tu comprobante en el formulario de Google.</p>
+          </div>
+        </div>
+        <div class="insc-card fade-up d2">
+          <div class="insc-card-icon"><i class="fas fa-pen-alt"></i></div>
+          <h3>Completar inscripción y subir comprobante</h3>
+          <p>Se abrirá el formulario de Google en una nueva pestaña donde podrás ingresar tus datos y adjuntar tu comprobante de pago.</p>
+          <a href="https://forms.gle/2QzpyeSFtM3V1Tfv8" target="_blank" rel="noopener" class="btn-gform">
+            <i class="fas fa-arrow-right"></i> Ir al formulario de inscripción
+          </a>
+          <div class="insc-or">
+            <div class="insc-or-line"></div><span>o si prefieres</span><div class="insc-or-line"></div>
+          </div>
+          <a href="https://wa.me/51969392189?text=Hola%2C%20quiero%20inscribirme%20al%20curso%20de%20L%C3%A1minas%20Lancaster.%20Ya%20realic%C3%A9%20mi%20pago%20y%20adjunto%20mi%20comprobante." target="_blank" rel="noopener" class="btn-wa-alt">
+            <i class="fab fa-whatsapp"></i> Enviar comprobante por WhatsApp
+          </a>
+          <div class="insc-notice">
+            <i class="fas fa-info-circle"></i>
+            <p>Al hacer clic serás redirigido a <strong style="color:rgba(255,255,255,.55)">Google Formularios</strong>, plataforma segura donde podrás adjuntar tu comprobante. También puedes enviarnos tu comprobante y datos directamente por WhatsApp al <strong style="color:rgba(255,255,255,.55)">+51 969 392 189</strong>. Te confirmaremos en menos de 24 horas hábiles.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="footer">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-3 col-md-6">
+        <div class="footer-brand"><img src="img/Andeanlogo.png" alt="Andean Consulting"></div>
+        <p class="footer-desc">Empresa peruana especializada en consultoría ambiental y formación especializada.</p>
+        <div style="margin-top:24px">
+          <a class="social-link" href="#"><i class="fab fa-facebook-f"></i></a>
+          <a class="social-link" href="#"><i class="fab fa-instagram"></i></a>
+          <a class="social-link" href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-6">
+        <div class="footer-heading">Navegación</div>
+        <a class="footer-link" href="index.html">Inicio</a>
+        <a class="footer-link" href="about.html">Nosotros</a>
+        <a class="footer-link" href="courses.html">Cursos</a>
+        <a class="footer-link" href="contact.html">Contacto</a>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="footer-heading">Contacto</div>
+        <div class="footer-cr"><i class="fas fa-map-marker-alt"></i><span>Perú</span></div>
+        <div class="footer-cr"><i class="fas fa-phone-alt"></i><span>+51 969 392 189</span></div>
+        <div class="footer-cr"><i class="fas fa-envelope"></i><span>capacitacion@andeanbioconsulting.com</span></div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="footer-heading">Boletín Informativo</div>
+        <p style="font-size:.84rem;color:rgba(255,255,255,.4);margin-bottom:18px;line-height:1.75">Suscríbete para recibir noticias sobre nuevos cursos.</p>
+        <div class="newsletter-row">
+          <input type="email" id="nlEmail" placeholder="Tu correo electrónico">
+          <button class="nl-btn" onclick="sendNewsletter()">Suscribir</button>
+        </div>
+        <p id="nlOk" style="display:none;font-size:.77rem;color:var(--mint);margin-top:8px">✓ ¡Suscrito! Gracias.</p>
+      </div>
+    </div>
+    <hr class="footer-divider">
+    <div class="footer-bottom">
+      <span>&copy; 2025 Andean Consulting &amp; Environmental Solutions S.A.C.</span>
+      <div class="footer-bottom-links"><a href="#">Política de Privacidad</a><a href="#">Cookies</a><a href="#">FAQ</a></div>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/51969392189?text=Hola%2C%20me%20interesa%20el%20curso%20de%20L%C3%A1minas%20Lancaster%20para%20Bot%C3%A1nica." target="_blank" rel="noopener" class="wa-float"><i class="fab fa-whatsapp"></i></a>
+<a href="#" class="back-top" id="backTop"><i class="bi bi-arrow-up"></i></a>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// Spinner
+window.addEventListener('load', function() {
+  var s = document.getElementById('spinner');
+  s.classList.add('hide');
+  setTimeout(function(){ s.remove(); }, 700);
+});
+
+// Navbar scroll
+var mainNav = document.getElementById('mainNav');
+window.addEventListener('scroll', function() {
+  mainNav.classList.toggle('scrolled', window.scrollY > 20);
+}, {passive:true});
+
+// Fade up observer
+var fo = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) { e.target.classList.add('visible'); fo.unobserve(e.target); }
+  });
+}, {threshold:0.08, rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.fade-up').forEach(function(el){ fo.observe(el); });
+
+// Back to top
+var bt = document.getElementById('backTop');
+window.addEventListener('scroll', function(){ bt.classList.toggle('show', window.scrollY > 300); }, {passive:true});
+bt.addEventListener('click', function(e){ e.preventDefault(); window.scrollTo({top:0, behavior:'smooth'}); });
+
+// Syllabus toggle
+function toggleSyl(header) {
+  var body = header.nextElementSibling;
+  var isOpen = header.classList.contains('open');
+  document.querySelectorAll('.syllabus-header.open').forEach(function(h){
+    h.classList.remove('open'); h.nextElementSibling.classList.remove('open');
+  });
+  if (!isOpen) { header.classList.add('open'); body.classList.add('open'); }
+}
+
+// Copy
+function copyTxt(text, btn) {
+  var orig = btn.textContent;
+  function done() { btn.textContent='¡Copiado!'; btn.classList.add('copied'); setTimeout(function(){ btn.textContent=orig; btn.classList.remove('copied'); }, 2000); }
+  if (navigator.clipboard) { navigator.clipboard.writeText(text).then(done).catch(done); }
+  else {
+    var ta = document.createElement('textarea'); ta.value=text;
+    ta.style.cssText='position:fixed;opacity:0'; document.body.appendChild(ta);
+    ta.select(); document.execCommand('copy'); document.body.removeChild(ta); done();
+  }
+}
+
+// Newsletter
+function sendNewsletter() {
+  var input = document.getElementById('nlEmail');
+  var email = input.value.trim();
+  if (!email || !/\S+@\S+\.\S+/.test(email)) {
+    input.style.borderColor='rgba(255,80,80,.5)'; input.focus();
+    setTimeout(function(){ input.style.borderColor=''; }, 2000); return;
+  }
+  input.value='';
+  document.getElementById('nlOk').style.display='block';
+  setTimeout(function(){ document.getElementById('nlOk').style.display='none'; }, 4000);
+}
+
+// Parallax suave en elementos botánicos con mouse
+(function(){
+  var scene = document.querySelector('.botanical-scene');
+  if(!scene) return;
+  document.addEventListener('mousemove', function(e){
+    var x = (e.clientX / window.innerWidth - .5) * 12;
+    var y = (e.clientY / window.innerHeight - .5) * 8;
+    scene.style.transform = 'translate('+(x*.6)+'px,'+(y*.4)+'px)';
+  }, {passive:true});
+})();
+</script>
+</body>
+</html>
