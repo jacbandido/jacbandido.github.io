@@ -252,19 +252,21 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
   position:relative;
   overflow:hidden;
   background:linear-gradient(145deg,#0e2b1c 0%,#0a1f14 100%);
-  min-height:180px;
+  min-height:220px;
   display:flex;
   flex-direction:column;
   justify-content:flex-end;
+  background-size:cover;
+  background-position:center;
 }
 .course-card-header::before{
   content:'';
   position:absolute;
-  top:-40px;right:-40px;
-  width:180px;height:180px;
-  border-radius:50%;
-  background:radial-gradient(circle,rgba(0,176,96,.2) 0%,transparent 70%);
+  inset:0;
+  background:linear-gradient(to top, rgba(5,18,10,.92) 0%, rgba(5,18,10,.55) 60%, rgba(5,18,10,.3) 100%);
+  z-index:0;
 }
+.cch-number,.cch-badge,.cch-soon,.cch-title{position:relative;z-index:1}
 .cch-number{
   position:absolute;
   top:20px;right:28px;
@@ -296,9 +298,9 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
   margin:0;
 }
 
-/* INACTIVE header */
-.course-card.inactive .course-card-header{
-  background:linear-gradient(145deg,#2a3d30 0%,#1e2e25 100%);
+/* INACTIVE card */
+.course-card.inactive .course-card-header::before{
+  background:linear-gradient(to top, rgba(5,14,8,.94) 0%, rgba(5,14,8,.65) 60%, rgba(5,14,8,.45) 100%);
 }
 .cch-soon{
   display:inline-flex;align-items:center;gap:6px;
@@ -730,7 +732,7 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
       <!-- CURSO 1 — ArcGIS ACTIVO -->
       <div class="col-lg-4 col-md-6 fade-up d1">
         <div class="course-card">
-          <div class="course-card-header">
+          <div class="course-card-header" style="background-image:url('img/course-1.jpg')">
             <div class="cch-number">01</div>
             <div class="cch-badge"><span class="dot"></span> Activo · 2025</div>
             <h4 class="cch-title">ArcGIS Básico</h4>
@@ -757,7 +759,7 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
       <!-- CURSO 2 — Láminas botánicas -->
       <div class="col-lg-4 col-md-6 fade-up d2">
         <div class="course-card inactive">
-          <div class="course-card-header">
+          <div class="course-card-header" style="background-image:url('img/course-2.jpg')">
             <div class="cch-number">02</div>
             <div class="cch-soon"><i class="fas fa-clock" style="font-size:.6rem"></i> Próximamente</div>
             <h4 class="cch-title">Láminas Botánicas · Estilo Lankester</h4>
@@ -782,7 +784,7 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
       <!-- CURSO 3 — Fauna silvestre -->
       <div class="col-lg-4 col-md-6 fade-up d3">
         <div class="course-card inactive">
-          <div class="course-card-header">
+          <div class="course-card-header" style="background-image:url('img/course-3.jpg')">
             <div class="cch-number">03</div>
             <div class="cch-soon"><i class="fas fa-clock" style="font-size:.6rem"></i> Próximamente</div>
             <h4 class="cch-title">Fauna Silvestre en Cautiverio</h4>
