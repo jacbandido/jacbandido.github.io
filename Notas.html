@@ -25,20 +25,17 @@
   --light-green:#e4f2eb;
   --wa:#25D366;
   --gold:#c8a96e;
-  --radius:14px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'Outfit',sans-serif;color:var(--text);background:#f4f7f5;overflow-x:hidden}
 h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600}
 
-/* ── SPINNER ── */
 #spinner{position:fixed;inset:0;background:#fff;display:flex;align-items:center;justify-content:center;z-index:9999;transition:opacity .5s}
 #spinner.hide{opacity:0;pointer-events:none}
 .spin-ring{width:44px;height:44px;border:2px solid var(--light-green);border-top-color:var(--green);border-radius:50%;animation:spin .9s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* ── TOPBAR ── */
 .topbar{background:var(--forest);color:rgba(255,255,255,.6);font-size:.75rem;letter-spacing:.06em;padding:8px 0}
 .topbar a{color:rgba(255,255,255,.55);text-decoration:none;transition:color .2s}
 .topbar a:hover{color:#fff}
@@ -47,7 +44,6 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600}
 .topbar-right{display:flex;gap:16px;align-items:center}
 .tb-div{width:1px;height:12px;background:rgba(255,255,255,.15)}
 
-/* ── NAVBAR ── */
 .navbar{background:#fff;border-bottom:1px solid var(--border);padding:0;position:sticky;top:0;z-index:1000;transition:box-shadow .3s}
 .navbar.scrolled{box-shadow:0 2px 24px rgba(10,31,20,.1)}
 .navbar-brand{padding:14px 24px}
@@ -61,23 +57,21 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600}
 .dropdown-menu{border:1px solid var(--border);border-radius:8px;box-shadow:0 12px 40px rgba(0,0,0,.1);padding:8px 0;margin-top:-1px}
 .dropdown-item{font-family:'Outfit',sans-serif;font-size:.82rem;letter-spacing:.04em;padding:10px 20px;color:var(--text);font-weight:500;text-transform:uppercase;transition:background .15s,color .15s}
 .dropdown-item:hover{background:var(--light-green);color:var(--green)}
-.btn-nav-cta{background:var(--green);color:#fff!important;font-weight:700;font-size:.88rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none!important;padding:18px 40px!important;margin:8px 20px;border-radius:3px;display:inline-flex;align-items:center;gap:10px;position:relative;overflow:hidden;transition:background .2s,transform .15s;white-space:nowrap;line-height:1}
+.btn-nav-cta{background:var(--green);color:#fff!important;font-weight:700;font-size:.88rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none!important;padding:18px 40px!important;margin:8px 20px;border-radius:3px;display:inline-flex;align-items:center;gap:10px;transition:background .2s,transform .15s;white-space:nowrap;line-height:1}
 .btn-nav-cta:hover{background:var(--forest)!important;transform:translateY(-1px)}
 
-/* ── HERO ── */
+/* HERO */
 .hero{
   background:var(--forest);
-  padding:72px 0 0;
-  position:relative;
-  overflow:hidden;
+  padding:72px 0 56px;
+  position:relative;overflow:hidden;
 }
 .hero::before{
   content:'';position:absolute;inset:0;
   background:
-    radial-gradient(ellipse 55% 70% at 95% 10%, rgba(0,176,96,.13) 0%,transparent 65%),
-    radial-gradient(ellipse 35% 50% at 5% 95%, rgba(0,106,57,.18) 0%,transparent 60%);
+    radial-gradient(ellipse 55% 70% at 95% 10%,rgba(0,176,96,.13) 0%,transparent 65%),
+    radial-gradient(ellipse 35% 50% at 5% 95%,rgba(0,106,57,.18) 0%,transparent 60%);
 }
-/* floating dots */
 .hero-dots{position:absolute;inset:0;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='30' cy='30' r='1.5' fill='%23fff'/%3E%3Ccircle cx='0' cy='0' r='1' fill='%23fff'/%3E%3Ccircle cx='60' cy='0' r='1' fill='%23fff'/%3E%3Ccircle cx='0' cy='60' r='1' fill='%23fff'/%3E%3Ccircle cx='60' cy='60' r='1' fill='%23fff'/%3E%3C/svg%3E")}
 .hero-leaf{position:absolute;border-radius:50% 5% 50% 5%;opacity:.06;animation:floatLeaf 9s ease-in-out infinite}
 .hero-leaf:nth-child(1){width:200px;height:320px;background:var(--lime);top:-50px;right:6%;animation-delay:0s;transform:rotate(22deg)}
@@ -90,236 +84,180 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600}
 .eyebrow span{font-size:.67rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--lime)}
 .hero-title{font-family:'Fraunces',serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:600;color:#fff;line-height:1.1;letter-spacing:-.03em;margin-bottom:14px}
 .hero-title em{font-style:italic;color:var(--lime)}
-.hero-sub{font-size:.9rem;color:rgba(255,255,255,.5);line-height:1.7;max-width:500px;margin-bottom:32px}
+.hero-sub{font-size:.9rem;color:rgba(255,255,255,.5);line-height:1.7;max-width:520px}
 .breadcrumb-item a{color:rgba(255,255,255,.45);text-decoration:none;font-size:.8rem}
 .breadcrumb-item.active{color:rgba(255,255,255,.75);font-size:.8rem}
 .breadcrumb-item+.breadcrumb-item::before{color:rgba(255,255,255,.2)}
 
-/* hero bottom strip */
-.hero-strip{
-  display:flex;gap:0;
-  border-top:1px solid rgba(255,255,255,.08);
-  margin-top:48px;
-}
-.hs-item{
-  flex:1;padding:20px 0;text-align:center;
-  border-right:1px solid rgba(255,255,255,.08);
-}
-.hs-item:last-child{border-right:none}
-.hs-num{font-family:'Fraunces',serif;font-size:1.7rem;font-weight:600;color:#fff;line-height:1}
-.hs-num span{color:var(--lime)}
-.hs-label{font-size:.67rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:4px}
-
-/* ── SEARCH ZONE ── */
-.search-zone{padding:64px 0 80px}
+/* SEARCH ZONE */
+.search-zone{padding:56px 0 80px}
 
 .search-card{
-  background:#fff;
-  border:1px solid var(--border);
-  border-radius:20px;
-  padding:44px;
+  background:#fff;border:1px solid var(--border);
+  border-radius:20px;padding:44px;
   box-shadow:0 20px 70px rgba(0,40,20,.07);
-  position:relative;
-  overflow:hidden;
 }
-.search-card::before{
-  content:'';position:absolute;
-  top:-60px;right:-60px;
-  width:200px;height:200px;border-radius:50%;
-  background:radial-gradient(circle,rgba(0,176,96,.06) 0%,transparent 70%);
-  pointer-events:none;
-}
-
 .search-label{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:10px}
 
-.search-row{display:flex;gap:0;position:relative}
+.search-row{display:flex}
 .search-input{
-  flex:1;
-  background:#f8faf8;
-  border:2px solid var(--border);
-  border-right:none;
+  flex:1;background:#f8faf8;
+  border:2px solid var(--border);border-right:none;
   border-radius:12px 0 0 12px;
   padding:16px 22px;
-  font-family:'Outfit',sans-serif;
-  font-size:.95rem;color:var(--text);
-  outline:none;
-  transition:border-color .25s,background .25s,box-shadow .25s;
+  font-family:'Outfit',sans-serif;font-size:.95rem;color:var(--text);
+  outline:none;transition:border-color .25s,background .25s,box-shadow .25s;
 }
 .search-input:focus{border-color:var(--green);background:#fff;box-shadow:0 0 0 3px rgba(0,106,57,.08)}
 .search-input::placeholder{color:#b8c8c0}
 .btn-search{
   background:linear-gradient(135deg,var(--green) 0%,#009050 100%);
   border:none;color:#fff;
-  padding:16px 30px;
+  padding:16px 28px;
   font-size:.82rem;font-weight:700;
   font-family:'Outfit',sans-serif;
   letter-spacing:.07em;text-transform:uppercase;
   border-radius:0 12px 12px 0;
   cursor:pointer;transition:all .2s;
-  display:flex;align-items:center;gap:10px;
-  white-space:nowrap;
+  display:flex;align-items:center;gap:8px;white-space:nowrap;
 }
-.btn-search:hover{background:linear-gradient(135deg,#008045 0%,var(--forest) 100%);transform:translateX(2px)}
-.btn-search .btn-icon{transition:transform .2s}
-.btn-search:hover .btn-icon{transform:translateX(3px)}
-
+.btn-search:hover{background:linear-gradient(135deg,#008045 0%,var(--forest) 100%)}
 .search-hint{display:flex;align-items:center;gap:8px;font-size:.77rem;color:var(--muted);margin-top:10px}
 .search-hint i{color:var(--lime);font-size:.72rem}
 
-/* live indicator */
-.live-badge{
-  display:inline-flex;align-items:center;gap:8px;
-  background:rgba(0,176,96,.08);border:1px solid rgba(0,176,96,.2);
-  padding:6px 14px;border-radius:20px;
-  font-size:.72rem;font-weight:600;color:var(--green);
-  letter-spacing:.05em;
-  margin-bottom:24px;
-}
-.live-dot{width:7px;height:7px;border-radius:50%;background:var(--lime);animation:pulse 2s ease-in-out infinite;flex-shrink:0}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
-
-/* ── RESULT AREA ── */
-#resultArea{margin-top:32px}
-
-/* loading skeleton */
-.skeleton-wrap{display:flex;flex-direction:column;gap:12px}
-.skel{background:linear-gradient(90deg,#eef2ef 25%,#e4ede7 50%,#eef2ef 75%);background-size:200% 100%;border-radius:8px;animation:shimmer 1.4s infinite}
+/* SKELETON */
+.skeleton-wrap{display:flex;flex-direction:column;gap:12px;margin-top:28px}
+.skel{background:linear-gradient(90deg,#eef2ef 25%,#e4ede7 50%,#eef2ef 75%);background-size:200% 100%;border-radius:10px;animation:shimmer 1.3s infinite}
 @keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
 
-/* result card */
+/* RESULT CARD */
 .result-card{
   border:1px solid var(--border);
-  border-radius:var(--radius);
-  overflow:hidden;
-  animation:cardIn .45s cubic-bezier(.22,.68,0,1.2) both;
+  border-radius:16px;overflow:hidden;
+  margin-top:28px;
+  animation:cardIn .5s cubic-bezier(.22,.68,0,1.15) both;
 }
-@keyframes cardIn{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:none}}
+@keyframes cardIn{from{opacity:0;transform:translateY(18px) scale(.98)}to{opacity:1;transform:none}}
 
-/* card header */
 .rc-head{
   background:linear-gradient(135deg,var(--forest) 0%,#0e2b1c 100%);
-  padding:24px 28px;
-  display:flex;align-items:center;gap:18px;
+  padding:28px 32px;
+  display:flex;align-items:center;gap:20px;
   position:relative;overflow:hidden;
 }
 .rc-head::after{
-  content:'';position:absolute;
-  top:-40px;right:-40px;
-  width:130px;height:130px;border-radius:50%;
-  background:rgba(0,176,96,.08);
+  content:'';position:absolute;top:-50px;right:-50px;
+  width:160px;height:160px;border-radius:50%;
+  background:rgba(0,176,96,.07);pointer-events:none;
 }
 .rc-avatar{
-  width:54px;height:54px;border-radius:14px;
+  width:56px;height:56px;border-radius:14px;
   background:rgba(0,176,96,.18);
   border:2px solid rgba(0,176,96,.3);
   display:flex;align-items:center;justify-content:center;
-  color:var(--lime);font-size:1.4rem;
-  flex-shrink:0;
-  position:relative;z-index:1;
+  color:var(--lime);font-size:1.4rem;flex-shrink:0;position:relative;z-index:1;
 }
-.rc-name{font-family:'Fraunces',serif;font-size:1.1rem;color:#fff;margin:0 0 4px;position:relative;z-index:1}
-.rc-meta{display:flex;gap:10px;flex-wrap:wrap;position:relative;z-index:1}
-.rc-pill{
+.rc-info{flex:1;position:relative;z-index:1}
+.rc-name{font-family:'Fraunces',serif;font-size:1.15rem;color:#fff;margin:0 0 8px}
+.rc-pills{display:flex;gap:8px;flex-wrap:wrap}
+.pill{
   display:inline-flex;align-items:center;gap:5px;
-  font-size:.68rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;
+  font-size:.67rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;
   padding:4px 10px;border-radius:20px;
 }
-.rc-pill.curso{background:rgba(0,176,96,.15);color:var(--lime);border:1px solid rgba(0,176,96,.2)}
-.rc-pill.codigo{background:rgba(255,255,255,.07);color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.1)}
+.pill-curso{background:rgba(0,176,96,.15);color:var(--lime);border:1px solid rgba(0,176,96,.2)}
+.pill-cod{background:rgba(255,255,255,.07);color:rgba(255,255,255,.45);border:1px solid rgba(255,255,255,.1)}
 
-/* nota big display */
-.rc-nota-wrap{
-  margin-left:auto;
-  text-align:center;
-  flex-shrink:0;
-  position:relative;z-index:1;
-}
-.nota-ring{
-  position:relative;
-  width:72px;height:72px;
-  display:flex;align-items:center;justify-content:center;
-}
-.nota-ring svg{position:absolute;inset:0;transform:rotate(-90deg)}
-.nota-ring-bg{fill:none;stroke:rgba(255,255,255,.08);stroke-width:4}
-.nota-ring-fill{fill:none;stroke-width:4;stroke-linecap:round;transition:stroke-dashoffset 1s ease}
-.nota-num{
-  font-family:'Fraunces',serif;font-size:1.5rem;font-weight:700;
-  color:#fff;line-height:1;
-  position:relative;z-index:1;
-}
-.nota-denom{font-size:.62rem;color:rgba(255,255,255,.35);letter-spacing:.05em}
-.nota-label-ring{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:4px}
+/* NOTA RING */
+.nota-ring-wrap{flex-shrink:0;text-align:center;position:relative;z-index:1}
+.nota-ring{position:relative;width:76px;height:76px;display:flex;align-items:center;justify-content:center}
+.nota-ring svg{position:absolute;inset:0}
+.ring-bg{fill:none;stroke:rgba(255,255,255,.08);stroke-width:5}
+.ring-fill{fill:none;stroke-width:5;stroke-linecap:round;transition:stroke-dashoffset 1.1s cubic-bezier(.4,0,.2,1)}
+.nota-inner{position:absolute;text-align:center}
+.nota-big{font-family:'Fraunces',serif;font-size:1.6rem;font-weight:700;color:#fff;line-height:1}
+.nota-small{font-size:.6rem;color:rgba(255,255,255,.35);letter-spacing:.05em}
+.nota-ring-label{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-top:5px}
 
-/* card body */
-.rc-body{padding:28px}
-.rc-row{display:flex;align-items:center;gap:16px;padding:14px 0;border-bottom:1px solid var(--border)}
-.rc-row:last-child{border-bottom:none}
-.rc-row-icon{
-  width:36px;height:36px;border-radius:9px;
+/* BODY ROWS */
+.rc-body{padding:0 32px 28px;background:#fff}
+
+.info-row{
+  display:flex;align-items:center;gap:16px;
+  padding:16px 0;border-bottom:1px solid var(--border);
+}
+.info-row:last-of-type{border-bottom:none}
+.info-icon{
+  width:38px;height:38px;border-radius:10px;
   display:flex;align-items:center;justify-content:center;
   font-size:.85rem;flex-shrink:0;
 }
-.rc-row-icon.green{background:rgba(0,176,96,.1);color:var(--lime)}
-.rc-row-icon.gold{background:rgba(200,169,110,.12);color:var(--gold)}
-.rc-row-icon.blue{background:rgba(100,150,220,.1);color:#82aaff}
-.rc-row-label{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
-.rc-row-value{font-size:.92rem;font-weight:600;color:var(--forest)}
-.nota-bar-wrap{flex:1;margin-left:12px}
-.nota-bar-track{height:7px;background:#eef2ef;border-radius:4px;overflow:hidden}
-.nota-bar-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--green),var(--lime));transition:width 1s ease}
-.nota-bar-pct{font-size:.72rem;font-weight:700;color:var(--green);margin-top:4px;text-align:right}
+.ic-green{background:rgba(0,176,96,.1);color:var(--lime)}
+.ic-gold{background:rgba(200,169,110,.12);color:var(--gold)}
+.ic-blue{background:rgba(100,150,220,.1);color:#82aaff}
+.info-lbl{font-size:.68rem;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+.info-val{font-size:.93rem;font-weight:600;color:var(--forest)}
 
-/* certificado button */
+/* BARRA NOTA */
+.bar-side{flex:1;margin-left:8px}
+.bar-track{height:7px;background:#eef2ef;border-radius:4px;overflow:hidden}
+.bar-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--green),var(--lime));width:0;transition:width 1s ease}
+.bar-pct{font-size:.72rem;font-weight:700;color:var(--green);margin-top:4px;text-align:right}
+
+/* MENTION */
+.mention{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:.7rem;font-weight:700;letter-spacing:.05em;
+  text-transform:uppercase;padding:4px 10px;border-radius:20px;margin-left:8px;
+}
+.m-sob{background:#d4edda;color:#1a6e35}
+.m-bue{background:#d1ecf1;color:#0c5460}
+.m-apr{background:#fff3cd;color:#856404}
+.m-des{background:#f8d7da;color:#842029}
+
+/* CERT BUTTON */
 .btn-cert{
   display:inline-flex;align-items:center;gap:10px;
   background:linear-gradient(135deg,var(--green),#009050);
   color:#fff;font-size:.8rem;font-weight:700;
   letter-spacing:.07em;text-transform:uppercase;
   padding:13px 24px;border-radius:10px;
-  text-decoration:none;
-  transition:all .25s;
-  margin-top:20px;
-  border:none;cursor:pointer;
+  text-decoration:none;margin-top:24px;
+  transition:all .25s;border:none;cursor:pointer;
 }
-.btn-cert:hover{background:linear-gradient(135deg,#009050,var(--forest));color:#fff;transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,106,57,.25)}
+.btn-cert:hover{background:linear-gradient(135deg,#008045,var(--forest));color:#fff;transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,106,57,.25)}
+.cert-pending{
+  display:flex;align-items:center;gap:10px;
+  margin-top:20px;padding:14px 18px;
+  background:var(--offwhite);border:1px solid var(--border);
+  border-radius:10px;font-size:.82rem;color:var(--muted);
+}
 
-/* mention grade  */
-.mention{
-  display:inline-flex;align-items:center;gap:6px;
-  font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
-  padding:5px 12px;border-radius:20px;
+/* NOT FOUND / ERROR */
+.msg-box{
+  text-align:center;padding:44px 24px;margin-top:28px;
+  border:1px dashed var(--border);border-radius:16px;background:#fff;
+  animation:cardIn .45s ease both;
 }
-.mention.sobresaliente{background:#d4edda;color:#1a6e35}
-.mention.bueno{background:#d1ecf1;color:#0c5460}
-.mention.aprobado{background:#fff3cd;color:#856404}
-.mention.desaprobado{background:#f8d7da;color:#842029}
-
-/* not found */
-.not-found{
-  text-align:center;padding:48px 24px;
-  border:1px dashed var(--border);
-  border-radius:var(--radius);background:#fff;
-}
-.not-found-icon{
-  width:64px;height:64px;border-radius:16px;
+.msg-icon{
+  width:60px;height:60px;border-radius:14px;
   background:var(--offwhite);border:1px solid var(--border);
   display:flex;align-items:center;justify-content:center;
-  font-size:1.6rem;color:#c0cfca;
-  margin:0 auto 20px;
+  font-size:1.5rem;color:#bccac3;margin:0 auto 16px;
 }
-.not-found h5{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--forest);margin-bottom:10px}
-.not-found p{font-size:.86rem;color:var(--muted);line-height:1.7}
+.msg-box h5{font-family:'Fraunces',serif;font-size:1.05rem;color:var(--forest);margin-bottom:8px}
+.msg-box p{font-size:.86rem;color:var(--muted);line-height:1.7;margin:0}
 
-/* error */
-.fetch-error{
+.err-box{
   display:flex;gap:14px;align-items:flex-start;
   background:#fff8f8;border:1px solid #f5c6cb;
-  border-radius:var(--radius);padding:20px 24px;
+  border-radius:14px;padding:20px 24px;margin-top:28px;
+  animation:cardIn .45s ease both;
 }
-.fetch-error i{color:#dc3545;font-size:1.1rem;margin-top:2px;flex-shrink:0}
-.fetch-error p{font-size:.86rem;color:#6c1c24;margin:0;line-height:1.65}
+.err-box i{color:#dc3545;font-size:1.1rem;margin-top:2px;flex-shrink:0}
+.err-box p{font-size:.86rem;color:#6c1c24;margin:0;line-height:1.65}
 
-/* callout */
+/* CALLOUT */
 .callout{
   display:flex;gap:12px;align-items:flex-start;
   background:var(--light-green);border:1px solid rgba(0,106,57,.15);
@@ -327,9 +265,8 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600}
 }
 .callout i{color:var(--green);margin-top:2px;flex-shrink:0}
 .callout p{font-size:.82rem;color:var(--muted);margin:0;line-height:1.65}
-.callout strong{color:var(--text)}
 
-/* ── FOOTER ── */
+/* FOOTER */
 .footer{background:var(--forest);padding:72px 0 0}
 .footer-brand img{height:42px;filter:brightness(0) invert(1);opacity:.85;margin-bottom:20px}
 .footer-desc{font-size:.87rem;color:rgba(255,255,255,.5);line-height:1.75;max-width:300px}
@@ -366,10 +303,8 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600}
   .search-row{flex-direction:column}
   .search-input{border-right:2px solid var(--border);border-radius:12px 12px 0 0;border-bottom:none}
   .btn-search{border-radius:0 0 12px 12px;width:100%;justify-content:center}
-  .hero-strip{flex-wrap:wrap}
-  .hs-item{flex:1 1 50%;border-bottom:1px solid rgba(255,255,255,.08)}
-  .rc-head{flex-wrap:wrap}
-  .rc-nota-wrap{margin-left:0}
+  .rc-head{flex-wrap:wrap;gap:14px}
+  .rc-body{padding:0 20px 24px}
   .footer-bottom{flex-direction:column;text-align:center}
   .footer-bottom-links{justify-content:center}
 }
@@ -386,7 +321,7 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600}
       <div class="topbar-left">
         <span><i class="fas fa-map-marker-alt" style="color:var(--lime);margin-right:6px"></i>Perú</span>
         <div class="tb-div"></div>
-        <a href="mailto:capacitacion@andeanbioconsulting.com"><i class="fas fa-envelope" style="margin-right:5px"></i>info@andeanbioconsulting.com</a>
+        <a href="mailto:info@andeanbioconsulting.com"><i class="fas fa-envelope" style="margin-right:5px"></i>info@andeanbioconsulting.com</a>
       </div>
       <div class="topbar-right">
         <a href="#"><i class="fab fa-facebook-f"></i></a>
@@ -437,37 +372,18 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600}
       <i class="fas fa-arrow-left"></i> Volver al Portal Alumnos
     </a>
     <div class="eyebrow">
-      <i class="fas fa-chart-bar" style="color:var(--lime);font-size:.7rem"></i>
+      <i class="fas fa-award" style="color:var(--lime);font-size:.7rem"></i>
       <span>Portal Alumnos · Registro Oficial</span>
     </div>
     <h1 class="hero-title">Consulta tu <em>nota</em><br>y certificado</h1>
-    <p class="hero-sub">Ingresa tu nombre para ver tu calificación final y descargar tu certificado de aprobación. Los datos se actualizan en tiempo real desde nuestro registro.</p>
-    <nav aria-label="breadcrumb">
+    <p class="hero-sub">Ingresa tu nombre para ver tu calificación final. Los datos se actualizan en tiempo real desde nuestro registro oficial.</p>
+    <nav aria-label="breadcrumb" style="margin-top:28px">
       <ol class="breadcrumb mb-0">
         <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
         <li class="breadcrumb-item"><a href="alumnos.html">Portal Alumnos</a></li>
         <li class="breadcrumb-item active">Consultar Notas</li>
       </ol>
     </nav>
-
-    <div class="hero-strip">
-      <div class="hs-item">
-        <div class="hs-num" id="statAlumnos">—</div>
-        <div class="hs-label">Alumnos registrados</div>
-      </div>
-      <div class="hs-item">
-        <div class="hs-num"><span>19</span>/20</div>
-        <div class="hs-label">Nota promedio actual</div>
-      </div>
-      <div class="hs-item">
-        <div class="hs-num"><span>100</span>%</div>
-        <div class="hs-label">Tasa de aprobación</div>
-      </div>
-      <div class="hs-item">
-        <div class="hs-num">24<span>/7</span></div>
-        <div class="hs-label">Acceso al registro</div>
-      </div>
-    </div>
   </div>
 </div>
 
@@ -475,43 +391,35 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600}
 <div class="search-zone">
   <div class="container">
     <div class="row justify-content-center">
-      <div class="col-lg-8">
-
-        <div class="live-badge">
-          <div class="live-dot"></div>
-          Datos en vivo · Google Sheets oficial
-        </div>
+      <div class="col-lg-7">
 
         <div class="search-card">
           <label class="search-label" for="inputNombre">
             <i class="fas fa-user" style="color:var(--lime);margin-right:6px"></i>
-            Busca por tu nombre completo
+            Tu nombre completo
           </label>
           <div class="search-row">
             <input
-              class="search-input"
-              type="text"
-              id="inputNombre"
+              class="search-input" type="text" id="inputNombre"
               placeholder="Ej: Juan Carlos Pérez Mamani"
               autocomplete="name"
             >
             <button class="btn-search" onclick="buscar()">
               <i class="fas fa-search"></i>
               <span>Buscar</span>
-              <i class="fas fa-arrow-right btn-icon" style="font-size:.72rem"></i>
             </button>
           </div>
           <div class="search-hint">
             <i class="fas fa-info-circle"></i>
-            <span>Escribe como mínimo 3 letras. Si no apareces, <a href="contact.html" style="color:var(--green);font-weight:600;text-decoration:none">contáctanos</a>.</span>
+            <span>Escribe al menos 3 letras de tu nombre. Si no apareces, <a href="contact.html" style="color:var(--green);font-weight:600;text-decoration:none">contáctanos</a>.</span>
           </div>
 
           <div id="resultArea"></div>
         </div>
 
-        <div class="callout" style="margin-top:20px">
+        <div class="callout">
           <i class="fas fa-sync-alt"></i>
-          <p><strong>Actualización automática:</strong> cada vez que el instructor registra una nota en el sistema, aparece aquí al instante. No necesitas recargar la página entre búsquedas.</p>
+          <p><strong>Datos en tiempo real:</strong> el registro se actualiza automáticamente cada vez que el instructor carga una nota. No necesitas recargar la página.</p>
         </div>
 
       </div>
@@ -572,250 +480,202 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600}
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-// ─────────────────────────────────────────────────────────────
-//  CONFIGURACIÓN
-//  Reemplaza SHEET_ID con el ID de tu Google Sheets si cambia.
-//  La hoja debe estar publicada en la web como CSV:
-//  Archivo → Compartir → Publicar en la web → CSV
-// ─────────────────────────────────────────────────────────────
+// ──────────────────────────────────────────────────────────────
+//  CONFIGURACIÓN — Google Sheets vía JSON (sin CORS)
+//  Tu hoja NO necesita estar "publicada en la web".
+//  Solo debe ser pública (compartida como "cualquier persona con el enlace puede ver").
+// ──────────────────────────────────────────────────────────────
 const SHEET_ID  = '1Ido1TXV56rSpWPDe2mNizNlPnLmtnBfKXYU4gNWRzec';
-const SHEET_GID = '0'; // si tienes varias pestañas, cambia el gid
-const CSV_URL   = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/pub?gid=${SHEET_GID}&single=true&output=csv`;
+const SHEET_GID = '0';
 
-// ─── utilidades ───────────────────────────────────────────────
-const norm = s => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,' ').trim();
+// URL que devuelve JSON directamente desde Google Visualization API (sin CORS)
+const JSON_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&gid=${SHEET_GID}`;
 
-function parseCSV(text){
-  const lines = text.trim().split('\n');
-  const headers = lines[0].split(',').map(h => h.replace(/"/g,'').trim().toUpperCase());
-  return lines.slice(1).map(line => {
-    // maneja comas dentro de comillas
-    const cols = [];
-    let cur='', inQ=false;
-    for(const ch of line){
-      if(ch==='"'){ inQ=!inQ; continue; }
-      if(ch===',' && !inQ){ cols.push(cur.trim()); cur=''; continue; }
-      cur+=ch;
-    }
-    cols.push(cur.trim());
-    const obj={};
-    headers.forEach((h,i)=>{ obj[h]=cols[i]||''; });
-    return obj;
-  }).filter(r=>r['NOMBRE'] && r['NOMBRE'].trim());
-}
+// ── helpers ───────────────────────────────────────────────────
+const norm = s => (s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,' ').trim();
 
 function getMention(n){
-  if(n>=18) return {cls:'sobresaliente', txt:'Sobresaliente'};
-  if(n>=15) return {cls:'bueno', txt:'Bueno'};
-  if(n>=11) return {cls:'aprobado', txt:'Aprobado'};
-  return {cls:'desaprobado', txt:'Desaprobado'};
+  if(n>=18) return {cls:'m-sob',txt:'Sobresaliente'};
+  if(n>=15) return {cls:'m-bue',txt:'Bueno'};
+  if(n>=11) return {cls:'m-apr',txt:'Aprobado'};
+  return {cls:'m-des',txt:'Desaprobado'};
 }
-
 function getRingColor(n){
   if(n>=18) return '#00b060';
   if(n>=15) return '#4eade0';
   if(n>=11) return '#f0ad4e';
   return '#e74c3c';
 }
-
 function buildRing(nota, max=20){
-  const r=30, circ=2*Math.PI*r, pct=nota/max, dash=pct*circ;
+  const r=32, circ=+(2*Math.PI*r).toFixed(2);
+  const fill=+((nota/max)*circ).toFixed(2);
   const color=getRingColor(nota);
-  return `
-    <svg viewBox="0 0 72 72" width="72" height="72">
-      <circle class="nota-ring-bg" cx="36" cy="36" r="${r}"/>
-      <circle class="nota-ring-fill"
-        cx="36" cy="36" r="${r}"
-        stroke="${color}"
-        stroke-dasharray="${circ}"
-        stroke-dashoffset="${circ - dash}"
-        style="transform-origin:center;transform:rotate(-90deg)"
-      />
-    </svg>
-  `;
+  return `<svg viewBox="0 0 80 80" width="76" height="76" style="position:absolute;inset:0;transform:rotate(-90deg)">
+    <circle class="ring-bg" cx="40" cy="40" r="${r}"/>
+    <circle class="ring-fill" cx="40" cy="40" r="${r}"
+      stroke="${color}"
+      stroke-dasharray="${circ}"
+      stroke-dashoffset="${circ - fill}"
+    />
+  </svg>`;
 }
 
-// animación del número
-function animateNum(el, target, duration=900){
-  const start=performance.now();
-  const from=0;
-  (function step(now){
-    const p=Math.min((now-start)/duration,1);
-    const ease=1-Math.pow(1-p,3);
-    el.textContent=Math.round(from+(target-from)*ease);
-    if(p<1) requestAnimationFrame(step);
-  })(start);
+// ── fetch con caché 60s ───────────────────────────────────────
+let cache=null, cacheT=0;
+
+async function fetchData(){
+  if(cache && Date.now()-cacheT < 60000) return cache;
+  const res = await fetch(JSON_URL);
+  if(!res.ok) throw new Error(`HTTP ${res.status}`);
+  const text = await res.text();
+  // Google devuelve /*O_o*/\ngoogle.visualization.Query.setResponse({...});
+  const json = JSON.parse(text.match(/google\.visualization\.Query\.setResponse\(([\s\S]*)\)/)[1]);
+  const cols = json.table.cols.map(c => c.label.trim().toUpperCase());
+  const rows = (json.table.rows||[]).map(r =>
+    Object.fromEntries(cols.map((c,i) => [c, r.c[i]?.v ?? '']))
+  ).filter(r => (r['NOMBRE']||'').toString().trim());
+  cache = rows;
+  cacheT = Date.now();
+  return rows;
 }
 
-// ─── fetch & caché ────────────────────────────────────────────
-let cache=null, cacheTime=0;
-const CACHE_MS=60_000; // 1 minuto de caché
-
-async function fetchAlumnos(){
-  const now=Date.now();
-  if(cache && (now-cacheTime)<CACHE_MS) return cache;
-  const res=await fetch(CSV_URL+'&cachebust='+now);
-  if(!res.ok) throw new Error('No se pudo conectar con el registro.');
-  const text=await res.text();
-  cache=parseCSV(text);
-  cacheTime=now;
-  // actualizar stat
-  const el=document.getElementById('statAlumnos');
-  if(el) animateNum(el, cache.length);
-  return cache;
-}
-
-// precarga al abrir la página
-fetchAlumnos().catch(()=>{});
-
-// ─── render skeleton ──────────────────────────────────────────
-function showSkeleton(){
-  document.getElementById('resultArea').innerHTML=`
-    <div class="skeleton-wrap" style="margin-top:24px">
-      <div class="skel" style="height:110px"></div>
-      <div class="skel" style="height:60px"></div>
-      <div class="skel" style="height:60px"></div>
-    </div>`;
-}
-
-// ─── render resultado ─────────────────────────────────────────
-function renderResult(a){
-  const nota=parseInt(a['NOTA'])||0;
-  const pct=Math.round((nota/20)*100);
-  const {cls,txt}=getMention(nota);
-  const ring=buildRing(nota);
-  const certCol=a['CERTIFICADO']||'';
-  const hasCert = certCol && certCol.toLowerCase().startsWith('http');
+// ── render ────────────────────────────────────────────────────
+function renderCard(a){
+  const nota  = parseFloat(a['NOTA'])||0;
+  const pct   = Math.round((nota/20)*100);
+  const {cls, txt} = getMention(nota);
+  const cert  = (a['CERTIFICADO']||'').toString().trim();
+  const hasCert = cert.toLowerCase().startsWith('http');
 
   return `
-  <div class="result-card" style="margin-top:24px">
+  <div class="result-card">
     <div class="rc-head">
       <div class="rc-avatar"><i class="fas fa-user-graduate"></i></div>
-      <div>
-        <p class="rc-name">${a['NOMBRE']}</p>
-        <div class="rc-meta">
-          <span class="rc-pill curso"><i class="fas fa-map" style="font-size:.55rem"></i> ${a['CURSO']||'—'}</span>
-          <span class="rc-pill codigo"><i class="fas fa-barcode" style="font-size:.55rem"></i> ${a['CODIGO']||'—'}</span>
+      <div class="rc-info">
+        <p class="rc-name">${(a['NOMBRE']||'').toString().trim()}</p>
+        <div class="rc-pills">
+          <span class="pill pill-curso"><i class="fas fa-map" style="font-size:.55rem"></i> ${(a['CURSO']||'—').toString()}</span>
+          <span class="pill pill-cod"><i class="fas fa-barcode" style="font-size:.55rem"></i> ${(a['CODIGO']||'—').toString()}</span>
         </div>
       </div>
-      <div class="rc-nota-wrap">
+      <div class="nota-ring-wrap">
         <div class="nota-ring">
-          ${ring}
-          <div style="position:absolute;text-align:center">
-            <div class="nota-num">${nota}</div>
-            <div class="nota-denom">/20</div>
+          ${buildRing(nota)}
+          <div class="nota-inner">
+            <div class="nota-big">${nota}</div>
+            <div class="nota-small">/20</div>
           </div>
         </div>
-        <div class="nota-label-ring">Nota final</div>
+        <div class="nota-ring-label">Nota final</div>
       </div>
     </div>
 
     <div class="rc-body">
-
-      <div class="rc-row">
-        <div class="rc-row-icon green"><i class="fas fa-star"></i></div>
+      <div class="info-row">
+        <div class="info-icon ic-green"><i class="fas fa-star"></i></div>
         <div>
-          <div class="rc-row-label">Calificación</div>
-          <div class="rc-row-value" style="display:flex;align-items:center;gap:10px">
+          <div class="info-lbl">Calificación</div>
+          <div class="info-val">
             ${nota} / 20
             <span class="mention ${cls}">${txt}</span>
           </div>
         </div>
-        <div class="nota-bar-wrap">
-          <div class="nota-bar-track">
-            <div class="nota-bar-fill" style="width:${pct}%"></div>
-          </div>
-          <div class="nota-bar-pct">${pct}%</div>
+        <div class="bar-side">
+          <div class="bar-track"><div class="bar-fill" data-pct="${pct}"></div></div>
+          <div class="bar-pct">${pct}%</div>
         </div>
       </div>
 
-      <div class="rc-row">
-        <div class="rc-row-icon gold"><i class="fas fa-book-open"></i></div>
+      <div class="info-row">
+        <div class="info-icon ic-gold"><i class="fas fa-book-open"></i></div>
         <div>
-          <div class="rc-row-label">Curso</div>
-          <div class="rc-row-value">${a['CURSO']||'—'}</div>
+          <div class="info-lbl">Curso</div>
+          <div class="info-val">${(a['CURSO']||'—').toString()}</div>
         </div>
       </div>
 
-      <div class="rc-row">
-        <div class="rc-row-icon blue"><i class="fas fa-id-card"></i></div>
+      <div class="info-row">
+        <div class="info-icon ic-blue"><i class="fas fa-id-card"></i></div>
         <div>
-          <div class="rc-row-label">Código de registro</div>
-          <div class="rc-row-value" style="font-family:monospace;letter-spacing:.05em">${a['CODIGO']||'—'}</div>
+          <div class="info-lbl">Código de registro</div>
+          <div class="info-val" style="font-family:monospace;letter-spacing:.04em">${(a['CODIGO']||'—').toString()}</div>
         </div>
       </div>
 
       ${hasCert
-        ? `<a href="${certCol}" target="_blank" rel="noopener" class="btn-cert">
+        ? `<a href="${cert}" target="_blank" rel="noopener" class="btn-cert">
              <i class="fas fa-award"></i>
              <span>Descargar Certificado</span>
              <i class="fas fa-external-link-alt" style="font-size:.65rem;opacity:.7"></i>
            </a>`
-        : `<div style="display:flex;align-items:center;gap:10px;margin-top:20px;padding:14px 18px;background:var(--offwhite);border:1px solid var(--border);border-radius:10px">
+        : `<div class="cert-pending">
              <i class="fas fa-clock" style="color:var(--muted)"></i>
-             <p style="font-size:.82rem;color:var(--muted);margin:0">El certificado está en proceso de emisión. Vuelve en unos días.</p>
+             <span>El certificado está en proceso de emisión. Vuelve en unos días.</span>
            </div>`
       }
     </div>
   </div>`;
 }
 
-// ─── BUSCAR ───────────────────────────────────────────────────
+// ── buscar ────────────────────────────────────────────────────
 async function buscar(){
-  const q = norm(document.getElementById('inputNombre').value);
+  const q   = norm(document.getElementById('inputNombre').value);
   const area = document.getElementById('resultArea');
 
   if(q.length < 3){
-    area.innerHTML=`<div class="not-found" style="margin-top:24px">
-      <div class="not-found-icon"><i class="fas fa-keyboard"></i></div>
+    area.innerHTML=`<div class="msg-box">
+      <div class="msg-icon"><i class="fas fa-keyboard"></i></div>
       <h5>Escribe tu nombre</h5>
       <p>Necesitamos al menos 3 caracteres para buscarte en el registro.</p>
     </div>`;
     return;
   }
 
-  showSkeleton();
+  // skeleton
+  area.innerHTML=`<div class="skeleton-wrap">
+    <div class="skel" style="height:120px"></div>
+    <div class="skel" style="height:56px"></div>
+    <div class="skel" style="height:56px"></div>
+  </div>`;
 
-  try{
-    const alumnos=await fetchAlumnos();
-    const found=alumnos.filter(a => norm(a['NOMBRE']).includes(q));
+  try {
+    const rows  = await fetchData();
+    const found = rows.filter(r => norm((r['NOMBRE']||'').toString()).includes(q));
 
     if(!found.length){
-      area.innerHTML=`<div class="not-found" style="margin-top:24px">
-        <div class="not-found-icon"><i class="fas fa-user-slash"></i></div>
-        <h5>No encontramos resultados</h5>
-        <p>No hay coincidencias para <strong>"${document.getElementById('inputNombre').value}"</strong>.<br>
+      area.innerHTML=`<div class="msg-box">
+        <div class="msg-icon"><i class="fas fa-user-slash"></i></div>
+        <h5>Sin resultados</h5>
+        <p>No encontramos a <strong>"${document.getElementById('inputNombre').value}"</strong> en el registro.<br>
         Prueba con otra parte de tu nombre o <a href="contact.html" style="color:var(--green);font-weight:600">contáctanos</a>.</p>
       </div>`;
       return;
     }
 
-    area.innerHTML = found.map(renderResult).join('');
+    area.innerHTML = found.map(renderCard).join('');
 
-    // animar barras después de renderizar
+    // animar barras
     setTimeout(()=>{
-      area.querySelectorAll('.nota-bar-fill').forEach(el=>{
-        const w=el.style.width; el.style.width='0';
-        setTimeout(()=>el.style.width=w, 50);
+      area.querySelectorAll('.bar-fill').forEach(el=>{
+        el.style.width = (el.dataset.pct||0)+'%';
       });
-    }, 50);
+    }, 80);
 
   } catch(err){
-    area.innerHTML=`<div class="fetch-error" style="margin-top:24px">
+    area.innerHTML=`<div class="err-box">
       <i class="fas fa-exclamation-triangle"></i>
-      <p><strong>Error al conectar con el registro.</strong><br>
-      Verifica tu conexión a internet o <a href="contact.html" style="color:#842029;font-weight:600">contáctanos</a>.<br>
-      <small style="opacity:.7">${err.message}</small></p>
+      <p><strong>No se pudo conectar con el registro.</strong><br>
+      Revisa tu conexión a internet o <a href="contact.html" style="color:#842029;font-weight:600">escríbenos</a> y lo consultamos por ti.<br>
+      <small style="opacity:.6">${err.message}</small></p>
     </div>`;
   }
 }
 
-// Enter key
-document.getElementById('inputNombre').addEventListener('keydown', e=>{
-  if(e.key==='Enter') buscar();
+document.getElementById('inputNombre').addEventListener('keydown', e => {
+  if(e.key === 'Enter') buscar();
 });
 
-// ─── UI misc ──────────────────────────────────────────────────
+// misc
 window.addEventListener('load',()=>{
   const s=document.getElementById('spinner');
   s.classList.add('hide');
