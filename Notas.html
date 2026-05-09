@@ -4,10 +4,8 @@
 <meta charset="utf-8">
 <title>Consultar Notas – Andean Consulting & Environmental Solutions S.A.C.</title>
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
-
 <link rel="icon" type="image/x-icon" href="img/favicon.ico">
 <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,300;1,9..144,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -27,19 +25,20 @@
   --light-green:#e4f2eb;
   --wa:#25D366;
   --gold:#c8a96e;
+  --radius:14px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'Outfit',sans-serif;font-weight:400;color:var(--text);background:#fff;overflow-x:hidden}
-h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
+body{font-family:'Outfit',sans-serif;color:var(--text);background:#f4f7f5;overflow-x:hidden}
+h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600}
 
-/* SPINNER */
+/* ── SPINNER ── */
 #spinner{position:fixed;inset:0;background:#fff;display:flex;align-items:center;justify-content:center;z-index:9999;transition:opacity .5s}
 #spinner.hide{opacity:0;pointer-events:none}
 .spin-ring{width:44px;height:44px;border:2px solid var(--light-green);border-top-color:var(--green);border-radius:50%;animation:spin .9s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 
-/* TOPBAR */
+/* ── TOPBAR ── */
 .topbar{background:var(--forest);color:rgba(255,255,255,.6);font-size:.75rem;letter-spacing:.06em;padding:8px 0}
 .topbar a{color:rgba(255,255,255,.55);text-decoration:none;transition:color .2s}
 .topbar a:hover{color:#fff}
@@ -48,7 +47,7 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
 .topbar-right{display:flex;gap:16px;align-items:center}
 .tb-div{width:1px;height:12px;background:rgba(255,255,255,.15)}
 
-/* NAVBAR */
+/* ── NAVBAR ── */
 .navbar{background:#fff;border-bottom:1px solid var(--border);padding:0;position:sticky;top:0;z-index:1000;transition:box-shadow .3s}
 .navbar.scrolled{box-shadow:0 2px 24px rgba(10,31,20,.1)}
 .navbar-brand{padding:14px 24px}
@@ -63,122 +62,274 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
 .dropdown-item{font-family:'Outfit',sans-serif;font-size:.82rem;letter-spacing:.04em;padding:10px 20px;color:var(--text);font-weight:500;text-transform:uppercase;transition:background .15s,color .15s}
 .dropdown-item:hover{background:var(--light-green);color:var(--green)}
 .btn-nav-cta{background:var(--green);color:#fff!important;font-weight:700;font-size:.88rem;letter-spacing:.1em;text-transform:uppercase;text-decoration:none!important;padding:18px 40px!important;margin:8px 20px;border-radius:3px;display:inline-flex;align-items:center;gap:10px;position:relative;overflow:hidden;transition:background .2s,transform .15s;white-space:nowrap;line-height:1}
-.btn-nav-cta:hover{background:var(--forest)!important;color:#fff!important;transform:translateY(-1px)}
+.btn-nav-cta:hover{background:var(--forest)!important;transform:translateY(-1px)}
 
-/* HERO */
-.notas-hero{
+/* ── HERO ── */
+.hero{
   background:var(--forest);
-  padding:80px 0 60px;
+  padding:72px 0 0;
   position:relative;
   overflow:hidden;
 }
-.notas-hero::before{
-  content:'';
-  position:absolute;inset:0;
-  background:radial-gradient(ellipse 60% 70% at 90% 20%, rgba(0,176,96,.1) 0%, transparent 65%);
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 55% 70% at 95% 10%, rgba(0,176,96,.13) 0%,transparent 65%),
+    radial-gradient(ellipse 35% 50% at 5% 95%, rgba(0,106,57,.18) 0%,transparent 60%);
 }
-.hero-eyebrow{display:inline-flex;align-items:center;gap:10px;background:rgba(0,176,96,.15);border:1px solid rgba(0,176,96,.25);padding:6px 16px;border-radius:40px;margin-bottom:24px}
-.hero-eyebrow span{font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--lime)}
-.hero-title{font-family:'Fraunces',serif;font-size:clamp(2rem,5vw,3.4rem);font-weight:600;color:#fff;line-height:1.1;letter-spacing:-.03em;margin-bottom:16px}
+/* floating dots */
+.hero-dots{position:absolute;inset:0;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='30' cy='30' r='1.5' fill='%23fff'/%3E%3Ccircle cx='0' cy='0' r='1' fill='%23fff'/%3E%3Ccircle cx='60' cy='0' r='1' fill='%23fff'/%3E%3Ccircle cx='0' cy='60' r='1' fill='%23fff'/%3E%3Ccircle cx='60' cy='60' r='1' fill='%23fff'/%3E%3C/svg%3E")}
+.hero-leaf{position:absolute;border-radius:50% 5% 50% 5%;opacity:.06;animation:floatLeaf 9s ease-in-out infinite}
+.hero-leaf:nth-child(1){width:200px;height:320px;background:var(--lime);top:-50px;right:6%;animation-delay:0s;transform:rotate(22deg)}
+.hero-leaf:nth-child(2){width:110px;height:180px;background:var(--green);bottom:20px;right:20%;animation-delay:4s;transform:rotate(-12deg)}
+@keyframes floatLeaf{0%,100%{transform:translateY(0) rotate(22deg)}50%{transform:translateY(-16px) rotate(25deg)}}
+
+.back-link{display:inline-flex;align-items:center;gap:8px;color:rgba(255,255,255,.5);font-size:.8rem;font-weight:500;text-decoration:none;transition:color .2s;margin-bottom:28px}
+.back-link:hover{color:var(--lime)}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;background:rgba(0,176,96,.15);border:1px solid rgba(0,176,96,.25);padding:6px 16px;border-radius:40px;margin-bottom:22px}
+.eyebrow span{font-size:.67rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--lime)}
+.hero-title{font-family:'Fraunces',serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:600;color:#fff;line-height:1.1;letter-spacing:-.03em;margin-bottom:14px}
 .hero-title em{font-style:italic;color:var(--lime)}
-.hero-sub{font-size:.95rem;color:rgba(255,255,255,.55);line-height:1.7;max-width:480px}
-.breadcrumb-item a{color:rgba(255,255,255,.5);text-decoration:none;font-size:.82rem;font-weight:500}
-.breadcrumb-item.active{color:rgba(255,255,255,.8);font-size:.82rem}
+.hero-sub{font-size:.9rem;color:rgba(255,255,255,.5);line-height:1.7;max-width:500px;margin-bottom:32px}
+.breadcrumb-item a{color:rgba(255,255,255,.45);text-decoration:none;font-size:.8rem}
+.breadcrumb-item.active{color:rgba(255,255,255,.75);font-size:.8rem}
 .breadcrumb-item+.breadcrumb-item::before{color:rgba(255,255,255,.2)}
 
-/* SEARCH SECTION */
-.notas-section{padding:80px 0;background:linear-gradient(180deg,#f0f6f2 0%,#e8f3ed 100%)}
+/* hero bottom strip */
+.hero-strip{
+  display:flex;gap:0;
+  border-top:1px solid rgba(255,255,255,.08);
+  margin-top:48px;
+}
+.hs-item{
+  flex:1;padding:20px 0;text-align:center;
+  border-right:1px solid rgba(255,255,255,.08);
+}
+.hs-item:last-child{border-right:none}
+.hs-num{font-family:'Fraunces',serif;font-size:1.7rem;font-weight:600;color:#fff;line-height:1}
+.hs-num span{color:var(--lime)}
+.hs-label{font-size:.67rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:4px}
+
+/* ── SEARCH ZONE ── */
+.search-zone{padding:64px 0 80px}
+
 .search-card{
-  background:#fff;border:1px solid var(--border);
-  border-radius:16px;padding:40px;
-  box-shadow:0 20px 60px rgba(0,40,20,.06);
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:20px;
+  padding:44px;
+  box-shadow:0 20px 70px rgba(0,40,20,.07);
+  position:relative;
+  overflow:hidden;
 }
-.cert-label{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:10px}
-.cert-input-row{display:flex;gap:0}
-.cert-input{flex:1;background:#f8faf8;border:1.5px solid var(--border);border-right:none;border-radius:10px 0 0 10px;padding:15px 20px;font-family:'Outfit',sans-serif;font-size:.92rem;color:var(--text);outline:none;transition:border-color .2s,background .2s}
-.cert-input:focus{border-color:var(--green);background:#fff}
-.cert-input::placeholder{color:#b0beb8}
-.btn-search{background:linear-gradient(135deg,var(--green) 0%,#008045 100%);border:none;color:#fff;padding:15px 28px;font-size:.82rem;font-weight:700;font-family:'Outfit',sans-serif;letter-spacing:.06em;text-transform:uppercase;border-radius:0 10px 10px 0;cursor:pointer;transition:all .2s;white-space:nowrap}
-.btn-search:hover{background:linear-gradient(135deg,#008045 0%,var(--forest) 100%)}
-.cert-hint{display:flex;align-items:center;gap:8px;font-size:.78rem;color:var(--muted);margin-top:12px}
-.cert-hint i{color:var(--lime)}
-
-/* RESULTS */
-.result-area{margin-top:28px;display:none}
-
-/* ALUMNO HEADER */
-.alumno-header{
-  display:flex;align-items:center;gap:16px;
-  background:linear-gradient(135deg,var(--forest),#0e2b1c);
-  border-radius:12px;padding:20px 24px;
-  margin-bottom:20px;
+.search-card::before{
+  content:'';position:absolute;
+  top:-60px;right:-60px;
+  width:200px;height:200px;border-radius:50%;
+  background:radial-gradient(circle,rgba(0,176,96,.06) 0%,transparent 70%);
+  pointer-events:none;
 }
-.alumno-avatar{
-  width:52px;height:52px;border-radius:50%;
-  background:rgba(0,176,96,.2);border:2px solid rgba(0,176,96,.3);
+
+.search-label{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:10px}
+
+.search-row{display:flex;gap:0;position:relative}
+.search-input{
+  flex:1;
+  background:#f8faf8;
+  border:2px solid var(--border);
+  border-right:none;
+  border-radius:12px 0 0 12px;
+  padding:16px 22px;
+  font-family:'Outfit',sans-serif;
+  font-size:.95rem;color:var(--text);
+  outline:none;
+  transition:border-color .25s,background .25s,box-shadow .25s;
+}
+.search-input:focus{border-color:var(--green);background:#fff;box-shadow:0 0 0 3px rgba(0,106,57,.08)}
+.search-input::placeholder{color:#b8c8c0}
+.btn-search{
+  background:linear-gradient(135deg,var(--green) 0%,#009050 100%);
+  border:none;color:#fff;
+  padding:16px 30px;
+  font-size:.82rem;font-weight:700;
+  font-family:'Outfit',sans-serif;
+  letter-spacing:.07em;text-transform:uppercase;
+  border-radius:0 12px 12px 0;
+  cursor:pointer;transition:all .2s;
+  display:flex;align-items:center;gap:10px;
+  white-space:nowrap;
+}
+.btn-search:hover{background:linear-gradient(135deg,#008045 0%,var(--forest) 100%);transform:translateX(2px)}
+.btn-search .btn-icon{transition:transform .2s}
+.btn-search:hover .btn-icon{transform:translateX(3px)}
+
+.search-hint{display:flex;align-items:center;gap:8px;font-size:.77rem;color:var(--muted);margin-top:10px}
+.search-hint i{color:var(--lime);font-size:.72rem}
+
+/* live indicator */
+.live-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(0,176,96,.08);border:1px solid rgba(0,176,96,.2);
+  padding:6px 14px;border-radius:20px;
+  font-size:.72rem;font-weight:600;color:var(--green);
+  letter-spacing:.05em;
+  margin-bottom:24px;
+}
+.live-dot{width:7px;height:7px;border-radius:50%;background:var(--lime);animation:pulse 2s ease-in-out infinite;flex-shrink:0}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+
+/* ── RESULT AREA ── */
+#resultArea{margin-top:32px}
+
+/* loading skeleton */
+.skeleton-wrap{display:flex;flex-direction:column;gap:12px}
+.skel{background:linear-gradient(90deg,#eef2ef 25%,#e4ede7 50%,#eef2ef 75%);background-size:200% 100%;border-radius:8px;animation:shimmer 1.4s infinite}
+@keyframes shimmer{0%{background-position:200% 0}100%{background-position:-200% 0}}
+
+/* result card */
+.result-card{
+  border:1px solid var(--border);
+  border-radius:var(--radius);
+  overflow:hidden;
+  animation:cardIn .45s cubic-bezier(.22,.68,0,1.2) both;
+}
+@keyframes cardIn{from{opacity:0;transform:translateY(20px) scale(.97)}to{opacity:1;transform:none}}
+
+/* card header */
+.rc-head{
+  background:linear-gradient(135deg,var(--forest) 0%,#0e2b1c 100%);
+  padding:24px 28px;
+  display:flex;align-items:center;gap:18px;
+  position:relative;overflow:hidden;
+}
+.rc-head::after{
+  content:'';position:absolute;
+  top:-40px;right:-40px;
+  width:130px;height:130px;border-radius:50%;
+  background:rgba(0,176,96,.08);
+}
+.rc-avatar{
+  width:54px;height:54px;border-radius:14px;
+  background:rgba(0,176,96,.18);
+  border:2px solid rgba(0,176,96,.3);
   display:flex;align-items:center;justify-content:center;
-  color:var(--lime);font-size:1.3rem;flex-shrink:0;
+  color:var(--lime);font-size:1.4rem;
+  flex-shrink:0;
+  position:relative;z-index:1;
 }
-.alumno-name{font-family:'Fraunces',serif;font-size:1.1rem;color:#fff;margin:0 0 3px}
-.alumno-curso{font-size:.78rem;color:rgba(255,255,255,.5);margin:0}
-.alumno-prom{
+.rc-name{font-family:'Fraunces',serif;font-size:1.1rem;color:#fff;margin:0 0 4px;position:relative;z-index:1}
+.rc-meta{display:flex;gap:10px;flex-wrap:wrap;position:relative;z-index:1}
+.rc-pill{
+  display:inline-flex;align-items:center;gap:5px;
+  font-size:.68rem;font-weight:600;letter-spacing:.07em;text-transform:uppercase;
+  padding:4px 10px;border-radius:20px;
+}
+.rc-pill.curso{background:rgba(0,176,96,.15);color:var(--lime);border:1px solid rgba(0,176,96,.2)}
+.rc-pill.codigo{background:rgba(255,255,255,.07);color:rgba(255,255,255,.5);border:1px solid rgba(255,255,255,.1)}
+
+/* nota big display */
+.rc-nota-wrap{
   margin-left:auto;
   text-align:center;
-  background:rgba(0,176,96,.15);border:1px solid rgba(0,176,96,.25);
-  border-radius:10px;padding:10px 18px;
+  flex-shrink:0;
+  position:relative;z-index:1;
 }
-.alumno-prom-num{font-family:'Fraunces',serif;font-size:1.8rem;font-weight:600;color:var(--lime);line-height:1}
-.alumno-prom-label{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);font-weight:600}
-
-/* NOTAS TABLE */
-.notas-table-wrap{border:1px solid var(--border);border-radius:12px;overflow:hidden}
-.notas-table{width:100%;border-collapse:collapse}
-.notas-table thead{background:var(--forest)}
-.notas-table thead th{
-  font-family:'Outfit',sans-serif;font-size:.68rem;font-weight:700;
-  letter-spacing:.12em;text-transform:uppercase;
-  color:rgba(255,255,255,.5);padding:14px 20px;
-  text-align:left;
+.nota-ring{
+  position:relative;
+  width:72px;height:72px;
+  display:flex;align-items:center;justify-content:center;
 }
-.notas-table thead th:last-child{text-align:center}
-.notas-table tbody tr{border-bottom:1px solid var(--border);transition:background .15s}
-.notas-table tbody tr:last-child{border-bottom:none}
-.notas-table tbody tr:hover{background:var(--offwhite)}
-.notas-table td{padding:14px 20px;font-size:.88rem;color:var(--text)}
-.notas-table td:last-child{text-align:center}
-.clase-label{font-weight:600;color:var(--forest)}
-.clase-fecha{font-size:.76rem;color:var(--muted);margin-top:2px}
-.nota-badge{
-  display:inline-flex;align-items:center;justify-content:center;
-  width:48px;height:28px;border-radius:6px;
-  font-size:.82rem;font-weight:700;
+.nota-ring svg{position:absolute;inset:0;transform:rotate(-90deg)}
+.nota-ring-bg{fill:none;stroke:rgba(255,255,255,.08);stroke-width:4}
+.nota-ring-fill{fill:none;stroke-width:4;stroke-linecap:round;transition:stroke-dashoffset 1s ease}
+.nota-num{
+  font-family:'Fraunces',serif;font-size:1.5rem;font-weight:700;
+  color:#fff;line-height:1;
+  position:relative;z-index:1;
 }
-.nota-a{background:#d4edda;color:#1a6e35}
-.nota-b{background:#d1ecf1;color:#0c5460}
-.nota-c{background:#fff3cd;color:#856404}
-.nota-d{background:#f8d7da;color:#842029}
-.nota-pending{background:var(--offwhite);color:#b0beb8;font-size:.7rem;letter-spacing:.05em}
+.nota-denom{font-size:.62rem;color:rgba(255,255,255,.35);letter-spacing:.05em}
+.nota-label-ring{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:4px}
 
-/* PROGRESS BAR */
-.nota-prog{display:flex;align-items:center;gap:10px}
-.prog-bar-wrap{flex:1;height:6px;background:#eef2ef;border-radius:3px}
-.prog-bar{height:6px;border-radius:3px;background:linear-gradient(90deg,var(--green),var(--lime));transition:width .6s ease}
+/* card body */
+.rc-body{padding:28px}
+.rc-row{display:flex;align-items:center;gap:16px;padding:14px 0;border-bottom:1px solid var(--border)}
+.rc-row:last-child{border-bottom:none}
+.rc-row-icon{
+  width:36px;height:36px;border-radius:9px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.85rem;flex-shrink:0;
+}
+.rc-row-icon.green{background:rgba(0,176,96,.1);color:var(--lime)}
+.rc-row-icon.gold{background:rgba(200,169,110,.12);color:var(--gold)}
+.rc-row-icon.blue{background:rgba(100,150,220,.1);color:#82aaff}
+.rc-row-label{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:3px}
+.rc-row-value{font-size:.92rem;font-weight:600;color:var(--forest)}
+.nota-bar-wrap{flex:1;margin-left:12px}
+.nota-bar-track{height:7px;background:#eef2ef;border-radius:4px;overflow:hidden}
+.nota-bar-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--green),var(--lime));transition:width 1s ease}
+.nota-bar-pct{font-size:.72rem;font-weight:700;color:var(--green);margin-top:4px;text-align:right}
 
-/* NOT FOUND */
-.not-found-card{border:1px solid var(--border);border-radius:12px;padding:40px 28px;background:#fff;text-align:center}
-.not-found-icon{width:60px;height:60px;border-radius:12px;background:var(--offwhite);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:#b0beb8;margin:0 auto 16px}
-.not-found-card p{font-size:.88rem;color:var(--muted);line-height:1.7;margin:0}
+/* certificado button */
+.btn-cert{
+  display:inline-flex;align-items:center;gap:10px;
+  background:linear-gradient(135deg,var(--green),#009050);
+  color:#fff;font-size:.8rem;font-weight:700;
+  letter-spacing:.07em;text-transform:uppercase;
+  padding:13px 24px;border-radius:10px;
+  text-decoration:none;
+  transition:all .25s;
+  margin-top:20px;
+  border:none;cursor:pointer;
+}
+.btn-cert:hover{background:linear-gradient(135deg,#009050,var(--forest));color:#fff;transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,106,57,.25)}
 
-/* INFO CALLOUT */
-.info-callout{display:flex;gap:12px;align-items:flex-start;background:var(--light-green);border:1px solid rgba(0,106,57,.15);border-radius:10px;padding:16px 20px;margin-top:20px}
-.info-callout i{color:var(--green);margin-top:2px;flex-shrink:0}
-.info-callout p{font-size:.82rem;color:var(--muted);margin:0;line-height:1.65}
+/* mention grade  */
+.mention{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  padding:5px 12px;border-radius:20px;
+}
+.mention.sobresaliente{background:#d4edda;color:#1a6e35}
+.mention.bueno{background:#d1ecf1;color:#0c5460}
+.mention.aprobado{background:#fff3cd;color:#856404}
+.mention.desaprobado{background:#f8d7da;color:#842029}
 
-/* BACK BUTTON */
-.btn-back{display:inline-flex;align-items:center;gap:8px;color:rgba(255,255,255,.6);font-size:.82rem;font-weight:500;text-decoration:none;transition:color .2s;margin-bottom:32px}
-.btn-back:hover{color:#fff}
+/* not found */
+.not-found{
+  text-align:center;padding:48px 24px;
+  border:1px dashed var(--border);
+  border-radius:var(--radius);background:#fff;
+}
+.not-found-icon{
+  width:64px;height:64px;border-radius:16px;
+  background:var(--offwhite);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.6rem;color:#c0cfca;
+  margin:0 auto 20px;
+}
+.not-found h5{font-family:'Fraunces',serif;font-size:1.1rem;color:var(--forest);margin-bottom:10px}
+.not-found p{font-size:.86rem;color:var(--muted);line-height:1.7}
 
-/* FOOTER */
+/* error */
+.fetch-error{
+  display:flex;gap:14px;align-items:flex-start;
+  background:#fff8f8;border:1px solid #f5c6cb;
+  border-radius:var(--radius);padding:20px 24px;
+}
+.fetch-error i{color:#dc3545;font-size:1.1rem;margin-top:2px;flex-shrink:0}
+.fetch-error p{font-size:.86rem;color:#6c1c24;margin:0;line-height:1.65}
+
+/* callout */
+.callout{
+  display:flex;gap:12px;align-items:flex-start;
+  background:var(--light-green);border:1px solid rgba(0,106,57,.15);
+  border-radius:10px;padding:16px 20px;margin-top:20px;
+}
+.callout i{color:var(--green);margin-top:2px;flex-shrink:0}
+.callout p{font-size:.82rem;color:var(--muted);margin:0;line-height:1.65}
+.callout strong{color:var(--text)}
+
+/* ── FOOTER ── */
 .footer{background:var(--forest);padding:72px 0 0}
 .footer-brand img{height:42px;filter:brightness(0) invert(1);opacity:.85;margin-bottom:20px}
 .footer-desc{font-size:.87rem;color:rgba(255,255,255,.5);line-height:1.75;max-width:300px}
@@ -209,15 +360,16 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
 
 @media(max-width:992px){
   .navbar-collapse{background:#fff;border-top:1px solid var(--border);padding:8px 16px 20px}
-  .nav-link{padding:.75rem .5rem!important;font-size:.9rem}
+  .nav-link{padding:.75rem .5rem!important}
   .btn-nav-cta{display:none!important}
-  .notas-section{padding:48px 0}
   .search-card{padding:24px}
-  .cert-input-row{flex-direction:column}
-  .cert-input{border-right:1.5px solid var(--border);border-bottom:none;border-radius:10px 10px 0 0}
-  .btn-search{border-radius:0 0 10px 10px;width:100%}
-  .alumno-header{flex-wrap:wrap}
-  .alumno-prom{margin-left:0;width:100%}
+  .search-row{flex-direction:column}
+  .search-input{border-right:2px solid var(--border);border-radius:12px 12px 0 0;border-bottom:none}
+  .btn-search{border-radius:0 0 12px 12px;width:100%;justify-content:center}
+  .hero-strip{flex-wrap:wrap}
+  .hs-item{flex:1 1 50%;border-bottom:1px solid rgba(255,255,255,.08)}
+  .rc-head{flex-wrap:wrap}
+  .rc-nota-wrap{margin-left:0}
   .footer-bottom{flex-direction:column;text-align:center}
   .footer-bottom-links{justify-content:center}
 }
@@ -276,53 +428,92 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
 </nav>
 
 <!-- HERO -->
-<div class="notas-hero">
+<div class="hero">
+  <div class="hero-dots"></div>
+  <div class="hero-leaf"></div>
+  <div class="hero-leaf"></div>
   <div class="container position-relative" style="z-index:2">
-    <a href="alumnos.html" class="btn-back">
+    <a href="alumnos.html" class="back-link">
       <i class="fas fa-arrow-left"></i> Volver al Portal Alumnos
     </a>
-    <div class="hero-eyebrow">
-      <i class="fas fa-chart-bar"></i>
-      <span>Portal Alumnos · Notas</span>
+    <div class="eyebrow">
+      <i class="fas fa-chart-bar" style="color:var(--lime);font-size:.7rem"></i>
+      <span>Portal Alumnos · Registro Oficial</span>
     </div>
-    <h1 class="hero-title">Consultar mis <em>Notas</em></h1>
-    <p class="hero-sub">Ingresa tu nombre para ver tus notas por clase y tu promedio final en cada curso.</p>
-    <nav aria-label="breadcrumb" style="margin-top:32px">
+    <h1 class="hero-title">Consulta tu <em>nota</em><br>y certificado</h1>
+    <p class="hero-sub">Ingresa tu nombre para ver tu calificación final y descargar tu certificado de aprobación. Los datos se actualizan en tiempo real desde nuestro registro.</p>
+    <nav aria-label="breadcrumb">
       <ol class="breadcrumb mb-0">
         <li class="breadcrumb-item"><a href="index.html">Inicio</a></li>
         <li class="breadcrumb-item"><a href="alumnos.html">Portal Alumnos</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Consultar Notas</li>
+        <li class="breadcrumb-item active">Consultar Notas</li>
       </ol>
     </nav>
+
+    <div class="hero-strip">
+      <div class="hs-item">
+        <div class="hs-num" id="statAlumnos">—</div>
+        <div class="hs-label">Alumnos registrados</div>
+      </div>
+      <div class="hs-item">
+        <div class="hs-num"><span>19</span>/20</div>
+        <div class="hs-label">Nota promedio actual</div>
+      </div>
+      <div class="hs-item">
+        <div class="hs-num"><span>100</span>%</div>
+        <div class="hs-label">Tasa de aprobación</div>
+      </div>
+      <div class="hs-item">
+        <div class="hs-num">24<span>/7</span></div>
+        <div class="hs-label">Acceso al registro</div>
+      </div>
+    </div>
   </div>
 </div>
 
-<!-- BUSCADOR -->
-<div class="notas-section">
+<!-- SEARCH -->
+<div class="search-zone">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-8">
+
+        <div class="live-badge">
+          <div class="live-dot"></div>
+          Datos en vivo · Google Sheets oficial
+        </div>
+
         <div class="search-card">
-          <label class="cert-label">Tu nombre completo</label>
-          <div class="cert-input-row">
-            <input class="cert-input" type="text" id="notaSearch" placeholder="Ej: Juan Carlos Pérez Mamani" autocomplete="name">
-            <button class="btn-search" onclick="buscarNotas()">
-              <i class="fas fa-search" style="margin-right:8px"></i>Buscar
+          <label class="search-label" for="inputNombre">
+            <i class="fas fa-user" style="color:var(--lime);margin-right:6px"></i>
+            Busca por tu nombre completo
+          </label>
+          <div class="search-row">
+            <input
+              class="search-input"
+              type="text"
+              id="inputNombre"
+              placeholder="Ej: Juan Carlos Pérez Mamani"
+              autocomplete="name"
+            >
+            <button class="btn-search" onclick="buscar()">
+              <i class="fas fa-search"></i>
+              <span>Buscar</span>
+              <i class="fas fa-arrow-right btn-icon" style="font-size:.72rem"></i>
             </button>
           </div>
-          <div class="cert-hint">
+          <div class="search-hint">
             <i class="fas fa-info-circle"></i>
-            <span>Escribe tu nombre tal como lo registraste al inscribirte.</span>
+            <span>Escribe como mínimo 3 letras. Si no apareces, <a href="contact.html" style="color:var(--green);font-weight:600;text-decoration:none">contáctanos</a>.</span>
           </div>
 
-          <!-- ÁREA DE RESULTADOS -->
-          <div class="result-area" id="resultArea"></div>
+          <div id="resultArea"></div>
         </div>
 
-        <div class="info-callout">
+        <div class="callout" style="margin-top:20px">
           <i class="fas fa-sync-alt"></i>
-          <p><strong>Actualización automática:</strong> las notas se registran después de cada sesión. Si no ves una nota aún, puede que la clase no haya sido calificada todavía.</p>
+          <p><strong>Actualización automática:</strong> cada vez que el instructor registra una nota en el sistema, aparece aquí al instante. No necesitas recargar la página entre búsquedas.</p>
         </div>
+
       </div>
     </div>
   </div>
@@ -367,7 +558,11 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
     <hr class="footer-divider">
     <div class="footer-bottom">
       <span>&copy; 2026 Andean Consulting &amp; Environmental Solutions S.A.C.</span>
-      <div class="footer-bottom-links"><a href="#">Política de Privacidad</a><a href="#">Cookies</a><a href="#">FAQ</a></div>
+      <div class="footer-bottom-links">
+        <a href="#">Política de Privacidad</a>
+        <a href="#">Cookies</a>
+        <a href="#">FAQ</a>
+      </div>
     </div>
   </div>
 </footer>
@@ -377,128 +572,260 @@ h1,h2,h3,h4,h5{font-family:'Fraunces',serif;font-weight:600;color:var(--text)}
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-window.addEventListener('load',()=>{const s=document.getElementById('spinner');s.classList.add('hide');setTimeout(()=>s.remove(),600)});
+// ─────────────────────────────────────────────────────────────
+//  CONFIGURACIÓN
+//  Reemplaza SHEET_ID con el ID de tu Google Sheets si cambia.
+//  La hoja debe estar publicada en la web como CSV:
+//  Archivo → Compartir → Publicar en la web → CSV
+// ─────────────────────────────────────────────────────────────
+const SHEET_ID  = '1Ido1TXV56rSpWPDe2mNizNlPnLmtnBfKXYU4gNWRzec';
+const SHEET_GID = '0'; // si tienes varias pestañas, cambia el gid
+const CSV_URL   = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/pub?gid=${SHEET_GID}&single=true&output=csv`;
+
+// ─── utilidades ───────────────────────────────────────────────
+const norm = s => s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\s+/g,' ').trim();
+
+function parseCSV(text){
+  const lines = text.trim().split('\n');
+  const headers = lines[0].split(',').map(h => h.replace(/"/g,'').trim().toUpperCase());
+  return lines.slice(1).map(line => {
+    // maneja comas dentro de comillas
+    const cols = [];
+    let cur='', inQ=false;
+    for(const ch of line){
+      if(ch==='"'){ inQ=!inQ; continue; }
+      if(ch===',' && !inQ){ cols.push(cur.trim()); cur=''; continue; }
+      cur+=ch;
+    }
+    cols.push(cur.trim());
+    const obj={};
+    headers.forEach((h,i)=>{ obj[h]=cols[i]||''; });
+    return obj;
+  }).filter(r=>r['NOMBRE'] && r['NOMBRE'].trim());
+}
+
+function getMention(n){
+  if(n>=18) return {cls:'sobresaliente', txt:'Sobresaliente'};
+  if(n>=15) return {cls:'bueno', txt:'Bueno'};
+  if(n>=11) return {cls:'aprobado', txt:'Aprobado'};
+  return {cls:'desaprobado', txt:'Desaprobado'};
+}
+
+function getRingColor(n){
+  if(n>=18) return '#00b060';
+  if(n>=15) return '#4eade0';
+  if(n>=11) return '#f0ad4e';
+  return '#e74c3c';
+}
+
+function buildRing(nota, max=20){
+  const r=30, circ=2*Math.PI*r, pct=nota/max, dash=pct*circ;
+  const color=getRingColor(nota);
+  return `
+    <svg viewBox="0 0 72 72" width="72" height="72">
+      <circle class="nota-ring-bg" cx="36" cy="36" r="${r}"/>
+      <circle class="nota-ring-fill"
+        cx="36" cy="36" r="${r}"
+        stroke="${color}"
+        stroke-dasharray="${circ}"
+        stroke-dashoffset="${circ - dash}"
+        style="transform-origin:center;transform:rotate(-90deg)"
+      />
+    </svg>
+  `;
+}
+
+// animación del número
+function animateNum(el, target, duration=900){
+  const start=performance.now();
+  const from=0;
+  (function step(now){
+    const p=Math.min((now-start)/duration,1);
+    const ease=1-Math.pow(1-p,3);
+    el.textContent=Math.round(from+(target-from)*ease);
+    if(p<1) requestAnimationFrame(step);
+  })(start);
+}
+
+// ─── fetch & caché ────────────────────────────────────────────
+let cache=null, cacheTime=0;
+const CACHE_MS=60_000; // 1 minuto de caché
+
+async function fetchAlumnos(){
+  const now=Date.now();
+  if(cache && (now-cacheTime)<CACHE_MS) return cache;
+  const res=await fetch(CSV_URL+'&cachebust='+now);
+  if(!res.ok) throw new Error('No se pudo conectar con el registro.');
+  const text=await res.text();
+  cache=parseCSV(text);
+  cacheTime=now;
+  // actualizar stat
+  const el=document.getElementById('statAlumnos');
+  if(el) animateNum(el, cache.length);
+  return cache;
+}
+
+// precarga al abrir la página
+fetchAlumnos().catch(()=>{});
+
+// ─── render skeleton ──────────────────────────────────────────
+function showSkeleton(){
+  document.getElementById('resultArea').innerHTML=`
+    <div class="skeleton-wrap" style="margin-top:24px">
+      <div class="skel" style="height:110px"></div>
+      <div class="skel" style="height:60px"></div>
+      <div class="skel" style="height:60px"></div>
+    </div>`;
+}
+
+// ─── render resultado ─────────────────────────────────────────
+function renderResult(a){
+  const nota=parseInt(a['NOTA'])||0;
+  const pct=Math.round((nota/20)*100);
+  const {cls,txt}=getMention(nota);
+  const ring=buildRing(nota);
+  const certCol=a['CERTIFICADO']||'';
+  const hasCert = certCol && certCol.toLowerCase().startsWith('http');
+
+  return `
+  <div class="result-card" style="margin-top:24px">
+    <div class="rc-head">
+      <div class="rc-avatar"><i class="fas fa-user-graduate"></i></div>
+      <div>
+        <p class="rc-name">${a['NOMBRE']}</p>
+        <div class="rc-meta">
+          <span class="rc-pill curso"><i class="fas fa-map" style="font-size:.55rem"></i> ${a['CURSO']||'—'}</span>
+          <span class="rc-pill codigo"><i class="fas fa-barcode" style="font-size:.55rem"></i> ${a['CODIGO']||'—'}</span>
+        </div>
+      </div>
+      <div class="rc-nota-wrap">
+        <div class="nota-ring">
+          ${ring}
+          <div style="position:absolute;text-align:center">
+            <div class="nota-num">${nota}</div>
+            <div class="nota-denom">/20</div>
+          </div>
+        </div>
+        <div class="nota-label-ring">Nota final</div>
+      </div>
+    </div>
+
+    <div class="rc-body">
+
+      <div class="rc-row">
+        <div class="rc-row-icon green"><i class="fas fa-star"></i></div>
+        <div>
+          <div class="rc-row-label">Calificación</div>
+          <div class="rc-row-value" style="display:flex;align-items:center;gap:10px">
+            ${nota} / 20
+            <span class="mention ${cls}">${txt}</span>
+          </div>
+        </div>
+        <div class="nota-bar-wrap">
+          <div class="nota-bar-track">
+            <div class="nota-bar-fill" style="width:${pct}%"></div>
+          </div>
+          <div class="nota-bar-pct">${pct}%</div>
+        </div>
+      </div>
+
+      <div class="rc-row">
+        <div class="rc-row-icon gold"><i class="fas fa-book-open"></i></div>
+        <div>
+          <div class="rc-row-label">Curso</div>
+          <div class="rc-row-value">${a['CURSO']||'—'}</div>
+        </div>
+      </div>
+
+      <div class="rc-row">
+        <div class="rc-row-icon blue"><i class="fas fa-id-card"></i></div>
+        <div>
+          <div class="rc-row-label">Código de registro</div>
+          <div class="rc-row-value" style="font-family:monospace;letter-spacing:.05em">${a['CODIGO']||'—'}</div>
+        </div>
+      </div>
+
+      ${hasCert
+        ? `<a href="${certCol}" target="_blank" rel="noopener" class="btn-cert">
+             <i class="fas fa-award"></i>
+             <span>Descargar Certificado</span>
+             <i class="fas fa-external-link-alt" style="font-size:.65rem;opacity:.7"></i>
+           </a>`
+        : `<div style="display:flex;align-items:center;gap:10px;margin-top:20px;padding:14px 18px;background:var(--offwhite);border:1px solid var(--border);border-radius:10px">
+             <i class="fas fa-clock" style="color:var(--muted)"></i>
+             <p style="font-size:.82rem;color:var(--muted);margin:0">El certificado está en proceso de emisión. Vuelve en unos días.</p>
+           </div>`
+      }
+    </div>
+  </div>`;
+}
+
+// ─── BUSCAR ───────────────────────────────────────────────────
+async function buscar(){
+  const q = norm(document.getElementById('inputNombre').value);
+  const area = document.getElementById('resultArea');
+
+  if(q.length < 3){
+    area.innerHTML=`<div class="not-found" style="margin-top:24px">
+      <div class="not-found-icon"><i class="fas fa-keyboard"></i></div>
+      <h5>Escribe tu nombre</h5>
+      <p>Necesitamos al menos 3 caracteres para buscarte en el registro.</p>
+    </div>`;
+    return;
+  }
+
+  showSkeleton();
+
+  try{
+    const alumnos=await fetchAlumnos();
+    const found=alumnos.filter(a => norm(a['NOMBRE']).includes(q));
+
+    if(!found.length){
+      area.innerHTML=`<div class="not-found" style="margin-top:24px">
+        <div class="not-found-icon"><i class="fas fa-user-slash"></i></div>
+        <h5>No encontramos resultados</h5>
+        <p>No hay coincidencias para <strong>"${document.getElementById('inputNombre').value}"</strong>.<br>
+        Prueba con otra parte de tu nombre o <a href="contact.html" style="color:var(--green);font-weight:600">contáctanos</a>.</p>
+      </div>`;
+      return;
+    }
+
+    area.innerHTML = found.map(renderResult).join('');
+
+    // animar barras después de renderizar
+    setTimeout(()=>{
+      area.querySelectorAll('.nota-bar-fill').forEach(el=>{
+        const w=el.style.width; el.style.width='0';
+        setTimeout(()=>el.style.width=w, 50);
+      });
+    }, 50);
+
+  } catch(err){
+    area.innerHTML=`<div class="fetch-error" style="margin-top:24px">
+      <i class="fas fa-exclamation-triangle"></i>
+      <p><strong>Error al conectar con el registro.</strong><br>
+      Verifica tu conexión a internet o <a href="contact.html" style="color:#842029;font-weight:600">contáctanos</a>.<br>
+      <small style="opacity:.7">${err.message}</small></p>
+    </div>`;
+  }
+}
+
+// Enter key
+document.getElementById('inputNombre').addEventListener('keydown', e=>{
+  if(e.key==='Enter') buscar();
+});
+
+// ─── UI misc ──────────────────────────────────────────────────
+window.addEventListener('load',()=>{
+  const s=document.getElementById('spinner');
+  s.classList.add('hide');
+  setTimeout(()=>s.remove(),600);
+});
 const mNav=document.getElementById('mainNav');
 window.addEventListener('scroll',()=>mNav.classList.toggle('scrolled',scrollY>20),{passive:true});
 const bt=document.getElementById('backTop');
 window.addEventListener('scroll',()=>bt.classList.toggle('show',scrollY>300),{passive:true});
 bt.addEventListener('click',e=>{e.preventDefault();scrollTo({top:0,behavior:'smooth'})});
-
-/* =====================================================================
-   DATOS DE NOTAS
-   Agrega aquí a cada alumno con sus notas por clase.
-
-   Estructura:
-   {
-     nombre: "Nombre completo del alumno",
-     curso: "Nombre del curso",
-     clases: [
-       { label: "Clase 1 – Introducción", fecha: "10/04/2025", nota: 17 },
-       { label: "Clase 2 – ...", fecha: "17/04/2025", nota: null },  // null = pendiente
-     ]
-   }
-   ===================================================================== */
-const DATOS_NOTAS = [
-  // Ejemplo (puedes eliminarlo y agregar los reales):
-  // {
-  //   nombre: "Juan Pérez Mamani",
-  //   curso: "ArcGIS Básico",
-  //   clases: [
-  //     { label: "Clase 1 – Introducción a ArcGIS", fecha: "10/04/2025", nota: 18 },
-  //     { label: "Clase 2 – Sistemas de coordenadas", fecha: "17/04/2025", nota: 16 },
-  //     { label: "Clase 3 – Digitalización", fecha: "24/04/2025", nota: null },
-  //   ]
-  // },
-];
-
-function normalizar(s){ return s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g,"").trim() }
-
-function notaBadge(n){
-  if(n===null) return `<span class="nota-badge nota-pending">—</span>`;
-  if(n>=17) return `<span class="nota-badge nota-a">${n}</span>`;
-  if(n>=14) return `<span class="nota-badge nota-b">${n}</span>`;
-  if(n>=11) return `<span class="nota-badge nota-c">${n}</span>`;
-  return `<span class="nota-badge nota-d">${n}</span>`;
-}
-
-function promedio(clases){
-  const vals = clases.map(c=>c.nota).filter(n=>n!==null);
-  if(!vals.length) return null;
-  return (vals.reduce((a,b)=>a+b,0)/vals.length).toFixed(1);
-}
-
-function buscarNotas(){
-  const q = normalizar(document.getElementById('notaSearch').value);
-  const area = document.getElementById('resultArea');
-  area.style.display = 'block';
-
-  if(q.length < 3){
-    area.innerHTML = `<div class="not-found-card">
-      <div class="not-found-icon"><i class="fas fa-search"></i></div>
-      <p>Ingresa al menos 3 caracteres para buscar.</p>
-    </div>`;
-    return;
-  }
-
-  const found = DATOS_NOTAS.filter(a => normalizar(a.nombre).includes(q));
-
-  if(!found.length){
-    area.innerHTML = `<div class="not-found-card">
-      <div class="not-found-icon"><i class="fas fa-user-slash"></i></div>
-      <p>No encontramos resultados para <strong>"${document.getElementById('notaSearch').value}"</strong>.<br>
-      Verifica tu nombre o <a href="contact.html" style="color:var(--green);font-weight:600">contáctanos</a>.</p>
-    </div>`;
-    return;
-  }
-
-  area.innerHTML = found.map(a => {
-    const prom = promedio(a.clases);
-    const filas = a.clases.map(c => {
-      const pct = c.nota ? Math.round((c.nota/20)*100) : 0;
-      return `<tr>
-        <td>
-          <div class="clase-label">${c.label}</div>
-          <div class="clase-fecha">${c.fecha}</div>
-        </td>
-        <td>
-          <div class="nota-prog">
-            ${notaBadge(c.nota)}
-            <div class="prog-bar-wrap"><div class="prog-bar" style="width:${pct}%"></div></div>
-          </div>
-        </td>
-      </tr>`;
-    }).join('');
-
-    return `
-      <div class="alumno-header">
-        <div class="alumno-avatar"><i class="fas fa-user-graduate"></i></div>
-        <div>
-          <p class="alumno-name">${a.nombre}</p>
-          <p class="alumno-curso">${a.curso}</p>
-        </div>
-        <div class="alumno-prom">
-          <div class="alumno-prom-num">${prom ?? '—'}</div>
-          <div class="alumno-prom-label">Promedio</div>
-        </div>
-      </div>
-      <div class="notas-table-wrap">
-        <table class="notas-table">
-          <thead>
-            <tr>
-              <th>Sesión</th>
-              <th>Nota / 20</th>
-            </tr>
-          </thead>
-          <tbody>${filas}</tbody>
-        </table>
-      </div>
-    `;
-  }).join('<br>');
-}
-
-document.getElementById('notaSearch').addEventListener('keydown', e=>{
-  if(e.key==='Enter') buscarNotas();
-});
 </script>
 </body>
 </html>
