@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>Taller Gratuito — Hongos: Oportunidades de Negocio y Cultivo · Andean Consulting</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Taller 100% gratuito sobre hongos: oportunidades de negocio y cultivo. Online, 17 de mayo 2026, 7:00 PM hora Perú. Incluye certificado.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0f09;
+  --surface: #111a0f;
+  --card: #141e12;
+  --green: #1a5c32;
+  --lime: #5cb85c;
+  --mint: #a8d5b5;
+  --gold: #c9a84c;
+  --red: #e84040;
+  --text: #eef4ec;
+  --muted: #5c7060;
+  --border: #dde8e0;
+  --light: #e8f0eb;
+  --forest: #0d1f14;
+  --deep: #07130c;
+  --sage: #4a7c59;
+  --offwhite: #faf7f2;
+  --cream: #f5f0e8;
+  --wa: #25D366;
+}
+
+/* ── TOPBAR ── */
+.topbar { background: var(--deep); color: rgba(255,255,255,.55); font-size:.73rem; letter-spacing:.06em; padding:8px 0; }
+.topbar a { color:rgba(255,255,255,.5); text-decoration:none; transition:color .2s; }
+.topbar a:hover { color:#fff; }
+.topbar-inner { display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+.topbar-left { display:flex; gap:20px; align-items:center; }
+.topbar-right { display:flex; gap:16px; align-items:center; }
+.tb-div { width:1px; height:12px; background:rgba(255,255,255,.15); }
+
+/* ── NAVBAR ── */
+.navbar { background:#fff; border-bottom:1px solid var(--border); padding:0; position:sticky; top:0; z-index:1000; transition:box-shadow .3s; }
+.navbar.scrolled { box-shadow:0 2px 28px rgba(10,31,20,.12); }
+.navbar-brand { padding:14px 24px; }
+.navbar-brand img { height:44px; object-fit:contain; }
+.navbar-toggler { border:1px solid #ccc!important; padding:6px 10px; margin-right:16px; border-radius:3px; background:transparent; }
+.navbar-toggler-icon { background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='%230d1f14' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e"); }
+.nav-link { font-family:'DM Sans',sans-serif; font-weight:500; font-size:.78rem; letter-spacing:.09em; text-transform:uppercase; color:var(--forest)!important; padding:1.5rem 1.1rem!important; transition:color .2s; position:relative; }
+.nav-link::after { content:''; position:absolute; bottom:0; left:1.1rem; right:1.1rem; height:2px; background:var(--green); transform:scaleX(0); transition:transform .25s; }
+.nav-link:hover, .nav-link.active { color:var(--green)!important; }
+.nav-link:hover::after, .nav-link.active::after { transform:scaleX(1); }
+.dropdown-menu { border:1px solid var(--border); border-radius:8px; box-shadow:0 12px 40px rgba(0,0,0,.1); padding:8px 0; }
+.dropdown-item { font-family:'DM Sans',sans-serif; font-size:.8rem; letter-spacing:.04em; padding:10px 20px; color:var(--forest); font-weight:500; text-transform:uppercase; transition:background .15s,color .15s; }
+.dropdown-item:hover { background:var(--light); color:var(--green); }
+.btn-nav-cta { background:var(--green); color:#fff!important; font-weight:600; font-size:.8rem; letter-spacing:.1em; text-transform:uppercase; text-decoration:none!important; padding:18px 36px!important; margin:8px 20px; border-radius:2px; display:inline-flex; align-items:center; gap:10px; transition:background .2s,transform .15s; white-space:nowrap; line-height:1; }
+.btn-nav-cta:hover { background:var(--forest)!important; color:#fff!important; }
+
+/* ── FOOTER ── */
+.footer { background:var(--deep); padding:72px 0 0; position:relative; z-index:1; }
+.footer-brand img { height:42px; filter:brightness(0) invert(1); opacity:.75; margin-bottom:20px; }
+.footer-desc { font-size:.86rem; color:rgba(255,255,255,.45); line-height:1.8; max-width:280px; }
+.footer-heading { font-family:'DM Sans',sans-serif; font-size:.7rem; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:rgba(255,255,255,.3); margin-bottom:22px; }
+.footer-link { display:block; font-size:.86rem; color:rgba(255,255,255,.55); text-decoration:none; margin-bottom:10px; transition:color .2s; }
+.footer-link:hover { color:#fff; }
+.footer-cr { display:flex; align-items:flex-start; gap:12px; margin-bottom:12px; }
+.footer-cr i { color:var(--mint); margin-top:2px; flex-shrink:0; font-size:.83rem; }
+.footer-cr span { font-size:.86rem; color:rgba(255,255,255,.55); line-height:1.5; }
+.social-link { width:36px; height:36px; border-radius:3px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1); color:rgba(255,255,255,.55); display:inline-flex; align-items:center; justify-content:center; font-size:.8rem; text-decoration:none; transition:all .2s; margin-right:6px; }
+.social-link:hover { background:var(--sage); border-color:var(--sage); color:#fff; }
+.newsletter-row { display:flex; margin-top:6px; }
+.newsletter-row input { flex:1; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1); border-right:none; color:#fff; padding:12px 16px; font-size:.84rem; border-radius:3px 0 0 3px; outline:none; font-family:'DM Sans',sans-serif; }
+.newsletter-row input::placeholder { color:rgba(255,255,255,.25); }
+.newsletter-row .nl-btn { background:var(--sage); border:none; color:#fff; padding:12px 18px; font-size:.76rem; font-weight:600; font-family:'DM Sans',sans-serif; letter-spacing:.06em; text-transform:uppercase; border-radius:0 3px 3px 0; cursor:pointer; transition:background .2s; }
+.newsletter-row .nl-btn:hover { background:var(--green); }
+.footer-divider { border-color:rgba(255,255,255,.07); margin:48px 0 0; }
+.footer-bottom { padding:20px 0; font-size:.77rem; color:rgba(255,255,255,.28); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px; }
+.footer-bottom a { color:rgba(255,255,255,.28); text-decoration:none; transition:color .2s; }
+.footer-bottom a:hover { color:rgba(255,255,255,.65); }
+.footer-bottom-links { display:flex; gap:20px; flex-wrap:wrap; }
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* ── NOISE OVERLAY ── */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  opacity: .55;
+}
+
+/* ── TOPBAR ── */
+.topbar {
+  position: relative; z-index: 10;
+  background: #060d05;
+  border-bottom: 1px solid rgba(58,170,53,.15);
+  padding: 9px 0;
+  font-size: .72rem; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--muted);
+}
+.topbar-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px; }
+.topbar a { color: var(--muted); text-decoration: none; transition: color .2s; }
+.topbar a:hover { color: var(--mint); }
+.topbar-left, .topbar-right { display: flex; gap: 18px; align-items: center; }
+
+/* ── NAV ── */
+nav {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(10,15,9,.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 0;
+}
+.nav-inner { display: flex; justify-content: space-between; align-items: center; height: 64px; }
+.nav-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1rem; color: #fff; text-decoration: none; letter-spacing: .04em; display: flex; align-items: center; gap: 10px; }
+.nav-logo-icon { width: 34px; height: 34px; background: var(--green); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: 1rem; }
+.nav-cta { background: var(--green); color: #fff !important; font-family: 'Syne', sans-serif; font-weight: 700; font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; text-decoration: none; padding: 10px 22px; border-radius: 4px; transition: background .2s, transform .15s; }
+.nav-cta:hover { background: var(--lime); transform: translateY(-1px); }
+
+.container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
+
+/* ── HERO ── */
+.hero {
+  position: relative; z-index: 1;
+  min-height: 100vh;
+  display: flex; align-items: center;
+  overflow: hidden;
+  padding: 60px 0 40px;
+}
+
+/* BG mushroom blobs */
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse 55% 70% at 70% 40%, rgba(58,170,53,.13) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 50% at 20% 70%, rgba(126,211,33,.07) 0%, transparent 60%),
+    radial-gradient(ellipse 80% 60% at 50% 100%, rgba(10,30,8,.9) 0%, transparent 80%),
+    linear-gradient(160deg, #060d05 0%, #0c1a0a 50%, #070f06 100%);
+}
+
+/* Glowing orb */
+.hero-orb {
+  position: absolute; top: 10%; right: 5%;
+  width: 520px; height: 520px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(58,170,53,.12) 0%, transparent 70%);
+  animation: orbPulse 6s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes orbPulse {
+  0%,100% { transform: scale(1); opacity: .7; }
+  50% { transform: scale(1.08); opacity: 1; }
+}
+
+/* Spore particles */
+.spore { position: absolute; border-radius: 50%; pointer-events: none; animation: sporeFloat linear infinite; }
+@keyframes sporeFloat {
+  0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: .4; }
+  100% { transform: translateY(-20vh) rotate(720deg); opacity: 0; }
+}
+
+.hero-content { position: relative; z-index: 2; }
+.hero-grid { display: grid; grid-template-columns: 1fr 420px; gap: 48px; align-items: center; }
+
+/* Free badge */
+.free-badge {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: linear-gradient(135deg, var(--green), var(--lime));
+  color: #fff; font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.05rem; letter-spacing: .12em;
+  padding: 8px 22px; border-radius: 4px; margin-bottom: 20px;
+  box-shadow: 0 0 32px rgba(58,170,53,.4);
+  animation: badgeGlow 2.5s ease-in-out infinite;
+}
+@keyframes badgeGlow {
+  0%,100% { box-shadow: 0 0 32px rgba(58,170,53,.4); }
+  50% { box-shadow: 0 0 52px rgba(58,170,53,.7); }
+}
+.free-badge::before { content: '★'; font-size: .85rem; }
+
+.taller-label {
+  font-family: 'Syne', sans-serif; font-size: .7rem; font-weight: 700;
+  letter-spacing: .22em; text-transform: uppercase; color: var(--muted);
+  margin-bottom: 8px; display: block;
+}
+
+h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3.5rem, 8vw, 6.5rem);
+  line-height: .95; letter-spacing: .03em;
+  color: #fff; margin-bottom: 6px;
+}
+h1 .accent { color: var(--green); display: block; }
+h1 .sub { font-size: clamp(1.6rem, 4vw, 3rem); color: rgba(255,255,255,.85); display: block; letter-spacing: .05em; }
+
+.hero-desc {
+  font-size: .96rem; color: rgba(255,255,255,.5); line-height: 1.85;
+  margin: 22px 0 30px; max-width: 500px; font-weight: 300;
+}
+
+/* Info pills */
+.info-pills { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 36px; }
+.info-pill {
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 18px; border-radius: 50px;
+  border: 1px solid var(--border);
+  background: rgba(58,170,53,.07);
+  font-size: .82rem; font-weight: 500; color: var(--mint);
+  backdrop-filter: blur(8px);
+}
+.info-pill i { color: var(--green); font-size: .8rem; }
+.info-pill.highlight {
+  background: rgba(245,200,66,.1); border-color: rgba(245,200,66,.3);
+  color: var(--gold);
+}
+.info-pill.highlight i { color: var(--gold); }
+
+/* CTA button */
+.btn-inscribe {
+  display: inline-flex; align-items: center; justify-content: center; gap: 14px;
+  background: linear-gradient(135deg, #2a9b26, var(--lime));
+  color: #fff; font-family: 'Syne', sans-serif; font-weight: 800;
+  font-size: 1.1rem; letter-spacing: .06em; text-transform: uppercase;
+  padding: 20px 48px; border-radius: 6px; text-decoration: none;
+  box-shadow: 0 8px 40px rgba(58,170,53,.45), 0 2px 8px rgba(0,0,0,.4);
+  transition: transform .2s, box-shadow .2s;
+  position: relative; overflow: hidden;
+}
+.btn-inscribe::before {
+  content: '';
+  position: absolute; top: -50%; left: -60%;
+  width: 40%; height: 200%;
+  background: rgba(255,255,255,.18);
+  transform: skewX(-20deg);
+  transition: left .5s;
+}
+.btn-inscribe:hover::before { left: 130%; }
+.btn-inscribe:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 60px rgba(58,170,53,.55), 0 4px 16px rgba(0,0,0,.4);
+  color: #fff;
+}
+.btn-inscribe i { font-size: .9rem; }
+
+.btn-wa {
+  display: inline-flex; align-items: center; gap: 10px;
+  color: #25D366; font-size: .85rem; font-weight: 600;
+  text-decoration: none; margin-top: 14px;
+  transition: color .2s;
+}
+.btn-wa:hover { color: #1db954; }
+
+/* Sidebar card */
+.hero-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 24px 80px rgba(0,0,0,.5);
+  position: relative;
+}
+.hc-top {
+  background: linear-gradient(135deg, #0c2209, #132e10);
+  padding: 28px 28px 24px;
+  border-bottom: 1px solid var(--border);
+  text-align: center; position: relative;
+}
+.hc-top::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--green), var(--lime), var(--green));
+}
+.free-label {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3rem; letter-spacing: .08em;
+  color: var(--green);
+  text-shadow: 0 0 40px rgba(58,170,53,.6);
+  line-height: 1;
+}
+.free-sub { font-size: .78rem; color: var(--muted); letter-spacing: .1em; text-transform: uppercase; margin-top: 4px; }
+
+.hc-body { padding: 24px 28px; }
+.hc-row { display: flex; align-items: center; gap: 14px; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.05); }
+.hc-row:last-of-type { border-bottom: none; }
+.hc-icon { width: 36px; height: 36px; border-radius: 8px; background: rgba(58,170,53,.12); border: 1px solid rgba(58,170,53,.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.hc-icon i { color: var(--green); font-size: .85rem; }
+.hc-text strong { display: block; font-size: .92rem; font-weight: 600; color: var(--text); }
+.hc-text span { font-size: .78rem; color: var(--muted); }
+
+/* QR section inside card */
+.hc-qr { padding: 20px 28px 28px; text-align: center; border-top: 1px solid rgba(255,255,255,.05); }
+.hc-qr p { font-size: .77rem; color: var(--muted); margin-bottom: 14px; letter-spacing: .04em; }
+.qr-img { width: 140px; height: 140px; background: #fff; border-radius: 10px; margin: 0 auto; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.qr-img img { width: 100%; height: 100%; object-fit: cover; }
+.qr-placeholder { text-align: center; }
+.qr-placeholder i { font-size: 2.5rem; color: #111; margin-bottom: 6px; display: block; }
+.qr-placeholder span { font-size: .6rem; color: #555; }
+
+/* cert badge */
+.cert-badge {
+  display: flex; align-items: center; gap: 12px; margin: 16px 0;
+  background: rgba(245,200,66,.07); border: 1px solid rgba(245,200,66,.2);
+  border-radius: 8px; padding: 12px 16px;
+}
+.cert-badge i { color: var(--gold); font-size: 1.2rem; flex-shrink: 0; }
+.cert-badge span { font-size: .82rem; color: var(--gold); font-weight: 600; line-height: 1.4; }
+
+/* ── WHAT YOU LEARN ── */
+.section { position: relative; z-index: 1; padding: 80px 0; }
+.section-label {
+  font-family: 'Syne', sans-serif; font-size: .68rem; font-weight: 700;
+  letter-spacing: .2em; text-transform: uppercase; color: var(--green);
+  display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+}
+.section-label::before { content: ''; width: 24px; height: 2px; background: var(--green); }
+h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  letter-spacing: .04em; line-height: 1;
+  margin-bottom: 10px; color: #fff;
+}
+.section-desc { font-size: .93rem; color: var(--muted); line-height: 1.85; max-width: 600px; margin-bottom: 48px; }
+
+/* Learn grid */
+.learn-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; }
+.learn-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px; padding: 24px;
+  display: flex; align-items: flex-start; gap: 16px;
+  transition: border-color .2s, transform .2s;
+}
+.learn-card:hover { border-color: rgba(58,170,53,.4); transform: translateY(-3px); }
+.lc-icon { width: 44px; height: 44px; border-radius: 10px; background: rgba(58,170,53,.1); border: 1px solid rgba(58,170,53,.2); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.lc-icon i { color: var(--green); font-size: 1rem; }
+.lc-text strong { display: block; font-size: .92rem; font-weight: 600; color: var(--text); margin-bottom: 4px; }
+.lc-text span { font-size: .82rem; color: var(--muted); line-height: 1.55; }
+
+/* ── DIVIDER ── */
+.divider { height: 1px; background: linear-gradient(90deg, transparent, var(--border), transparent); margin: 0 24px; }
+
+/* ── CTA SECTION ── */
+.cta-section {
+  position: relative; z-index: 1; padding: 100px 0;
+  background: linear-gradient(160deg, rgba(20,40,16,.6) 0%, rgba(10,15,9,0) 100%);
+}
+.cta-box {
+  background: var(--card);
+  border: 1px solid rgba(58,170,53,.25);
+  border-radius: 16px; padding: 64px 56px;
+  text-align: center; position: relative; overflow: hidden;
+  box-shadow: 0 32px 100px rgba(0,0,0,.5);
+}
+.cta-box::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--green), var(--lime), var(--mint), var(--lime), var(--green));
+}
+.cta-glow {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 600px; height: 300px; border-radius: 50%;
+  background: radial-gradient(ellipse, rgba(58,170,53,.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cta-free {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem; letter-spacing: .2em; color: var(--green);
+  display: inline-block; margin-bottom: 12px;
+}
+.cta-box h2 { font-size: clamp(2.5rem, 6vw, 4rem); margin-bottom: 16px; }
+.cta-box p { font-size: .96rem; color: var(--muted); line-height: 1.85; max-width: 500px; margin: 0 auto 40px; }
+
+.btn-inscribe-lg {
+  display: inline-flex; align-items: center; justify-content: center; gap: 16px;
+  background: linear-gradient(135deg, #2a9b26, var(--lime));
+  color: #fff; font-family: 'Syne', sans-serif; font-weight: 800;
+  font-size: 1.25rem; letter-spacing: .07em; text-transform: uppercase;
+  padding: 24px 64px; border-radius: 8px; text-decoration: none;
+  box-shadow: 0 12px 60px rgba(58,170,53,.5);
+  transition: transform .2s, box-shadow .2s;
+  position: relative; overflow: hidden;
+}
+.btn-inscribe-lg::before {
+  content: '';
+  position: absolute; top: -50%; left: -60%;
+  width: 40%; height: 200%;
+  background: rgba(255,255,255,.2);
+  transform: skewX(-20deg);
+  transition: left .5s;
+}
+.btn-inscribe-lg:hover::before { left: 130%; }
+.btn-inscribe-lg:hover { transform: translateY(-4px); box-shadow: 0 20px 80px rgba(58,170,53,.65); color: #fff; }
+
+.cta-note { font-size: .78rem; color: var(--muted); margin-top: 18px; display: flex; align-items: center; justify-content: center; gap: 8px; }
+.cta-note i { color: var(--green); }
+
+/* ── FOOTER ── */
+footer {
+  position: relative; z-index: 1;
+  background: #060d05;
+  border-top: 1px solid rgba(58,170,53,.12);
+  padding: 48px 0 28px;
+}
+.footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
+.footer-logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.1rem; color: #fff; margin-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+.footer-logo-icon { width: 32px; height: 32px; background: var(--green); border-radius: 6px; display: flex; align-items: center; justify-content: center; font-size: .9rem; }
+.footer-desc { font-size: .84rem; color: var(--muted); line-height: 1.75; }
+.footer-head { font-family: 'Syne', sans-serif; font-size: .65rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: rgba(255,255,255,.25); margin-bottom: 16px; }
+.footer-link { display: block; font-size: .84rem; color: var(--muted); text-decoration: none; margin-bottom: 9px; transition: color .2s; }
+.footer-link:hover { color: var(--mint); }
+.footer-cr { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.footer-cr i { color: var(--green); font-size: .8rem; flex-shrink: 0; }
+.footer-cr span { font-size: .84rem; color: var(--muted); }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,.06); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+.footer-bottom span { font-size: .75rem; color: rgba(255,255,255,.2); }
+
+/* WA float */
+.wa-float {
+  position: fixed; bottom: 28px; right: 28px; z-index: 200;
+  width: 54px; height: 54px; border-radius: 50%;
+  background: #25D366; color: #fff; font-size: 1.5rem;
+  display: flex; align-items: center; justify-content: center;
+  text-decoration: none; box-shadow: 0 4px 24px rgba(37,211,102,.45);
+  transition: transform .2s;
+}
+.wa-float:hover { transform: scale(1.1); color: #fff; }
+
+/* Fade in animations */
+.fade-in { opacity: 0; transform: translateY(28px); transition: opacity .7s ease, transform .7s ease; }
+.fade-in.visible { opacity: 1; transform: none; }
+.fade-in.d1 { transition-delay: .1s; }
+.fade-in.d2 { transition-delay: .2s; }
+.fade-in.d3 { transition-delay: .3s; }
+.fade-in.d4 { transition-delay: .4s; }
+
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero-card { max-width: 460px; margin: 0 auto; }
+  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+  .cta-box { padding: 40px 24px; }
+  .btn-inscribe-lg { font-size: 1rem; padding: 20px 40px; }
+}
+
+@media (max-width: 600px) {
+  .info-pills { gap: 7px; }
+  .btn-inscribe { font-size: .9rem; padding: 16px 28px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Spore particles (JS generated) -->
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="container">
+    <div class="topbar-inner">
+      <div class="topbar-left">
+        <span><i class="fas fa-map-marker-alt" style="color:var(--mint);margin-right:6px"></i>Perú</span>
+        <div class="tb-div"></div>
+        <a href="mailto:capacitacion@andeanbioconsulting.com"><i class="fas fa-envelope" style="margin-right:5px"></i>info@andeanbioconsulting.com</a>
+      </div>
+      <div class="topbar-right">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <div class="tb-div"></div>
+        <a href="contact.html" style="color:var(--mint);font-weight:600">Contáctanos →</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg" id="mainNav">
+  <a href="index.html" class="navbar-brand"><img src="img/Andeanlogo.png" alt="Andean Consulting"></a>
+  <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navCollapse" aria-label="Menú">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navCollapse">
+    <div class="navbar-nav ms-auto p-3 p-lg-0">
+      <a href="index.html" class="nav-item nav-link">Inicio</a>
+      <a href="about.html" class="nav-item nav-link">Nosotros</a>
+      <a href="courses.html" class="nav-item nav-link active">Cursos</a>
+      <div class="nav-item dropdown">
+        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Servicios</a>
+        <div class="dropdown-menu">
+          <a href="consultoria.html" class="dropdown-item">Consultoría &amp; Equipos</a>
+          <a href="alumnos.html" class="dropdown-item">Portal Alumnos</a>
+        </div>
+      </div>
+      <a href="contact.html" class="nav-item nav-link">Contacto</a>
+    </div>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSffGpyV99dQK0C68GaWsjsuVyFf1N4m_VHVMgbgf5Qb-NKzag/viewform?usp=publish-editor" target="_blank" rel="noopener" class="btn-nav-cta d-none d-lg-flex">Inscribirme Gratis <i class="fas fa-arrow-right" style="font-size:.7rem"></i></a>
+  </div>
+</nav>
+
+
+<!-- ══ HERO ══ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-orb"></div>
+
+  <div class="container hero-content">
+    <div class="hero-grid">
+
+      <!-- LEFT -->
+      <div>
+        <div class="free-badge">Taller 100% Gratuito</div>
+        <span class="taller-label">Andean Consulting · Micología Aplicada</span>
+
+        <h1>
+          HONGOS<span class="sub">Oportunidades de</span>
+          <span class="accent">Negocio y Cultivo</span>
+        </h1>
+
+        <p class="hero-desc">
+          Descubre cómo los hongos pueden transformarse en una fuente de ingresos. Aprende desde el cultivo básico hasta los tipos más rentables del mercado, sin experiencia previa.
+        </p>
+
+        <div class="info-pills">
+          <div class="info-pill"><i class="fas fa-calendar-alt"></i> Lunes 17 de Mayo 2026</div>
+          <div class="info-pill"><i class="fas fa-clock"></i> 7:00 PM — Hora Perú</div>
+          <div class="info-pill"><i class="fas fa-globe"></i> Online · En Vivo</div>
+          <div class="info-pill highlight"><i class="fas fa-certificate"></i> Certificado Gratis</div>
+          <div class="info-pill"><i class="fas fa-users"></i> Cupos Limitados</div>
+        </div>
+
+        <div>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSffGpyV99dQK0C68GaWsjsuVyFf1N4m_VHVMgbgf5Qb-NKzag/viewform?usp=publish-editor"
+             target="_blank" rel="noopener" class="btn-inscribe">
+            <i class="fas fa-pen-to-square"></i>
+            Inscríbete Aquí — ¡Es Gratis!
+          </a>
+          <br>
+          <a href="https://wa.me/51969392189?text=Hola%2C%20quiero%20información%20del%20taller%20gratuito%20de%20Hongos." target="_blank" rel="noopener" class="btn-wa">
+            <i class="fab fa-whatsapp"></i> ¿Dudas? Escríbenos por WhatsApp
+          </a>
+        </div>
+      </div>
+
+      <!-- RIGHT — CARD -->
+      <div class="fade-in d2">
+        <div class="hero-card">
+          <div class="hc-top">
+            <div class="free-label">GRATIS</div>
+            <div class="free-sub">Sin costo · Sin compromisos</div>
+          </div>
+          <div class="hc-body">
+            <div class="hc-row">
+              <div class="hc-icon"><i class="fas fa-calendar-day"></i></div>
+              <div class="hc-text">
+                <strong>Lunes 17 de Mayo, 2026</strong>
+                <span>7:00 PM Hora Perú</span>
+              </div>
+            </div>
+            <div class="hc-row">
+              <div class="hc-icon"><i class="fas fa-laptop"></i></div>
+              <div class="hc-text">
+                <strong>100% Online — En vivo</strong>
+                <span>Desde cualquier dispositivo</span>
+              </div>
+            </div>
+            <div class="hc-row">
+              <div class="hc-icon"><i class="fas fa-users"></i></div>
+              <div class="hc-text">
+                <strong>Cupos Limitados</strong>
+                <span>Asegura el tuyo ahora</span>
+              </div>
+            </div>
+            <div class="cert-badge">
+              <i class="fas fa-certificate"></i>
+              <span>Incluye certificado de participación <strong>sin costo</strong></span>
+            </div>
+          </div>
+          <div style="padding:0 28px 28px;">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSffGpyV99dQK0C68GaWsjsuVyFf1N4m_VHVMgbgf5Qb-NKzag/viewform?usp=publish-editor"
+               target="_blank" rel="noopener" class="btn-inscribe" style="font-size:.88rem;padding:16px 24px;width:100%">
+              <i class="fas fa-pen-to-square"></i> Inscríbete Aquí — ¡Es Gratis!
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<div class="divider"></div>
+
+
+<!-- ══ QUÉ DESCUBRIRÁS ══ -->
+<section class="section">
+  <div class="container">
+    <div class="fade-in">
+      <div class="section-label">Contenido del Taller</div>
+      <h2>¿Qué Descubrirás?</h2>
+      <p class="section-desc">Un taller diseñado para darte las herramientas clave para entrar al mundo del cultivo de hongos, desde cero y con enfoque en el negocio.</p>
+    </div>
+    <div class="learn-grid">
+      <div class="learn-card fade-in d1">
+        <div class="lc-icon"><i class="fas fa-seedling"></i></div>
+        <div class="lc-text">
+          <strong>Cultivo Básico de Hongos</strong>
+          <span>Aprende las técnicas fundamentales para comenzar tu propio cultivo en casa o a pequeña escala.</span>
+        </div>
+      </div>
+      <div class="learn-card fade-in d2">
+        <div class="lc-icon"><i class="fas fa-chart-line"></i></div>
+        <div class="lc-text">
+          <strong>Potencial Económico</strong>
+          <span>Descubre el mercado, los precios y cómo los hongos se han convertido en un negocio rentable.</span>
+        </div>
+      </div>
+      <div class="learn-card fade-in d3">
+        <div class="lc-icon"><i class="fas fa-star"></i></div>
+        <div class="lc-text">
+          <strong>Tipos Más Rentables</strong>
+          <span>Conoce qué variedades generan mayor demanda y mejores márgenes en el mercado peruano.</span>
+        </div>
+      </div>
+      <div class="learn-card fade-in d1">
+        <div class="lc-icon"><i class="fas fa-play-circle"></i></div>
+        <div class="lc-text">
+          <strong>Cómo Empezar sin Experiencia</strong>
+          <span>Paso a paso para iniciar desde cero, con recursos mínimos y máximo potencial.</span>
+        </div>
+      </div>
+      <div class="learn-card fade-in d2">
+        <div class="lc-icon"><i class="fas fa-exclamation-triangle"></i></div>
+        <div class="lc-text">
+          <strong>Errores Comunes</strong>
+          <span>Los errores más frecuentes que cometen los principiantes y cómo evitarlos desde el inicio.</span>
+        </div>
+      </div>
+      <div class="learn-card fade-in d3">
+        <div class="lc-icon"><i class="fas fa-certificate"></i></div>
+        <div class="lc-text">
+          <strong>Certificado Gratuito</strong>
+          <span>Al completar el taller recibirás tu certificado de participación sin ningún costo adicional.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<div class="divider"></div>
+
+
+<!-- ══ INFORMES / CONTACTO ══ -->
+<section class="section" style="padding:60px 0">
+  <div class="container">
+    <div class="fade-in" style="text-align:center;margin-bottom:36px">
+      <div class="section-label" style="justify-content:center">Informes</div>
+      <h2>¿Tienes Preguntas?</h2>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:16px;justify-content:center">
+      <a href="https://wa.me/51941054071" target="_blank" rel="noopener"
+         style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px 28px;text-decoration:none;transition:border-color .2s;color:var(--text)">
+        <div style="width:44px;height:44px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:#fff;flex-shrink:0">
+          <i class="fab fa-whatsapp"></i>
+        </div>
+        <div>
+          <strong style="display:block;font-size:.95rem">941 054 071</strong>
+          <span style="font-size:.78rem;color:var(--muted)">WhatsApp Informes</span>
+        </div>
+      </a>
+      <a href="https://wa.me/51969392189" target="_blank" rel="noopener"
+         style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px 28px;text-decoration:none;transition:border-color .2s;color:var(--text)">
+        <div style="width:44px;height:44px;border-radius:50%;background:#25D366;display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:#fff;flex-shrink:0">
+          <i class="fab fa-whatsapp"></i>
+        </div>
+        <div>
+          <strong style="display:block;font-size:.95rem">969 392 189</strong>
+          <span style="font-size:.78rem;color:var(--muted)">WhatsApp Informes</span>
+        </div>
+      </a>
+      <a href="mailto:administracion@andeanbioconsulting.com"
+         style="display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:18px 28px;text-decoration:none;transition:border-color .2s;color:var(--text)">
+        <div style="width:44px;height:44px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;font-size:1rem;color:#fff;flex-shrink:0">
+          <i class="fas fa-envelope"></i>
+        </div>
+        <div>
+          <strong style="display:block;font-size:.88rem">administracion@andeanbioconsulting.com</strong>
+          <span style="font-size:.78rem;color:var(--muted)">Correo electrónico</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ BIG CTA ══ -->
+<section class="cta-section">
+  <div class="container">
+    <div class="cta-box fade-in">
+      <div class="cta-glow"></div>
+      <span class="cta-free">🍄 TALLER GRATUITO · 17 MAYO 2026</span>
+      <h2>¡Asegura tu Cupo<br>Ahora!</h2>
+      <p>El taller es completamente gratuito, incluye certificado y los cupos son limitados. No te quedes fuera.</p>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSffGpyV99dQK0C68GaWsjsuVyFf1N4m_VHVMgbgf5Qb-NKzag/viewform?usp=publish-editor"
+         target="_blank" rel="noopener" class="btn-inscribe-lg">
+        <i class="fas fa-pen-to-square"></i>
+        Inscríbete Aquí — ¡Es Gratis!
+      </a>
+      <div class="cta-note">
+        <i class="fas fa-shield-alt"></i>
+        Gratis · Sin tarjeta · Sin compromisos · Certificado incluido
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══ FOOTER ══ -->
+<footer class="footer">
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-3 col-md-6">
+        <div class="footer-brand"><img src="img/Andeanlogo.png" alt="Andean Consulting"></div>
+        <p class="footer-desc">Empresa peruana especializada en consultoría ambiental y formación especializada.</p>
+        <div style="margin-top:24px">
+          <a class="social-link" href="#"><i class="fab fa-facebook-f"></i></a>
+          <a class="social-link" href="#"><i class="fab fa-instagram"></i></a>
+          <a class="social-link" href="#"><i class="fab fa-linkedin-in"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-6">
+        <div class="footer-heading">Navegación</div>
+        <a class="footer-link" href="index.html">Inicio</a>
+        <a class="footer-link" href="about.html">Nosotros</a>
+        <a class="footer-link" href="courses.html">Cursos</a>
+        <a class="footer-link" href="contact.html">Contacto</a>
+      </div>
+      <div class="col-lg-3 col-md-6">
+        <div class="footer-heading">Contacto</div>
+        <div class="footer-cr"><i class="fas fa-map-marker-alt"></i><span>Perú</span></div>
+        <div class="footer-cr"><i class="fas fa-phone-alt"></i><span>+51 969 392 189</span></div>
+        <div class="footer-cr"><i class="fas fa-envelope"></i><span>capacitacion@andeanbioconsulting.com</span></div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="footer-heading">Boletín Informativo</div>
+        <p style="font-size:.84rem;color:rgba(255,255,255,.4);margin-bottom:18px;line-height:1.75">Suscríbete para recibir noticias sobre nuevos cursos.</p>
+        <div class="newsletter-row">
+          <input type="email" id="nlEmail" placeholder="Tu correo electrónico">
+          <button class="nl-btn" onclick="sendNewsletter()">Suscribir</button>
+        </div>
+        <p id="nlOk" style="display:none;font-size:.77rem;color:var(--mint);margin-top:8px">✓ ¡Suscrito! Gracias.</p>
+      </div>
+    </div>
+    <hr class="footer-divider">
+    <div class="footer-bottom">
+      <span>&copy; 2025 Andean Consulting &amp; Environmental Solutions S.A.C.</span>
+      <div class="footer-bottom-links"><a href="#">Política de Privacidad</a><a href="#">Cookies</a><a href="#">FAQ</a></div>
+    </div>
+  </div>
+</footer>
+
+<!-- WA Float -->
+<a href="https://wa.me/51969392189?text=Hola%2C%20quiero%20información%20del%20taller%20gratuito%20de%20Hongos." target="_blank" rel="noopener" class="wa-float">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// Navbar scroll
+var mainNav = document.getElementById('mainNav');
+if(mainNav) window.addEventListener('scroll', function() {
+  mainNav.classList.toggle('scrolled', window.scrollY > 20);
+}, {passive:true});
+
+// Newsletter
+function sendNewsletter() {
+  var input = document.getElementById('nlEmail');
+  var email = input.value.trim();
+  if (!email || !/\S+@\S+\.\S+/.test(email)) {
+    input.style.borderColor='rgba(255,80,80,.5)'; input.focus();
+    setTimeout(function(){ input.style.borderColor=''; }, 2000); return;
+  }
+  input.value='';
+  document.getElementById('nlOk').style.display='block';
+  setTimeout(function(){ document.getElementById('nlOk').style.display='none'; }, 4000);
+}
+
+// Spore particles
+(function() {
+  var colors = ['rgba(26,92,50,.6)','rgba(92,184,92,.5)','rgba(168,213,181,.4)','rgba(201,168,76,.35)'];
+  for (var i = 0; i < 18; i++) {
+    var s = document.createElement('div');
+    s.className = 'spore';
+    var size = Math.random() * 5 + 2;
+    var left = Math.random() * 100;
+    var duration = Math.random() * 18 + 12;
+    var delay = Math.random() * 20;
+    var color = colors[Math.floor(Math.random() * colors.length)];
+    s.style.cssText = 'width:'+size+'px;height:'+size+'px;left:'+left+'%;bottom:0;background:'+color+';animation-duration:'+duration+'s;animation-delay:'+delay+'s;position:absolute;border-radius:50%;pointer-events:none;animation-name:sporeFloat;animation-timing-function:linear;animation-iteration-count:infinite;';
+    document.querySelector('.hero').appendChild(s);
+  }
+})();
+
+// Fade in observer
+var fo = new IntersectionObserver(function(entries) {
+  entries.forEach(function(e) {
+    if (e.isIntersecting) { e.target.classList.add('visible'); fo.unobserve(e.target); }
+  });
+}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.fade-in').forEach(function(el) { fo.observe(el); });
+</script>
+</body>
+</html>
