@@ -16,14 +16,13 @@
   --bg:#07130c; --deep:#040e07; --forest:#0d1f14; --green:#1a5c32; --sage:#4a7c59;
   --lime:#5cb85c; --mint:#a8d5b5; --gold:#c9a84c; --cream:#f5f0e8; --offwhite:#faf7f2;
   --border:#dde8e0; --text:#1a2b1e; --muted:#5c7060; --light:#e8f0eb; --wa:#25D366;
-  --card:#101d0e; --hero-text:#eef4ec; --hero-muted:rgba(168,213,181,.55);
+  --card:#101d0e;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
 body{font-family:'DM Sans',sans-serif;background:#fff;color:var(--text);overflow-x:hidden}
-h1,h2,h3,h4,h5,h6{font-family:'Cormorant Garamond',serif}
 
-/* ── TOPBAR original ── */
+/* ── TOPBAR ── */
 .topbar{background:var(--deep);color:rgba(255,255,255,.55);font-size:.73rem;letter-spacing:.06em;padding:8px 0;position:relative;z-index:10}
 .topbar a{color:rgba(255,255,255,.5);text-decoration:none;transition:color .2s}
 .topbar a:hover{color:#fff}
@@ -32,7 +31,7 @@ h1,h2,h3,h4,h5,h6{font-family:'Cormorant Garamond',serif}
 .topbar-right{display:flex;gap:16px;align-items:center}
 .tb-div{width:1px;height:12px;background:rgba(255,255,255,.15)}
 
-/* ── NAVBAR original ── */
+/* ── NAVBAR ── */
 .navbar{background:#fff;border-bottom:1px solid var(--border);padding:0;position:sticky;top:0;z-index:1000;transition:box-shadow .3s}
 .navbar.scrolled{box-shadow:0 2px 28px rgba(10,31,20,.12)}
 .navbar-brand{padding:14px 24px}
@@ -54,240 +53,247 @@ h1,h2,h3,h4,h5,h6{font-family:'Cormorant Garamond',serif}
 ═══════════════════════════════════ */
 .hero{
   position:relative;min-height:100vh;display:flex;align-items:center;
-  background:linear-gradient(160deg,#040e07 0%,#091508 45%,#060f05 100%);
+  background:linear-gradient(160deg,#040e07 0%,#081408 50%,#060f05 100%);
   overflow:hidden;padding:70px 0 0;
 }
 
-/* grid lines botánicas */
-.hero-grid-lines{
+/* grid de fondo */
+.hero-grid-bg{
   position:absolute;inset:0;z-index:0;
   background-image:linear-gradient(rgba(168,213,181,.03) 1px,transparent 1px),
     linear-gradient(90deg,rgba(168,213,181,.03) 1px,transparent 1px);
-  background-size:64px 64px;
+  background-size:60px 60px;
 }
 
-/* radial glow */
-.hero-glow{
-  position:absolute;top:-10%;right:-5%;width:700px;height:700px;border-radius:50%;
-  background:radial-gradient(circle,rgba(26,92,50,.18) 0%,transparent 65%);
-  animation:glowPulse 7s ease-in-out infinite;pointer-events:none;z-index:0;
-}
-@keyframes glowPulse{0%,100%{transform:scale(1);opacity:.7}50%{transform:scale(1.1);opacity:1}}
+/* Glow radial */
+.hero-glow-l{position:absolute;top:20%;left:-10%;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(26,92,50,.1) 0%,transparent 65%);pointer-events:none;z-index:0;animation:glowL 8s ease-in-out infinite}
+.hero-glow-r{position:absolute;top:-5%;right:-5%;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(26,92,50,.14) 0%,transparent 60%);pointer-events:none;z-index:0;animation:glowR 10s ease-in-out infinite 1s}
+@keyframes glowL{0%,100%{transform:scale(1);opacity:.7}50%{transform:scale(1.12);opacity:1}}
+@keyframes glowR{0%,100%{transform:scale(1);opacity:.6}50%{transform:scale(1.08);opacity:.95}}
 
 /* spores */
 .spore{position:absolute;border-radius:50%;pointer-events:none;animation:sporeRise linear infinite;z-index:1}
 @keyframes sporeRise{
   0%{transform:translateY(110%) rotate(0deg);opacity:0}
-  8%{opacity:.8}90%{opacity:.3}
+  8%{opacity:.9}90%{opacity:.25}
   100%{transform:translateY(-15%) rotate(540deg);opacity:0}
 }
 
-/* ── 3D MUSHROOM SCENE ── */
-.mushroom-scene{position:absolute;inset:0;z-index:1;pointer-events:none}
-.mush-wrap{position:absolute;transform-style:preserve-3d;animation-timing-function:ease-in-out;animation-iteration-count:infinite}
-
-/* individual float anims */
-@keyframes mFloat1{
-  0%{transform:translateY(0) rotateX(10deg) rotateY(15deg) rotateZ(-5deg) scale(1)}
-  33%{transform:translateY(-22px) rotateX(20deg) rotateY(-5deg) rotateZ(5deg) scale(1.04)}
-  66%{transform:translateY(-10px) rotateX(5deg) rotateY(30deg) rotateZ(-3deg) scale(.97)}
-  100%{transform:translateY(0) rotateX(10deg) rotateY(15deg) rotateZ(-5deg) scale(1)}
-}
-@keyframes mFloat2{
-  0%{transform:translateY(0) rotateX(-15deg) rotateY(-20deg) rotateZ(8deg) scale(1)}
-  40%{transform:translateY(-28px) rotateX(-5deg) rotateY(-35deg) rotateZ(-5deg) scale(1.06)}
-  70%{transform:translateY(-14px) rotateX(-25deg) rotateY(-10deg) rotateZ(12deg) scale(.95)}
-  100%{transform:translateY(0) rotateX(-15deg) rotateY(-20deg) rotateZ(8deg) scale(1)}
-}
-@keyframes mFloat3{
-  0%{transform:translateY(0) rotateX(20deg) rotateY(35deg) rotateZ(-12deg) scale(1)}
-  50%{transform:translateY(-32px) rotateX(8deg) rotateY(15deg) rotateZ(8deg) scale(1.05)}
-  100%{transform:translateY(0) rotateX(20deg) rotateY(35deg) rotateZ(-12deg) scale(1)}
-}
-@keyframes mFloat4{
-  0%{transform:translateY(0) rotateX(-8deg) rotateY(-30deg) rotateZ(15deg) scale(1)}
-  45%{transform:translateY(-18px) rotateX(-20deg) rotateY(-15deg) rotateZ(-5deg) scale(1.03)}
-  80%{transform:translateY(-28px) rotateX(-5deg) rotateY(-40deg) rotateZ(20deg) scale(.96)}
-  100%{transform:translateY(0) rotateX(-8deg) rotateY(-30deg) rotateZ(15deg) scale(1)}
-}
-@keyframes mFloat5{
-  0%{transform:translateY(0) rotateX(25deg) rotateY(-10deg) rotateZ(-8deg) scale(1)}
-  60%{transform:translateY(-24px) rotateX(10deg) rotateY(-25deg) rotateZ(5deg) scale(1.07)}
-  100%{transform:translateY(0) rotateX(25deg) rotateY(-10deg) rotateZ(-8deg) scale(1)}
+/* ── HONGOS PNG FLOTANTES ── */
+.hongo-float{
+  position:absolute;z-index:2;pointer-events:none;
+  mix-blend-mode:screen; /* el negro del fondo de la foto desaparece */
+  will-change:transform;
 }
 
-.hero-content{position:relative;z-index:3;width:100%}
-.hero-layout{display:grid;grid-template-columns:1fr 400px;gap:48px;align-items:center;padding-bottom:60px}
+/* Animaciones individuales con rotación 3D suave */
+@keyframes hFloat1{
+  0%  {transform:translateY(0px)   rotateY(0deg)   rotateZ(-3deg)  scale(1)}
+  25% {transform:translateY(-18px) rotateY(8deg)   rotateZ(1deg)   scale(1.03)}
+  50% {transform:translateY(-28px) rotateY(-4deg)  rotateZ(-4deg)  scale(.97)}
+  75% {transform:translateY(-12px) rotateY(12deg)  rotateZ(2deg)   scale(1.02)}
+  100%{transform:translateY(0px)   rotateY(0deg)   rotateZ(-3deg)  scale(1)}
+}
+@keyframes hFloat2{
+  0%  {transform:translateY(0px)   rotateY(0deg)   rotateZ(4deg)   scale(1)}
+  30% {transform:translateY(-22px) rotateY(-10deg) rotateZ(-2deg)  scale(1.04)}
+  60% {transform:translateY(-35px) rotateY(6deg)   rotateZ(6deg)   scale(.96)}
+  100%{transform:translateY(0px)   rotateY(0deg)   rotateZ(4deg)   scale(1)}
+}
+@keyframes hFloat3{
+  0%  {transform:translateY(0px)   rotateY(0deg)   rotateZ(-6deg)  scale(1)}
+  40% {transform:translateY(-16px) rotateY(15deg)  rotateZ(2deg)   scale(1.05)}
+  70% {transform:translateY(-26px) rotateY(-8deg)  rotateZ(-8deg)  scale(.95)}
+  100%{transform:translateY(0px)   rotateY(0deg)   rotateZ(-6deg)  scale(1)}
+}
+@keyframes hFloat4{
+  0%  {transform:translateY(0px)   rotateY(0deg)   rotateZ(5deg)   scale(1)}
+  50% {transform:translateY(-20px) rotateY(-12deg) rotateZ(-3deg)  scale(1.04)}
+  100%{transform:translateY(0px)   rotateY(0deg)   rotateZ(5deg)   scale(1)}
+}
+@keyframes hFloat5{
+  0%  {transform:translateY(0px)   rotateY(0deg)   rotateZ(-2deg)  scale(1)}
+  35% {transform:translateY(-24px) rotateY(10deg)  rotateZ(4deg)   scale(1.06)}
+  65% {transform:translateY(-14px) rotateY(-6deg)  rotateZ(-5deg)  scale(.96)}
+  100%{transform:translateY(0px)   rotateY(0deg)   rotateZ(-2deg)  scale(1)}
+}
+
+.hero-content{position:relative;z-index:4;width:100%}
+.hero-layout{display:grid;grid-template-columns:1fr 400px;gap:52px;align-items:center;padding-bottom:70px}
 
 /* ── FREE BADGE ── */
 .free-badge{
   display:inline-flex;align-items:center;gap:10px;
-  font-family:'Bebas Neue',sans-serif;font-size:1rem;letter-spacing:.16em;
-  color:#fff;background:linear-gradient(135deg,#1a5c32,#4a9b3a);
-  padding:9px 24px;border-radius:3px;margin-bottom:20px;
-  box-shadow:0 0 0 1px rgba(168,213,181,.25),0 8px 32px rgba(26,92,50,.5);
-  animation:badgePulse 3s ease-in-out infinite;
+  font-family:'Bebas Neue',sans-serif;font-size:1.05rem;letter-spacing:.15em;
+  color:#fff;background:linear-gradient(135deg,#174d2a,#2a8c3a);
+  padding:10px 26px;border-radius:3px;margin-bottom:22px;
+  border:1px solid rgba(168,213,181,.2);
+  box-shadow:0 0 0 1px rgba(168,213,181,.1),0 8px 36px rgba(26,92,50,.55);
+  animation:badgePulse 3.5s ease-in-out infinite;
 }
-.free-badge-dot{width:8px;height:8px;border-radius:50%;background:var(--mint);animation:dotBlink 1.5s ease infinite;flex-shrink:0}
-@keyframes badgePulse{0%,100%{box-shadow:0 0 0 1px rgba(168,213,181,.25),0 8px 32px rgba(26,92,50,.5)}50%{box-shadow:0 0 0 1px rgba(168,213,181,.45),0 12px 48px rgba(26,92,50,.75)}}
-@keyframes dotBlink{0%,100%{opacity:1}50%{opacity:.15}}
+.badge-dot{width:8px;height:8px;border-radius:50%;background:#5cb85c;animation:dotBlink 1.6s ease infinite;flex-shrink:0}
+@keyframes badgePulse{0%,100%{box-shadow:0 0 0 1px rgba(168,213,181,.1),0 8px 36px rgba(26,92,50,.55)}50%{box-shadow:0 0 0 1px rgba(168,213,181,.3),0 12px 52px rgba(26,92,50,.8)}}
+@keyframes dotBlink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.2;transform:scale(.7)}}
 
-.eyebrow{font-family:'DM Sans',sans-serif;font-size:.68rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(168,213,181,.5);margin-bottom:14px;display:flex;align-items:center;gap:10px}
-.eyebrow::before{content:'';width:22px;height:1px;background:var(--gold);opacity:.6}
+.eyebrow{font-family:'DM Sans',sans-serif;font-size:.67rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:rgba(168,213,181,.4);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.eyebrow-line{width:22px;height:1px;background:var(--gold);opacity:.5}
 
+/* H1 */
 .hero h1{
   font-family:'Bebas Neue',sans-serif;
-  font-size:clamp(3.8rem,8.5vw,7rem);
-  line-height:.92;letter-spacing:.02em;color:#fff;margin-bottom:0;
+  line-height:.9;letter-spacing:.02em;color:#fff;margin-bottom:0;
 }
-.hero h1 .h-top{color:rgba(255,255,255,.9);font-size:.55em;letter-spacing:.06em;display:block}
-.hero h1 .h-main{color:#fff;display:block}
-.hero h1 .h-accent{color:#5cb85c;display:block;font-size:.75em;letter-spacing:.05em}
+.h-tiny{font-size:clamp(1.6rem,3.5vw,2.6rem);color:rgba(255,255,255,.7);display:block;letter-spacing:.1em}
+.h-huge{font-size:clamp(5rem,11vw,9rem);color:#fff;display:block;line-height:.88}
+.h-sub{font-size:clamp(1.8rem,4vw,3.2rem);color:#5cb85c;display:block;letter-spacing:.06em;margin-top:4px}
 
-.hero-desc{font-size:.93rem;color:rgba(255,255,255,.45);line-height:1.9;margin:24px 0 32px;max-width:520px;font-weight:300}
+.hero-desc{font-size:.93rem;color:rgba(255,255,255,.42);line-height:1.9;margin:26px 0 34px;max-width:510px;font-weight:300}
 
 /* pills */
-.info-pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:40px}
-.info-pill{display:flex;align-items:center;gap:8px;padding:9px 16px;border-radius:50px;border:1px solid rgba(168,213,181,.15);background:rgba(168,213,181,.06);font-size:.79rem;font-weight:500;color:var(--mint)}
-.info-pill i{color:var(--lime);font-size:.78rem}
-.info-pill.gold-pill{border-color:rgba(201,168,76,.2);background:rgba(201,168,76,.07);color:var(--gold)}
-.info-pill.gold-pill i{color:var(--gold)}
+.info-pills{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:42px}
+.info-pill{display:flex;align-items:center;gap:8px;padding:9px 17px;border-radius:50px;border:1px solid rgba(168,213,181,.13);background:rgba(168,213,181,.05);font-size:.79rem;font-weight:500;color:var(--mint)}
+.info-pill i{color:var(--lime);font-size:.76rem}
+.gold-pill{border-color:rgba(201,168,76,.18)!important;background:rgba(201,168,76,.06)!important;color:var(--gold)!important}
+.gold-pill i{color:var(--gold)!important}
 
 /* ═══════════════════════════════════
-   BOTÓN INSCRÍBETE — mejorado
+   BOTÓN INSCRÍBETE — el bueno
 ═══════════════════════════════════ */
-.btn-inscribe-wrap{margin-bottom:12px}
 .btn-inscribe{
-  display:inline-flex;align-items:center;gap:18px;
-  background:linear-gradient(135deg,#0f6b28 0%,#1f8c3a 40%,#3aaa35 100%);
-  color:#fff;text-decoration:none;
-  font-family:'Bebas Neue',sans-serif;font-size:1.55rem;letter-spacing:.12em;
-  padding:20px 48px 18px;border-radius:4px;
-  border:1px solid rgba(168,213,181,.2);
-  box-shadow:
-    0 0 0 1px rgba(58,170,53,.3),
-    0 12px 48px rgba(26,92,50,.6),
-    0 4px 16px rgba(0,0,0,.4),
-    inset 0 1px 0 rgba(255,255,255,.12);
+  display:inline-flex;align-items:center;gap:20px;
+  text-decoration:none;color:#fff;
+  background:linear-gradient(140deg,#0e5a24 0%,#1a8030 50%,#2eb53a 100%);
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(1.4rem,2.5vw,1.75rem);
+  letter-spacing:.13em;
+  padding:22px 52px 20px;
+  border-radius:5px;
+  border:1px solid rgba(168,213,181,.18);
   position:relative;overflow:hidden;
-  transition:transform .25s,box-shadow .25s;
+  box-shadow:
+    0 2px 0 rgba(255,255,255,.06) inset,
+    0 -2px 0 rgba(0,0,0,.2) inset,
+    0 14px 56px rgba(14,90,36,.65),
+    0 4px 16px rgba(0,0,0,.35);
+  transition:transform .28s cubic-bezier(.34,1.56,.64,1), box-shadow .28s;
 }
-/* shimmer sweep */
+/* sweep de brillo */
 .btn-inscribe::before{
-  content:'';position:absolute;top:0;left:-100%;
-  width:60%;height:100%;
-  background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.18) 50%,transparent 70%);
-  transition:left .6s ease;
+  content:'';position:absolute;top:-10%;left:-80%;
+  width:55%;height:120%;
+  background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.16) 50%,transparent 70%);
+  transform:skewX(-15deg);
+  transition:left .65s ease;
 }
-.btn-inscribe:hover::before{left:150%}
-/* bottom light line */
+.btn-inscribe:hover::before{left:130%}
+/* línea brillante inferior */
 .btn-inscribe::after{
-  content:'';position:absolute;bottom:0;left:10%;right:10%;height:1px;
-  background:linear-gradient(90deg,transparent,rgba(168,213,181,.6),transparent);
+  content:'';position:absolute;bottom:0;left:8%;right:8%;height:1px;
+  background:linear-gradient(90deg,transparent,rgba(168,213,181,.55),transparent);
 }
 .btn-inscribe:hover{
-  transform:translateY(-4px) scale(1.02);
-  box-shadow:0 0 0 1px rgba(92,184,92,.5),0 20px 64px rgba(26,92,50,.75),0 8px 24px rgba(0,0,0,.4),inset 0 1px 0 rgba(255,255,255,.15);
+  transform:translateY(-5px) scale(1.025);
+  box-shadow:
+    0 2px 0 rgba(255,255,255,.08) inset,
+    0 -2px 0 rgba(0,0,0,.25) inset,
+    0 22px 72px rgba(14,90,36,.8),
+    0 8px 24px rgba(0,0,0,.4);
   color:#fff;
 }
-.btn-inscribe .btn-icon{
-  width:36px;height:36px;border-radius:50%;
-  background:rgba(255,255,255,.15);
+.btn-inscribe:active{transform:translateY(-2px) scale(1.01)}
+/* icono circulo */
+.btn-icon-circle{
+  width:40px;height:40px;border-radius:50%;flex-shrink:0;
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);
   display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;font-size:.85rem;
-  border:1px solid rgba(255,255,255,.2);
-  transition:transform .25s;
+  font-size:.9rem;transition:transform .3s cubic-bezier(.34,1.56,.64,1);
 }
-.btn-inscribe:hover .btn-icon{transform:rotate(15deg) scale(1.1)}
-.btn-tag{
-  font-size:.65rem;letter-spacing:.18em;color:rgba(255,255,255,.55);
+.btn-inscribe:hover .btn-icon-circle{transform:rotate(15deg) scale(1.12)}
+.btn-text-wrap{display:flex;flex-direction:column;align-items:flex-start}
+.btn-main-text{line-height:1}
+.btn-sub-text{
   font-family:'DM Sans',sans-serif;font-weight:600;
-  display:block;margin-top:3px;text-transform:uppercase;
-}
-.btn-gratis-badge{
-  position:absolute;top:-12px;right:24px;
-  background:var(--gold);color:#1a1000;
-  font-family:'Bebas Neue',sans-serif;font-size:.85rem;letter-spacing:.1em;
-  padding:4px 14px;border-radius:40px;
-  box-shadow:0 4px 16px rgba(201,168,76,.5);
+  font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(255,255,255,.5);margin-top:4px;line-height:1;
 }
 
-.btn-wa{
+.btn-wa-link{
   display:inline-flex;align-items:center;gap:9px;
-  color:rgba(37,211,102,.7);font-size:.82rem;font-weight:500;
-  text-decoration:none;margin-top:16px;transition:color .2s;
+  color:rgba(37,211,102,.65);font-size:.82rem;font-weight:500;
+  text-decoration:none;margin-top:18px;transition:color .2s;
 }
-.btn-wa:hover{color:var(--wa)}
+.btn-wa-link:hover{color:var(--wa)}
 
-/* ── CARD lateral ── */
+/* ── CARD LATERAL ── */
 .hero-card{
   background:var(--card);
-  border:1px solid rgba(168,213,181,.12);
+  border:1px solid rgba(168,213,181,.1);
   border-radius:10px;overflow:hidden;
   box-shadow:0 32px 80px rgba(0,0,0,.55);
 }
 .hc-top{
-  background:linear-gradient(160deg,#0c2209,#132e10);
+  background:linear-gradient(160deg,#091c09,#112a12);
   padding:28px 28px 22px;text-align:center;position:relative;
-  border-bottom:1px solid rgba(168,213,181,.1);
+  border-bottom:1px solid rgba(168,213,181,.08);
 }
 .hc-top::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,#1a5c32,#5cb85c,#1a5c32,transparent)}
 .free-label{
-  font-family:'Bebas Neue',sans-serif;font-size:3.6rem;letter-spacing:.06em;
+  font-family:'Bebas Neue',sans-serif;font-size:3.8rem;letter-spacing:.06em;
   line-height:1;color:#5cb85c;
-  text-shadow:0 0 30px rgba(92,184,92,.4),0 0 60px rgba(26,92,50,.3);
+  text-shadow:0 0 40px rgba(92,184,92,.45),0 0 80px rgba(26,92,50,.25);
 }
-.free-sub{font-size:.73rem;color:rgba(168,213,181,.45);letter-spacing:.12em;text-transform:uppercase;margin-top:4px}
-.hc-body{padding:22px 26px}
+.free-sub{font-size:.72rem;color:rgba(168,213,181,.4);letter-spacing:.12em;text-transform:uppercase;margin-top:4px}
+.hc-body{padding:20px 24px}
 .hc-row{display:flex;align-items:center;gap:13px;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.04)}
 .hc-row:last-of-type{border-bottom:none}
-.hc-icon{width:34px;height:34px;border-radius:7px;background:rgba(26,92,50,.2);border:1px solid rgba(92,184,92,.15);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.hc-icon{width:34px;height:34px;border-radius:7px;background:rgba(26,92,50,.2);border:1px solid rgba(92,184,92,.12);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .hc-icon i{color:var(--lime);font-size:.82rem}
-.hc-text strong{display:block;font-size:.9rem;font-weight:600;color:rgba(255,255,255,.9)}
-.hc-text span{font-size:.76rem;color:rgba(168,213,181,.5)}
-.cert-badge{display:flex;align-items:center;gap:11px;margin:14px 0 0;background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.18);border-radius:7px;padding:11px 14px}
+.hc-text strong{display:block;font-size:.88rem;font-weight:600;color:rgba(255,255,255,.88)}
+.hc-text span{font-size:.74rem;color:rgba(168,213,181,.45)}
+.cert-badge{display:flex;align-items:center;gap:11px;margin:14px 0 0;background:rgba(201,168,76,.07);border:1px solid rgba(201,168,76,.16);border-radius:7px;padding:11px 14px}
 .cert-badge i{color:var(--gold);font-size:1.1rem;flex-shrink:0}
-.cert-badge span{font-size:.8rem;color:var(--gold);font-weight:500;line-height:1.4}
-.hc-cta{padding:20px 26px 26px}
+.cert-badge span{font-size:.79rem;color:var(--gold);font-weight:500;line-height:1.45}
+.hc-cta{padding:18px 24px 24px}
 .hc-cta-btn{
-  display:flex;align-items:center;justify-content:center;gap:12px;width:100%;
-  background:linear-gradient(135deg,#0f6b28,#2a8c32,#3aaa35);
-  color:#fff;font-family:'Bebas Neue',sans-serif;font-size:1.25rem;letter-spacing:.12em;
+  display:flex;align-items:center;justify-content:center;gap:13px;width:100%;
+  background:linear-gradient(140deg,#0e5a24,#1a8030,#2eb53a);
+  color:#fff;font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:.13em;
   text-decoration:none;padding:16px;border-radius:4px;
-  box-shadow:0 8px 32px rgba(26,92,50,.5);
-  border:1px solid rgba(92,184,92,.2);
-  position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s;
+  border:1px solid rgba(92,184,92,.18);
+  box-shadow:0 10px 36px rgba(14,90,36,.5);
+  position:relative;overflow:hidden;transition:transform .22s,box-shadow .22s;
 }
-.hc-cta-btn::before{content:'';position:absolute;top:0;left:-100%;width:50%;height:100%;background:linear-gradient(105deg,transparent,rgba(255,255,255,.15),transparent);transition:left .5s}
-.hc-cta-btn:hover::before{left:150%}
-.hc-cta-btn:hover{transform:translateY(-2px);box-shadow:0 14px 48px rgba(26,92,50,.65);color:#fff}
-.hc-cta-sub{font-family:'DM Sans',sans-serif;font-size:.62rem;letter-spacing:.1em;display:block;font-weight:600;opacity:.65;text-transform:uppercase;margin-top:2px}
+.hc-cta-btn::before{content:'';position:absolute;top:0;left:-90%;width:50%;height:100%;background:linear-gradient(110deg,transparent,rgba(255,255,255,.14),transparent);transition:left .55s}
+.hc-cta-btn:hover::before{left:140%}
+.hc-cta-btn:hover{transform:translateY(-2px);box-shadow:0 16px 50px rgba(14,90,36,.7);color:#fff}
+.hc-cta-sub{font-family:'DM Sans',sans-serif;font-size:.6rem;letter-spacing:.12em;display:block;font-weight:600;opacity:.55;text-transform:uppercase;margin-top:3px}
 
 /* ═══════════════════════════════════
    SECCIONES BLANCAS
 ═══════════════════════════════════ */
-.section-white{padding:72px 0;background:#fff}
+.section-white{padding:80px 0;background:#fff}
 .section-offwhite{padding:72px 0;background:var(--offwhite)}
-.section-dark{padding:80px 0;background:var(--forest);position:relative;overflow:hidden}
-.section-dark::before{content:'';position:absolute;top:-120px;right:-120px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(168,213,181,.04) 0%,transparent 70%)}
+.section-dark{padding:88px 0;background:linear-gradient(160deg,#0a1c0b,#061008);position:relative;overflow:hidden}
+.section-dark::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(168,213,181,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(168,213,181,.025) 1px,transparent 1px);background-size:60px 60px}
 
 .section-eyebrow{display:flex;align-items:center;gap:10px;margin-bottom:14px}
 .section-eyebrow-line{width:26px;height:1px;background:var(--sage);flex-shrink:0}
 .section-eyebrow span{font-family:'DM Sans',sans-serif;font-size:.67rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--sage)}
-.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,4.5vw,3.2rem);letter-spacing:.04em;line-height:1;color:var(--forest);margin-bottom:8px}
+
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.2rem,5vw,3.4rem);letter-spacing:.04em;line-height:1;color:var(--forest);margin-bottom:8px}
 .section-title.light{color:#fff}
-.section-desc{font-size:.92rem;color:var(--muted);line-height:1.85;max-width:600px;margin-bottom:44px}
+.section-desc{font-size:.91rem;color:var(--muted);line-height:1.88;max-width:580px;margin-bottom:46px}
 
 /* learn grid */
 .learn-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
-.learn-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:22px;display:flex;align-items:flex-start;gap:15px;transition:border-color .2s,transform .2s,box-shadow .2s}
-.learn-card:hover{border-color:rgba(74,124,89,.4);transform:translateY(-3px);box-shadow:0 12px 40px rgba(26,92,50,.1)}
+.learn-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:22px;display:flex;align-items:flex-start;gap:15px;transition:border-color .22s,transform .22s,box-shadow .22s}
+.learn-card:hover{border-color:rgba(74,124,89,.35);transform:translateY(-4px);box-shadow:0 14px 44px rgba(26,92,50,.1)}
 .lc-icon{width:42px;height:42px;border-radius:9px;background:var(--light);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .lc-icon i{color:var(--green);font-size:.95rem}
 .lc-text strong{display:block;font-size:.9rem;font-weight:600;color:var(--forest);margin-bottom:4px}
-.lc-text span{font-size:.81rem;color:var(--muted);line-height:1.6}
+.lc-text span{font-size:.81rem;color:var(--muted);line-height:1.65}
 
-/* contact row */
+/* contact */
 .contact-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;margin-top:40px}
 .contact-card{display:flex;align-items:center;gap:13px;background:#fff;border:1px solid var(--border);border-radius:8px;padding:16px 24px;text-decoration:none;transition:border-color .2s,transform .2s;color:var(--text)}
 .contact-card:hover{border-color:rgba(26,92,50,.3);transform:translateY(-2px);color:var(--text)}
@@ -297,33 +303,35 @@ h1,h2,h3,h4,h5,h6{font-family:'Cormorant Garamond',serif}
 .cc-text span{font-size:.76rem;color:var(--muted)}
 
 /* CTA final */
-.cta-box{background:rgba(168,213,181,.05);border:1px solid rgba(168,213,181,.15);border-radius:10px;padding:56px 40px;text-align:center;position:relative;overflow:hidden}
+.cta-box{border:1px solid rgba(168,213,181,.12);border-radius:10px;padding:64px 40px;text-align:center;position:relative;overflow:hidden;background:rgba(168,213,181,.03)}
 .cta-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,#1a5c32,#5cb85c,#1a5c32,transparent)}
-.cta-box h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.4rem,5vw,3.8rem);letter-spacing:.05em;color:#fff;margin-bottom:14px}
-.cta-box p{font-size:.9rem;color:rgba(255,255,255,.4);max-width:460px;margin:0 auto 40px;line-height:1.8}
+.cta-box h2{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.6rem,6vw,4.2rem);letter-spacing:.05em;color:#fff;margin-bottom:14px}
+.cta-box p{font-size:.9rem;color:rgba(255,255,255,.38);max-width:440px;margin:0 auto 44px;line-height:1.85}
 
-/* BIG CTA BUTTON */
+/* BIG CTA */
 .btn-cta-big{
-  display:inline-flex;align-items:center;gap:20px;
-  background:linear-gradient(135deg,#0f6b28 0%,#1f8c3a 40%,#3aaa35 100%);
-  color:#fff;text-decoration:none;
-  font-family:'Bebas Neue',sans-serif;font-size:1.85rem;letter-spacing:.14em;
-  padding:24px 64px 22px;border-radius:4px;
-  border:1px solid rgba(168,213,181,.2);
-  box-shadow:0 0 0 1px rgba(58,170,53,.3),0 16px 60px rgba(26,92,50,.65),inset 0 1px 0 rgba(255,255,255,.12);
+  display:inline-flex;align-items:center;gap:22px;
+  text-decoration:none;color:#fff;
+  background:linear-gradient(140deg,#0e5a24 0%,#1a8030 50%,#2eb53a 100%);
+  font-family:'Bebas Neue',sans-serif;
+  font-size:clamp(1.6rem,3vw,2.1rem);letter-spacing:.14em;
+  padding:26px 68px 24px;border-radius:5px;
+  border:1px solid rgba(168,213,181,.18);
   position:relative;overflow:hidden;
-  transition:transform .25s,box-shadow .25s;
+  box-shadow:0 2px 0 rgba(255,255,255,.06) inset,0 -2px 0 rgba(0,0,0,.2) inset,0 18px 64px rgba(14,90,36,.7),0 6px 20px rgba(0,0,0,.4);
+  transition:transform .28s cubic-bezier(.34,1.56,.64,1),box-shadow .28s;
 }
-.btn-cta-big::before{content:'';position:absolute;top:0;left:-100%;width:55%;height:100%;background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.16) 50%,transparent 70%);transition:left .6s ease}
-.btn-cta-big:hover::before{left:150%}
-.btn-cta-big::after{content:'';position:absolute;bottom:0;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,rgba(168,213,181,.5),transparent)}
-.btn-cta-big:hover{transform:translateY(-5px) scale(1.02);box-shadow:0 0 0 1px rgba(92,184,92,.5),0 24px 80px rgba(26,92,50,.8),inset 0 1px 0 rgba(255,255,255,.15);color:#fff}
-.btn-cta-big .btn-circle{width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;transition:transform .25s}
-.btn-cta-big:hover .btn-circle{transform:rotate(20deg) scale(1.15)}
-.cta-note{font-size:.77rem;color:rgba(255,255,255,.25);margin-top:20px;display:flex;align-items:center;justify-content:center;gap:8px}
-.cta-note i{color:rgba(92,184,92,.5)}
+.btn-cta-big::before{content:'';position:absolute;top:-10%;left:-80%;width:55%;height:120%;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.15) 50%,transparent 70%);transform:skewX(-15deg);transition:left .65s ease}
+.btn-cta-big:hover::before{left:130%}
+.btn-cta-big::after{content:'';position:absolute;bottom:0;left:8%;right:8%;height:1px;background:linear-gradient(90deg,transparent,rgba(168,213,181,.5),transparent)}
+.btn-cta-big:hover{transform:translateY(-5px) scale(1.02);box-shadow:0 2px 0 rgba(255,255,255,.08) inset,0 -2px 0 rgba(0,0,0,.25) inset,0 26px 84px rgba(14,90,36,.85),0 10px 28px rgba(0,0,0,.45);color:#fff}
+.btn-cta-big .big-circle{width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;transition:transform .3s cubic-bezier(.34,1.56,.64,1)}
+.btn-cta-big:hover .big-circle{transform:rotate(18deg) scale(1.15)}
 
-/* ── FOOTER original ── */
+.cta-note{font-size:.77rem;color:rgba(255,255,255,.22);margin-top:22px;display:flex;align-items:center;justify-content:center;gap:8px}
+.cta-note i{color:rgba(92,184,92,.45)}
+
+/* ── FOOTER ── */
 .footer{background:var(--deep);padding:72px 0 0}
 .footer-brand img{height:42px;filter:brightness(0) invert(1);opacity:.75;margin-bottom:20px}
 .footer-desc{font-size:.86rem;color:rgba(255,255,255,.45);line-height:1.8;max-width:280px}
@@ -346,11 +354,9 @@ h1,h2,h3,h4,h5,h6{font-family:'Cormorant Garamond',serif}
 .footer-bottom a:hover{color:rgba(255,255,255,.65)}
 .footer-bottom-links{display:flex;gap:20px;flex-wrap:wrap}
 
-/* WA float */
 .wa-float{position:fixed;bottom:28px;right:28px;z-index:999;width:52px;height:52px;background:var(--wa);border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.4rem;text-decoration:none;box-shadow:0 4px 24px rgba(37,211,102,.45);transition:transform .2s}
 .wa-float:hover{transform:scale(1.1);color:#fff}
 
-/* fade */
 .fade-up{opacity:0;transform:translateY(28px);transition:opacity .65s ease,transform .65s ease}
 .fade-up.visible{opacity:1;transform:none}
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
@@ -361,12 +367,11 @@ h1,h2,h3,h4,h5,h6{font-family:'Cormorant Garamond',serif}
   .btn-nav-cta{display:none!important}
   .hero-layout{grid-template-columns:1fr}
   .hero-card{max-width:420px}
-  .btn-inscribe{font-size:1.2rem;padding:17px 32px}
-  .btn-cta-big{font-size:1.4rem;padding:20px 40px}
+  .hongo-float{display:none} /* en móvil quitamos los flotantes para no saturar */
 }
 @media(max-width:600px){
-  .hero h1{font-size:clamp(3rem,12vw,5rem)}
-  .btn-inscribe{font-size:1.05rem;padding:15px 24px;gap:12px}
+  .btn-inscribe{font-size:1.15rem;padding:18px 28px;gap:14px}
+  .btn-cta-big{font-size:1.3rem;padding:20px 36px}
   .info-pills{gap:6px}
 }
 </style>
@@ -413,7 +418,8 @@ h1,h2,h3,h4,h5,h6{font-family:'Cormorant Garamond',serif}
       </div>
       <a href="contact.html" class="nav-item nav-link">Contacto</a>
     </div>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSffGpyV99dQK0C68GaWsjsuVyFf1N4m_VHVMgbgf5Qb-NKzag/viewform?usp=publish-editor" target="_blank" rel="noopener" class="btn-nav-cta d-none d-lg-flex">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSffGpyV99dQK0C68GaWsjsuVyFf1N4m_VHVMgbgf5Qb-NKzag/viewform?usp=publish-editor"
+       target="_blank" rel="noopener" class="btn-nav-cta d-none d-lg-flex">
       Inscribirme Gratis <i class="fas fa-arrow-right" style="font-size:.7rem"></i>
     </a>
   </div>
@@ -422,48 +428,111 @@ h1,h2,h3,h4,h5,h6{font-family:'Cormorant Garamond',serif}
 
 <!-- ═══════════════════ HERO ═══════════════════ -->
 <section class="hero" id="inicio">
-  <div class="hero-grid-lines"></div>
-  <div class="hero-glow"></div>
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow-l"></div>
+  <div class="hero-glow-r"></div>
 
-  <!-- HONGOS 3D FLOTANTES SVG -->
-  <div class="mushroom-scene" aria-hidden="true" id="mushroomScene"></div>
+  <!-- ── HONGOS PNG FLOTANTES ──
+       mix-blend-mode:screen hace que el negro del fondo desaparezca
+       y solo se vea el hongo luminoso sobre el fondo oscuro del hero
+  -->
 
+  <!-- HONGO 1 — grande, derecha, rotado levemente -->
+  <img src="hongo1.png" alt="" aria-hidden="true" class="hongo-float" style="
+    width:520px;
+    right:-60px; bottom:-30px;
+    opacity:.72;
+    animation:hFloat1 9s ease-in-out infinite;
+    transform-origin:center bottom;
+    filter:brightness(1.1) saturate(1.05);
+  ">
+
+  <!-- HONGO 2 — mediano, izquierda superior -->
+  <img src="hongo2.png" alt="" aria-hidden="true" class="hongo-float" style="
+    width:340px;
+    left:-40px; top:40px;
+    opacity:.5;
+    animation:hFloat2 11s ease-in-out infinite .8s;
+    transform-origin:center center;
+    filter:brightness(.95) saturate(.9);
+  ">
+
+  <!-- HONGO 1 — pequeño, centro superior, muy sutil -->
+  <img src="hongo1.png" alt="" aria-hidden="true" class="hongo-float" style="
+    width:200px;
+    left:42%; top:-30px;
+    opacity:.3;
+    animation:hFloat3 13s ease-in-out infinite 2s;
+    transform-origin:center center;
+    filter:brightness(.85) saturate(.7);
+  ">
+
+  <!-- HONGO 2 — pequeño, derecha superior -->
+  <img src="hongo2.png" alt="" aria-hidden="true" class="hongo-float" style="
+    width:240px;
+    right:80px; top:20px;
+    opacity:.35;
+    animation:hFloat4 10s ease-in-out infinite 1.5s;
+    transform-origin:center center;
+    filter:brightness(.9) saturate(.85);
+  ">
+
+  <!-- HONGO 1 — tiny, izquierda inferior -->
+  <img src="hongo1.png" alt="" aria-hidden="true" class="hongo-float" style="
+    width:160px;
+    left:30%; bottom:20px;
+    opacity:.22;
+    animation:hFloat5 15s ease-in-out infinite 3s;
+    transform-origin:center center;
+    filter:brightness(.8) saturate(.6);
+  ">
+
+  <!-- CONTENIDO -->
   <div class="container hero-content">
     <div class="hero-layout">
 
       <!-- LEFT -->
       <div>
-        <div class="eyebrow">Andean Consulting · Micología Aplicada</div>
+        <div class="eyebrow">
+          <div class="eyebrow-line"></div>
+          Andean Consulting · Micología Aplicada
+        </div>
+
         <div class="free-badge">
-          <div class="free-badge-dot"></div>
+          <div class="badge-dot"></div>
           Taller 100% Gratuito
         </div>
+
         <h1>
-          <span class="h-top">Hongos:</span>
-          <span class="h-main">Oportunidades</span>
-          <span class="h-accent">de Negocio y Cultivo</span>
+          <span class="h-tiny">Hongos:</span>
+          <span class="h-huge">Oportunidades</span>
+          <span class="h-sub">de Negocio y Cultivo</span>
         </h1>
-        <p class="hero-desc">Descubre cómo los hongos se están convirtiendo en un negocio rentable. Aprende técnicas de cultivo, identifica las variedades más lucrativas y conoce cómo comenzar desde cero.</p>
+
+        <p class="hero-desc">
+          Descubre cómo los hongos se están convirtiendo en uno de los negocios más rentables. Aprende técnicas de cultivo, identifica las variedades más lucrativas y conoce cómo empezar desde cero.
+        </p>
 
         <div class="info-pills">
-          <div class="info-pill"><i class="fas fa-calendar-alt"></i> Lunes 17 de Mayo 2026</div>
-          <div class="info-pill"><i class="fas fa-clock"></i> 7:00 PM — Hora Perú</div>
-          <div class="info-pill"><i class="fas fa-globe"></i> Online · En Vivo</div>
-          <div class="info-pill gold-pill"><i class="fas fa-certificate"></i> Certificado Gratis</div>
-          <div class="info-pill"><i class="fas fa-users"></i> Cupos Limitados</div>
+          <div class="info-pill"><i class="fas fa-calendar-alt"></i>Lunes 17 de Mayo 2026</div>
+          <div class="info-pill"><i class="fas fa-clock"></i>7:00 PM — Hora Perú</div>
+          <div class="info-pill"><i class="fas fa-globe"></i>Online · En Vivo</div>
+          <div class="info-pill gold-pill"><i class="fas fa-certificate"></i>Certificado Gratis</div>
+          <div class="info-pill"><i class="fas fa-users"></i>Cupos Limitados</div>
         </div>
 
-        <div class="btn-inscribe-wrap">
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSffGpyV99dQK0C68GaWsjsuVyFf1N4m_VHVMgbgf5Qb-NKzag/viewform?usp=publish-editor"
-             target="_blank" rel="noopener" class="btn-inscribe">
-            <div class="btn-icon"><i class="fas fa-pen"></i></div>
-            <div>
-              Inscríbete Aquí
-              <span class="btn-tag">es completamente gratis</span>
-            </div>
-          </a>
-        </div>
-        <a href="https://wa.me/51969392189?text=Hola%2C%20quiero%20información%20del%20taller%20gratuito%20de%20Hongos." target="_blank" rel="noopener" class="btn-wa">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSffGpyV99dQK0C68GaWsjsuVyFf1N4m_VHVMgbgf5Qb-NKzag/viewform?usp=publish-editor"
+           target="_blank" rel="noopener" class="btn-inscribe">
+          <div class="btn-icon-circle"><i class="fas fa-pen"></i></div>
+          <div class="btn-text-wrap">
+            <span class="btn-main-text">Inscríbete Aquí</span>
+            <span class="btn-sub-text">Es completamente gratis</span>
+          </div>
+        </a>
+
+        <br>
+        <a href="https://wa.me/51969392189?text=Hola%2C%20quiero%20información%20del%20taller%20gratuito%20de%20Hongos."
+           target="_blank" rel="noopener" class="btn-wa-link">
           <i class="fab fa-whatsapp"></i> ¿Tienes dudas? Escríbenos por WhatsApp
         </a>
       </div>
@@ -526,7 +595,7 @@ h1,h2,h3,h4,h5,h6{font-family:'Cormorant Garamond',serif}
     <div class="fade-up">
       <div class="section-eyebrow"><div class="section-eyebrow-line"></div><span>Contenido</span></div>
       <h2 class="section-title">¿Qué Descubrirás?</h2>
-      <p class="section-desc">Un taller práctico y directo al grano. Todo lo que necesitas para entender el mundo del cultivo de hongos y su potencial económico.</p>
+      <p class="section-desc">Un taller práctico y directo. Todo lo que necesitas para entender el mundo del cultivo de hongos y su potencial económico real.</p>
     </div>
     <div class="learn-grid">
       <div class="learn-card fade-up d1">
@@ -540,7 +609,7 @@ h1,h2,h3,h4,h5,h6{font-family:'Cormorant Garamond',serif}
         <div class="lc-icon"><i class="fas fa-chart-line"></i></div>
         <div class="lc-text">
           <strong>Potencial Económico</strong>
-          <span>Mercado, precios actuales y por qué los hongos se están convirtiendo en un negocio altamente rentable.</span>
+          <span>Mercado, precios actuales y por qué los hongos se están convirtiendo en un negocio altamente rentable en Perú.</span>
         </div>
       </div>
       <div class="learn-card fade-up d3">
@@ -554,7 +623,7 @@ h1,h2,h3,h4,h5,h6{font-family:'Cormorant Garamond',serif}
         <div class="lc-icon"><i class="fas fa-play-circle"></i></div>
         <div class="lc-text">
           <strong>Cómo Empezar sin Experiencia</strong>
-          <span>Paso a paso para iniciar desde cero con recursos mínimos y un plan claro de acción.</span>
+          <span>Paso a paso para iniciar desde cero con recursos mínimos y un plan claro de acción inmediata.</span>
         </div>
       </div>
       <div class="learn-card fade-up d2">
@@ -568,7 +637,7 @@ h1,h2,h3,h4,h5,h6{font-family:'Cormorant Garamond',serif}
         <div class="lc-icon"><i class="fas fa-certificate"></i></div>
         <div class="lc-text">
           <strong>Certificado de Participación</strong>
-          <span>Al completar el taller recibirás tu certificado firmado, completamente sin costo adicional.</span>
+          <span>Al completar el taller recibirás tu certificado firmado, completamente gratuito, sin costo adicional.</span>
         </div>
       </div>
     </div>
@@ -580,9 +649,9 @@ h1,h2,h3,h4,h5,h6{font-family:'Cormorant Garamond',serif}
 <div class="section-offwhite">
   <div class="container">
     <div class="text-center fade-up">
-      <div class="section-eyebrow justify-content-center" style="justify-content:center"><div class="section-eyebrow-line"></div><span>Informes</span></div>
+      <div class="section-eyebrow" style="justify-content:center"><div class="section-eyebrow-line"></div><span>Informes</span></div>
       <h2 class="section-title">¿Tienes Preguntas?</h2>
-      <p style="font-size:.9rem;color:var(--muted);margin-top:8px">Contáctanos por cualquiera de estos medios.</p>
+      <p style="font-size:.9rem;color:var(--muted);margin-top:8px">Contáctanos por cualquiera de estos medios y te respondemos rápido.</p>
     </div>
     <div class="contact-row fade-up d1">
       <a href="https://wa.me/51941054071" target="_blank" rel="noopener" class="contact-card">
@@ -595,7 +664,7 @@ h1,h2,h3,h4,h5,h6{font-family:'Cormorant Garamond',serif}
       </a>
       <a href="mailto:administracion@andeanbioconsulting.com" class="contact-card">
         <div class="cc-icon mail"><i class="fas fa-envelope"></i></div>
-        <div class="cc-text"><strong>administracion@andeanbioconsulting.com</strong><span>Correo electrónico</span></div>
+        <div class="cc-text"><strong style="font-size:.82rem">administracion@andeanbioconsulting.com</strong><span>Correo electrónico</span></div>
       </a>
     </div>
   </div>
@@ -604,14 +673,14 @@ h1,h2,h3,h4,h5,h6{font-family:'Cormorant Garamond',serif}
 
 <!-- ═══ CTA FINAL ═══ -->
 <div class="section-dark" id="inscripcion">
-  <div class="container">
+  <div class="container" style="position:relative;z-index:1">
     <div class="cta-box fade-up">
-      <p style="font-family:'Bebas Neue',sans-serif;font-size:.9rem;letter-spacing:.2em;color:var(--lime);margin-bottom:12px">🍄 TALLER GRATUITO · 17 MAYO 2026</p>
+      <p style="font-family:'Bebas Neue',sans-serif;font-size:.92rem;letter-spacing:.22em;color:var(--lime);margin-bottom:14px">🍄 &nbsp;TALLER GRATUITO · 17 MAYO 2026 · 7:00 PM</p>
       <h2>¡Asegura tu Cupo Ahora!</h2>
       <p>El taller es completamente gratuito, incluye certificado y los cupos son limitados. No te quedes sin tu lugar.</p>
       <a href="https://docs.google.com/forms/d/e/1FAIpQLSffGpyV99dQK0C68GaWsjsuVyFf1N4m_VHVMgbgf5Qb-NKzag/viewform?usp=publish-editor"
          target="_blank" rel="noopener" class="btn-cta-big">
-        <div class="btn-circle"><i class="fas fa-pen"></i></div>
+        <div class="big-circle"><i class="fas fa-pen"></i></div>
         Inscríbete Aquí
       </a>
       <div class="cta-note">
@@ -662,26 +731,60 @@ h1,h2,h3,h4,h5,h6{font-family:'Cormorant Garamond',serif}
     <hr class="footer-divider">
     <div class="footer-bottom">
       <span>&copy; 2025 Andean Consulting &amp; Environmental Solutions S.A.C.</span>
-      <div class="footer-bottom-links"><a href="#">Política de Privacidad</a><a href="#">Cookies</a><a href="#">FAQ</a></div>
+      <div class="footer-bottom-links">
+        <a href="#">Política de Privacidad</a><a href="#">Cookies</a><a href="#">FAQ</a>
+      </div>
     </div>
   </div>
 </footer>
 
-<a href="https://wa.me/51969392189?text=Hola%2C%20me%20interesa%20el%20taller%20gratuito%20de%20Hongos." target="_blank" rel="noopener" class="wa-float"><i class="fab fa-whatsapp"></i></a>
+<a href="https://wa.me/51969392189?text=Hola%2C%20me%20interesa%20el%20taller%20gratuito%20de%20Hongos."
+   target="_blank" rel="noopener" class="wa-float"><i class="fab fa-whatsapp"></i></a>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-/* ── NAVBAR scroll ── */
-var mainNav=document.getElementById('mainNav');
-window.addEventListener('scroll',function(){mainNav.classList.toggle('scrolled',window.scrollY>20)},{passive:true});
+/* Navbar scroll */
+var nav=document.getElementById('mainNav');
+window.addEventListener('scroll',function(){nav.classList.toggle('scrolled',window.scrollY>20)},{passive:true});
 
-/* ── FADE UP ── */
-var fo=new IntersectionObserver(function(entries){
-  entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('visible');fo.unobserve(e.target)}});
-},{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+/* Fade up */
+var fo=new IntersectionObserver(function(e){
+  e.forEach(function(el){if(el.isIntersecting){el.target.classList.add('visible');fo.unobserve(el.target)}});
+},{threshold:.08,rootMargin:'0px 0px -30px 0px'});
 document.querySelectorAll('.fade-up').forEach(function(el){fo.observe(el)});
 
-/* ── NEWSLETTER ── */
+/* Spores */
+(function(){
+  var hero=document.querySelector('.hero');
+  var colors=['rgba(168,213,181,.8)','rgba(92,184,92,.7)','rgba(201,168,76,.6)','rgba(255,255,255,.5)'];
+  for(var i=0;i<22;i++){
+    var s=document.createElement('div');
+    s.className='spore';
+    var sz=Math.random()*4+1.5;
+    s.style.cssText='width:'+sz+'px;height:'+sz+'px;left:'+(Math.random()*100)+'%;bottom:0;background:'+colors[Math.floor(Math.random()*colors.length)]+';animation-duration:'+(Math.random()*14+10)+'s;animation-delay:'+(Math.random()*20)+'s';
+    hero.appendChild(s);
+  }
+})();
+
+/* Parallax suave de los hongos con el mouse */
+(function(){
+  var imgs=document.querySelectorAll('.hongo-float');
+  var depths=[0.04, 0.07, 0.025, 0.055, 0.03]; // profundidades diferentes por capa
+  document.addEventListener('mousemove',function(e){
+    var mx=(e.clientX/window.innerWidth-.5);
+    var my=(e.clientY/window.innerHeight-.5);
+    imgs.forEach(function(img,i){
+      var d=depths[i]||0.04;
+      var tx=mx*window.innerWidth*d;
+      var ty=my*window.innerHeight*d*.6;
+      // mantenemos la animación CSS + añadimos traslado con JS
+      img.style.marginLeft=tx+'px';
+      img.style.marginTop=ty+'px';
+    });
+  },{passive:true});
+})();
+
+/* Newsletter */
 function sendNewsletter(){
   var input=document.getElementById('nlEmail');
   var email=input.value.trim();
@@ -690,128 +793,6 @@ function sendNewsletter(){
   document.getElementById('nlOk').style.display='block';
   setTimeout(function(){document.getElementById('nlOk').style.display='none'},4000);
 }
-
-/* ── HONGOS 3D SVG FLOTANTES ── */
-(function(){
-  var scene=document.getElementById('mushroomScene');
-  if(!scene)return;
-
-  // Definiciones de hongos: [capR, capRx, stemW, stemH, color1, color2, stemC, spotC, hasSpots, scale, left%, top%, animName, duration, delay]
-  var mushrooms=[
-    // Grande derecha centro
-    {capR:58,capRx:80,stemW:18,stemH:44,c1:'rgba(74,124,89,.55)',c2:'rgba(26,92,50,.35)',sc:'rgba(26,92,50,.4)',spc:'rgba(168,213,181,.3)',spots:true,scale:1,left:82,top:18,anim:'mFloat1',dur:8,del:0},
-    // Pequeño izquierda arriba
-    {capR:32,capRx:46,stemW:10,stemH:26,c1:'rgba(201,168,76,.4)',c2:'rgba(140,100,20,.25)',sc:'rgba(100,70,15,.3)',spc:'rgba(255,220,120,.25)',spots:false,scale:1,left:5,top:12,anim:'mFloat2',dur:10,del:1.2},
-    // Mediano centro arriba
-    {capR:42,capRx:60,stemW:13,stemH:35,c1:'rgba(92,184,92,.45)',c2:'rgba(26,92,50,.28)',sc:'rgba(20,70,30,.35)',spc:'rgba(168,213,181,.25)',spots:true,scale:1,left:52,top:5,anim:'mFloat3',dur:9,del:0.5},
-    // Pequeño derecha abajo
-    {capR:28,capRx:40,stemW:9,stemH:22,c1:'rgba(168,213,181,.5)',c2:'rgba(74,124,89,.3)',sc:'rgba(40,90,55,.35)',spc:'rgba(200,240,210,.2)',spots:false,scale:1,left:88,top:62,anim:'mFloat4',dur:11,del:2},
-    // Grande izquierda medio
-    {capR:48,capRx:68,stemW:15,stemH:40,c1:'rgba(92,184,92,.38)',c2:'rgba(14,60,24,.25)',sc:'rgba(14,60,24,.32)',spc:'rgba(168,213,181,.22)',spots:true,scale:1,left:2,top:48,anim:'mFloat5',dur:12,del:0.8},
-    // Tiny derecha superior
-    {capR:18,capRx:26,stemW:6,stemH:16,c1:'rgba(201,168,76,.35)',c2:'rgba(140,100,20,.2)',sc:'rgba(100,70,15,.25)',spc:'rgba(255,220,120,.2)',spots:false,scale:1,left:72,top:3,anim:'mFloat2',dur:7,del:3},
-    // Tiny izquierda inferior
-    {capR:22,capRx:32,stemW:7,stemH:18,c1:'rgba(168,213,181,.4)',c2:'rgba(74,124,89,.25)',sc:'rgba(40,90,55,.3)',spc:'rgba(200,240,210,.18)',spots:false,scale:1,left:12,top:78,anim:'mFloat3',dur:9.5,del:1.8},
-  ];
-
-  mushrooms.forEach(function(m,i){
-    var totalH=m.capR*2+m.stemH+8;
-    var totalW=m.capRx*2+20;
-    var cx=totalW/2;
-
-    // SVG del hongo
-    var svgNS='http://www.w3.org/2000/svg';
-    var svg=document.createElementNS(svgNS,'svg');
-    svg.setAttribute('viewBox','0 0 '+totalW+' '+totalH);
-    svg.setAttribute('width',totalW+'px');
-    svg.setAttribute('height',totalH+'px');
-    svg.style.cssText='overflow:visible;filter:drop-shadow(0 4px 16px rgba(0,0,0,.3))';
-
-    // Tallo
-    var stemX=cx-m.stemW/2;
-    var stemY=m.capR*2-6;
-    var stem=document.createElementNS(svgNS,'rect');
-    stem.setAttribute('x',stemX); stem.setAttribute('y',stemY);
-    stem.setAttribute('width',m.stemW); stem.setAttribute('height',m.stemH+10);
-    stem.setAttribute('rx',m.stemW/2); stem.setAttribute('fill',m.sc);
-    svg.appendChild(stem);
-
-    // Sombra de la cap (elipse inferior)
-    var capShadow=document.createElementNS(svgNS,'ellipse');
-    capShadow.setAttribute('cx',cx); capShadow.setAttribute('cy',m.capR*2+2);
-    capShadow.setAttribute('rx',m.capRx*.85); capShadow.setAttribute('ry',m.capR*.18);
-    capShadow.setAttribute('fill','rgba(0,0,0,.15)');
-    svg.appendChild(capShadow);
-
-    // Cap inferior (laminas)
-    var capBottom=document.createElementNS(svgNS,'ellipse');
-    capBottom.setAttribute('cx',cx); capBottom.setAttribute('cy',m.capR*2);
-    capBottom.setAttribute('rx',m.capRx); capBottom.setAttribute('ry',m.capR*.22);
-    capBottom.setAttribute('fill',m.c2);
-    svg.appendChild(capBottom);
-
-    // Cap principal (forma de sombrero)
-    var defs=document.createElementNS(svgNS,'defs');
-    var gradId='g'+i;
-    var grad=document.createElementNS(svgNS,'radialGradient');
-    grad.setAttribute('id',gradId); grad.setAttribute('cx','45%'); grad.setAttribute('cy','35%'); grad.setAttribute('r','65%');
-    var s1=document.createElementNS(svgNS,'stop');
-    s1.setAttribute('offset','0%'); s1.setAttribute('stop-color','rgba(255,255,255,.2)');
-    var s2=document.createElementNS(svgNS,'stop');
-    s2.setAttribute('offset','100%'); s2.setAttribute('stop-color','rgba(0,0,0,.1)');
-    grad.appendChild(s1); grad.appendChild(s2); defs.appendChild(grad); svg.appendChild(defs);
-
-    var cap=document.createElementNS(svgNS,'ellipse');
-    cap.setAttribute('cx',cx); cap.setAttribute('cy',m.capR);
-    cap.setAttribute('rx',m.capRx); cap.setAttribute('ry',m.capR);
-    cap.setAttribute('fill',m.c1);
-    svg.appendChild(cap);
-
-    // Highlight
-    var hl=document.createElementNS(svgNS,'ellipse');
-    hl.setAttribute('cx',cx-m.capRx*.2); hl.setAttribute('cy',m.capR*.45);
-    hl.setAttribute('rx',m.capRx*.3); hl.setAttribute('ry',m.capR*.2);
-    hl.setAttribute('fill','url(#'+gradId+')');
-    svg.appendChild(hl);
-
-    // Spots
-    if(m.spots){
-      var spotPositions=[[cx-m.capRx*.35,m.capR*.55],[cx+m.capRx*.3,m.capR*.4],[cx+m.capRx*.05,m.capR*.75],[cx-m.capRx*.6,m.capR*.8]];
-      spotPositions.forEach(function(sp){
-        var dot=document.createElementNS(svgNS,'circle');
-        dot.setAttribute('cx',sp[0]); dot.setAttribute('cy',sp[1]);
-        dot.setAttribute('r',m.capR*.1); dot.setAttribute('fill',m.spc);
-        svg.appendChild(dot);
-      });
-    }
-
-    // Wrapper con animación
-    var wrap=document.createElement('div');
-    wrap.className='mush-wrap';
-    wrap.style.cssText='left:'+m.left+'%;top:'+m.top+'%;animation:'+m.anim+' '+m.dur+'s ease-in-out '+m.del+'s infinite;will-change:transform;transform-style:preserve-3d;opacity:'+( 0.45 + Math.random()*.3 );
-    wrap.appendChild(svg);
-    scene.appendChild(wrap);
-  });
-
-  /* spores */
-  var hero=document.querySelector('.hero');
-  if(!hero)return;
-  var sporeColors=['rgba(168,213,181,.7)','rgba(92,184,92,.6)','rgba(201,168,76,.5)','rgba(74,124,89,.6)'];
-  for(var s=0;s<20;s++){
-    var sp=document.createElement('div');
-    sp.className='spore';
-    var sz=Math.random()*4+2;
-    sp.style.cssText='width:'+sz+'px;height:'+sz+'px;left:'+(Math.random()*100)+'%;bottom:0;background:'+sporeColors[Math.floor(Math.random()*sporeColors.length)]+';animation-duration:'+(Math.random()*16+12)+'s;animation-delay:'+(Math.random()*22)+'s';
-    hero.appendChild(sp);
-  }
-
-  /* parallax leve con mouse */
-  document.addEventListener('mousemove',function(e){
-    var x=(e.clientX/window.innerWidth-.5)*14;
-    var y=(e.clientY/window.innerHeight-.5)*8;
-    scene.style.transform='translate('+(x*.5)+'px,'+(y*.4)+'px)';
-  },{passive:true});
-})();
 </script>
 </body>
 </html>
