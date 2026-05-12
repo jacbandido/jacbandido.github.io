@@ -5,6 +5,28 @@
 <title>Taller Gratuito — Hongos: Oportunidades de Negocio y Cultivo · Andean Consulting</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="Taller 100% gratuito sobre hongos: oportunidades de negocio y cultivo. Online, 17 de mayo 2026, 7:00 PM hora Perú. Incluye certificado.">
+
+<!-- Favicon -->
+<link rel="icon" type="image/x-icon" href="img/favicon.ico">
+<link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
+<link rel="apple-touch-icon" href="img/Andeanlogo.png">
+
+<!-- Open Graph — WhatsApp, Facebook, LinkedIn -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jacbandido.github.io/taller-hongos.html">
+<meta property="og:title" content="Taller Gratuito — Hongos: Oportunidades de Negocio y Cultivo">
+<meta property="og:description" content="Aprende a cultivar hongos y conviértelo en un negocio rentable. Taller 100% gratis, online, 17 de mayo 2026 a las 7:00 PM. Incluye certificado.">
+<meta property="og:image" content="https://jacbandido.github.io/img/hongo2.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="es_PE">
+<meta property="og:site_name" content="Andean Consulting">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Taller Gratuito — Hongos: Oportunidades de Negocio y Cultivo">
+<meta name="twitter:description" content="Aprende a cultivar hongos y conviértelo en un negocio rentable. Taller 100% gratis, online, 17 de mayo 2026 a las 7:00 PM. Incluye certificado.">
+<meta name="twitter:image" content="https://jacbandido.github.io/img/hongo2.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet">
@@ -487,6 +509,76 @@ body{font-family:'DM Sans',sans-serif;background:#fff;color:var(--text);overflow
     filter:brightness(.8) saturate(.6);
   ">
 
+  <!-- HONGO 2 — mediano, centro izquierda -->
+  <img src="img/hongo2.png" alt="" aria-hidden="true" class="hongo-float" style="
+    width:280px;
+    left:22%; top:35%;
+    opacity:.28;
+    animation:hFloat3 12s ease-in-out infinite 1s;
+    transform-origin:center center;
+    filter:brightness(.85) saturate(.75);
+  ">
+
+  <!-- HONGO 1 — pequeño, derecha media -->
+  <img src="img/hongo1.png" alt="" aria-hidden="true" class="hongo-float" style="
+    width:190px;
+    right:200px; top:55%;
+    opacity:.3;
+    animation:hFloat2 10s ease-in-out infinite 2.5s;
+    transform-origin:center center;
+    filter:brightness(.9) saturate(.8);
+  ">
+
+  <!-- HONGO 2 — tiny, derecha inferior -->
+  <img src="img/hongo2.png" alt="" aria-hidden="true" class="hongo-float" style="
+    width:140px;
+    right:360px; bottom:40px;
+    opacity:.2;
+    animation:hFloat4 14s ease-in-out infinite 4s;
+    transform-origin:center center;
+    filter:brightness(.75) saturate(.6);
+  ">
+
+  <!-- HONGO 1 — grande, fondo izquierda muy sutil -->
+  <img src="img/hongo1.png" alt="" aria-hidden="true" class="hongo-float" style="
+    width:380px;
+    left:-80px; top:30%;
+    opacity:.15;
+    animation:hFloat1 16s ease-in-out infinite 5s;
+    transform-origin:center center;
+    filter:brightness(.7) saturate(.5);
+  ">
+
+  <!-- HONGO 2 — tiny, centro superior -->
+  <img src="img/hongo2.png" alt="" aria-hidden="true" class="hongo-float" style="
+    width:120px;
+    right:420px; top:8%;
+    opacity:.25;
+    animation:hFloat5 11s ease-in-out infinite 0.5s;
+    transform-origin:center center;
+    filter:brightness(.85) saturate(.7);
+  ">
+
+  <!-- HONGO 1 — mediano, fondo centro derecha -->
+  <img src="img/hongo1.png" alt="" aria-hidden="true" class="hongo-float" style="
+    width:220px;
+    right:520px; top:25%;
+    opacity:.18;
+    animation:hFloat3 13s ease-in-out infinite 3.5s;
+    transform-origin:center center;
+    filter:brightness(.75) saturate(.55);
+  ">
+
+  <!-- HONGO 2 — tiny, extremo derecho medio -->
+  <img src="img/hongo2.png" alt="" aria-hidden="true" class="hongo-float" style="
+    width:100px;
+    right:10px; top:45%;
+    opacity:.2;
+    animation:hFloat4 9s ease-in-out infinite 1.2s;
+    transform-origin:center center;
+    filter:brightness(.8) saturate(.65);
+  ">
+
   <!-- CONTENIDO -->
   <div class="container hero-content">
     <div class="hero-layout">
@@ -769,7 +861,7 @@ document.querySelectorAll('.fade-up').forEach(function(el){fo.observe(el)});
 /* Parallax suave de los hongos con el mouse */
 (function(){
   var imgs=document.querySelectorAll('.hongo-float');
-  var depths=[0.04, 0.07, 0.025, 0.055, 0.03]; // profundidades diferentes por capa
+  var depths=[0.04, 0.07, 0.025, 0.055, 0.03, 0.06, 0.035, 0.05, 0.045, 0.02, 0.065, 0.038]; // profundidades diferentes por capa
   document.addEventListener('mousemove',function(e){
     var mx=(e.clientX/window.innerWidth-.5);
     var my=(e.clientY/window.innerHeight-.5);
